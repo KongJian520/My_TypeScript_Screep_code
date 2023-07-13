@@ -63,9 +63,9 @@ const roleRemoteBuilder = {
 				}
 			}
 		}
-		if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES).length == 0){
-			creep.memory.role = 'remoteHavster'
-		}
+		// if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES).length == 0){
+		// 	creep.memory.role = 'remoteHavster'
+		// }
 
 	},
 };

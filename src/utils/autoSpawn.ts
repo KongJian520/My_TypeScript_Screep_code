@@ -1,3 +1,5 @@
+import { connect } from "http2";
+
 const autoSpawn = {
     spawn: function () {
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');//1
@@ -25,10 +27,10 @@ const autoSpawn = {
                 + "\r" + "carriers =" + "\t" + carriers.length
                 + "\r" + "repairs =" + "\t" + repairs.length
                 + "\r" + "Collectors =" + "\t" + Collectors.length
+                + "\r" + "remoteA =" + "\t" + remoteAttackers.length
                 + "\r" + "remoteH =" + "\t" + remoteHavsters.length
                 + "\r" + "remoteB =" + "\t" + remoteBuilders.length
                 + "\r" + "transfers =" + "\t" + transfers.length
-
                 + "\r" + "ChaiQians =" + "\t" + ChaiQians.length
             )
         }
@@ -59,7 +61,7 @@ const autoSpawn = {
                     Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
                         { memory: { role: 'carrier', room: '', working: false } });
                 } else {
-                    if (upgraders.length < 6) {
+                    if (upgraders.length < 5) {
                         var newName = 'Upgrader_' + Game.time;
                         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
                             { memory: { role: 'upgrader', room: '', working: false } });
@@ -79,7 +81,10 @@ const autoSpawn = {
                                 Game.spawns['Spawn1'].spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY], newName,
                                     { memory: { role: 'ChaiQian', room: '', working: false } });
                             }
-                            if (Game.rooms["W58S15"].find(FIND_HOSTILE_CREEPS)) {
+                            if (Game.rooms['W58S15'].find(FIND_HOSTILE_CREEPS).length > 0) {
+                                console.log("===============================")
+                                console.log("FIND_HOSTILE_CREEPS!!!!!!!!!!!!")
+                                console.log("===============================")
                                 if (remoteAttackers.length < 4) {
                                     var newName = 'remoteAttacker_' + Game.time;
                                     Game.spawns['Spawn1'].spawnCreep([ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE], newName,
@@ -94,7 +99,6 @@ const autoSpawn = {
                                         { memory: { role: 'builder', room: '', working: false } });
                                 }
                             }
-
                             // if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES)) {
                             //     if (remoteBuilders.length < 3) {
                             //         var newName = 'remoteBuilder_' + Game.time;

@@ -23,9 +23,9 @@ const roleRemoteBuilder = {
 							creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
 						}
 					}
-					// else if (targets.length == 0){
-					// 	creep.memory.role= "repair"
-					// }
+					else if (targets.length == 0){
+						creep.memory.role= "ChaiQian"
+					}
 				}
 			}
 			else {

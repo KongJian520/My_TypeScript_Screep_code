@@ -36,6 +36,7 @@ const autoSpawn = {
 
             )
         }
+
         // console.log('spawn acvitied')
         if (harvesters.length == 0) {
             var newName = 'harvester_' + Game.time;
@@ -72,58 +73,69 @@ const autoSpawn = {
                             Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], newName,
                                 { memory: { role: 'repair', room: '', working: false } });
                         }
+                        if (Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES)) {
+                            // console.log(Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES))
+                            if (builders.length < 2) {
+                                var newName = 'Builder_' + Game.time;
+                                Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                                    { memory: { role: 'builder', room: '', working: false } });
+                            }
+                        }
                     } else {
                         if (Collectors.length < 2) {
                             var newName = 'Collector_' + Game.time;
                             Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                 { memory: { role: 'collector', room: '', working: false } });
                         } else {
-                            if (ChaiQians.length < 4) {
-                                var newName = 'ChaiQian_' + Game.time;
-                                Game.spawns['Spawn1'].spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY], newName,
-                                    { memory: { role: 'ChaiQian', room: '', working: false } });
-                            }
-                            if (Game.rooms['W58S15'].find(FIND_HOSTILE_CREEPS).length > 0) {
-                                console.log("===============================")
-                                console.log("FIND_HOSTILE_CREEPS!!!!!!!!!!!!")
-                                console.log("===============================")
-                                if (remoteAttackers.length < 4) {
-                                    var newName = 'remoteAttacker_' + Game.time;
-                                    Game.spawns['Spawn1'].spawnCreep([ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE], newName,
-                                        { memory: { role: 'remoteAttacker', room: '', working: false } });
+                            const roomName = 'W58S15'
+                            const room = Game.rooms[roomName]; // 尝试获取房间对象
+                            if (room) {
+                                if (remoteHavsters.length < 4) {
+                                    var newName = 'remoteHavster_' + Game.time;
+                                    Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                                        { memory: { role: 'remoteHavster', room: '', working: false } });
+                                } else if (ChaiQians.length < 4) {
+                                    var newName = 'ChaiQian_' + Game.time;
+                                    Game.spawns['Spawn1'].spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY], newName,
+                                        { memory: { role: 'ChaiQian', room: '', working: false } });
                                 }
-                            }
-                            if (Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES)) {
-                                // console.log(Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES))
-                                if (builders.length < 2) {
-                                    var newName = 'Builder_' + Game.time;
-                                    Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                                        { memory: { role: 'builder', room: '', working: false } });
-                                }
-                            }
-                            // if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES)) {
-                            //     if (remoteBuilders.length < 3) {
-                            //         var newName = 'remoteBuilder_' + Game.time;
-                            //         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                            //             { memory: { role: 'remoteBuilder', room: '', working: false } });
-                            //     }
-                            // }
-                            if (remoteHavsters.length < 4) {
-                                var newName = 'remoteHavster_' + Game.time;
-                                Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                                    { memory: { role: 'remoteHavster', room: '', working: false } });
-                            }
-                            var controller = Game.rooms["W58S15"].controller
-                            if (controller) {
-                                if (controller.reservation?.ticksToEnd) {
-                                    if (controller.reservation?.ticksToEnd < 4500) {
-                                        if (claims.length < 2) {
-                                            var newName = 'Claim_' + Game.time;
-                                            Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE, MOVE, MOVE, MOVE], newName + Game.time,
-                                                { memory: { role: 'claim', room: '', working: false } });
+                                if (Game.rooms['W58S15'].find(FIND_HOSTILE_CREEPS)) {
+                                    if (Game.rooms['W58S15'].find(FIND_HOSTILE_CREEPS).length > 0) {
+                                        console.log("===============================")
+                                        console.log("FIND_HOSTILE_CREEPS!!!!!!!!!!!!")
+                                        console.log("===============================")
+                                        if (remoteAttackers.length < 4) {
+                                            var newName = 'remoteAttacker_' + Game.time;
+                                            Game.spawns['Spawn1'].spawnCreep([ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE], newName,
+                                                { memory: { role: 'remoteAttacker', room: '', working: false } });
                                         }
                                     }
                                 }
+
+                                if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES) !== undefined) {
+                                    if (remoteBuilders.length < 3) {
+                                        var newName = 'remoteBuilder_' + Game.time;
+                                        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                                            { memory: { role: 'remoteBuilder', room: '', working: false } });
+                                    }
+                                }
+                                var controller = Game.rooms["W58S15"].controller
+                                if (controller !== undefined) {
+                                    if (controller.reservation?.ticksToEnd) {
+                                        if (controller.reservation?.ticksToEnd < 4500) {
+                                            if (claims.length < 2) {
+                                                var newName = 'Claim_' + Game.time;
+                                                Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE, MOVE, MOVE, MOVE], newName + Game.time,
+                                                    { memory: { role: 'claim', room: '', working: false } });
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                var newName = 'eye' + Game.time;
+                                Game.spawns['Spawn1'].spawnCreep([MOVE,MOVE, MOVE, MOVE], newName,
+                                    { memory: { role: 'eye', room: '', working: false } });
+                                console.log("没有"+roomName+"的视野,正在派遣");
                             }
                         }
                     }

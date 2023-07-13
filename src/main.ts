@@ -20,7 +20,7 @@ import roleRemoteBuilder from "creeps/remoteBuilder";
 import tower from "utils/tower";
 import roleThief from "creeps/thief";
 import roleremoteAttacker from "creeps/remoteattacker";
-
+import roleEye from "creeps/eye";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
 // Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'claim', room: '', working: false } })
@@ -129,6 +129,9 @@ export const loop =() => {
     }
     if (creep.memory.role == 'ChaiQian'){
       roleChaiQian.run(creep);
+    }
+    if (creep.memory.role == 'eye'){
+      roleEye.run(creep);
     }
   }
 }

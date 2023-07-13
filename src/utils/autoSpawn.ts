@@ -19,7 +19,7 @@ const autoSpawn = {
 
         if (Game.time % 2 === 1) {
             console.log(
-                "haverster =\t" + harvesters.length
+                "\r"+"haverster =\t" + harvesters.length
                 + "\r" + "upgraders =" + "\t" + upgraders.length
                 + "\r" + "builders =" + "\t" + builders.length
                 + "\r" + "carriers =" + "\t" + carriers.length
@@ -60,8 +60,7 @@ const autoSpawn = {
                 if (ChaiQians.length < 4) {
                     var newName = 'ChaiQian_' + Game.time;
                     Game.spawns['Spawn1'].spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY], newName,
-                        { memory: { role: 'ChaiQian_', room: '', working: false } });
-
+                        { memory: { role: 'ChaiQian', room: '', working: false } });
                 }
                 if (carriers.length < 4) {
                     var newName = 'carrier_' + Game.time;
@@ -69,56 +68,56 @@ const autoSpawn = {
                         { memory: { role: 'carrier', room: '', working: false } });
                 }
             } else {
-                if (remoteAttackers.length < 4) {
-                    var newName = 'remoteAttacker_' + Game.time;
-                    Game.spawns['Spawn1'].spawnCreep([ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE], newName,
-                        { memory: { role: 'remoteAttacker', room: '', working: false } });
+                if (upgraders.length < 6) {
+                    var newName = 'Upgrader_' + Game.time;
+                    Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                        { memory: { role: 'upgrader', room: '', working: false } });
                 }
-                if (Collectors.length < 5) {
+                if (Game.rooms["W58S15"].find(FIND_HOSTILE_CREEPS)) {
+                    if (remoteAttackers.length < 4) {
+                        var newName = 'remoteAttacker_' + Game.time;
+                        Game.spawns['Spawn1'].spawnCreep([ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE], newName,
+                            { memory: { role: 'remoteAttacker', room: '', working: false } });
+                    }
+                }
+                if (Collectors.length < 2) {
                     var newName = 'Collector_' + Game.time;
-                    Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                    Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                         { memory: { role: 'collector', room: '', working: false } });
                 } else {
-                    if (upgraders.length < 2) {
-                        var newName = 'Upgrader_' + Game.time;
-                        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                            { memory: { role: 'upgrader', room: '', working: false } });
-                    } else {
-                        if (Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES)) {
-                            // console.log(Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES))
-                            if (builders.length < 2) {
-                                var newName = 'Builder_' + Game.time;
-                                Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                                    { memory: { role: 'builder', room: '', working: false } });
-                            }
+                    if (Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES)) {
+                        // console.log(Game.rooms["W58S16"].find(FIND_CONSTRUCTION_SITES))
+                        if (builders.length < 2) {
+                            var newName = 'Builder_' + Game.time;
+                            Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                                { memory: { role: 'builder', room: '', working: false } });
                         }
-                        if (repairs.length < 2) {
-                            var newName = 'repair_' + Game.time;
-                            Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], newName,
-                                { memory: { role: 'repair', room: '', working: false } });
-                        }
-                        // if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES)) {
-                        //     if (remoteBuilders.length < 3) {
-                        //         var newName = 'remoteBuilder_' + Game.time;
-                        //         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                        //             { memory: { role: 'remoteBuilder', room: '', working: false } });
-                        //     }
-                        // }
-
-                        if (remoteHavsters.length < 4) {
-                            var newName = 'remoteHavster_' + Game.time;
-                            Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                                { memory: { role: 'remoteHavster', room: '', working: false } });
-                        }
-                        var controller = Game.rooms["W58S15"].controller
-                        if (controller) {
-                            if (controller.reservation?.ticksToEnd) {
-                                if (controller.reservation?.ticksToEnd < 4500) {
-                                    if (claims.length < 2) {
-                                        var newName = 'Claim_' + Game.time;
-                                        Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE, MOVE, MOVE, MOVE], newName + Game.time,
-                                            { memory: { role: 'claim', room: '', working: false } });
-                                    }
+                    }
+                    if (repairs.length < 2) {
+                        var newName = 'repair_' + Game.time;
+                        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], newName,
+                            { memory: { role: 'repair', room: '', working: false } });
+                    }
+                    // if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES)) {
+                    //     if (remoteBuilders.length < 3) {
+                    //         var newName = 'remoteBuilder_' + Game.time;
+                    //         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                    //             { memory: { role: 'remoteBuilder', room: '', working: false } });
+                    //     }
+                    // }
+                    if (remoteHavsters.length < 4) {
+                        var newName = 'remoteHavster_' + Game.time;
+                        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
+                            { memory: { role: 'remoteHavster', room: '', working: false } });
+                    }
+                    var controller = Game.rooms["W58S15"].controller
+                    if (controller) {
+                        if (controller.reservation?.ticksToEnd) {
+                            if (controller.reservation?.ticksToEnd < 4500) {
+                                if (claims.length < 2) {
+                                    var newName = 'Claim_' + Game.time;
+                                    Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE, MOVE, MOVE, MOVE], newName + Game.time,
+                                        { memory: { role: 'claim', room: '', working: false } });
                                 }
                             }
                         }

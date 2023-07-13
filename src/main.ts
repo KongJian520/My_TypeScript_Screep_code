@@ -127,7 +127,7 @@ export const loop =() => {
     if (creep.memory.role == 'remoteAttacker'){
       roleremoteAttacker.run(creep);
     }
-    if (creep.memory.role == 'ChaiQian'){
+    if (creep.memory.role == 'ChaiQian_'||creep.memory.role == 'ChaiQian'){
       roleChaiQian.run(creep);
     }
   }

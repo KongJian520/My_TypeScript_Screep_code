@@ -55,6 +55,11 @@ const autoSpawn = {
             if (dismoveableminers.length === 1 && dismoveableminer2s.length === 1) {
 
                 if (transfers.length < 4) {
+                    if (ChaiQians.length < 4) {
+                        var newName = 'ChaiQian_' + Game.time;
+                        Game.spawns['Spawn1'].spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY], newName,
+                            { memory: { role: 'ChaiQian_', room: '', working: false } });
+                    }
                     var newName = 'transfer_' + Game.time;
                     Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                         { memory: { role: 'transfer', room: '', working: false } });
@@ -65,11 +70,7 @@ const autoSpawn = {
                     Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
                         { memory: { role: 'carrier', room: '', working: false } });
                 } else {
-                    if (ChaiQians.length < 4) {
-                        var newName = 'ChaiQian_' + Game.time;
-                        Game.spawns['Spawn1'].spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY], newName,
-                            { memory: { role: 'ChaiQian_', room: '', working: false } });
-                    }
+
                     if (remoteAttackers.length < 4) {
                         var newName = 'remoteAttacker_' + Game.time;
                         Game.spawns['Spawn1'].spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE, MOVE,], newName,

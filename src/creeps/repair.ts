@@ -18,7 +18,8 @@ const roleRepair = {
             const targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (
-                        (structure.structureType == STRUCTURE_ROAD ||
+                        (   structure.structureType == STRUCTURE_CONTAINER||
+                            structure.structureType == STRUCTURE_ROAD ||
                             structure.structureType == STRUCTURE_RAMPART ||
                             structure.structureType == STRUCTURE_WALL
                         ) && structure.hits < structure.hitsMax * 0.8)
@@ -37,7 +38,7 @@ const roleRepair = {
                     s.structureType == STRUCTURE_STORAGE
                     && s.store.energy <= s.storeCapacity)
             });
-            containers.sort((a: any, b: any) => b.store.energy -  a.store.energy );
+            // containers.sort((a: any, b: any) => b.store.energy -  a.store.energy );
             if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(containers[0], { visualizePathStyle: { stroke: '#ffaa00' } });
             }

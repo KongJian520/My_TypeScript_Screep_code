@@ -20,7 +20,7 @@ const roleThief = {
                 var sources = creep.room.storage
                 if (sources) {
                     if (creep.withdraw(sources,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(sources);
+                        creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' } });
                         creep.say('Finded')
                     }
                     else{
@@ -33,17 +33,17 @@ const roleThief = {
             }
         } else {
             creep.moveTo(new RoomPosition(10, 30, Home), { visualizePathStyle: { stroke: '#ffaa00' } })
-            // if (creep.room.name !== Home) {
-            //     creep.moveTo(new RoomPosition(10, 30, 'W58S16'), { visualizePathStyle: { stroke: '#ffaa00' } })
-            // } else if (creep.room.name === Home) {
-            //     var targets = creep.room.storage
-            //         if (targets) {
-            //             if (creep.transfer(targets,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            //                 creep.moveTo(targets, { visualizePathStyle: { stroke: '#ffFF00' } });
-            //             }
-            //         }
+            if (creep.room.name !== Home) {
+                creep.moveTo(new RoomPosition(10, 30, 'W58S16'), { visualizePathStyle: { stroke: '#ffaa00' } })
+            } else if (creep.room.name === Home) {
+                var targets = creep.room.storage
+                    if (targets) {
+                        if (creep.transfer(targets,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(targets, { visualizePathStyle: { stroke: '#ffffff' } , reusePath: 6});
+                        }
+                    }
 
-            // }
+            }
         }
     }
 }

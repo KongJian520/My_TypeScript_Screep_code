@@ -23,7 +23,7 @@ const roletransfer = {
             if (sources.length > 0) {
                 sources.sort((a: any, b: any) => b.store.energy - a.store.energy);
                 if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffffff' } });
+                    creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
                 }
                 // 使用 pos.findClosestByPath 方法找到距离最近的 container
                 // var closestContainer = creep.pos.findClosestByPath(sources);
@@ -48,7 +48,7 @@ const roletransfer = {
                 var STORAGE = creep.pos.findClosestByPath(targets);
                 if (STORAGE) {
                     if (creep.transfer(STORAGE, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(STORAGE);
+                        creep.moveTo(STORAGE, { visualizePathStyle: { stroke: '#ffffff' } });
                     }
                 }
             }

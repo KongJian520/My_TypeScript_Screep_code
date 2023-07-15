@@ -2,7 +2,11 @@ const roleChaiQian = {
 	run: function (creep: any) {
 		const targetRoom = "W58S15"
 		var Home = 'W58S16';
-		var targets = Game.getObjectById('63eba488fa8f7c2f70a47e7d')
+		var targets = creep.room.find(FIND_STRUCTURES, {
+			filter: (structure: any) => {
+				return (structure.structureType == STRUCTURE_WALL)
+			}
+		})
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
 			creep.say('RCQ 拆');
@@ -21,12 +25,12 @@ const roleChaiQian = {
 					}
 				}
 			}
-		}else if (!creep.memory.working) {
+		} else if (!creep.memory.working) {
 			if (creep.room.name !== Home) {
 				creep.moveTo(new RoomPosition(31, 37, 'W58S16'))
 			} else {
 				var targetss = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure:any) => {
+					filter: (structure: any) => {
 						return (
 							// structure.structureType == STRUCTURE_CONTAINER||
 							structure.structureType == STRUCTURE_STORAGE) &&

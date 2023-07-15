@@ -1,10 +1,10 @@
 const roleCarrier = {
   run: function (creep: any) {
-    if (creep.ticksToLive <= 100) {
-      if (Game.spawns['Spawn1'].renewCreep(creep) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(31, 36)
-      }
-    } else {
+    // if (creep.ticksToLive <= 100) {
+    //   if (Game.spawns['Spawn1'].renewCreep(creep) == ERR_NOT_IN_RANGE) {
+    //     creep.moveTo(31, 36)
+    //   }
+    // } else {
       if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
         creep.memory.working = false;
         creep.say('🔄');
@@ -70,6 +70,6 @@ const roleCarrier = {
         }
       }
     }
-  }
+
 };
 export default roleCarrier;

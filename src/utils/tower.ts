@@ -3,20 +3,19 @@ const tower = {
         var tower = Game.getObjectById('64ac1e90f1c150551e40d1cb') as StructureTower;
         if (tower) {
             var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (structure: any) => {
+                filter: (structure: Structure) => {
                     return (
-                        (structure.structureType == STRUCTURE_CONTAINER||
+                        (structure.structureType == STRUCTURE_CONTAINER
                             // structure.structureType==STRUCTURE_ROAD||
-                            structure.structureType == STRUCTURE_RAMPART
+                            // structure.structureType == STRUCTURE_RAMPART
                             // structure.structureType == STRUCTURE_WALL
-                        ) && structure.hits < structure.hitsMax*0.01)
+                        ) && structure.hits < structure.hitsMax*0.5)
                 }
             });
             var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-
             if (closestHostile) {
                 tower.attack(closestHostile);
-            } else if (closestDamagedStructure && tower.store.energy >= 500) {
+            } else if (closestDamagedStructure && tower.store.energy >= 0) {
                 tower.repair(closestDamagedStructure);
             }
         }

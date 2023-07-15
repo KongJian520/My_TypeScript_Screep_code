@@ -39,8 +39,7 @@ const roleRemoteBuilder = {
 
 					var sources = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure: any) => {
-							return (structure.structureType == STRUCTURE_CONTAINER ||
-								structure.structureType == STRUCTURE_STORAGE &&
+							return (structure.structureType == STRUCTURE_STORAGE &&
 								structure.store.energy > 0);
 						}
 					});

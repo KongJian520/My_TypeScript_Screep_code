@@ -77,75 +77,73 @@ export const loop = () => {
 
   for (var name in Game.creeps) {
     var creep = Game.creeps[name];
-    if (creep.memory.needToRenew) {
-      if (Game.spawns['Spawn1'].renewCreep(creep) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(new RoomPosition(31, 36, "W58S16"))
-      } if (creep.ticksToLive != undefined) {
-        if (creep.ticksToLive > 1300) {
-          creep.memory.needToRenew = false
+
+    if (creep.ticksToLive) {
+      if (creep.ticksToLive < 200) {
+        if (Game.spawns["Spawn1"].renewCreep(creep) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(new RoomPosition(31, 36, 'W58S16'))
         }
       }
-    } else {
-      if (creep.memory.role == 'harvester') {
-        roleHarvester.run(creep);
+      else {
+        if (creep.memory.role == 'harvester') {
+          roleHarvester.run(creep);
+        }
+        if (creep.memory.role == 'upgrader') {
+          roleUpgrader.run(creep);
+        }
+        if (creep.memory.role == 'builder') {
+          roleBuilder.run(creep);
+        }
+        if (creep.memory.role == 'miner') {
+          roleminer.run(creep);
+        }
+        if (creep.memory.role == 'carrier') {
+          // Game.spawns['Spawn1'].recycleCreep(creep)
+          roleCarrier.run(creep);
+        }
+        if (creep.memory.role == 'repair') {
+          roleRepair.run(creep)
+        }
+        if (creep.memory.role == 'collector') {
+          roleCollector.run(creep)
+        }
+        if (creep.memory.role == 'dismoveableminer') {
+          roleDismveableminer.run(creep);
+        }
+        if (creep.memory.role == 'dismoveableminer2') {
+          roleDismveableminer2.run(creep);
+        }
+        if (creep.memory.role == 'attacker') {
+          roleAttacker.run(creep);
+        }
+        if (creep.memory.role == 'claim') {
+          roleClaim.run(creep);
+        }
+        if (creep.memory.role == 'Chaiqiang') {
+          roleChaiQian.run(creep);
+        }
+        if (creep.memory.role == 'remoteHavster') {
+          roleRemoteHavster.run(creep);
+        }
+        if (creep.memory.role == 'remoteBuilder') {
+          roleRemoteBuilder.run(creep);
+        }
+        if (creep.memory.role == 'transfer') {
+          roletransfer.run(creep);
+        }
+        if (creep.memory.role == 'thief') {
+          roleThief.run(creep);
+        }
+        if (creep.memory.role == 'remoteAttacker') {
+          roleremoteAttacker.run(creep);
+        }
+        if (creep.memory.role == 'ChaiQian') {
+          roleChaiQian.run(creep);
+        }
+        if (creep.memory.role == 'eye') {
+          roleEye.run(creep);
+        }
       }
-      if (creep.memory.role == 'upgrader') {
-        roleUpgrader.run(creep);
-      }
-      if (creep.memory.role == 'builder') {
-        roleBuilder.run(creep);
-      }
-      if (creep.memory.role == 'miner') {
-        roleminer.run(creep);
-      }
-      if (creep.memory.role == 'carrier') {
-        // Game.spawns['Spawn1'].recycleCreep(creep)
-        roleCarrier.run(creep);
-      }
-      if (creep.memory.role == 'repair') {
-        roleRepair.run(creep)
-      }
-      if (creep.memory.role == 'collector') {
-        roleCollector.run(creep)
-      }
-      if (creep.memory.role == 'dismoveableminer') {
-        roleDismveableminer.run(creep);
-      }
-      if (creep.memory.role == 'dismoveableminer2') {
-        roleDismveableminer2.run(creep);
-      }
-      if (creep.memory.role == 'attacker') {
-        roleAttacker.run(creep);
-      }
-      if (creep.memory.role == 'claim') {
-        roleClaim.run(creep);
-      }
-      if (creep.memory.role == 'Chaiqiang') {
-        roleChaiQian.run(creep);
-      }
-      if (creep.memory.role == 'remoteHavster') {
-        roleRemoteHavster.run(creep);
-      }
-      if (creep.memory.role == 'remoteBuilder') {
-        roleRemoteBuilder.run(creep);
-      }
-      if (creep.memory.role == 'transfer') {
-        roletransfer.run(creep);
-      }
-      if (creep.memory.role == 'thief') {
-        roleThief.run(creep);
-      }
-      if (creep.memory.role == 'remoteAttacker') {
-        roleremoteAttacker.run(creep);
-      }
-      if (creep.memory.role == 'ChaiQian') {
-        roleChaiQian.run(creep);
-      }
-      if (creep.memory.role == 'eye') {
-        roleEye.run(creep);
-      }
-    }
-
     }
   }
-  ;
+};

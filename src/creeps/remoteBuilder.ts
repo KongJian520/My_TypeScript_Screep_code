@@ -23,8 +23,10 @@ const roleRemoteBuilder = {
 							creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
 						}
 					}
-					else if (targets.length == 0){
-						creep.memory.role= "ChaiQian"
+					else if (targets.length == 0) {
+						if (_.filter(Game.creeps, (creep) => creep.memory.role == 'ChaiQian').length < 4) {
+							creep.memory.role = "ChaiQian"
+						}
 					}
 				}
 			}

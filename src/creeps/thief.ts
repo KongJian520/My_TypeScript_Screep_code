@@ -3,7 +3,8 @@ const roleThief = {
     run: function (creep: Creep) {
         const targetsRoom = 'W58S15'
         const Home = 'W58S16'
-        if (!creep.memory.working && (creep.store[RESOURCE_ENERGY] == 0)) {
+
+        if (!creep.memory.working &&(creep.store[RESOURCE_ENERGY] == 0)) {
             creep.memory.working = true;
             creep.say('偷东西中。。');
         }
@@ -15,11 +16,10 @@ const roleThief = {
             if (creep.room.name !== targetsRoom) {
                 creep.moveTo(new RoomPosition(10, 30, targetsRoom), { visualizePathStyle: { stroke: '#ffaa00' } })
             } else if (creep.room.name === targetsRoom) {
-
-
                 var sources = creep.room.storage
                 if (sources) {
-                    if (creep.withdraw(sources,RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    var pickupedSource = _.keys(sources.store)
+                    if (creep.withdraw(sources,pickupedSource[0] as ResourceConstant) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' } });
                         creep.say('Finded')
                     }

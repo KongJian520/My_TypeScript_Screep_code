@@ -18,7 +18,9 @@ const roleRemoteHavster = {
                 if (creep.room.name !== targetRoom) {
                     creep.moveTo(new RoomPosition(20, 37, 'W58S15'), { visualizePathStyle: { stroke: '#ffaa00' } })
                 } else if (creep.room.name === targetRoom) {
+
                     var sources = creep.room.find(FIND_SOURCES);
+                    creep.say(creep.harvest(sources[0]) as unknown as string)
                     if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
 
                         creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });

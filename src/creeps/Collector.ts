@@ -53,12 +53,13 @@ const roleCollector = {
             if (target != undefined) {
                 // creep.say('运输能量')
                 // 尝试向目标转移能量
-                if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                var pickupedSource = _.keys(creep.store)
+                if (creep.transfer(target, pickupedSource[0]) == ERR_NOT_IN_RANGE) {
                     // 如果不在范围内，就向目标移动
                     creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
                 }
             }else{
-                creep.moveTo(33,39)
+                creep.moveTo(21,41)
             }
         }
     }

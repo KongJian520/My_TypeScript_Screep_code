@@ -1,15 +1,16 @@
+
 const roleBuilder = {
 	run: function (creep: any) {
 
 		var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-		if (targets.length == 0) {
-			if (_.filter(Game.creeps, (creep) => creep.memory.role == 'repair').length < 6) {
-				creep.memory.role = "repair"
-			}
-			else if ((_.filter(Game.creeps, (creep) => creep.memory.role == 'builder').length) < 5) {
-				creep.memory.role = "remoteBuilder"
-			}
-		}
+		// if (targets.length == 0) {
+		// 	if (_.filter(Game.creeps, (creep) => creep.memory.role == 'repair').length < 6) {
+		// 		creep.memory.role = "repair"
+		// 	}
+		// 	else if ((_.filter(Game.creeps, (creep) => creep.memory.role == 'builder').length) < 5) {
+		// 		creep.memory.role = "remoteBuilder"
+		// 	}
+		// }
 		if (creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.building = false;
 			creep.say('BU 🔄');

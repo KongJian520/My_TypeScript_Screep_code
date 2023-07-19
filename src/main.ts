@@ -21,7 +21,8 @@ import tower from "utils/tower";
 import roleThief from "creeps/thief";
 import roleremoteAttacker from "creeps/remoteattacker";
 import roleEye from "creeps/eye";
-
+import link from "utils/link";
+import roledismoveabletrasfer from 'creeps/dismoveabletrasfer'
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
 // Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'claim', room: '', working: false } })
 // Game.spawns['Spawn1'].room.createConstructionSite( 23, 22, STRUCTURE_TOWER );
@@ -52,12 +53,12 @@ console.log("code is Updated!...,The Game tickis .." + Game.time)
 console.log('=========================================')
 
 
-
 export const loop = () => {
 
 
   autoSpawn.spawn();
   tower.run();
+  link.run();
 
   if (Game.spawns['Spawn1'].spawning) {
     var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
@@ -78,13 +79,6 @@ export const loop = () => {
   for (var name in Game.creeps) {
     var creep = Game.creeps[name];
 
-    // if (creep.ticksToLive) {
-    //   if (creep.ticksToLive < 200) {
-    //     if (Game.spawns["Spawn1"].renewCreep(creep) == ERR_NOT_IN_RANGE) {
-    //       creep.moveTo(new RoomPosition(31, 36, 'W58S16'))
-    //     }
-    //   }
-    //   else {
     if (creep.memory.role == 'harvester') {
       roleHarvester.run(creep);
     }
@@ -98,7 +92,6 @@ export const loop = () => {
       roleminer.run(creep);
     }
     if (creep.memory.role == 'carrier') {
-      // Game.spawns['Spawn1'].recycleCreep(creep)
       roleCarrier.run(creep);
     }
     if (creep.memory.role == 'repair') {
@@ -143,7 +136,9 @@ export const loop = () => {
     if (creep.memory.role == 'eye') {
       roleEye.run(creep);
     }
-    // }
-    // }
+    if (creep.memory.role == 'dismoveabletrasfer') {
+      roledismoveabletrasfer.run(creep);
+    }
+
   }
 };

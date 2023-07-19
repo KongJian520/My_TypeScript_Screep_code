@@ -57,6 +57,10 @@ const roleCollector = {
                 if (creep.transfer(target, pickupedSource[0]) == ERR_NOT_IN_RANGE) {
                     // 如果不在范围内，就向目标移动
                     creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
+                }else if (creep.transfer(target, pickupedSource[0]) == 0){
+                    for(const resourceType in creep.carry) {
+                        creep.transfer(target, resourceType);
+                    }
                 }
             }else{
                 creep.moveTo(21,41)

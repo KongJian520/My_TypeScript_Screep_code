@@ -15,7 +15,10 @@ const roletransfer = {
         if (!creep.memory.working) {
             var sources = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
-                    return (structure.structureType == STRUCTURE_CONTAINER &&
+                    return (structure.structureType == STRUCTURE_CONTAINER
+                        // ||structure.sourceLinkId == '64b5d08fd3a05b4f1f6f0325'
+                            // ||structure.structureType == STRUCTURE_LINK
+                            &&
                         structure.store.energy > 0);
                 }
             });

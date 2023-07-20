@@ -18,14 +18,14 @@ const roleRepair = {
             const targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (
-                        (   structure.structureType == STRUCTURE_CONTAINER||
-                            structure.structureType == STRUCTURE_ROAD ||
-                            structure.structureType == STRUCTURE_RAMPART ||
-                            structure.structureType == STRUCTURE_WALL
+                        (   structure.structureType == STRUCTURE_CONTAINER
+                            ||structure.structureType == STRUCTURE_ROAD
+                            // structure.structureType == STRUCTURE_RAMPART
+                            // structure.structureType == STRUCTURE_WALL
                         ) && structure.hits < structure.hitsMax * 0.8)
                 }
             });
-            targets.sort((a: any, b: any) => a.hits - b.hits);
+            targets.sort((a: any, b: any) => a.hits/a.hitsMax - b.hits/b.hitsMax);
             if (targets.length > 0) {
                 if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#f00fff' }, reusePath: 10 });

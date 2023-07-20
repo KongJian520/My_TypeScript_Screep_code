@@ -5,9 +5,9 @@ const roleremoteAttacker = {
     run: function (creep: any) {
         const targetRoom = "W58S15"
         // const target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        const target =Game.getObjectById('64b410979997ce810a50e500')
+        const target =Game.getObjectById('64b8758cfb039e7bf1182255')
         if (creep.room.name !== targetRoom) {
-            creep.moveTo(new RoomPosition(20, 37, 'W58S15'), { visualizePathStyle: { stroke: '#ff0000' } })
+            creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: '#ff0000' } })
         } else if (creep.room.name === targetRoom) {
             creep.say(creep.attack(target))
             if (target) {

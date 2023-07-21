@@ -21,7 +21,7 @@ const autoSpawn = {
         var EyesW58S14 = _.filter(Game.creeps, (creep) => creep.memory.role == 'EyeW58S14')
         var roledismoveabletrasfers = _.filter(Game.creeps, (creep) => creep.memory.role == 'dismoveabletrasfer')
         if (Game.time % 1 === 0) {
-            console.log("Game.time = " + Game.time +
+            console.log(
                 "\r" + "haverster =\t" + harvesters.length
                 + "\r" + "transfers =" + "\t" + transfers.length
                 + "\r" + "carriers =" + "\t" + carriers.length
@@ -98,7 +98,7 @@ const autoSpawn = {
                                 { memory: { role: 'builder', room: '', working: false, needToRenew: false } });
                         }
                     }
-                    if (upgraders.length < 1) {
+                    if (upgraders.length < 2) {
                         var newName = 'Upgrader_' + Game.time;
                         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                             { memory: { role: 'upgrader', room: '', working: false, needToRenew: false } });
@@ -133,11 +133,11 @@ const autoSpawn = {
                             // }
                             // if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES) !== undefined) {
                             //     console.log("W58S15"+Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES)as string)
-                            //     if (remoteBuilders.length < 2) {
-                            //         var newName = 'remoteBuilder_' + Game.time;
-                            //         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK,  WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], newName,
-                            //             { memory: { role: 'remoteBuilder', room: '', working: false, needToRenew: false } });
-                            //     }
+                            if (remoteBuilders.length < 2) {
+                                var newName = 'remoteBuilder_' + Game.time;
+                                Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
+                                    { memory: { role: 'remoteBuilder', room: '', working: false, needToRenew: false } });
+                            }
                             // }
                             if (controller !== undefined) {
                                 console.log("房间控制器找到了")

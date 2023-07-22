@@ -17,6 +17,8 @@ import roleRemoteBuilder from "./creeps/remoteBuilder";
 import tower from "./utils/tower";
 import roleThief from "./creeps/thief";
 import roleremoteAttacker from "./creeps/remoteattacker";
+import roleRemoteUpgrader from "./creeps/remoteUpgrader";
+import roleRemoteRepair from "./creeps/remoteRepairer";
 import roleEye from "./creeps/eye";
 import roleEyeW58S14 from "./creeps/eyeW58S14";
 import link from "./utils/link";
@@ -96,13 +98,14 @@ const W58S16 = {
                     roletransfer.run(creep);
                 }
                 if (creep.memory.role == 'thief') {
+                    // creep.suicide()
                     roleThief.run(creep);
                 }
                 if (creep.memory.role == 'remoteAttacker') {
                     roleremoteAttacker.run(creep);
                 }
                 if (creep.memory.role == 'ChaiQian') {
-                    roleChaiQian.run(creep);
+                    roleRemoteUpgrader.run(creep);
                 }
                 if (creep.memory.role == 'eye') {
                     roleEye.run(creep);
@@ -112,6 +115,12 @@ const W58S16 = {
                 }
                 if (creep.memory.role == 'dismoveabletrasfer') {
                     roledismoveabletrasfer.run(creep);
+                }
+                if (creep.memory.role == 'RemoteUpgrader') {
+                    roleRemoteUpgrader.run(creep);
+                }
+                if (creep.memory.role == 'RemoteRepair') {
+                    roleRemoteRepair.run(creep);
                 }
             }
         }

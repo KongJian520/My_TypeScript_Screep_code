@@ -1,6 +1,6 @@
-const roleRemoteBuilder = {
-	run: function (creep: any) {
-		var targetRoom = 'W58S14';
+const roleRemoteRepair = {
+    run: function (creep: any) {
+		var targetRoom = 'W58S15';
 		var Home = 'W58S16';
 		if ((Game.rooms[targetRoom].find(FIND_CONSTRUCTION_SITES).length == 0)) {
 			creep.moveTo(19, 4, (Home as MoveToOpts))
@@ -18,12 +18,19 @@ const roleRemoteBuilder = {
 					creep.say('Moving')
 					creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: '#ffaa00' } })
 				} else if (creep.room.name === targetRoom) {
-					var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-					if (targets.length) {
-						if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
-						}
-					}
+					const targets = creep.room.find(FIND_STRUCTURES, {
+                        filter: (structure: any) => {
+                            return (
+                                (structure.structureType == STRUCTURE_ROAD
+                                ) && structure.hits < structure.hitsMax )
+                        }
+                    });
+                    targets.sort((a: any, b: any) => a.hits/a.hitsMax - b.hits/b.hitsMax);
+                    if (targets.length > 0) {
+                        if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#f00fff' }, reusePath: 10 });
+                        }
+                    }
 				}
 			}
 			else {
@@ -65,5 +72,5 @@ const roleRemoteBuilder = {
 		// }
 
 	},
-};
-export default roleRemoteBuilder;
+}
+export default roleRemoteRepair;

@@ -1,4 +1,4 @@
-const roleCarrier = {
+const roleCarrierW58S14 = {
   run: function (creep: any) {
 
     if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
@@ -21,9 +21,18 @@ const roleCarrier = {
         }
       });
       targets.sort((a: any, b: any) => a.store.energy - b.store.energy);
-      if (targets.length > 0) {
-        if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
+      var closesttargets = creep.pos.findClosestByPath(targets)
+
+      // if (targets.length > 0) {
+      //   if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+      //     creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
+      //   }
+      // }
+
+
+      if (closesttargets) {
+        if (creep.transfer(closesttargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(closesttargets, { visualizePathStyle: { stroke: '#ffffff' } });
         }
       }
     } else {
@@ -59,4 +68,4 @@ const roleCarrier = {
     }
   }
 };
-export default roleCarrier;
+export default roleCarrierW58S14;

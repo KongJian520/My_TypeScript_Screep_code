@@ -1,40 +1,38 @@
-const roleRemoteBuilder = {
+const roleRemoteUpgrader = {
 	run: function (creep: any) {
 		var targetRoom = 'W58S14';
 		var Home = 'W58S16';
-		if ((Game.rooms[targetRoom].find(FIND_CONSTRUCTION_SITES).length == 0)) {
-			creep.moveTo(19, 4, (Home as MoveToOpts))
+		if (Game.rooms[targetRoom].controller == undefined) {
+			creep.moveTo(new RoomPosition(20, 37, Home), { visualizePathStyle: { stroke: '#ffaa00' } })
 		} else {
 			if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 				creep.memory.working = false;
-				creep.say('RBU 🔄 ');
+				creep.say('RUP 🔄 ');
 			}
 			if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
 				creep.memory.working = true;
-				creep.say('🚧 build');
+				creep.say('RUP ⚡');
 			}
 			if (creep.memory.working) {
+
 				if (creep.room.name !== targetRoom) {
 					creep.say('Moving')
 					creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: '#ffaa00' } })
 				} else if (creep.room.name === targetRoom) {
-					var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-					if (targets.length) {
-						if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
+					if (creep.memory.working) {
+						if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' }, reusePath: 10 });
 						}
 					}
 				}
-			}
-			else {
+			} else {
 				if (creep.room.name !== Home) {
 					creep.moveTo(new RoomPosition(31, 37, Home))
-				} else {
+				} else if (creep.room.name == Home) {
 					// var sources = creep.room.find(FIND_SOURCES);
 					// if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
 					// 	creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
 					// }
-
 					var sources = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure: any) => {
 							return (structure.structureType == STRUCTURE_STORAGE &&
@@ -66,4 +64,4 @@ const roleRemoteBuilder = {
 
 	},
 };
-export default roleRemoteBuilder;
+export default roleRemoteUpgrader;

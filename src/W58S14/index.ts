@@ -4,6 +4,7 @@ import roleHarvesterW58S14 from "./creeps/Harvester"
 import roleCarrierW58S14 from "./creeps/carrier"
 import roleCollectorW58S14 from "./creeps/Collector"
 import roleRepairW58S14 from "./creeps/repair"
+import tower from "./utils/tower"
 
 import roleDismveableminer2 from "./creeps/dismoveableminer2"
 
@@ -14,6 +15,7 @@ const W58S16 = {
         const W58S14Spawn = Game.spawns['Spawn2']
         console.log('----------------W58S14-------------------')
         W58S14autoSpawn.spawn();
+        tower.run();
         if (W58S14.storage) {
             console.log('Storge-RESOURCE_ENERGY = ' + W58S14.storage.store.getUsedCapacity(RESOURCE_ENERGY))
         }
@@ -25,12 +27,13 @@ const W58S16 = {
                 W58S14Spawn.pos.y,
                 { align: 'left', opacity: 0.8 });
         }
+
         for (var name in Game.creeps) {
             var creep = Game.creeps[name]
             if (creep.memory.role == 'HarvesterW58S14') {
                 roleHarvesterW58S14.run(creep)
             } if (creep.memory.role == 'BuilderW58S14') {
-                roleBuilderW58S14.run(creep)
+                roleUpgraderW58S14.run(creep)
             } if (creep.memory.role == 'UpgraderW58S14') {
                 roleUpgraderW58S14.run(creep)
             } if (creep.memory.role == 'CarrierW58S14') {
@@ -39,7 +42,7 @@ const W58S16 = {
                 roleCollectorW58S14.run(creep)
             } if (creep.memory.role == 'RepairW58S14') {
                 roleRepairW58S14.run(creep)
-            } if (creep.memory.role == 'Dismveableminer2') {
+            } if (creep.memory.role == 'Dismveableminer2W58S14') {
                 roleDismveableminer2.run(creep)
             }
         }

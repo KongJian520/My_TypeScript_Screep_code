@@ -1,6 +1,6 @@
 const roleChaiQian = {
 	run: function (creep: any) {
-		const targetRoom = "W58S15"
+		const targetRoom = "W58S14"
 		var Home = 'W58S16';
 		var targets =  creep.room.find(FIND_STRUCTURES, {//寻找设施存入 target
 			filter: (structure: any) => {

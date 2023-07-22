@@ -128,7 +128,7 @@ const autoSpawn = {
                                     Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY], newName,
                                         { memory: { role: 'RemoteRepair', room: '', working: false, needToRenew: false } });
                                 } else
-                                    if (remoteBuilders.length < 4) {
+                                    if (remoteBuilders.length < 2) {
                                         var newName = 'remoteBuilder_' + Game.time;
                                         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                             { memory: { role: 'remoteBuilder', room: '', working: false, needToRenew: false } });
@@ -179,7 +179,7 @@ const autoSpawn = {
                             //     Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                             //         { memory: { role: 'thief', room: '', working: false, needToRenew: false } });
                             // }
-                            if (roleRemoteUpgraders.length < 4) {
+                            if (roleRemoteUpgraders.length < 1) {
                                 var newName = 'RemoteUpgrader' + Game.time;
                                 Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                     { memory: { role: 'RemoteUpgrader', room: '', working: false, needToRenew: false } });

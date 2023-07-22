@@ -11,17 +11,15 @@ const tower = {
         let towers = Game.rooms['W58S16'].find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } }) as StructureTower[];
         // 遍历每个塔
         for (let tower of towers) {
-
-
             var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {
                 filter: (structure: Structure) => {
                     return (structure.structureType == STRUCTURE_TOWER
                         || structure.structureType == STRUCTURE_CONTAINER
-                        // || structure.structureType == STRUCTURE_ROAD
+                        || structure.structureType == STRUCTURE_ROAD
                         || structure.structureType == STRUCTURE_RAMPART
                         // || structure.structureType == STRUCTURE_WALL
                         && // 判断建筑损伤是否小于最大值
-                        structure.hits < structure.hitsMax * 0.02
+                        structure.hits < structure.hitsMax * 0.025
                     )
                 }
             });

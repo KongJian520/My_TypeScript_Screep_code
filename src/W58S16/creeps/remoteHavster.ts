@@ -23,16 +23,16 @@ const roleRemoteHavster = {
                     creep.say(creep.harvest(sources[0]) as unknown as string)
                     if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
 
-                        creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
+                        creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 10 });
                     } if (creep.harvest(sources[0]) == -6) {
                         if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(sources[1], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
+                            creep.moveTo(sources[1], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 10 });
                         }
                     }
                 }
             } else if (!creep.memory.working) {
                 if (creep.room.name !== Home) {
-                    creep.moveTo(new RoomPosition(31, 37, 'W58S16'))
+                    creep.moveTo(new RoomPosition(31, 37, 'W58S16'), { reusePath: 10 })
                 } else {
                     var targets = creep.room.find(FIND_STRUCTURES, {
                         filter: (structure) => {
@@ -48,7 +48,7 @@ const roleRemoteHavster = {
                             // creep.say('RH 最近的找到了')
                             // 移动到最近的 container 并从中放入能量
                             if (creep.transfer(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(closestContainer, { visualizePathStyle: { stroke: '#ffaa00' } });
+                                creep.moveTo(closestContainer, { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 10 });
 
                             }
                         }

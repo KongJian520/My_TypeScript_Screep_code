@@ -17,7 +17,7 @@ const roleRemoteUpgrader = {
 
 				if (creep.room.name !== targetRoom) {
 					creep.say('Moving')
-					creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: '#ffaa00' } })
+					creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 10 })
 				} else if (creep.room.name === targetRoom) {
 					if (creep.memory.working) {
 						if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
@@ -48,12 +48,12 @@ const roleRemoteUpgrader = {
 							// creep.say('UP 最近的找到了')
 							// 移动到最近的 container 并从中取出能量
 							if (creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-								creep.moveTo(closestContainer);
+								creep.moveTo(closestContainer, { reusePath: 10 });
 							}
 						}
 					}
 					if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-						creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
+						creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 10 });
 					}
 				}
 			}

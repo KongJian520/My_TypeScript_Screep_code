@@ -13,13 +13,13 @@ const tower = {
         for (let tower of towers) {
             var closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {
                 filter: (structure: Structure) => {
-                    return (structure.structureType == STRUCTURE_TOWER
+                    return ((structure.structureType == STRUCTURE_TOWER
                         || structure.structureType == STRUCTURE_CONTAINER
                         || structure.structureType == STRUCTURE_ROAD
-                        || structure.structureType == STRUCTURE_RAMPART
+                        // || structure.structureType == STRUCTURE_RAMPART
                         // || structure.structureType == STRUCTURE_WALL
-                        && // 判断建筑损伤是否小于最大值
-                        structure.hits < structure.hitsMax * 0.025
+                    )&& // 判断建筑损伤是否小于最大值
+                        (structure.hits < structure.hitsMax * 0.4|| structure.hits != structure.hitsMax)
                     )
                 }
             });
@@ -30,14 +30,17 @@ const tower = {
                 console.log(tower.id + " 发现敌人,返回值：" + tower.attack(closestHostile))
                 tower.attack(closestHostile);
                 // 如果没有敌人，且有受损建筑，且塔有足够能量，就修复
-            } else if (closestDamagedStructure && tower.store.energy >= 0) {
-                for (let index = 0; index < closestDamagedStructure.length; index++) {
+            } else
+                tower.repair(closestDamagedStructure[0]);
+                // console.log(closestDamagedStructure[0].structureType)
+            // if (closestDamagedStructure && tower.store.energy >= 0) {
+            //     for (let index = 0; index < closestDamagedStructure.length; index++) {
 
-                    tower.repair(closestDamagedStructure[index]);
+            //         tower.repair(closestDamagedStructure[index]);
 
-                }
+            //     }
                 // console.log('Tower:' + tower.id + " 修复受损建筑,返回值：" + tower.repair(closestDamagedStructure[index]) + '目标：' + closestDamagedStructure[0].pos)
-            }
+            // }
         }
     }
 }

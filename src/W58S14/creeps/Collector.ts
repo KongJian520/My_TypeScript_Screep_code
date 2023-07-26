@@ -23,7 +23,8 @@ const roleCollectorW58S14 = {
             // 寻找最近的掉落的资源或者墓碑
             var source = creep.pos.findClosestByPath(FIND_RUINS, { filter: (t: any) => t.store.energy > 0 })
                 || creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES)
-                || creep.pos.findClosestByPath(FIND_TOMBSTONES, {filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
+                || creep.pos.findClosestByPath(FIND_TOMBSTONES, {
+                    filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
                 });
 
             // 如果找到了资源或者墓碑
@@ -37,26 +38,33 @@ const roleCollectorW58S14 = {
                     creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
                 }
             } else {
-                creep.memory.working = true;
+                if (creep.store.getUsedCapacity() == 0) {
+                    if (creep.pos.pos !== 16, 32) {
+                        creep.moveTo(16, 32)
+                    }
+                }else{
+                    creep.memory.working = true
+                }
             }
         }
         // 如果creep的状态为送能量
         else {
+
+            // creep.say('Working')
+
             var target = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (
-                        // structure.structureType == STRUCTURE_STORAGE||
-                        structure.structureType == STRUCTURE_SPAWN||
+                        structure.structureType == STRUCTURE_STORAGE ||
+                        structure.structureType == STRUCTURE_SPAWN ||
                         structure.structureType == STRUCTURE_EXTRACTOR) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
             target.sort((a: any, b: any) => a.store.energy - b.store.energy);
             // 寻找最近的storage或者terminal
-
             // 如果找到了目标
             if (target != undefined) {
-
                 // 尝试向目标转移能量
                 var pickupedSource = _.keys(creep.store)
                 if (creep.transfer(target[0], pickupedSource[0]) == ERR_NOT_IN_RANGE) {
@@ -68,7 +76,7 @@ const roleCollectorW58S14 = {
                     }
                 }
             } else {
-                creep.say('自闭中')
+                creep.say('未发现目标或目标不可达')
                 creep.moveTo(15, 28)
             }
         }

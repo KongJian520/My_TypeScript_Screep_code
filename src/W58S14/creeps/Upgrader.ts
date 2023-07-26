@@ -20,15 +20,10 @@ const roleUpgraderW58S14 = {
 				}
 			}
 			else {
-				// var sources = creep.room.find(FIND_SOURCES);
-				// if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-				// 	creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
-				// }
-
 				var sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) => {
 						return (
-							structure.structureType == STRUCTURE_CONTAINER ||
+							// structure.structureType == STRUCTURE_CONTAINER ||
 							structure.structureType == STRUCTURE_STORAGE &&
 							structure.store.energy > 0);
 					}
@@ -42,12 +37,17 @@ const roleUpgraderW58S14 = {
 						// creep.say('UP 最近的找到了')
 						// 移动到最近的 container 并从中取出能量
 						if (creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(closestContainer, { reusePath: 6 });
+							creep.moveTo(closestContainer, { reusePath: 6, noPathFinding: true });
+							if (creep.moveTo(closestContainer, { reusePath: 6, noPathFinding: true }) == ERR_NOT_FOUND) {
+								creep.moveTo(closestContainer, { reusePath: 6 });
+							}
 						}
 					}
+				}else{
+					creep.moveTo(21,32)
 				}
 				if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 });
+					creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6, noPathFinding: true });
 				}
 			}
 		}

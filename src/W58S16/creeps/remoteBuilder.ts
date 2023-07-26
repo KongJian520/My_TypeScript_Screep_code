@@ -1,6 +1,6 @@
 const roleRemoteBuilder = {
 	run: function (creep: any) {
-		var targetRoom = 'W58S14';
+		var targetRoom = 'W58S15';
 		var Home = 'W58S16';
 		if ((Game.rooms[targetRoom].find(FIND_CONSTRUCTION_SITES).length == 0)) {
 			var Home = 'W58S14';

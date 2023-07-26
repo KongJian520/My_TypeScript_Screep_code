@@ -18,22 +18,32 @@ import tower from "./utils/tower";
 import roleThief from "./creeps/thief";
 import roleremoteAttacker from "./creeps/remoteattacker";
 import roleRemoteUpgrader from "./creeps/remoteUpgrader";
+
 import roleRemoteRepair from "./creeps/remoteRepairer";
 import roleEye from "./creeps/eye";
-import roleEyeW58S14 from "./creeps/eyeW58S14";
+
 import link from "./utils/link";
 import roledismoveabletrasfer from './creeps/dismoveabletrasfer'
+import roleRemoteHavster2 from "./creeps/remoteHavster2";
 
 const W58S16 = {
 
     work: function () {
-        console.log('----------------W58S16-------------------')
-        autoSpawn.spawn();
-        tower.run();
-        link.run();
-        if (Game.rooms['W58S16'].storage) {
-            console.log('Storge-RESOURCE_ENERGY = ' + Game.rooms['W58S16'].storage.store.getUsedCapacity(RESOURCE_ENERGY))
+        if (Game.time % 2 === 0) {
+            console.log('----------------W58S16-------------------')
+            autoSpawn.spawn();
+            if (Game.rooms['W58S16'].storage) {
+                console.log('Storge-RESOURCE_ENERGY = ' + Game.rooms['W58S16'].storage.store.getUsedCapacity(RESOURCE_ENERGY))
+            }
+            for (var name in Memory.creeps) {
+                if (!Game.creeps[name]) {
+                    delete Memory.creeps[name];
+                    // console.log('Clearing non-existing creep memory:', name);
+                }
+            }
+            link.run();
         }
+        tower.run();
         if (Game.spawns['Spawn1'].spawning) {
             var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
             Game.spawns['Spawn1'].room.visual.text(
@@ -42,14 +52,7 @@ const W58S16 = {
                 Game.spawns['Spawn1'].pos.y,
                 { align: 'left', opacity: 0.8 });
         }
-        for (var name in Memory.creeps) {
-            if (!Game.creeps[name]) {
-                delete Memory.creeps[name];
-                // console.log('Clearing non-existing creep memory:', name);
-            }
-        }
         for (var name in Game.creeps) {
-
             {
                 var creep = Game.creeps[name]
                 if (creep.memory.role == 'harvester') {
@@ -91,6 +94,9 @@ const W58S16 = {
                 if (creep.memory.role == 'remoteHavster') {
                     roleRemoteHavster.run(creep);
                 }
+                if (creep.memory.role == 'RemoteHavster2') {
+                    roleRemoteHavster2.run(creep);
+                }
                 if (creep.memory.role == 'remoteBuilder') {
                     roleRemoteBuilder.run(creep);
                 }
@@ -109,9 +115,6 @@ const W58S16 = {
                 }
                 if (creep.memory.role == 'eye') {
                     roleEye.run(creep);
-                }
-                if (creep.memory.role == 'EyeW58S14') {
-                    roleEyeW58S14.run(creep);
                 }
                 if (creep.memory.role == 'dismoveabletrasfer') {
                     roledismoveabletrasfer.run(creep);

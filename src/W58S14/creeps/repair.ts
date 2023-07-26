@@ -19,13 +19,13 @@ const roleRepairW58S14 = {
                 filter: (structure: any) => {
                     return (
                         (structure.structureType == STRUCTURE_CONTAINER ||
-                            structure.structureType == STRUCTURE_ROAD ||
-                            structure.structureType == STRUCTURE_RAMPART ||
+                            // structure.structureType == STRUCTURE_ROAD ||
+                            structure.structureType == STRUCTURE_RAMPART||
                             structure.structureType == STRUCTURE_WALL
-                        ) && structure.hits < structure.hitsMax * 0.8)
+                        ) && structure.hits < structure.hitsMax)
                 }
             });
-            targets.sort((a: any, b: any) => a.hits  - b.hits );
+            targets.sort((a: any, b: any) => a.hits - b.hits);
             if (targets.length > 0) {
                 if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#f00fff' }, reusePath: 10 });
@@ -33,13 +33,15 @@ const roleRepairW58S14 = {
             }
         } else {
 
-            // var sources = creep.room.find(FIND_SOURCES);
-            // if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-            //     creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
-            // }
+            var sources = creep.room.find(FIND_SOURCES);
+            if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
+            }
+
+
             var containers = creep.room.find(FIND_STRUCTURES, {
                 filter: (s: any) => (
-                    s.structureType == STRUCTURE_CONTAINER ||
+                    // s.structureType == STRUCTURE_CONTAINER ||
                     s.structureType == STRUCTURE_STORAGE
                     && s.store.energy <= s.storeCapacity)
             });

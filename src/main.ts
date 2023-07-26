@@ -1,3 +1,5 @@
+/// <reference types="@screepscn/types" />+
+
 import W58S16 from './W58S16/index'
 import W58S14 from './W58S14/index';
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })

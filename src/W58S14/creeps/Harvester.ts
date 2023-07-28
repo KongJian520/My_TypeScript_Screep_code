@@ -18,7 +18,7 @@ const roleHarvesterW58S14 = {
             var targets = creep.room.find(FIND_STRUCTURES, {//寻找设施存入 target
                 filter: (structure: any) => {
                     return (
-                        // structure.structureType == STRUCTURE_STORAGE ||
+                        structure.structureType == STRUCTURE_STORAGE ||
                         structure.structureType == STRUCTURE_SPAWN ||
                         structure.structureType == STRUCTURE_EXTENSION
                     ) &&

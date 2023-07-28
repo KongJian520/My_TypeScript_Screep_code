@@ -33,14 +33,19 @@ console.log('=========================================')
 
 
 export const loop = () => {
-  console.log("Game.time = " + Game.time )
-  console.log("cpu.bucket="+Game.cpu.bucket)
+
+  if (Game.time % 2 === 0) {
+    console.log("Game.time = " + Game.time)
+    console.log("cpu.bucket=" + Game.cpu.bucket)
+  }
   for (let roomname in Game.rooms) {
     if (roomname == 'W58S16') {
       W58S16.work();
     }
-    if (roomname == 'W58S14'){
+    if (roomname == 'W58S14') {
       W58S14.work();
     }
   }
 };
+
+

@@ -4,8 +4,12 @@ const roledismoveabletrasfer = {
         var targetLink = Game.getObjectById('64b5d08fd3a05b4f1f6f0325') as StructureLink;
         var sources = creep.room.find(FIND_STRUCTURES, { filter: (structure: any) => { return (structure.structureType == STRUCTURE_STORAGE) } });
         creep.withdraw(targetLink, RESOURCE_ENERGY)
-        creep.transfer(sources[0],RESOURCE_ENERGY)
-        Game.spawns['Spawn1'].renewCreep(creep)
+        creep.transfer(sources[0], RESOURCE_ENERGY)
+        if (creep.ticksToLive !== undefined && creep.ticksToLive < 1000) {
+            for (let i = 0; i < 5; i++) {
+                Game.spawns['Spawn1'].renewCreep(creep)
+            }
+        }
     }
 }
 export default roledismoveabletrasfer

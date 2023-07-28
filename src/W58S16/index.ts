@@ -29,9 +29,12 @@ import roleRemoteHavster2 from "./creeps/remoteHavster2";
 const W58S16 = {
 
     work: function () {
+        const W58S16 = Game.rooms['W58S16']
         if (Game.time % 2 === 0) {
             console.log('----------------W58S16-------------------')
             autoSpawn.spawn();
+            console.log('Spawn1能量:' + W58S16.energyAvailable + "/" + W58S16.energyCapacityAvailable)
+
             if (Game.rooms['W58S16'].storage) {
                 console.log('Storge-RESOURCE_ENERGY = ' + Game.rooms['W58S16'].storage.store.getUsedCapacity(RESOURCE_ENERGY))
             }
@@ -43,6 +46,7 @@ const W58S16 = {
             }
             link.run();
         }
+
         tower.run();
         if (Game.spawns['Spawn1'].spawning) {
             var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
@@ -55,75 +59,31 @@ const W58S16 = {
         for (var name in Game.creeps) {
             {
                 var creep = Game.creeps[name]
-                if (creep.memory.role == 'harvester') {
-                    roleHarvester.run(creep);
-                }
-                if (creep.memory.role == 'upgrader') {
-                    roleUpgrader.run(creep);
-                }
-                if (creep.memory.role == 'builder') {
-                    roleBuilder.run(creep);
-                }
-                if (creep.memory.role == 'miner') {
-                    roleminer.run(creep);
-                }
-                if (creep.memory.role == 'carrier') {
-                    roleCarrier.run(creep);
-                }
-                if (creep.memory.role == 'repair') {
-                    roleRepair.run(creep)
-                }
-                if (creep.memory.role == 'collector') {
-                    roleCollector.run(creep)
-                }
-                if (creep.memory.role == 'dismoveableminer') {
-                    roleDismveableminer.run(creep);
-                }
-                if (creep.memory.role == 'dismoveableminer2') {
-                    roleDismveableminer2.run(creep);
-                }
-                if (creep.memory.role == 'attacker') {
-                    roleAttacker.run(creep);
-                }
-                if (creep.memory.role == 'claim') {
-                    roleClaim.run(creep);
-                }
-                if (creep.memory.role == 'Chaiqiang') {
-                    roleChaiQian.run(creep);
-                }
-                if (creep.memory.role == 'remoteHavster') {
-                    roleRemoteHavster.run(creep);
-                }
-                if (creep.memory.role == 'RemoteHavster2') {
-                    roleRemoteHavster2.run(creep);
-                }
-                if (creep.memory.role == 'remoteBuilder') {
-                    roleRemoteBuilder.run(creep);
-                }
-                if (creep.memory.role == 'transfer') {
-                    roletransfer.run(creep);
-                }
-                if (creep.memory.role == 'thief') {
-                    // creep.suicide()
-                    roleThief.run(creep);
-                }
-                if (creep.memory.role == 'remoteAttacker') {
-                    roleremoteAttacker.run(creep);
-                }
-                if (creep.memory.role == 'ChaiQian') {
-                    roleRemoteUpgrader.run(creep);
-                }
-                if (creep.memory.role == 'eye') {
-                    roleEye.run(creep);
-                }
-                if (creep.memory.role == 'dismoveabletrasfer') {
-                    roledismoveabletrasfer.run(creep);
-                }
-                if (creep.memory.role == 'RemoteUpgrader') {
-                    roleRemoteUpgrader.run(creep);
-                }
-                if (creep.memory.role == 'RemoteRepair') {
-                    roleRemoteRepair.run(creep);
+                // 优化后的代码
+                switch (creep.memory.role) {
+                    case 'harvester': roleHarvester.run(creep); break;
+                    case 'upgrader': roleUpgrader.run(creep); break;
+                    case 'builder': roleBuilder.run(creep); break;
+                    case 'miner': roleminer.run(creep); break;
+                    case 'carrier': roleCarrier.run(creep); break;
+                    case 'repair': roleRepair.run(creep); break;
+                    case 'collector': roleCollector.run(creep); break;
+                    case 'dismoveableminer': roleDismveableminer.run(creep); break;
+                    case 'dismoveableminer2': roleDismveableminer2.run(creep); break;
+                    case 'attacker': roleAttacker.run(creep); break;
+                    case 'claim': roleClaim.run(creep); break;
+                    case 'Chaiqiang': roleChaiQian.run(creep); break;
+                    case 'remoteHavster': roleRemoteHavster.run(creep); break;
+                    case 'RemoteHavster2': roleRemoteHavster2.run(creep); break;
+                    case 'remoteBuilder': roleRemoteBuilder.run(creep); break;
+                    case 'transfer': roletransfer.run(creep); break;
+                    case 'thief': roleThief.run(creep); break;
+                    case 'remoteAttacker': roleremoteAttacker.run(creep); break;
+                    case 'ChaiQian': roleRemoteUpgrader.run(creep); break;
+                    case 'eye': roleEye.run(creep); break;
+                    case 'dismoveabletrasfer': roledismoveabletrasfer.run(creep); break;
+                    case 'RemoteUpgrader': roleRemoteUpgrader.run(creep); break;
+                    case 'RemoteRepair': roleRemoteRepair.run(creep);
                 }
             }
         }

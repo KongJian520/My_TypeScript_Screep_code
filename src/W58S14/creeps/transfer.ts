@@ -2,6 +2,9 @@ const roletransferW58S14 = {
     /** @param {Creep} creep **/
     run: function (creep: any) {
         const Home = "W58S14"
+        if (_.filter(Game.creeps, (creep) => creep.memory.role == 'CarrierW58S14').length == 0) {
+            creep.memory.role = "CarrierW58S14"
+        }
         if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = false;
             creep.say('找contianer中');
@@ -14,8 +17,8 @@ const roletransferW58S14 = {
             var sources = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (structure.structureType == STRUCTURE_CONTAINER
-                            // ||structure.structureType == STRUCTURE_LINK
-                            &&
+                        // ||structure.structureType == STRUCTURE_LINK
+                        &&
                         structure.store.energy > 0);
                 }
             });

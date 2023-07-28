@@ -1,8 +1,8 @@
 import roleRepairW58S14 from "./repair";
 const roleRemoteBuilderW58S14 = {
     run: function (creep: any) {
-        var targetRoom = 'W59S14';
         var Home = 'W58S14';
+        var targetRoom = 'W58S16';
         if ((Game.rooms[targetRoom].find(FIND_MY_CONSTRUCTION_SITES).length == 0)) {
             roleRepairW58S14.run(creep)
         } else {

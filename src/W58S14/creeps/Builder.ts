@@ -27,21 +27,6 @@ const roleBuilderW58S14 = {
 				}
 			}
 			else {
-				// var source = creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES)
-				// || creep.pos.findClosestByPath(FIND_TOMBSTONES, {
-				// 	filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0 });
-
-				// // 如果找到了资源或者墓碑
-				// if (source != undefined) {
-				// 	creep.say('找到能量了')
-				// 	// 尝试从资源或者墓碑中取出能量
-				// 	if (creep.pickup(source) == ERR_NOT_IN_RANGE
-				// 	|| creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				// 		// 如果不在范围内，就向资源或者墓碑移动
-				// 		creep.say('移动中')
-				// 		creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
-				// 	}
-				// }
 				var sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) => {
 						return (

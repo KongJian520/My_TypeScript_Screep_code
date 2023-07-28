@@ -1,16 +1,7 @@
 
 const roleBuilder = {
 	run: function (creep: any) {
-
-		var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-		// if (targets.length == 0) {
-		// 	if (_.filter(Game.creeps, (creep) => creep.memory.role == 'repair').length < 6) {
-		// 		creep.memory.role = "repair"
-		// 	}
-		// 	else if ((_.filter(Game.creeps, (creep) => creep.memory.role == 'builder').length) < 5) {
-		// 		creep.memory.role = "remoteBuilder"
-		// 	}
-		// }
+		var targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
 		if (creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.building = false;
 			creep.say('BU 🔄');
@@ -25,23 +16,54 @@ const roleBuilder = {
 					creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#ffffff' } });
 				}
 			} else {
-
+				{
+					if (creep.memory.working && creep.carry.energy == 0) {
+						creep.memory.working = false;
+						creep.say('🔄 harvest');
+					}
+					else if (!creep.memory.working && creep.memory.target != '' && creep.carry.energy == creep.carryCapacity) {
+						creep.memory.working = true;
+						delete creep.memory.source
+						creep.say('⬆repair');
+					}
+					else if (!creep.memory.working && creep.memory.target == '' && creep.carry.energy == creep.carryCapacity) {
+						creep.memory.working = true;
+						delete creep.memory.source
+						creep.say('♻️transfer');
+					}
+					if (creep.memory.working) {
+						const targets = creep.room.find(FIND_STRUCTURES, {
+							filter: (structure: any) => {
+								return (
+									(structure.structureType == STRUCTURE_CONTAINER ||
+										// ||structure.structureType == STRUCTURE_ROAD
+										// structure.structureType == STRUCTURE_RAMPART
+										structure.structureType == STRUCTURE_WALL
+									) && structure.hits < structure.hitsMax * 0.8)
+							}
+						});
+						targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
+						if (targets.length > 0) {
+							if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
+								creep.moveTo(targets[0], { visualizePathStyle: { stroke: '#f00fff' }, reusePath: 10 });
+							}
+						}
+					} else {
+						var containers = creep.room.find(FIND_STRUCTURES, {
+							filter: (s: any) => (
+								// s.structureType == STRUCTURE_CONTAINER ||
+								s.structureType == STRUCTURE_STORAGE
+								&& s.store.energy <= s.storeCapacity)
+						});
+						// containers.sort((a: any, b: any) => b.store.energy -  a.store.energy );
+						if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(containers[0], { visualizePathStyle: { stroke: '#ffaa00' } });
+						}
+					}
+				}
 			}
-
-			// else if (targets.length == 0){
-			// 	creep.memory.role= "repair"
-			// }
-			// var targets2 = creep.room.find(FIND_STRUCTURES, {
-			// 	filter: (i: any) => i.structureType == STRUCTURE_CONTAINER||i.structureType == STRUCTURE_STORAGE &&
-			// 		i.store[RESOURCE_ENERGY] >= 0
-			// });
 		}
 		else {
-			// var sources = creep.room.find(FIND_SOURCES);
-			// if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-			// 	creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
-			// }
-
 			var sources = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure: any) => {
 					return (
@@ -54,7 +76,6 @@ const roleBuilder = {
 			if (sources.length > 0) {
 				// 使用 pos.findClosestByPath 方法找到距离最近的 container
 				var closestContainer = creep.pos.findClosestByPath(sources);
-
 				// 如果找到了最近的 container
 				if (closestContainer) {
 					// creep.say('UP 最近的找到了')
@@ -67,9 +88,7 @@ const roleBuilder = {
 			if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
 			}
-
 		}
-
 	},
 };
 export default roleBuilder;

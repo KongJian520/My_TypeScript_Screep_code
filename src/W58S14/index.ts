@@ -12,7 +12,10 @@ import roledismoveabletrasferW58S14 from "./creeps/dismoveabletrasfer"
 import roleDismveableminerW58S14 from "./creeps/dismoveableminer"
 
 import roleRemoteBuilderW58S14 from "./creeps/remoteBuilder"
+import roleRemoteRepairW58S14 from "./creeps/remoteRepairer"
+import roleRemoteHavsterW58S14 from "./creeps/remoteHavster"
 import roleEyeW58S14 from "./creeps/eye"
+import roleClaim from "./creeps/claim"
 
 import W58S14autoSpawn from "./utils/autoSpawn"
 import link from "./utils/link"
@@ -29,6 +32,8 @@ const W58S16 = {
                 console.log('Storge-RESOURCE_ENERGY = ' + W58S14.storage.store.getUsedCapacity(RESOURCE_ENERGY))
             }
             link.run()
+            console.log('Spawn2能量:' + W58S14.energyAvailable + "/" + W58S14.energyCapacityAvailable)
+
         }
         // console.log(Game.rooms['W58S14'].energyAvailable)
         tower.run();
@@ -40,7 +45,6 @@ const W58S16 = {
                 W58S14Spawn.pos.y,
                 { align: 'left', opacity: 0.8 });
         }
-
         for (var name in Game.creeps) {
             var creep = Game.creeps[name]
             switch (creep.memory.role) {
@@ -55,7 +59,10 @@ const W58S16 = {
                 case 'MinerW58S14': roleMinerW58S14.run(creep); break;
                 case 'dismoveabletrasferW58S14': roledismoveabletrasferW58S14.run(creep); break;
                 case 'RemoteBuilderW58S14': roleRemoteBuilderW58S14.run(creep); break;
+                case 'RemoteRepairW58S14': roleRemoteRepairW58S14.run(creep); break;
+                case 'RemoteHavsterW58S14': roleRemoteHavsterW58S14.run(creep); break;
                 case 'EyeW58S14': roleEyeW58S14.run(creep); break;
+                case 'claimW58S14': roleClaim.run(creep); break;
                 case 'DismveableminerW58S14': roleDismveableminerW58S14.run(creep); break;
             }
         }

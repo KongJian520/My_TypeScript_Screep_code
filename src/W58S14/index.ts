@@ -14,8 +14,12 @@ import roleDismveableminerW58S14 from "./creeps/dismoveableminer"
 import roleRemoteBuilderW58S14 from "./creeps/remoteBuilder"
 import roleRemoteRepairW58S14 from "./creeps/remoteRepairer"
 import roleRemoteHavsterW58S14 from "./creeps/remoteHavster"
+import roleremoteAttackerW58S14 from "./creeps/remoteattacker"
+import EXMANW58S14 from "./creeps/EXMAN"
 import roleEyeW58S14 from "./creeps/eye"
+import roleEyeW58S13 from "./creeps/EyeW58S13"
 import roleClaim from "./creeps/claim"
+import roleClaimW58S13 from "./creeps/claimW58S13"
 
 import W58S14autoSpawn from "./utils/autoSpawn"
 import link from "./utils/link"
@@ -61,8 +65,12 @@ const W58S16 = {
                 case 'RemoteBuilderW58S14': roleRemoteBuilderW58S14.run(creep); break;
                 case 'RemoteRepairW58S14': roleRemoteRepairW58S14.run(creep); break;
                 case 'RemoteHavsterW58S14': roleRemoteHavsterW58S14.run(creep); break;
+                case 'RemoteAttackerW58S14': roleremoteAttackerW58S14.run(creep); break;
                 case 'EyeW58S14': roleEyeW58S14.run(creep); break;
+                case 'EyeW58S13': roleEyeW58S13.run(creep); break;
                 case 'claimW58S14': roleClaim.run(creep); break;
+                case 'claimW58S13': roleClaimW58S13.run(creep); break;
+                case 'EXMANW58S14': EXMANW58S14.run(creep); break;
                 case 'DismveableminerW58S14': roleDismveableminerW58S14.run(creep); break;
             }
         }

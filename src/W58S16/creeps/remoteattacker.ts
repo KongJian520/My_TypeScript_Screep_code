@@ -1,22 +1,31 @@
+
 const roleremoteAttacker = {
-    //I won't show my changes on this file for now
-
-
-    run: function (creep: any) {
-        const targetRoom = "W58S15"
-        // const target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        const target =Game.getObjectById('64b8758cfb039e7bf1182255')
+    run: function (creep: Creep) {
+        const targetRoom = "W58S13"
         if (creep.room.name !== targetRoom) {
-            creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: '#ff0000' } })
-        } else if (creep.room.name === targetRoom) {
-            creep.say(creep.attack(target))
-            if (target) {
-                if (creep.attack(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target, { visualizePathStyle: { stroke: '#ff0000' } });
+            creep.moveTo(new RoomPosition(33, 3, targetRoom), { visualizePathStyle: { stroke: '#ff0000' } })
+        }
+        if (creep.room.name == targetRoom) {
+            var target = creep.room.find(FIND_STRUCTURES, {//寻找设施存入 target
+                filter: (structure: Structure) => {
+                    return (structure.structureType == STRUCTURE_INVADER_CORE)
                 }
-            }else{
-                creep.moveTo(25,25, { visualizePathStyle: { stroke: '#ff0000' } })
-            }
+            });
+            target.sort((a: Structure, b: Structure) => a.hitsMax - b.hitsMax);
+            var HOSTILE_CREEPS = creep.room.find(FIND_HOSTILE_CREEPS);
+            if (target[0]) {
+                if (creep.attack(target[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target[0], { visualizePathStyle: { stroke: '#ff0000' } });
+                }
+            } else
+                if (HOSTILE_CREEPS) {
+                    if (creep.attack(HOSTILE_CREEPS[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(HOSTILE_CREEPS[0], { visualizePathStyle: { stroke: '#ff0000' } });
+                    }
+                }
+                else {
+                    creep.moveTo(new RoomPosition(33, 3, targetRoom), { visualizePathStyle: { stroke: '#ff0000' } })
+                }
         }
     }
 }

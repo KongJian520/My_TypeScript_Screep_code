@@ -26,7 +26,6 @@ const roleCollectorW58S14 = {
                 || creep.pos.findClosestByPath(FIND_TOMBSTONES, {
                     filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
                 });
-
             // 如果找到了资源或者墓碑
             if (source != undefined) {
                 creep.say('找到能量了')
@@ -42,7 +41,7 @@ const roleCollectorW58S14 = {
                     if (creep.pos.pos !== 16, 32) {
                         creep.moveTo(16, 32)
                     }
-                }else{
+                } else {
                     creep.memory.working = true
                 }
             }

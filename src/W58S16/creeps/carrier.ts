@@ -1,4 +1,4 @@
-const roleCarrierW58S14 = {
+const roleCarrier = {
   run: function (creep: any) {
     var Home = 'W58S16';
     if (creep.room.name !== Home) {
@@ -19,7 +19,8 @@ const roleCarrierW58S14 = {
             return (
               structure.structureType == STRUCTURE_TOWER ||
               structure.structureType == STRUCTURE_EXTENSION ||
-              structure.structureType == STRUCTURE_SPAWN
+              structure.structureType == STRUCTURE_SPAWN||
+              structure.structureType == STRUCTURE_LAB
             ) &&
               structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
           }
@@ -70,4 +71,4 @@ const roleCarrierW58S14 = {
     }
   }
 };
-export default roleCarrierW58S14;
+export default roleCarrier;

@@ -1,11 +1,12 @@
-const roleClaim = {
+const roleClaimW58S13 = {
     run: function (creep: Creep) {
-        const targetRoom = 'W59S14';
+        const targetRoom = 'W58S13';
         if (creep.room.name !== targetRoom) {
             creep.moveTo(new RoomPosition(10, 10, targetRoom), { visualizePathStyle: { stroke: '#ffffff' } })
         } else
             if (creep.room.name === targetRoom) {
                 if (creep.room.controller && !creep.room.controller.my) {
+                    creep.reserveController(creep.room.controller)
                     if (creep.room.controller.reservation)
                         if (creep.room.controller.reservation.username !== creep.owner.username) {
                             if (creep.attackController(creep.room.controller) == ERR_NOT_IN_RANGE) {
@@ -19,4 +20,4 @@ const roleClaim = {
             }
     }
 }
-export default roleClaim;
+export default roleClaimW58S13

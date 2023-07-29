@@ -1,9 +1,8 @@
 const roletransfer = {
     /** @param {Creep} creep **/
-    run: function (creep: any) {
+    runEnergy: function (creep: Creep) {
         /*
          */
-
         if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = false;
             creep.say('找contianer中');
@@ -17,8 +16,8 @@ const roletransfer = {
                 filter: (structure: any) => {
                     return (structure.structureType == STRUCTURE_CONTAINER
                         // ||structure.sourceLinkId == '64b5d08fd3a05b4f1f6f0325'
-                            // ||structure.structureType == STRUCTURE_LINK
-                            &&
+                        // ||structure.structureType == STRUCTURE_LINK
+                        &&
                         structure.store.energy > 0);
                 }
             });
@@ -37,8 +36,6 @@ const roletransfer = {
                 //     if (creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 //         creep.moveTo(closestContainer, { visualizePathStyle: { stroke: '#ffffff' } });
                 //     }
-
-
             }
         } else if (creep.memory.working) {
             var targets = creep.room.find(FIND_STRUCTURES, {
@@ -54,6 +51,28 @@ const roletransfer = {
                         creep.moveTo(STORAGE, { visualizePathStyle: { stroke: '#ffffff' } });
                     }
                 }
+            }
+        }
+    },
+    runMineral: function (creep: Creep) {
+        var sources = Game.getObjectById('5bbcb10940062e4259e92a53') as Mineral
+        var Container = Game.getObjectById('64c3d8b1a2bd10160632f00a') as StructureContainer
+        var storage = Game.getObjectById('64ae33b7d36572291f61089a') as StructureStorage
+        if (creep.memory.working && creep.store[sources.mineralType] == 0) {
+            creep.memory.working = false;
+            creep.say('准备拿取资源');
+        }
+        if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
+            creep.memory.working = true;
+            creep.say('向仓库移动');
+        }
+        if (!creep.memory.working) {
+            if (creep.withdraw(Container, sources.mineralType) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources)
+            }
+        } else {
+            if (creep.transfer(storage, _.keys(creep.store)[0] as ResourceConstant) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage)
             }
         }
     }

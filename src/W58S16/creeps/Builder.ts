@@ -1,7 +1,8 @@
 
 const roleBuilder = {
 	run: function (creep: any) {
-		var targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
+		var targets = creep.room.find(FIND_CONSTRUCTION_SITES)
+		targets.sort((a: ConstructionSite, b: ConstructionSite) => a.progressTotal - b.progressTotal);
 		if (creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.building = false;
 			creep.say('BU 🔄');

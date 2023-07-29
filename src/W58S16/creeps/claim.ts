@@ -13,9 +13,9 @@ const roleClaim = {
                     }
                 } else {
                     if (
-                        creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE
-                        // creep.attackController(creep.room.controller) == ERR_NOT_IN_RANGE
-                        ) {
+                        creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE ||
+                        creep.attackController(creep.room.controller) == ERR_NOT_IN_RANGE
+                    ) {
                         creep.moveTo(new RoomPosition(10, 10, targetRoom), { visualizePathStyle: { stroke: '#ffffff' } })
                     }
                 }

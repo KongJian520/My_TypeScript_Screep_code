@@ -16,18 +16,12 @@ const roleDismveableminer = {
                 creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 });
             }
         } else {
-
             for (const resourceType in creep.store) {
                 var resourceType1 = resourceType as unknown as ResourceConstant
                 creep.transfer(link[0], resourceType1);
                 creep.say(creep.transfer(link[0], resourceType1) as unknown as string)
             }
-
-
-
-
         }
-
     }
 }
 export default roleDismveableminer

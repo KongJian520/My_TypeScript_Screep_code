@@ -1,7 +1,6 @@
 
 const roleCarrier = {
     run: function (creep: any) {
-
         if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = false;
             creep.say('🔄');
@@ -17,6 +16,7 @@ const roleCarrier = {
                         structure.structureType == STRUCTURE_TOWER ||
                         structure.structureType == STRUCTURE_EXTENSION ||
                         structure.structureType == STRUCTURE_SPAWN
+                        // structure.structureType == STRUCTURE_LAB
                     ) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }

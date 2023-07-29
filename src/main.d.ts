@@ -1,1 +1,0 @@
-/// <reference types="@screepscn/types" />

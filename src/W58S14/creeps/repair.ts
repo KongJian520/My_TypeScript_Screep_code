@@ -19,8 +19,8 @@ const roleRepairW58S14 = {
                 filter: (structure: any) => {
                     return (
                         (structure.structureType == STRUCTURE_CONTAINER ||
-                            // structure.structureType == STRUCTURE_ROAD ||
-                            structure.structureType == STRUCTURE_RAMPART||
+                            structure.structureType == STRUCTURE_SPAWN ||
+                            structure.structureType == STRUCTURE_RAMPART ||
                             structure.structureType == STRUCTURE_WALL
                         ) && structure.hits < structure.hitsMax)
                 }

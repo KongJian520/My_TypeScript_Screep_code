@@ -13,6 +13,7 @@ declare global {
   interface Memory {
     uuid: number;
     log: any;
+    role: any;
   }
   interface CreepMemory {
     role: string;

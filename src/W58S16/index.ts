@@ -94,7 +94,7 @@ const W58S16 = {
                     case 'remoteAttacker': roleremoteAttacker.run(creep); break;
                     case 'remoteAttackerW57S13': roleremoteAttackerW57S13.run(creep); break;
 
-                    case 'ChaiQian': roleRemoteUpgrader.run(creep); break;
+                    case 'ChaiQian': roleChaiQian.run(creep); break;
                     case 'eye': roleEye.run(creep); break;
                     case 'dismoveabletrasfer': roledismoveabletrasfer.run(creep); break;
 

@@ -1,4 +1,4 @@
-const roleRepair = {
+const roleAandH = {
     run: function (creep: Creep) {
 
         // 假设你有一个名为attacker的creep，它有ATTACK和HEAL部件
@@ -34,3 +34,4 @@ const roleRepair = {
 
     }
 }
+export default roleAandH

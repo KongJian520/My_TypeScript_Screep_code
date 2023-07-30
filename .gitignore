@@ -90,3 +90,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+#password
+Gruntfile.js
+.screeps.yaml
+rollup.config.js

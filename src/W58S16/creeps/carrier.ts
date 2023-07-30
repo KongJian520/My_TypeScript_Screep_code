@@ -19,13 +19,13 @@ const roleCarrier = {
             return (
               structure.structureType == STRUCTURE_TOWER ||
               structure.structureType == STRUCTURE_EXTENSION ||
-              structure.structureType == STRUCTURE_SPAWN||
+              structure.structureType == STRUCTURE_SPAWN ||
               structure.structureType == STRUCTURE_LAB
             ) &&
               structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
           }
         });
-        targets.sort((a: any, b: any) => a.store.energy - b.store.energy);
+        targets.sort((a: any, b: any) => (a.store.energy / a.store.getCapacity()) - (b.store.energy / a.store.getCapacity()));
         var closesttargets = creep.pos.findClosestByPath(targets)
         // if (targets.length > 0) {
         //   if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {

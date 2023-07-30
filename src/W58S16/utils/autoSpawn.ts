@@ -154,11 +154,11 @@ const autoSpawn = {
                                 //             { memory: { role: 'HealerW58S16', room: '', working: false, needToRenew: false } });
                                 //     }
                                 // }
-                                // if (ChaiQians.length < 3) {
-                                //     var newName = 'ChaiQian_' + Game.time;
-                                //     Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,], newName,
-                                //         { memory: { role: 'ChaiQian', room: '', working: false, needToRenew: false } });
-                                // }
+                                if (ChaiQians.length < 3) {
+                                    var newName = 'ChaiQian_' + Game.time;
+                                    Spawn.spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,], newName,
+                                        { memory: { role: 'ChaiQian', room: '', working: false, needToRenew: false } });
+                                }
                                 if (remoteAttackers.length == 0) {
                                     var newName = 'remoteAttacker|' + Game.time;
                                     Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,

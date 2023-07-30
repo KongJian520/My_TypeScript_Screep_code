@@ -1,6 +1,6 @@
 const roleChaiQian = {
 	run: function (creep: any) {
-		const targetRoom = "W57S11"
+		const targetRoom = "W58S15"
 		var Home = 'W58S16';
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -13,7 +13,7 @@ const roleChaiQian = {
 			if (creep.room.name !== targetRoom) {
 				creep.moveTo(new RoomPosition(12, 47, targetRoom), { visualizePathStyle: { stroke: '#ff0000' } })
 			} else if (creep.room.name === targetRoom) {
-				var targets = creep.room.find(FIND_STRUCTURES, {//寻找设施存入 target
+				var targets = creep.room.find(FIND_HOSTILE_STRUCTURES, {//寻找设施存入 target
 					filter: (structure: any) => {
 						return (structure.structureType == STRUCTURE_SPAWN||
 							structure.structureType == STRUCTURE_TOWER||

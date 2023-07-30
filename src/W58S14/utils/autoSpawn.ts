@@ -116,10 +116,10 @@ const W58S14autoSpawn = {
                         //房间外
                         console.log('执行HomeLeft代码')
                         if (!HomeLeft) {
-                            if (EyeW59S14.length < 1) {
+                            if (EyeW59S14.length == 0) {
                                 console.log('W59S14看不见,生成eye中')
                                 let newName = 'Eye|W59S14|' + Game.time;
-                                Spawn.spawnCreep([ATTACK, ATTACK, TOUGH, TOUGH, TOUGH, TOUGH, MOVE, MOVE], newName,
+                                Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, MOVE, MOVE, ATTACK, ATTACK,], newName,
                                     { memory: { role: 'EyeW58S14', room: 'W58S14', working: false, needToRenew: false } });
                             }
                         } else if (HomeLeft) {
@@ -129,17 +129,17 @@ const W58S14autoSpawn = {
                                 console.log(HomeLeft + '安全')
                                 if (RemoteBuilderW58S14.length == 0) {
                                     let newName = 'RemoteBuilder|W58S14|' + Game.time;
-                                    Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
+                                    Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                         { memory: { role: 'RemoteBuilderW58S14', room: 'W58S14', working: false, needToRenew: false } });
                                 }
                                 if (RemoteRepairW58S14.length == 0) {
                                     let newName = 'RemoteRepair|W58S14|' + Game.time;
-                                    Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
+                                    Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                         { memory: { role: 'RemoteRepairW58S14', room: 'W58S14', working: false, needToRenew: false } });
                                 }
                                 if (RemoteHavsterW58S14.length < 2) {
                                     let newName = 'RemoteHavster|W58S14|' + Game.time;
-                                    Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
+                                    Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                         { memory: { role: 'RemoteHavsterW58S14', room: 'W58S14', working: false, needToRenew: false } });
                                 } if (claimW58S14.length == 0) {
                                     let newName = 'Claim|W58S14|' + Game.time;
@@ -159,11 +159,6 @@ const W58S14autoSpawn = {
                                 Spawn.spawnCreep([CLAIM, CLAIM, MOVE, MOVE, MOVE, MOVE], newName,
                                     { memory: { role: 'claimW58S13', room: 'W58S14', working: false, needToRenew: false } });
                             }
-                            // if (EXMANW58S14.length == 0) {
-                            //     let newName = 'EXMAN|W58S14|' + Game.time;
-                            //     Spawn.spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, HEAL, HEAL, HEAL, HEAL, HEAL,], newName,
-                            //         { memory: { role: 'EXMANW58S14', room: 'W58S14', working: false, needToRenew: false } });
-                            // }
                         } else if (!HomeUp) {
                             if (EyeW58S13.length == 1) {
                                 console.log('W58S13看不见,生成eye中')

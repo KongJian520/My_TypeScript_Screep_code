@@ -5,6 +5,7 @@ const autoSpawn = {
         const Spawn = Game.spawns["Spawn1"]
         const W58S15 = 'W58S15'
         const W58S14 = 'W58S14'
+        const W58S13 = 'W58S13'
         const roomW58S15 = Game.rooms[W58S15]; // 尝试获取房间对象
         const roomW58S14 = Game.rooms[W58S14]; // 尝试获取房间对象
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');//1
@@ -94,12 +95,12 @@ const autoSpawn = {
                             { memory: { role: 'transfer', room: '', working: false, needToRenew: false } });
                     }
                     else {
-                        // if (RemoteUpgraders.length < 4) {
-                        //     var newName = 'RemoteUpgrader_' + Game.time;
-                        //     Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                        //         { memory: { role: 'RemoteUpgrader', room: '', working: false, needToRenew: false } });
-                        // }
-                        if (upgraders.length < 1) {
+                        if (RemoteUpgraders.length < 2) {
+                            var newName = 'RemoteUpgrader_' + Game.time;
+                            Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
+                                { memory: { role: 'RemoteUpgrader', room: '', working: false, needToRenew: false } });
+                        }
+                        if (upgraders.length < 4) {
                             var newName = 'Upgrader_' + Game.time;
                             Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                 { memory: { role: 'upgrader', room: '', working: false, needToRenew: false } });
@@ -111,10 +112,16 @@ const autoSpawn = {
                             var newName = 'Builder_' + Game.time;
                             Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                 { memory: { role: 'builder', room: '', working: false, needToRenew: false } });
-                        } else if (Dismveableminer3s.length == 0) {
-                            var newName = 'Dismveableminer3_' + Game.time;
-                            Spawn.spawnCreep([MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, CARRY, MOVE], newName,
-                                { memory: { role: 'Dismveableminer3', room: '', working: false, needToRenew: false } });
+                        }
+                        // else if (Dismveableminer3s.length == 0) {
+                        //     var newName = 'Dismveableminer3_' + Game.time;
+                        //     Spawn.spawnCreep([MOVE, MOVE, MOVE, MOVE, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, CARRY, MOVE], newName,
+                        //         { memory: { role: 'Dismveableminer3', room: '', working: false, needToRenew: false } });
+                        // }
+                        if (thiefs.length < 2) {
+                            var newName = 'thief_' + Game.time;
+                            Spawn.spawnCreep([CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE, CARRY, MOVE,], newName,
+                                { memory: { role: 'thief', room: '', working: false, needToRenew: false } });
                         }
                         else {
                             if (roomW58S15) {
@@ -153,12 +160,12 @@ const autoSpawn = {
                                 //         { memory: { role: 'ChaiQian', room: '', working: false, needToRenew: false } });
                                 // }
                                 if (remoteAttackers.length == 0) {
-                                    var newName = 'remoteAttacker_' + Game.time;
+                                    var newName = 'remoteAttacker|' + Game.time;
                                     Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                         { memory: { role: 'remoteAttacker', room: '', working: false, needToRenew: false } });
                                 }
                                 if (RemoteAttackerW58S14s.length == 0) {
-                                    var newName = 'RemoteAttackerW58S14' + Game.time;
+                                    var newName = 'RemoteAttacker|W58S14' + Game.time;
                                     Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
                                         { memory: { role: 'RemoteAttackerW58S14', room: '', working: false, needToRenew: false } });
                                 }

@@ -1,9 +1,8 @@
 
 const roleThief = {
     run: function (creep: Creep) {
-        const targetsRoom = 'W58S14'
-        const Home = 'W58S16'
-
+        const targetsRoom = 'W58S16'
+        const Home = 'W58S14'
         if (!creep.memory.working && (creep.store[RESOURCE_ENERGY] == 0)) {
             creep.memory.working = true;
             creep.say('偷东西中。。');
@@ -19,8 +18,8 @@ const roleThief = {
                 var sources = creep.room.storage
                 if (sources) {
                     var pickupedSource = _.keys(sources.store)
-                    if (creep.withdraw(sources, pickupedSource[0] as ResourceConstant) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6  });
+                    if (creep.withdraw(sources, "energy") == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 });
                         creep.say('Finded')
                     }
                     else {
@@ -32,13 +31,12 @@ const roleThief = {
                 }
             }
         } else {
-            creep.moveTo(new RoomPosition(10, 30, Home), { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6  })
             if (creep.room.name !== Home) {
-                creep.moveTo(new RoomPosition(10, 30, 'W58S16'), { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6  })
+                creep.moveTo(new RoomPosition(10, 30, Home), { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 })
             } else if (creep.room.name === Home) {
                 var targets = creep.room.storage
                 if (targets) {
-                    for (const resourceType in creep.carry) {
+                    for (const resourceType in creep.store) {
                         if (creep.transfer(targets, resourceType as ResourceConstant) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(targets, { visualizePathStyle: { stroke: '#ffffff' }, reusePath: 6 });
                         }
@@ -49,7 +47,6 @@ const roleThief = {
                 //         creep.moveTo(targets, { visualizePathStyle: { stroke: '#ffffff' }, reusePath: 6 });
                 //     }
                 // }
-
             }
         }
     }

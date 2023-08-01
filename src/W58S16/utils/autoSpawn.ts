@@ -1,6 +1,5 @@
 import {
     roleDefinitions,
-    RoleDefinition,
     BodyPartConstantTuple
 } from './creepRoles';
 

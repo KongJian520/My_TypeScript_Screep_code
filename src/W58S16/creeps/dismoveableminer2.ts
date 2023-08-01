@@ -1,5 +1,5 @@
-const roleDismveableminer = {
-    run: function (creep: any) {
+const roleDismveableminer2 = {
+    run: function (creep: Creep) {
         let sources = Game.getObjectById('5bbca9eb9099fc012e6305bc') as Source;
         let link = Game.getObjectById('64c3dcfa7b156580e8312d07') as StructureLink;
         if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
@@ -24,4 +24,4 @@ const roleDismveableminer = {
     }
 }
 // }
-export default roleDismveableminer
+export default roleDismveableminer2

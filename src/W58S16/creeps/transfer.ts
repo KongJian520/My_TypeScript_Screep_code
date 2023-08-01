@@ -1,8 +1,7 @@
 const roletransfer = {
     /** @param {Creep} creep **/
     runEnergy: function (creep: Creep) {
-        /*
-         */
+
         if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = false;
             creep.say('找contianer中');
@@ -25,7 +24,7 @@ const roletransfer = {
             if (sources.length > 0) {
                 sources.sort((a: any, b: any) => b.store.energy - a.store.energy);
                 if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
+                    creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
                 // 使用 pos.findClosestByPath 方法找到距离最近的 container
                 // var closestContainer = creep.pos.findClosestByPath(sources);
@@ -48,7 +47,7 @@ const roletransfer = {
                 var STORAGE = creep.pos.findClosestByPath(targets);
                 if (STORAGE) {
                     if (creep.transfer(STORAGE, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(STORAGE, { visualizePathStyle: { stroke: '#ffffff' } });
+                        creep.moveTo(STORAGE, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
             }
@@ -56,7 +55,7 @@ const roletransfer = {
     },
     runMineral: function (creep: Creep) {
         var sources = Game.getObjectById('5bbcb10940062e4259e92a53') as Mineral
-        var Container = Game.getObjectById('64c3d8b1a2bd10160632f00a') as StructureContainer
+        var Container = Game.getObjectById('64c8cfac58c500a5a104799d') as StructureContainer
         var storage = Game.getObjectById('64ae33b7d36572291f61089a') as StructureStorage
         if (creep.memory.working && creep.store[sources.mineralType] == 0) {
             creep.memory.working = false;
@@ -77,7 +76,6 @@ const roletransfer = {
         }
     }
 }
-
 
 
 export default roletransfer

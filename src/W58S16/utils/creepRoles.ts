@@ -19,15 +19,6 @@ export const roleDefinitions: RoleDefinition[] = [
         priority: 1,
     },
     {
-        roleName: "carrier",
-        bodyParts: [
-            [CARRY, 5],
-            [MOVE, 5],
-        ],
-        expectedCount: 1,
-        priority: 3,
-    },
-    {
         roleName: "dismoveableminer",
         bodyParts: [
             [WORK, 10],
@@ -47,6 +38,7 @@ export const roleDefinitions: RoleDefinition[] = [
         expectedCount: 1,
         priority: 2,
     },
+
     {
         roleName: "dismoveabletrasfer",
         bodyParts: [
@@ -57,6 +49,35 @@ export const roleDefinitions: RoleDefinition[] = [
         priority: 2,
     },
     {
+        roleName: "carrier",
+        bodyParts: [
+            [CARRY, 8],
+            [MOVE, 5],
+        ],
+        expectedCount: 1,
+        priority: 3,
+    },
+    {
+        roleName: "repair",
+        bodyParts: [
+            [WORK, 8],
+            [CARRY, 6],
+            [MOVE, 6],
+        ],
+        expectedCount: 1,
+        priority: 4,
+    },
+    {
+        roleName: "builder",
+        bodyParts: [
+            [WORK, 16],
+            [CARRY, 10],
+            [MOVE, 10],
+        ],
+        expectedCount: 1,
+        priority: 4,
+    },
+    {
         roleName: "collector",
         bodyParts: [
             [CARRY, 5],
@@ -64,6 +85,16 @@ export const roleDefinitions: RoleDefinition[] = [
         ],
         expectedCount: 1,
         priority: 6,
+    },
+    {
+        roleName: "Dismveableminer3",
+        bodyParts: [
+            [MOVE, 5],
+            [WORK, 15],
+
+        ],
+        expectedCount: 1,
+        priority: 7,
     },
     {
         roleName: "transfer",
@@ -85,54 +116,25 @@ export const roleDefinitions: RoleDefinition[] = [
         priority: 8,
     },
     {
-        roleName: "repair",
-        bodyParts: [
-            [WORK, 8],
-            [CARRY, 6],
-            [MOVE, 6],
-        ],
-        expectedCount: 1,
-        priority: 9,
-    },
-    {
-        roleName: "builder",
-        bodyParts: [
-            [WORK, 16],
-            [CARRY, 10],
-            [MOVE, 10],
-        ],
-        expectedCount: 1,
-        priority: 10,
-    },
-    {
-        roleName: "Dismveableminer3",
-        bodyParts: [
-            [MOVE, 5],
-            [WORK, 15],
-
-        ],
-        expectedCount: 1,
-        priority: 11,
-    },
-    {
         roleName: "claim",
-        expectedCount: 2,
-        priority: 12,
+
         bodyParts: [
             [CLAIM, 2],
             [MOVE, 4],
         ],
-
+        expectedCount: 2,
+        priority: 12,
     },
     {
         roleName: "remoteHavster",
-        expectedCount: 2,
-        priority: 12,
+
         bodyParts: [
             [WORK, 18],
             [CARRY, 10],
             [MOVE, 10],
         ],
+        expectedCount: 2,
+        priority: 12,
 
     },
     {
@@ -143,7 +145,7 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 8],
         ],
         expectedCount: 2,
-        priority: 13,
+        priority: 12,
     },
     {
         roleName: "RemoteRepair",
@@ -153,14 +155,14 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 8],
         ],
         expectedCount: 1,
-        priority: 15,
+        priority: 13,
     },
     {
         roleName: "RemoteBuilder",
         bodyParts: [
             [WORK, 10],
             [CARRY, 8],
-            [MOVE, 8],
+            [MOVE, 9],
         ],
         expectedCount: 1,
         priority: 11,
@@ -173,7 +175,7 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 7],
         ],
         expectedCount: 1,
-        priority: 15,
+        priority: 97,
     },
     {
         roleName: "RemoteAttackerW58S14",
@@ -183,7 +185,7 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 7],
         ],
         expectedCount: 1,
-        priority: 16,
+        priority: 99,
     },
     {
         roleName: "ChaiQian",
@@ -192,9 +194,9 @@ export const roleDefinitions: RoleDefinition[] = [
             [WORK, 9],
         ],
         expectedCount: 3,
-        priority: 17,
+        priority: 98,
     },
 ];
 
 // 将角色定义按优先级从小到大排序
-roleDefinitions.sort((a, b) => a.priority - b.priority);
+

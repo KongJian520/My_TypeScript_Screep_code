@@ -1,11 +1,11 @@
 const roleCarrier = {
-  run: function (creep: any) {
+  run: function (creep: Creep) {
     var Home = 'W58S16';
     if (creep.room.name !== Home) {
-      creep.moveTo(Home)
+      creep.moveTo(Home as unknown as RoomPosition)
     }
     else {
-      if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
+      if (creep.memory.working && creep.store[RESOURCE_ENERGY] === 0) {
         creep.memory.working = false;
         creep.say('🔄');
       }

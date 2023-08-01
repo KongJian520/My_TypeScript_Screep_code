@@ -19,8 +19,6 @@ declare global {
     role: string;
     room: string;
     working: boolean;
-    needToRenew: boolean;
-
   }
   namespace NodeJS {
     interface Global {
@@ -45,11 +43,11 @@ export const loop = () => {
     console.log('\r')
     console.log('========' + "Game.time = " + Game.time + '==' + "cpu.bucket=" + Game.cpu.bucket + '========')
   }
-  for (let roomname in Game.rooms) {
-    if (roomname == 'W58S16') {
+  for (let RoomName in Game.rooms) {
+    if (RoomName == 'W58S16') {
       W58S16.work();
     }
-    if (roomname == 'W58S14') {
+    if (RoomName == 'W58S14') {
       W58S14.work();
     }
   }

@@ -65,53 +65,53 @@ const W58S14autoSpawn = {
         if (HarvesterW58S14.length == 0) {
             let newName = 'Harvester|W58S14|' + Game.time;
             Spawn.spawnCreep([WORK, CARRY, MOVE, CARRY], newName,
-                { memory: { role: 'HarvesterW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                { memory: { role: 'HarvesterW58S14', room: 'W58S14', working: false } });
         } else {
             if (Dismveableminer2W58S14.length == 0) {
                 let newName = 'Dismveableminer2|W58S14|' + Game.time;
                 Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, MOVE], newName,
-                    { memory: { role: 'Dismveableminer2W58S14', room: 'W58S14', working: false, needToRenew: false } });
+                    { memory: { role: 'Dismveableminer2W58S14', room: 'W58S14', working: false } });
             } else if (dismoveabletrasferW58S14.length == 0) {
                 let newName = 'dismoveabletrasfer|W58S14' + Game.time;
                 Spawn.spawnCreep([CARRY, CARRY, MOVE], newName,
-                    { directions: [LEFT], memory: { role: 'dismoveabletrasferW58S14', room: '', working: false, needToRenew: false } });
+                    { directions: [LEFT], memory: { role: 'dismoveabletrasferW58S14', room: '', working: false } });
             } else if (DismveableminerW58S14.length == 0) {
                 let newName = 'Dismveableminer|W58S14' + Game.time;
                 Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE], newName,
-                    { memory: { role: 'DismveableminerW58S14', room: '', working: false, needToRenew: false } });
+                    { memory: { role: 'DismveableminerW58S14', room: '', working: false } });
             } else if (CarrierW58S14.length == 0) {
                 let newName = 'Carrier|W58S14|' + Game.time;
                 Spawn.spawnCreep([CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], newName,
-                    { memory: { role: 'CarrierW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                    { memory: { role: 'CarrierW58S14', room: 'W58S14', working: false } });
             }
             else {
                 if (transferW58S14.length == 0) {
                     let newName = 'transfer|W58S14' + Game.time;
                     Spawn.spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                        { memory: { role: 'transferW58S14', room: '', working: false, needToRenew: false } });
+                        { memory: { role: 'transferW58S14', room: '', working: false } });
                 }
                 else {
                     if (Home.find(FIND_DROPPED_RESOURCES).length > 0 || Home.find(FIND_TOMBSTONES, { filter: (t: any) => t.store.energy > 0 }).length > 0 || Home.find(FIND_RUINS, { filter: (t: any) => t.store.energy > 0 }).length > 0) {
                         if (CollectorW58S14.length < 1) {
                             let newName = 'Collector|W58S14|' + Game.time;
                             Spawn.spawnCreep([CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                                { memory: { role: 'CollectorW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                                { memory: { role: 'CollectorW58S14', room: 'W58S14', working: false } });
                         }
                     }
                     if (RepairW58S14.length < 1) {
                         let newName = 'Repair|W58S14|' + Game.time;
                         Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                            { memory: { role: 'RepairW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                            { memory: { role: 'RepairW58S14', room: 'W58S14', working: false } });
                     }
                     if (UpgraderW58S14.length < 1) {
                         let newName = 'Upgrader|W58S14|' + Game.time;
                         Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                            { memory: { role: 'UpgraderW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                            { memory: { role: 'UpgraderW58S14', room: 'W58S14', working: false } });
                     }
                     if (BuilderW58S14s.length < 1) {
                         let newName = 'Builder|W58S14|' + Game.time;
                         Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                            { memory: { role: 'BuilderW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                            { memory: { role: 'BuilderW58S14', room: 'W58S14', working: false } });
                     } else {
                         //房间外
                         console.log('执行HomeLeft代码')
@@ -120,7 +120,7 @@ const W58S14autoSpawn = {
                                 console.log('W59S14看不见,生成eye中')
                                 let newName = 'Eye|W59S14|' + Game.time;
                                 Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, MOVE, MOVE, ATTACK, ATTACK,], newName,
-                                    { memory: { role: 'EyeW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                                    { memory: { role: 'EyeW58S14', room: 'W58S14', working: false } });
                             }
                         } else if (HomeLeft) {
                             console.log('W59S14看得见')
@@ -130,21 +130,21 @@ const W58S14autoSpawn = {
                                 if (RemoteBuilderW58S14.length == 0) {
                                     let newName = 'RemoteBuilder|W58S14|' + Game.time;
                                     Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                                        { memory: { role: 'RemoteBuilderW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                                        { memory: { role: 'RemoteBuilderW58S14', room: 'W58S14', working: false } });
                                 }
                                 if (RemoteRepairW58S14.length == 0) {
                                     let newName = 'RemoteRepair|W58S14|' + Game.time;
                                     Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                                        { memory: { role: 'RemoteRepairW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                                        { memory: { role: 'RemoteRepairW58S14', room: 'W58S14', working: false } });
                                 }
                                 if (RemoteHavsterW58S14.length < 2) {
                                     let newName = 'RemoteHavster|W58S14|' + Game.time;
                                     Spawn.spawnCreep([WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE], newName,
-                                        { memory: { role: 'RemoteHavsterW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                                        { memory: { role: 'RemoteHavsterW58S14', room: 'W58S14', working: false } });
                                 } if (claimW58S14.length == 0) {
                                     let newName = 'Claim|W58S14|' + Game.time;
                                     Spawn.spawnCreep([CLAIM, CLAIM, MOVE, MOVE, MOVE, MOVE], newName,
-                                        { memory: { role: 'claimW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                                        { memory: { role: 'claimW58S14', room: 'W58S14', working: false } });
                                 }
                             }
                         }
@@ -152,19 +152,19 @@ const W58S14autoSpawn = {
                             // if (RemoteAttackerW58S14.length < 2) {
                             //     let newName = 'RemoteAttacker|W58S14|' + Game.time;
                             //     Spawn.spawnCreep([MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK, ATTACK,], newName,
-                            //         { memory: { role: 'RemoteAttackerW58S14', room: 'W58S14', working: false, needToRenew: false } });
+                            //         { memory: { role: 'RemoteAttackerW58S14', room: 'W58S14', working: false} });
                             // }
                             if (claimW58S13.length == 0) {
                                 let newName = 'claim|W58S13|' + Game.time;
                                 Spawn.spawnCreep([CLAIM, CLAIM, MOVE, MOVE, MOVE, MOVE], newName,
-                                    { memory: { role: 'claimW58S13', room: 'W58S14', working: false, needToRenew: false } });
+                                    { memory: { role: 'claimW58S13', room: 'W58S14', working: false } });
                             }
                         } else if (!HomeUp) {
                             if (EyeW58S13.length == 1) {
                                 console.log('W58S13看不见,生成eye中')
                                 let newName = 'Eye|W58S13|' + Game.time;
                                 Spawn.spawnCreep([TOUGH, TOUGH, TOUGH, TOUGH, MOVE, MOVE, ATTACK, ATTACK,], newName,
-                                    { memory: { role: 'EyeW58S13', room: 'W58S14', working: false, needToRenew: false } });
+                                    { memory: { role: 'EyeW58S13', room: 'W58S14', working: false } });
                             }
                         }
                     }

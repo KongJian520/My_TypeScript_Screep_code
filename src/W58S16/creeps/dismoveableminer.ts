@@ -1,8 +1,8 @@
-
 const roleDismveableminer = {
     run: function (creep: Creep) {
-        var sources = Game.getObjectById('5bbca9eb9099fc012e6305bd') as Source;
-        var link = creep.room.lookForAt(LOOK_STRUCTURES, 17, 36)
+        const sources = Game.getObjectById('5bbca9eb9099fc012e6305bd') as Source;
+        const link = creep.room.lookForAt(LOOK_STRUCTURES, 17, 36);
+        const tower = Game.getObjectById<StructureTower>('64c88912658de88bc8d77990')
         if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = true;
             creep.say('挖中');
@@ -13,14 +13,20 @@ const roleDismveableminer = {
         }
         if (creep.memory.working) {
             if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 });
+                creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 6});
             }
         } else {
-            for (const resourceType in creep.store) {
-                var resourceType1 = resourceType as unknown as ResourceConstant
-                creep.transfer(link[0], resourceType1);
-                creep.say(creep.transfer(link[0], resourceType1) as unknown as string)
+            if (tower) {
+                if (tower.store.getFreeCapacity(RESOURCE_ENERGY) === 0) {
+                    for (const resourceType in creep.store) {
+                        creep.transfer(link[0], RESOURCE_ENERGY);
+                        creep.say(creep.transfer(link[0], RESOURCE_ENERGY) as unknown as string)
+                    }
+                } else {
+                    creep.transfer(tower, RESOURCE_ENERGY);
+                }
             }
+
         }
     }
 }

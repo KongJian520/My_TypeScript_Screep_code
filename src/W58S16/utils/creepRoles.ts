@@ -54,7 +54,7 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 1],
         ],
         expectedCount: 1,
-        priority: 5,
+        priority: 2,
     },
     {
         roleName: "collector",
@@ -116,22 +116,24 @@ export const roleDefinitions: RoleDefinition[] = [
     },
     {
         roleName: "claim",
+        expectedCount: 2,
+        priority: 12,
         bodyParts: [
             [CLAIM, 2],
             [MOVE, 4],
         ],
-        expectedCount: 2,
-        priority: 12,
+
     },
     {
         roleName: "remoteHavster",
+        expectedCount: 2,
+        priority: 12,
         bodyParts: [
             [WORK, 18],
             [CARRY, 10],
             [MOVE, 10],
         ],
-        expectedCount: 2,
-        priority: 12,
+
     },
     {
         roleName: "RemoteHavster2",
@@ -151,7 +153,7 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 8],
         ],
         expectedCount: 1,
-        priority: 14,
+        priority: 15,
     },
     {
         roleName: "RemoteBuilder",
@@ -161,7 +163,7 @@ export const roleDefinitions: RoleDefinition[] = [
             [MOVE, 8],
         ],
         expectedCount: 1,
-        priority: 14,
+        priority: 11,
     },
     {
         roleName: "attacker",

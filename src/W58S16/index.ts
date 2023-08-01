@@ -24,7 +24,7 @@ import dismoveableminer
     from "./creeps/dismoveableminer";
 import dismoveableminer2
     from "./creeps/dismoveableminer2";
-import dismveableminer3
+import Dismveableminer3
     from './creeps/dismoveableminer3'
 import attacker
     from "./creeps/attacker";
@@ -89,9 +89,11 @@ const W58S16 = {
         if (Game.time % 10 === 0) {
             terminalW58S16.send();
         }
-        tower.run();
-        if (Game.spawns['Spawn1'].spawning) {
 
+        let Towers = Game.rooms['W58S16'].find(FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}}) as StructureTower[];
+        // 遍历每个塔
+        for (let Tower of Towers) {
+            tower.run(Tower);
         }
         for (name in Game.creeps) {
             {
@@ -125,8 +127,8 @@ const W58S16 = {
                     case 'dismoveableminer2':
                         dismoveableminer2.run(creep);
                         break;
-                    case 'dismveableminer3':
-                        dismveableminer3.run(creep);
+                    case 'Dismveableminer3':
+                        Dismveableminer3.run(creep);
                         break;
                     case 'attacker':
                         attacker.run(creep);

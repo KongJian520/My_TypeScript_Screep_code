@@ -1,49 +1,84 @@
-import roleBuilder from "./creeps/Builder";
-import roleHarvester from './creeps/Harvester'
-import roleUpgrader from "./creeps/Upgrader";
-import roleminer from "./creeps/miner";
-import roleCarrier from "./creeps/carrier";
-import roleRepair from "./creeps/repair";
-import roleCollector from "./creeps/Collector";
-import roleDismveableminer from "./creeps/dismoveableminer";
-import roleDismveableminer2 from "./creeps/dismoveableminer2";
-import roleDismveableminer3 from "./creeps/dismoveableminer3";
-import roledismoveabletrasfer from './creeps/dismoveabletrasfer'
-import roleAttacker from "./creeps/attacker";
-import roleClaim from "./creeps/claim";
-import autoSpawn from "./utils/autoSpawn";
-import roleChaiQian from "./creeps/remoteChaiQian";
-import roleRemoteHavster from "./creeps/remoteHavster";
-import roletransfer from "./creeps/transfer";
-import roleRemoteBuilder from "./creeps/remoteBuilder";
-import tower from "./utils/tower";
-import roleThief from "./creeps/thief";
-import roleremoteAttacker from "./creeps/remoteattacker";
-import roleremoteAttackerW57S13 from "./creeps/remoteattacker2";
-import roleRemoteUpgrader from "./creeps/remoteUpgrader";
-import roleRemoteHavster2 from "./creeps/remoteHavster2";
+import tower
+    from "./utils/tower";
+import link
+    from "./utils/link";
+import terminalW58S16
+    from "./utils/term";
+import autoSpawn
+    from "./utils/autoSpawn";
+import harvester
+    from "./creeps/Harvester";
+import upgrader
+    from "./creeps/Upgrader";
+import builder
+    from "./creeps/Builder";
+import miner
+    from "./creeps/miner";
+import carrier
+    from "./creeps/carrier";
+import repair
+    from "./creeps/repair";
+import collector
+    from "./creeps/Collector";
+import dismoveableminer
+    from "./creeps/dismoveableminer";
+import dismoveableminer2
+    from "./creeps/dismoveableminer2";
+import dismveableminer3
+    from './creeps/dismoveableminer3'
+import attacker
+    from "./creeps/attacker";
+import claim
+    from "./creeps/claim";
+import remoteHavster
+    from "./creeps/remoteHavster";
+import RemoteHavster2
+    from "./creeps/remoteHavster2";
 
-import roleHealerW58S16 from "./creeps/remoteHeller";
-
-import roleRemoteRepair from "./creeps/remoteRepairer";
-import roleEye from "./creeps/eye";
-
-import link from "./utils/link";
-import terminalW58S16 from "./utils/term";
-
-
+import RemoteUpgrader
+    from "./creeps/remoteUpgrader";
+import transfer
+    from "./creeps/transfer";
+import thief
+    from "./creeps/thief";
+import remoteAttacker
+    from "./creeps/remoteattacker"
+import remoteAttackerW57S13
+    from './creeps/remoteattacker2'
+import ChaiQian
+    from "./creeps/remoteChaiQian"
+import eye
+    from "./creeps/eye"
+import dismoveabletrasfer
+    from "./creeps/dismoveabletrasfer";
+import RemoteRepair
+    from "./creeps/remoteRepairer"
+import RemoteBuilder
+    from "./creeps/remoteBuilder";
 
 const W58S16 = {
     work: function () {
+        let name;
         const W58S16 = Game.rooms['W58S16']
+        const Spawns = Game.spawns['Spawn1']
+        if (Spawns.spawning) {
+            const spawningCreep = Game.creeps[Spawns.spawning.name];
+            Game.spawns['Spawn1'].room.visual.text(
+                '🛠️' + spawningCreep.memory.role,
+                Game.spawns['Spawn1'].pos.x + 1,
+                Game.spawns['Spawn1'].pos.y,
+                {align: 'left', opacity: 0.8});
+
+        } else {
+            autoSpawn.spawn(Spawns);
+        }
         if (Game.time % 2 === 0) {
             console.log('----------------W58S16-------------------')
-            autoSpawn.spawn();
             console.log('Spawn1能量:' + W58S16.energyAvailable + "/" + W58S16.energyCapacityAvailable)
             if (Game.rooms['W58S16'].storage) {
                 console.log('Storge-RESOURCE_ENERGY = ' + Game.rooms['W58S16'].storage.store.getUsedCapacity(RESOURCE_ENERGY))
             }
-            for (var name in Memory.creeps) {
+            for (name in Memory.creeps) {
                 if (!Game.creeps[name]) {
                     delete Memory.creeps[name];
                     // console.log('Clearing non-existing creep memory:', name);
@@ -56,49 +91,94 @@ const W58S16 = {
         }
         tower.run();
         if (Game.spawns['Spawn1'].spawning) {
-            var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
-            Game.spawns['Spawn1'].room.visual.text(
-                '🛠️' + spawningCreep.memory.role,
-                Game.spawns['Spawn1'].pos.x + 1,
-                Game.spawns['Spawn1'].pos.y,
-                { align: 'left', opacity: 0.8 });
+
         }
-        for (var name in Game.creeps) {
+        for (name in Game.creeps) {
             {
-                var creep = Game.creeps[name]
+                const creep = Game.creeps[name];
                 // 优化后的代码
                 switch (creep.memory.role) {
-                    case 'harvester': roleHarvester.run(creep); break;
-                    case 'upgrader': roleUpgrader.run(creep); break;
-                    case 'builder': roleBuilder.run(creep); break;
-                    case 'miner': roleminer.run(creep); break;
-                    case 'carrier': roleCarrier.run(creep); break;
-                    case 'repair': roleRepair.run(creep); break;
-                    case 'collector': roleCollector.run(creep); break;
-                    case 'dismoveableminer': roleDismveableminer.run(creep); break;
-                    case 'dismoveableminer2': roleDismveableminer2.run(creep); break;
-                    case 'Dismveableminer3': roleDismveableminer3.run(creep); break;
-                    case 'attacker': roleAttacker.run(creep); break;
-                    case 'claim': roleClaim.run(creep); break;
+                    case 'harvester':
+                        harvester.run(creep);
+                        break;
+                    case 'upgrader':
+                        upgrader.run(creep);
+                        break;
+                    case 'builder':
+                        builder.run(creep);
+                        break;
+                    case 'miner':
+                        miner.run(creep);
+                        break;
+                    case 'carrier':
+                        carrier.run(creep);
+                        break;
+                    case 'repair':
+                        repair.run(creep);
+                        break;
+                    case 'collector':
+                        collector.run(creep);
+                        break;
+                    case 'dismoveableminer':
+                        dismoveableminer.run(creep);
+                        break;
+                    case 'dismoveableminer2':
+                        dismoveableminer2.run(creep);
+                        break;
+                    case 'dismveableminer3':
+                        dismveableminer3.run(creep);
+                        break;
+                    case 'attacker':
+                        attacker.run(creep);
+                        break;
+                    case 'claim':
+                        claim.run(creep);
+                        break;
                     // case 'ChaiQian': roleChaiQian.run(creep); break;
-                    case 'remoteHavster': roleRemoteHavster.run(creep); break;
-                    case 'RemoteHavster2': roleRemoteHavster2.run(creep); break;
-                    case 'remoteBuilder': roleRemoteBuilder.run(creep); break;
-                    case 'HealerW58S16': roleHealerW58S16.run(creep); break;
-                    case 'RemoteUpgrader': roleRemoteUpgrader.run(creep); break;
+                    case 'remoteHavster':
+                        remoteHavster.run(creep);
+                        break;
+                    case 'RemoteHavster2':
+                        RemoteHavster2.run(creep);
+                        break;
+                    case 'RemoteBuilder':
+                        RemoteBuilder.run(creep);
+                        break;
+                    // case 'HealerW58S16':
+                    //     HealerW58S16.run(creep);
+                    //     break;
+                    case 'RemoteUpgrader':
+                        RemoteUpgrader.run(creep);
+                        break;
 
-                    // case 'transfer': roletransfer.runEnergy(creep); break;
-                    case 'transfer': roletransfer.runMineral(creep); break;
+                    // case 'transfer':
+                    //     roletransfer.runEnergy(creep);
+                    //     break;
+                    case 'transfer':
+                        transfer.runMineral(creep);
+                        break;
 
-                    case 'thief': roleThief.run(creep); break;
-                    case 'remoteAttacker': roleremoteAttacker.run(creep); break;
-                    case 'remoteAttackerW57S13': roleremoteAttackerW57S13.run(creep); break;
+                    case 'thief':
+                        thief.run(creep);
+                        break;
+                    case 'remoteAttacker':
+                        remoteAttacker.run(creep);
+                        break;
+                    case 'remoteAttackerW57S13':
+                        remoteAttackerW57S13.run(creep);
+                        break;
 
-                    case 'ChaiQian': roleChaiQian.run(creep); break;
-                    case 'eye': roleEye.run(creep); break;
-                    case 'dismoveabletrasfer': roledismoveabletrasfer.run(creep); break;
-
-                    case 'RemoteRepair': roleRemoteRepair.run(creep);
+                    case 'ChaiQian':
+                        ChaiQian.run(creep);
+                        break;
+                    case 'eye':
+                        eye.run(creep);
+                        break;
+                    case 'dismoveabletrasfer':
+                        dismoveabletrasfer.run(creep);
+                        break;
+                    case 'RemoteRepair':
+                        RemoteRepair.run(creep);
 
                 }
             }

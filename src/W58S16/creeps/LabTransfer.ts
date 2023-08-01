@@ -2,12 +2,12 @@ const roletransfer = {
 
     runLabGO: function (creep: Creep) {
 
-        var storage = Game.getObjectById('64ae33b7d36572291f61089a') as StructureStorage
-        var Lab1 = Game.getObjectById('64c3e1f07e68f82e2d5f13fa') as StructureLab
-        var Lab2 = Game.getObjectById('64c39dae5785eddb4042cbb6') as StructureLab
-        var Lab3 = Game.getObjectById('64c3f9afb10a865fabd2ebf0') as StructureLab
+        const storage = Game.getObjectById('64ae33b7d36572291f61089a') as StructureStorage;
+        const Lab1 = Game.getObjectById('64c3e1f07e68f82e2d5f13fa') as StructureLab;
+        const Lab2 = Game.getObjectById('64c39dae5785eddb4042cbb6') as StructureLab;
+        const Lab3 = Game.getObjectById('64c3f9afb10a865fabd2ebf0') as StructureLab;
 
-        var GO = RESOURCE_GHODIUM_OXIDE
+        const GO = RESOURCE_GHODIUM_OXIDE;
 
         // creep.memory.goods
         if (creep.memory.working && creep.store[GO] == 0) {
@@ -29,7 +29,6 @@ const roletransfer = {
         }
     }
 }
-
 
 
 export default roletransfer

@@ -36,6 +36,7 @@ const autoSpawn = {
 				// 可以根据 result 的值来处理生成 creep 的结果
 				if (result === OK) {
 					console.log(`${Spawn.name}正在生成 ${role}，名称：${newName}`);
+					currentCount++;
 				} else {
 					console.log(`${Spawn.name}生成 ${role} 失败，状态码：${result}`);
 					break; // 如果生成失败，则终止循环，避免陷入死循环

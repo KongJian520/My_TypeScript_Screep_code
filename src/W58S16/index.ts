@@ -89,9 +89,12 @@ const W58S16 = {
 				}
 			}
 		}
-		if (Game.time % 10 === 0) {
-			terminalW58S16.send();
+		if (W58S16.terminal) {
+			if (Game.time % 10 === 0) {
+				terminalW58S16.send(W58S16.terminal);
+			}
 		}
+
 		let Towers = Game.rooms['W58S16'].find(FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}}) as StructureTower[];
 		// 遍历每个塔
 		for (let Tower of Towers) {

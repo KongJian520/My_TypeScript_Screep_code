@@ -50,7 +50,7 @@ const roleRemoteRepair = {
             if (creep.room.name !== Home) {
                 creep.moveTo(new RoomPosition(31, 37, Home))
             } else {
-                var sources = creep.room.find(FIND_STRUCTURES, {
+                const sources = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure: any) => {
                         return (structure.structureType == STRUCTURE_STORAGE &&
                             structure.store.energy > 0);
@@ -59,7 +59,7 @@ const roleRemoteRepair = {
                 // 如果找到了 container
                 if (sources.length > 0) {
                     // 使用 pos.findClosestByPath 方法找到距离最近的 container
-                    var closestContainer = creep.pos.findClosestByPath(sources);
+                    const closestContainer = creep.pos.findClosestByPath(sources);
                     // 如果找到了最近的 container
                     if (closestContainer) {
                         // creep.say('UP 最近的找到了')

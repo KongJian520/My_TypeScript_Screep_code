@@ -1,4 +1,3 @@
-
 const roleThief = {
     run: function (creep: Creep) {
         const targetsRoom = 'W58S16'
@@ -15,14 +14,13 @@ const roleThief = {
             if (creep.room.name !== targetsRoom) {
                 creep.moveTo(new RoomPosition(10, 30, targetsRoom))
             } else if (creep.room.name === targetsRoom) {
-                var sources = creep.room.storage
+                const sources = creep.room.storage;
                 if (sources) {
-                    var pickupedSource = _.keys(sources.store)
+                    const pickupedSource = _.keys(sources.store);
                     if (creep.withdraw(sources, "energy") == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(sources, { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 });
+                        creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 6});
                         creep.say('Finded')
-                    }
-                    else {
+                    } else {
                         creep.say(creep.withdraw(sources, RESOURCE_ENERGY) as unknown as string)
                     }
                     //  else if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_ENOUGH_RESOURCES) {
@@ -32,13 +30,13 @@ const roleThief = {
             }
         } else {
             if (creep.room.name !== Home) {
-                creep.moveTo(new RoomPosition(10, 30, Home), { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 6 })
+                creep.moveTo(new RoomPosition(10, 30, Home), {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 6})
             } else if (creep.room.name === Home) {
-                var targets = creep.room.storage
+                const targets = creep.room.storage;
                 if (targets) {
                     for (const resourceType in creep.store) {
                         if (creep.transfer(targets, resourceType as ResourceConstant) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(targets, { visualizePathStyle: { stroke: '#ffffff' }, reusePath: 6 });
+                            creep.moveTo(targets, {visualizePathStyle: {stroke: '#ffffff'}, reusePath: 6});
                         }
                     }
                 }

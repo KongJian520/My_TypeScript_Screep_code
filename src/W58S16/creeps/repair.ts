@@ -29,7 +29,7 @@ const roleRepair = {
                 }
             } else {
                 // 如果周围没有需要修复的建筑，继续之前的逻辑
-                var containers = creep.room.find(FIND_STRUCTURES, {
+                let containers = creep.room.find(FIND_STRUCTURES, {
                     filter: (s: any) => (
                         s.structureType == STRUCTURE_STORAGE && s.store.energy <= s.storeCapacity
                     ),
@@ -40,7 +40,7 @@ const roleRepair = {
                     }
                 } else {
                     // 如果容器或存储中没有能量，可以从能量源采集能量
-                    var sources = creep.room.find(FIND_SOURCES);
+                    let sources = creep.room.find(FIND_SOURCES);
                     if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 10});
                     }
@@ -49,7 +49,7 @@ const roleRepair = {
         } else {
             // 例如采集能量的逻辑
             // 如果需要从容器或存储中获取能量：
-            var containers = creep.room.find(FIND_STRUCTURES, {
+            let containers = creep.room.find(FIND_STRUCTURES, {
                 filter: (s: any) => (
                     s.structureType == STRUCTURE_STORAGE && s.store.energy > 0
                 ),
@@ -60,7 +60,7 @@ const roleRepair = {
                 }
             } else {
                 // 如果容器或存储中没有能量，可以从能量源采集能量
-                var sources = creep.room.find(FIND_SOURCES);
+                let sources = creep.room.find(FIND_SOURCES);
                 if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 10});
                 }

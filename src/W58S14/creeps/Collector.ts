@@ -3,8 +3,8 @@ const roleCollectorW58S14 = {
         // 如果creep没有能量，且房间内有掉落的资源或者墓碑
         if (creep.store.getUsedCapacity() == 0 && (
             creep.room.find(FIND_DROPPED_RESOURCES).length > 0 ||
-            creep.room.find(FIND_TOMBSTONES, { filter: (t: any) => t.store.energy > 0 }).length > 0 ||
-            creep.room.find(FIND_RUINS, { filter: (t: any) => t.store.energy > 0 }).length > 0)) {
+            creep.room.find(FIND_TOMBSTONES, {filter: (t: any) => t.store.energy > 0}).length > 0 ||
+            creep.room.find(FIND_RUINS, {filter: (t: any) => t.store.energy > 0}).length > 0)) {
             // 设置creep的状态为获取能量
             creep.memory.working = false;
         }
@@ -21,7 +21,7 @@ const roleCollectorW58S14 = {
         // 如果creep的状态为获取能量
         if (!creep.memory.working) {
             // 寻找最近的掉落的资源或者墓碑
-            var source = creep.pos.findClosestByPath(FIND_RUINS, { filter: (t: any) => t.store.energy > 0 })
+            const source = creep.pos.findClosestByPath(FIND_RUINS, {filter: (t: any) => t.store.energy > 0})
                 || creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES)
                 || creep.pos.findClosestByPath(FIND_TOMBSTONES, {
                     filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
@@ -34,7 +34,7 @@ const roleCollectorW58S14 = {
                     || creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     // 如果不在范围内，就向资源或者墓碑移动
                     creep.say('移动中')
-                    creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
+                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
             } else {
                 if (creep.store.getUsedCapacity() == 0) {
@@ -51,12 +51,12 @@ const roleCollectorW58S14 = {
 
             // creep.say('Working')
 
-            var target = creep.room.find(FIND_STRUCTURES, {
+            const target = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (
-                        structure.structureType == STRUCTURE_STORAGE ||
-                        structure.structureType == STRUCTURE_SPAWN ||
-                        structure.structureType == STRUCTURE_EXTRACTOR) &&
+                            structure.structureType == STRUCTURE_STORAGE ||
+                            structure.structureType == STRUCTURE_SPAWN ||
+                            structure.structureType == STRUCTURE_EXTRACTOR) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
@@ -65,10 +65,10 @@ const roleCollectorW58S14 = {
             // 如果找到了目标
             if (target != undefined) {
                 // 尝试向目标转移能量
-                var pickupedSource = _.keys(creep.store)
+                const pickupedSource = _.keys(creep.store);
                 if (creep.transfer(target[0], pickupedSource[0]) == ERR_NOT_IN_RANGE) {
                     // 如果不在范围内，就向目标移动
-                    creep.moveTo(target[0], { visualizePathStyle: { stroke: '#ffffff' } });
+                    creep.moveTo(target[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 } else if (creep.transfer(target[0], pickupedSource[0]) == 0) {
                     for (const resourceType in creep.carry) {
                         creep.transfer(target[0], resourceType);

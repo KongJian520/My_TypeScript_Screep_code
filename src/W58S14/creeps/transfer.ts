@@ -14,7 +14,7 @@ const roletransferW58S14 = {
             creep.say('运输中');
         }
         if (!creep.memory.working) {
-            var sources = creep.room.find(FIND_STRUCTURES, {
+            const sources = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (structure.structureType == STRUCTURE_CONTAINER
                         // ||structure.structureType == STRUCTURE_LINK
@@ -26,7 +26,7 @@ const roletransferW58S14 = {
             if (sources.length > 0) {
                 sources.sort((a: any, b: any) => b.store.energy - a.store.energy);
                 if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0], { visualizePathStyle: { stroke: '#ffaa00' } });
+                    creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
                 // 使用 pos.findClosestByPath 方法找到距离最近的 container
                 // var closestContainer = creep.pos.findClosestByPath(sources);
@@ -39,24 +39,23 @@ const roletransferW58S14 = {
                 //     }
             }
         } else if (creep.memory.working) {
-            var targets = creep.room.find(FIND_STRUCTURES, {
+            const targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (structure.structureType == STRUCTURE_STORAGE) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
             if (targets.length > 0) {
-                var STORAGE = creep.pos.findClosestByPath(targets);
+                const STORAGE = creep.pos.findClosestByPath(targets);
                 if (STORAGE) {
                     if (creep.transfer(STORAGE, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(STORAGE, { visualizePathStyle: { stroke: '#ffffff' } });
+                        creep.moveTo(STORAGE, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
             }
         }
     }
 }
-
 
 
 export default roletransferW58S14

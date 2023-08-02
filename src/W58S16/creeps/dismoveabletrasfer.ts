@@ -2,11 +2,11 @@ const roledismoveabletrasfer = {
     run: function (creep: Creep) {
         const W58S16 = 'W58S16'
         const terminal = Game.rooms[W58S16].terminal
-        var targetLink = Game.getObjectById('64b5d08fd3a05b4f1f6f0325') as StructureLink;
+        const targetLink = Game.getObjectById('64b5d08fd3a05b4f1f6f0325') as StructureLink;
         let goods = RESOURCE_HYDROGEN
-        var Storage = Game.rooms[W58S16].storage
-        var LinkStore = _.keys(targetLink.store)
-        var CreepStore = _.keys(creep.store)
+        const Storage = Game.rooms[W58S16].storage;
+        const LinkStore = _.keys(targetLink.store);
+        const CreepStore = _.keys(creep.store);
         if (Storage) {
             if (LinkStore[0]) {
                 if (LinkStore[0].length > 0) {

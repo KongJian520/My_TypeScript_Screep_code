@@ -11,7 +11,7 @@ const roletransfer = {
             creep.say('运输中');
         }
         if (!creep.memory.working) {
-            var sources = creep.room.find(FIND_STRUCTURES, {
+            const sources = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (structure.structureType == STRUCTURE_CONTAINER
                         // ||structure.sourceLinkId == '64b5d08fd3a05b4f1f6f0325'
@@ -37,14 +37,14 @@ const roletransfer = {
                 //     }
             }
         } else if (creep.memory.working) {
-            var targets = creep.room.find(FIND_STRUCTURES, {
+            const targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure: any) => {
                     return (structure.structureType == STRUCTURE_STORAGE) &&
                         structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
             });
             if (targets.length > 0) {
-                var STORAGE = creep.pos.findClosestByPath(targets);
+                const STORAGE = creep.pos.findClosestByPath(targets);
                 if (STORAGE) {
                     if (creep.transfer(STORAGE, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(STORAGE, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -54,9 +54,9 @@ const roletransfer = {
         }
     },
     runMineral: function (creep: Creep) {
-        var sources = Game.getObjectById('5bbcb10940062e4259e92a53') as Mineral
-        var Container = Game.getObjectById('64c8cfac58c500a5a104799d') as StructureContainer
-        var storage = Game.getObjectById('64ae33b7d36572291f61089a') as StructureStorage
+        const sources = Game.getObjectById('5bbcb10940062e4259e92a53') as Mineral;
+        const Container = Game.getObjectById('64c8cfac58c500a5a104799d') as StructureContainer;
+        const storage = Game.getObjectById('64ae33b7d36572291f61089a') as StructureStorage;
         if (creep.memory.working && creep.store[sources.mineralType] == 0) {
             creep.memory.working = false;
             creep.say('准备拿取资源');

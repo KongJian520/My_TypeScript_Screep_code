@@ -1,8 +1,8 @@
 const link = {
     run: function () {
-        var sourceLink1 = Game.getObjectById('64b54598c5f7ddf2f409c8f1') as StructureLink;
-        var sourceLink2 = Game.getObjectById('64c3dcfa7b156580e8312d07') as StructureLink;
-        var targetLink = Game.getObjectById('64b5d08fd3a05b4f1f6f0325') as StructureLink;
+        const sourceLink1 = Game.getObjectById('64b54598c5f7ddf2f409c8f1') as StructureLink;
+        const sourceLink2 = Game.getObjectById('64c3dcfa7b156580e8312d07') as StructureLink;
+        const targetLink = Game.getObjectById('64b5d08fd3a05b4f1f6f0325') as StructureLink;
         // 检查link是否存在并且有足够的能量
         if (sourceLink1 && targetLink && sourceLink1.store[RESOURCE_ENERGY] >= LINK_CAPACITY * 0.3) {
             // 尝试从源link传输能量到目标link

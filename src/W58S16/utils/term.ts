@@ -17,7 +17,7 @@ const terminalW58S16 = {
 		// 处理购买订单的通用函数
 		function processBuyOrder(orderBuy: Order[], OrderAmount: number) {
 			for (const currentOrder of orderBuy) {
-				console.log("===============购买===============");
+				console.log("<font color=\"red\">===============购买===============");
 				console.log("订单ID:", currentOrder.id);
 				console.log("订单种类:", currentOrder.type);
 				console.log("资源种类:", currentOrder.resourceType);

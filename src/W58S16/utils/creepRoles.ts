@@ -50,10 +50,10 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "carrier",
 		bodyParts: [
-			[CARRY, 8],
-			[MOVE, 5],
+			[CARRY, 4],
+			[MOVE, 2],
 		],
-		expectedCount: 1,
+		expectedCount: 2,
 		priority: 3,
 	},
 	{
@@ -116,7 +116,7 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "RemoteBuilder",
 		bodyParts: [
-			[WORK, 10],
+			[WORK, 9],
 			[CARRY, 8],
 			[MOVE, 9],
 		],
@@ -139,7 +139,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 10],
 			[MOVE, 8],
 		],
-		expectedCount: 2,
+		expectedCount: 3,
 		priority: 10,
 	},
 	{
@@ -149,7 +149,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 10],
 			[MOVE, 8],
 		],
-		expectedCount: 2,
+		expectedCount: 4,
 		priority: 11,
 	},
 	{
@@ -173,11 +173,12 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 97,
 	},
 	{
-		roleName: "RemoteAttackerW58S14",
+		roleName: "remoteAttackerW57S13",
 		bodyParts: [
 			[TOUGH, 5],
-			[ATTACK, 6],
 			[MOVE, 7],
+			[ATTACK, 6],
+
 		],
 		expectedCount: 1,
 		priority: 99,

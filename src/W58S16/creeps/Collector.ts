@@ -17,9 +17,10 @@ const roleCollector = {
         // 如果creep有能量，且房间内有storage或者termin
         else if (creep.store.getUsedCapacity() > 0 && creep.room.find(FIND_STRUCTURES, {
             filter: (s: any) =>
-                s.structureType == STRUCTURE_CONTAINER
-                || s.structureType == STRUCTURE_STORAGE
-                || s.structureType == STRUCTURE_TERMINAL
+                s.structureType == STRUCTURE_CONTAINER ||
+                s.structureType == STRUCTURE_STORAGE ||
+                s.structureType == STRUCTURE_TERMINAL ||
+                s.structureType == STRUCTURE_TOWER
         }).length > 0) {
             // 设置creep的状态为送能量
             creep.memory.working = true;
@@ -51,11 +52,11 @@ const roleCollector = {
             // 寻找最近的storage或者terminal
             const target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s: any) => (
-                        s.structureType == STRUCTURE_STORAGE
-                        // ||
-                        // s.structureType == STRUCTURE_SPAWN||
-                        // s.structureType == STRUCTURE_CONTAINER ||
-                        // s.structureType == STRUCTURE_TERMINAL
+                        s.structureType == STRUCTURE_TOWER
+                        ||
+                        s.structureType == STRUCTURE_SPAWN ||
+                        s.structureType == STRUCTURE_CONTAINER ||
+                        s.structureType == STRUCTURE_TERMINAL
                     ) &&
                     s.store.getFreeCapacity(RESOURCE_ENERGY) > 0
             });

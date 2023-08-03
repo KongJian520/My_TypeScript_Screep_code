@@ -43,11 +43,11 @@ const autoSpawn = {
 					// result 的值将会是一个生成 creep 的状态码
 					// 可以根据 result 的值来处理生成 creep 的结果
 					if (result === OK) {
-						console.log(`${Spawn.name}正在生成 ${role}，名称：${newName}`);
+						console.log(`🔁 ${Spawn.name}正在生成 ${role}，名称：${newName}`);
 						currentCount++;
 						break; // 成功生成一个角色后，终止当前循环
 					} else {
-						console.log(`${Spawn.name}生成 ${role} 失败，状态码：${result}`);
+						console.log(`⚠️${Spawn.name}生成 ${role} 失败，状态码：${result}`);
 						break; // 如果生成失败，终止当前循环，避免继续尝试生成优先级更低的角色
 					}
 				}

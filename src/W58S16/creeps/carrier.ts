@@ -45,8 +45,9 @@ const roleCarrier = {
 			} else {
 				const sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) => (
-						(structure.structureType === STRUCTURE_STORAGE ||
-							structure.structureType === STRUCTURE_TERMINAL) &&
+						(structure.structureType === STRUCTURE_STORAGE
+							// ||structure.structureType === STRUCTURE_TERMINAL
+						) &&
 						structure.store.energy > 0
 					),
 				});

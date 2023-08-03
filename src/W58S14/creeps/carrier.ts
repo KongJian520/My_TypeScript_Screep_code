@@ -16,7 +16,9 @@ const roleCarrier = {
 				// 填充 EXT 和 Spawn
 				const targets = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) => (
-						(structure.structureType === STRUCTURE_EXTENSION || structure.structureType === STRUCTURE_SPAWN) &&
+						((structure.structureType === STRUCTURE_TOWER && structure.store.energy < 10)
+							|| structure.structureType === STRUCTURE_EXTENSION
+							|| structure.structureType === STRUCTURE_SPAWN) &&
 						structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 					),
 				});

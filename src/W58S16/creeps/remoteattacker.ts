@@ -1,30 +1,26 @@
-const roleremoteAttacker = {
-    run: function (creep: Creep) {
-        const targetRoom = "W58S13"
-        if (creep.room.name !== targetRoom) {
-            creep.moveTo(new RoomPosition(33, 3, targetRoom), {visualizePathStyle: {stroke: '#ff0000'}})
-        }
-        if (creep.room.name == targetRoom) {
-            const target = creep.room.find(FIND_STRUCTURES, {//寻找设施存入 target
-                filter: (structure: Structure) => {
-                    return (structure.structureType == STRUCTURE_INVADER_CORE)
-                }
-            });
-            target.sort((a: Structure, b: Structure) => a.hitsMax - b.hitsMax);
-            const HOSTILE_CREEPS = creep.room.find(FIND_HOSTILE_CREEPS);
-            if (target[0]) {
-                if (creep.attack(target[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target[0], {visualizePathStyle: {stroke: '#ff0000'}});
-                }
-            } else if (HOSTILE_CREEPS[0]) {
-                if (creep.attack(HOSTILE_CREEPS[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(HOSTILE_CREEPS[0], {visualizePathStyle: {stroke: '#ff0000'}});
-                }
-            } else {
-                creep.moveTo(new RoomPosition(33, 3, targetRoom), {visualizePathStyle: {stroke: '#ff0000'}})
-            }
-        }
-    }
-}
+const roleGuard = {
+	run(creep: Creep): void {
+		const targetRoom = "W58S16";  // 将 targetRoom 定义在函数内部
 
-export default roleremoteAttacker;
+		if (creep.room.name !== targetRoom) {
+			// 如果当前不在目标房间，就移动过去
+			creep.moveTo(new RoomPosition(20, 20, targetRoom), {visualizePathStyle: {stroke: '#ff0000'}});
+			return;
+		}
+
+		if (creep.hits < creep.hitsMax) {
+			creep.heal(creep);
+		} else {
+			const target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+			if (target) {
+				if (creep.attack(target) === ERR_NOT_IN_RANGE) {
+					creep.moveTo(target, {visualizePathStyle: {stroke: '#ff0000'}});
+				}
+			} else {
+				creep.moveTo(creep.room.controller!, {visualizePathStyle: {stroke: '#ffffff'}});
+			}
+		}
+	},
+};
+
+export default roleGuard;

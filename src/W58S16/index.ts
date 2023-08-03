@@ -59,6 +59,24 @@ import RemoteBuilder
 const W58S16 = {
     work: function (W58S16: Room) {
         let name;
+        for (const Spawns of W58S16.find(FIND_MY_SPAWNS)) {
+            if (Spawns.spawning) {
+                const spawningCreep = Game.creeps[Spawns.spawning.name];
+                Game.spawns['Spawn1'].room.visual.text(
+                    '🛠️' + spawningCreep.memory.role,
+                    Game.spawns['Spawn1'].pos.x + 1,
+                    Game.spawns['Spawn1'].pos.y,
+                    {
+                        align: 'left',
+                        opacity: 0.8
+                    });
+                if (Game.time % 2 === 0) {
+                    console.log(`🔁${Spawns.name} is Spawning ${spawningCreep.memory.role}`)
+                }
+            } else {
+                autoSpawn.spawn(Spawns);
+            }
+        }
         if (Game.time % 2 === 0) {
             console.log('----------------W58S16-------------------')
             console.log('Spawn1能量:' + W58S16.energyAvailable + "/" + W58S16.energyCapacityAvailable)
@@ -72,22 +90,7 @@ const W58S16 = {
                 }
             }
             link.run();
-            for (const Spawns of W58S16.find(FIND_MY_SPAWNS)) {
-                if (Spawns.spawning) {
-                    const spawningCreep = Game.creeps[Spawns.spawning.name];
-                    Game.spawns['Spawn1'].room.visual.text(
-                        '🛠️' + spawningCreep.memory.role,
-                        Game.spawns['Spawn1'].pos.x + 1,
-                        Game.spawns['Spawn1'].pos.y,
-                        {
-                            align: 'left',
-                            opacity: 0.8
-                        });
-                    console.log(`${Spawns.name} is Spawning ${spawningCreep.memory.role}`)
-                } else {
-                    autoSpawn.spawn(Spawns);
-                }
-            }
+
         }
         if (Game.time % 10 === 0) {
             if (W58S16.terminal) {
@@ -156,12 +159,12 @@ const W58S16 = {
                     case 'RemoteUpgrader':
                         RemoteUpgrader.run(creep);
                         break;
-                    // case 'transfer':
-                    //     roletransfer.runEnergy(creep);
-                    //     break;
                     case 'transfer':
-                        transfer.runMineral(creep);
+                        transfer.runEnergy(creep);
                         break;
+                    // case 'transfer':
+                    // 	transfer.runMineral(creep);
+                    // 	break;
                     case 'thief':
                         thief.run(creep);
                         break;

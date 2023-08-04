@@ -126,10 +126,12 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 12
 	},
 	{
-		roleName: "EyeW58S14",
+		roleName: "GuardW58S14",
 		bodyParts: [
-			[ATTACK, 2],
-			[MOVE, 4]
+			[TOUGH, 5],
+			[MOVE, 4],
+			[ATTACK, 4],
+			[HEAL, 1]
 		],
 		expectedCount: 1,
 		priority: 93

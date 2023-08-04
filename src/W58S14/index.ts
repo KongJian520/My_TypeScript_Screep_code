@@ -16,7 +16,7 @@ import roleRemoteRepairW58S14 from "./creeps/remoteRepairer";
 import roleRemoteHavsterW58S14 from "./creeps/remoteHavster";
 import roleremoteAttackerW58S14 from "./creeps/remoteattacker";
 import EXMANW58S14 from "./creeps/EXMAN";
-import roleEyeW58S14 from "./creeps/eye";
+import roleGuardW58S14 from "./creeps/Guard";
 import roleEyeW58S13 from "./creeps/EyeW58S13";
 import roleClaim from "./creeps/claim";
 import roleClaimW58S13 from "./creeps/claimW58S13";
@@ -111,8 +111,8 @@ const W58S14 = {
 				case "RemoteAttackerW58S14":
 					roleremoteAttackerW58S14.run(creep);
 					break;
-				case "EyeW58S14":
-					roleEyeW58S14.run(creep);
+				case "GuardW58S14":
+					roleGuardW58S14.run(creep);
 					break;
 				case "EyeW58S13":
 					roleEyeW58S13.run(creep);

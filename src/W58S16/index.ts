@@ -28,11 +28,25 @@ import dismoveabletrasfer from "./creeps/dismoveabletrasfer";
 import RemoteRepair from "./creeps/remoteRepairer";
 import RemoteBuilder from "./creeps/remoteBuilder";
 import SelfH from "./creeps/AandH";
-import Dismveableminer3W58S14 from "./creeps/dismoveableminer3";
 
 const W58S16 = {
 	work: function (W58S16: Room) {
 		let name;
+		if (Game.time % 2 === 0) {
+			console.log("----------------W58S16-------------------");
+			console.log("W58S16 能量:" + W58S16.energyAvailable + "/" + W58S16.energyCapacityAvailable);
+			if (W58S16.storage) {
+				console.log("Storge-RESOURCE_ENERGY = " + W58S16.storage.store.getUsedCapacity(RESOURCE_ENERGY));
+			}
+			for (name in Memory.creeps) {
+				if (!Game.creeps[name]) {
+					delete Memory.creeps[name];
+					// console.log('Clearing non-existing creep memory:', name);
+				}
+			}
+			link.run();
+		}
+
 		for (const Spawns of W58S16.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {
 				const spawningCreep = Game.creeps[Spawns.spawning.name];
@@ -49,20 +63,7 @@ const W58S16 = {
 				}
 			}
 		}
-		if (Game.time % 2 === 0) {
-			console.log("----------------W58S16-------------------");
-			console.log("Spawn1能量:" + W58S16.energyAvailable + "/" + W58S16.energyCapacityAvailable);
-			if (Game.rooms["W58S16"].storage) {
-				console.log("Storge-RESOURCE_ENERGY = " + Game.rooms["W58S16"].storage.store.getUsedCapacity(RESOURCE_ENERGY));
-			}
-			for (name in Memory.creeps) {
-				if (!Game.creeps[name]) {
-					delete Memory.creeps[name];
-					// console.log('Clearing non-existing creep memory:', name);
-				}
-			}
-			link.run();
-		}
+
 		if (Game.time % 10 === 0) {
 			if (W58S16.terminal) {
 				terminalW58S16.send(W58S16.terminal);

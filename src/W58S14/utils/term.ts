@@ -1,7 +1,7 @@
-const terminalW58S16 = {
+const terminalW58S14 = {
 	send: function (terminal: StructureTerminal) {
 		console.log("------------------------Terminal---------------------------");
-		const goods = RESOURCE_HYDROGEN;
+		const goods = RESOURCE_ZYNTHIUM;
 		createEnergyBuyOrder();
 		createResourceSellOrder();
 
@@ -142,4 +142,4 @@ const terminalW58S16 = {
 	}
 };
 
-export default terminalW58S16;
+export default terminalW58S14;

@@ -1,37 +1,29 @@
-const roleAandH = {
-    run: function (creep: Creep) {
-
-        // 假设你有一个名为attacker的creep，它有ATTACK和HEAL部件
-        const attacker = Game.creeps['attacker'];
-        // 假设你想攻击的房间名为W1N1，你可以根据实际情况修改
-        const targetRoom = 'W1N1';
-        // 假设你想攻击的spawn名为Spawn1，你可以根据实际情况修改
-        const targetSpawn = Game.getObjectById('');
-        // 如果creep不在目标房间，就移动到那里
-        if (attacker.room.name != targetRoom) {
-            attacker.moveTo(new RoomPosition(25, 25, targetRoom));
-        }
-        // 否则，如果creep在目标房间，就寻找并攻击spawn
-        else {
-            const spawn = attacker.room.find(FIND_STRUCTURES, {
-                filter: (s) => s.structureType == STRUCTURE_SPAWN && s.name == targetSpawn
-            })[0];
-            // 如果找到了spawn，就移动并攻击它
-            if (spawn) {
-                if (attacker.attack(spawn) == ERR_NOT_IN_RANGE) {
-                    attacker.moveTo(spawn);
-                }
-            }
-            // 否则，如果没有找到spawn，就随机移动或者做其他事情
-            else {
-
-            }
-        }
-        // 如果creep受到伤害，就治疗自己
-        if (attacker.hits < attacker.hitsMax) {
-            attacker.heal(attacker);
-        }
-
-    }
-}
-export default roleAandH
+const SelfH = {
+	run: function (creep: Creep) {
+		const targetRoom = "W56S13";
+		const Home = "W57S13";
+		creep.heal(creep);
+		if (!creep.memory.working && creep.hits > creep.hitsMax * 0.9) {
+			creep.memory.working = true;
+			creep.say("移动");
+		}
+		if (creep.memory.working && creep.hits < creep.hitsMax * 0.8) {
+			creep.memory.working = false;
+			creep.say("退场");
+		}
+		if (creep.memory.working) {
+			if (creep.room.name !== targetRoom) {
+				creep.moveTo(new RoomPosition(1, 47, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
+			} else if (creep.room.name === targetRoom) {
+				creep.heal(creep);
+			}
+		} else {
+			if (creep.room.name !== Home) {
+				creep.moveTo(new RoomPosition(48, 47, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+			} else if (creep.room.name === Home) {
+				creep.moveTo(new RoomPosition(47, 47, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+			}
+		}
+	}
+};
+export default SelfH;

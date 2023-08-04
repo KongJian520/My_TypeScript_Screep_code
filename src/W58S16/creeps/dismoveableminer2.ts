@@ -13,6 +13,8 @@ const roleDismveableminer2 = {
         if (creep.memory.working) {
             if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 6});
+            } else if (sources.energy == 0) {
+                creep.memory.working = false;
             }
         } else {
             for (const resourceType in creep.store) {

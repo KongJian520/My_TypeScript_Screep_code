@@ -14,7 +14,7 @@ const roleRemoteRepair = {
         if (creep.memory.working) {
             if (creep.room.name !== targetRoom) {
                 creep.say('Moving')
-                creep.moveTo(new RoomPosition(20, 37, targetRoom), {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 10})
+                creep.moveTo(new RoomPosition(20, 37, targetRoom), {visualizePathStyle: {stroke: '#ff00f6'}, reusePath: 10})
             } else if (creep.room.name === targetRoom) {
                 // 检查周围 2 格范围内是否有需要修复的建筑
                 const repairTargets = creep.pos.findInRange(FIND_STRUCTURES, 2, {
@@ -22,13 +22,10 @@ const roleRemoteRepair = {
                         return (structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax)
                     }
                 });
-
                 // 如果周围有需要修复的建筑，优先修复它们
                 if (repairTargets.length > 0) {
                     repairTargets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
-                    if (creep.repair(repairTargets[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(repairTargets[0], {visualizePathStyle: {stroke: '#f00fff'}, reusePath: 10});
-                    }
+                    creep.repair(repairTargets[0])
                 } else {
                     // 如果周围没有需要修复的建筑，继续之前的逻辑
                     const targets = creep.room.find(FIND_STRUCTURES, {
@@ -64,14 +61,12 @@ const roleRemoteRepair = {
                     if (closestContainer) {
                         // creep.say('UP 最近的找到了')
                         // 移动到最近的 container 并从中取出能量
-                        if (creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(closestContainer);
+                        if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 10});
                         }
                     }
                 }
-                if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}, reusePath: 10});
-                }
+
             }
         }
     }

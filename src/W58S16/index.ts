@@ -12,7 +12,7 @@ import collector from "./creeps/Collector";
 import dismoveableminer from "./creeps/dismoveableminer";
 import dismoveableminer2 from "./creeps/dismoveableminer2";
 import Dismveableminer3 from "./creeps/dismoveableminer3";
-import Guard from "./creeps/attacker";
+import Guard from "./creeps/Guard";
 import claim from "./creeps/claim";
 import remoteHavster from "./creeps/remoteHavster";
 import RemoteHavster2 from "./creeps/remoteHavster2";
@@ -20,7 +20,7 @@ import RemoteHavster2 from "./creeps/remoteHavster2";
 import RemoteUpgrader from "./creeps/remoteUpgrader";
 import transfer from "./creeps/transfer";
 import thief from "./creeps/thief";
-import remoteAttacker from "./creeps/Guard";
+
 import remoteAttackerW57S13 from "./creeps/remoteattacker2";
 import ChaiQian from "./creeps/remoteChaiQian";
 import eye from "./creeps/eye";
@@ -141,9 +141,6 @@ const W58S16 = {
 						break;
 					case "thief":
 						thief.run(creep);
-						break;
-					case "remoteAttacker":
-						remoteAttacker.run(creep);
 						break;
 					case "remoteAttackerW57S13":
 						remoteAttackerW57S13.run(creep);

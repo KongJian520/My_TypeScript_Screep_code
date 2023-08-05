@@ -1,17 +1,23 @@
 const roleremoteAttackerW57S13 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W57S13";
+
 		if (creep.room.name !== targetRoom) {
-			creep.moveTo(new RoomPosition(33, 48, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
+			// 如果当前不在目标房间，就移动过去
+			creep.moveTo(new RoomPosition(20, 20, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
+			return;
+		}
+
+		if (creep.hits < creep.hitsMax) {
+			creep.heal(creep);
 		} else {
-			const target = creep.room.find(FIND_HOSTILE_CREEPS);
-			creep.say(creep.attack(target[0]) as unknown as string);
-			if (target.length !== 0) {
-				if (creep.attack(target[0]) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target[0], { visualizePathStyle: { stroke: "#ff0000" } });
+			const target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+			if (target) {
+				if (creep.attack(target) === ERR_NOT_IN_RANGE) {
+					creep.moveTo(target, { visualizePathStyle: { stroke: "#ff0000" } });
 				}
 			} else {
-				creep.moveTo(25, 25, { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(creep.room.controller!, { visualizePathStyle: { stroke: "#ffffff" } });
 			}
 		}
 	}

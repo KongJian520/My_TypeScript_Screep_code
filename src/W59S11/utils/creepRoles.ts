@@ -25,17 +25,17 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 2]
 		],
 		expectedCount: 1,
-		priority: 2
+		priority: 3
 	},
 	{
 		roleName: "DismoveminerW59S11",
 		bodyParts: [
 			[CARRY, 2],
 			[MOVE, 2],
-			[WORK, 5]
+			[WORK, 3]
 		],
 		expectedCount: 1,
-		priority: 3
+		priority: 2
 	},
 
 	{
@@ -45,7 +45,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 3]
 		],
 		expectedCount: 2,
-		priority: 3
+		priority: 2
 	},
 
 	{

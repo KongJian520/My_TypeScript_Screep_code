@@ -1,47 +1,52 @@
 // 导入screeps的类型定义
 
 const tower = {
+	run: function (tower: StructureTower) {
+		// 在房间中找到所有需要修复的建筑
+		const damagedStructures = tower.room.find(FIND_STRUCTURES, {
+			filter: (structure: Structure) => {
+				return (
+					(structure.structureType == STRUCTURE_TOWER ||
+						structure.structureType == STRUCTURE_CONTAINER ||
+						structure.structureType == STRUCTURE_ROAD ||
+						structure.structureType == STRUCTURE_SPAWN ||
+						structure.structureType == STRUCTURE_RAMPART) && // 判断建筑损伤是否小于最大值
+					// || structure.structureType == STRUCTURE_WALL
 
-    run: function () {
-        // 定义一个数组来存储想要修复的建筑类型
-        const repairTypes = [STRUCTURE_CONTAINER, STRUCTURE_ROAD, STRUCTURE_RAMPART, STRUCTURE_WALL];
-        // 定义一个常量来表示最大损伤值
-        const maxDamage = 10000;
-        // 在房间中找到所有的塔
-        let towers = Game.rooms['W58S14'].find(FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}}) as StructureTower[];
-        // 遍历每个塔
-        for (let tower of towers) {
-            const closestDamagedStructure = tower.room.find(FIND_STRUCTURES, {
-                filter: (structure: Structure) => {
-                    return ((structure.structureType == STRUCTURE_TOWER
-                            || structure.structureType == STRUCTURE_CONTAINER
-                            || structure.structureType == STRUCTURE_ROAD
-                            // || structure.structureType == STRUCTURE_RAMPART
-                            // || structure.structureType == STRUCTURE_WALL
-                        ) && // 判断建筑损伤是否小于最大值
-                        (structure.hits < structure.hitsMax * 0.4 || structure.hits != structure.hitsMax)
-                    )
-                }
-            });
-            // 找到最近的敌人
-            const closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-            // 如果有敌人，就攻击
-            if (closestHostile) {
-                console.log(tower.id + " 发现敌人,返回值：" + tower.attack(closestHostile))
-                tower.attack(closestHostile);
-                // 如果没有敌人，且有受损建筑，且塔有足够能量，就修复
-            } else
-                tower.repair(closestDamagedStructure[0]);
-            // console.log(tower.repair(closestDamagedStructure[0]))
-            // if (closestDamagedStructure && tower.store.energy >= 0) {
-            //     for (let index = 0; index < closestDamagedStructure.length; index++) {
+					structure.hits != structure.hitsMax
+				);
+			}
+		});
+		damagedStructures.sort((a, b) => {
+			return a.hits - b.hits;
+		});
 
-            //         tower.repair(closestDamagedStructure[index]);
+		// 找到最近的敌人
+		const closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+		const closestMyCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
+			filter: (MY_creep: Creep) => {
+				return MY_creep.hits < MY_creep.hitsMax;
+			}
+		});
 
-            //     }
-            // console.log('Tower:' + tower.id + " 修复受损建筑,返回值：" + tower.repair(closestDamagedStructure[index]) + '目标：' + closestDamagedStructure[0].pos)
-            // }
-        }
-    }
-}
-export default tower
+		// 如果有敌人，就攻击
+		if (closestHostile) {
+			console.log(tower.id + " 发现敌人,返回值：" + tower.attack(closestHostile));
+			tower.attack(closestHostile);
+		} else if (closestMyCreep) {
+			if (tower.store.energy > 400) {
+				tower.heal(closestMyCreep);
+			}
+		} else {
+			// 如果没有敌人，且有受损建筑，且塔有足够能量，就修复
+			if (damagedStructures.length > 0) {
+				// console.log(tower.id + " 发现损坏的建筑:" + damagedStructures[0].pos)
+				if (tower.store.energy > 500) {
+					tower.repair(damagedStructures[0]);
+				}
+			}
+		}
+	}
+};
+
+export default tower;

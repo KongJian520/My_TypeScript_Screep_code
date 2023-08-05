@@ -1,68 +1,50 @@
-import roleBuilderW58S14
-	from "./creeps/Builder";
-import roleUpgraderW58S14
-	from "./creeps/Upgrader";
-import roleHarvesterW58S14
-	from "./creeps/Harvester";
-import roleCarrierW58S14
-	from "./creeps/carrier";
-import roleCollectorW58S14
-	from "./creeps/Collector";
-import roleRepairW58S14
-	from "./creeps/repair";
-import tower
-	from "./utils/tower";
-import roletransferW58S14
-	from "./creeps/transfer";
-import roleDismveableminer2
-	from "./creeps/dismoveableminer2";
-import roleMinerW58S14
-	from "./creeps/Miner";
-import roledismoveabletrasferW58S14
-	from "./creeps/dismoveabletrasfer";
-import roleDismveableminerW58S14
-	from "./creeps/dismoveableminer";
-import RemoteBuilder2W58S14
-	from "./creeps/remoteBuilder2";
-import roleRemoteBuilderW58S14
-	from "./creeps/remoteBuilder";
-import roleRemoteRepairW58S14
-	from "./creeps/remoteRepairer";
-import roleRemoteHavsterW58S14
-	from "./creeps/remoteHavster";
-import roleremoteAttackerW58S14
-	from "./creeps/remoteattacker";
-import EXMANW58S14
-	from "./creeps/EXMAN";
-import roleGuardW58S14
-	from "./creeps/Guard";
-import GuardW58S13
-	from "./creeps/GuardW58S13";
-import roleClaim
-	from "./creeps/claim";
-import roleClaimW58S13
-	from "./creeps/claimW58S13";
-import link
-	from "./utils/link";
-import autoSpawn
-	from "./utils/autoSpawn";
-import terminalW58S16
-	from "./utils/term";
-import Dismveableminer3W58S14
-	from "./creeps/dismoveableminer3";
+import roleBuilderW58S14 from "./creeps/Builder";
+import roleUpgraderW58S14 from "./creeps/Upgrader";
+import roleHarvesterW58S14 from "./creeps/Harvester";
+import roleCarrierW58S14 from "./creeps/carrier";
+import roleCollectorW58S14 from "./creeps/Collector";
+import roleRepairW58S14 from "./creeps/repair";
+import tower from "./utils/tower";
+import roletransferW58S14 from "./creeps/transfer";
+import roleDismveableminer2 from "./creeps/dismoveableminer2";
+import roleMinerW58S14 from "./creeps/Miner";
+import roledismoveabletrasferW58S14 from "./creeps/dismoveabletrasfer";
+import roleDismveableminerW58S14 from "./creeps/dismoveableminer";
+import RemoteBuilder2W58S14 from "./creeps/remoteBuilder2";
+import roleRemoteBuilderW58S14 from "./creeps/remoteBuilder";
+import roleRemoteRepairW58S14 from "./creeps/remoteRepairer";
+import roleRemoteHavsterW58S14 from "./creeps/remoteHavster";
+import roleremoteAttackerW58S14 from "./creeps/remoteattacker";
+import EXMANW58S14 from "./creeps/EXMAN";
+import roleGuardW58S14 from "./creeps/Guard";
+import GuardW58S13 from "./creeps/GuardW58S13";
+import roleClaim from "./creeps/claim";
+import roleClaimW58S13 from "./creeps/claimW58S13";
+import link from "./utils/link";
+import autoSpawn from "./utils/autoSpawn";
+import terminalW58S16 from "./utils/term";
+import Dismveableminer3W58S14 from "./creeps/dismoveableminer3";
 
 const W58S14 = {
-	work: function(ThisRoom: Room) {
+	work: function (ThisRoom: Room) {
 		if (Game.time % 2 === 0) {
 			console.log(`----------------${ThisRoom.name}-------------------`);
 			if (ThisRoom.storage) {
 				console.log("Storge-RESOURCE_ENERGY = " + ThisRoom.storage.store.getUsedCapacity(RESOURCE_ENERGY));
 			}
-			link.run();
+
 			console.log(`${ThisRoom.name}能量:` + ThisRoom.energyAvailable + "/" + ThisRoom.energyCapacityAvailable);
 			// 遍历 Spawn 并执行逻辑
 		}
-		tower.run();
+		if (Game.time % 15 === 0) {
+			link.run();
+		}
+		let Towers = ThisRoom.find(FIND_MY_STRUCTURES, {
+			filter: { structureType: STRUCTURE_TOWER }
+		}) as StructureTower[];
+		for (let Tower of Towers) {
+			tower.run(Tower);
+		}
 		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			// 执行你的 Spawn 相关逻辑，比如生成单位、孵化等
 			if (Spawns.spawning) {

@@ -30,13 +30,14 @@ import RemoteBuilder from "./creeps/remoteBuilder";
 import SelfH from "./creeps/AandH";
 
 const W58S16 = {
-	work: function (W58S16: Room) {
+	work: function (ThisRoom: Room) {
 		let name;
+
 		if (Game.time % 2 === 0) {
-			console.log("----------------W58S16-------------------");
-			console.log("W58S16 能量:" + W58S16.energyAvailable + "/" + W58S16.energyCapacityAvailable);
-			if (W58S16.storage) {
-				console.log("Storge-RESOURCE_ENERGY = " + W58S16.storage.store.getUsedCapacity(RESOURCE_ENERGY));
+			console.log(`---------------${ThisRoom.name}-------------------`);
+			console.log(`${ThisRoom.name} 能量:` + ThisRoom.energyAvailable + "/" + ThisRoom.energyCapacityAvailable);
+			if (ThisRoom.storage) {
+				console.log("Storge-RESOURCE_ENERGY = " + ThisRoom.storage.store.getUsedCapacity(RESOURCE_ENERGY));
 			}
 			for (name in Memory.creeps) {
 				if (!Game.creeps[name]) {
@@ -44,10 +45,12 @@ const W58S16 = {
 					// console.log('Clearing non-existing creep memory:', name);
 				}
 			}
+		}
+		if (Game.time % 15 === 0) {
 			link.run();
 		}
 
-		for (const Spawns of W58S16.find(FIND_MY_SPAWNS)) {
+		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {
 				const spawningCreep = Game.creeps[Spawns.spawning.name];
 				Spawns.room.visual.text("🛠️" + spawningCreep.memory.role, Spawns.pos.x + 1, Spawns.pos.y, {
@@ -65,11 +68,11 @@ const W58S16 = {
 		}
 
 		if (Game.time % 10 === 0) {
-			if (W58S16.terminal) {
-				terminalW58S16.send(W58S16.terminal);
+			if (ThisRoom.terminal) {
+				terminalW58S16.send(ThisRoom.terminal);
 			}
 		}
-		let Towers = W58S16.find(FIND_MY_STRUCTURES, {
+		let Towers = ThisRoom.find(FIND_MY_STRUCTURES, {
 			filter: { structureType: STRUCTURE_TOWER }
 		}) as StructureTower[];
 		// 遍历每个塔

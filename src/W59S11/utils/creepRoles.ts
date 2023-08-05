@@ -61,12 +61,12 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "UpgraderW59S11",
 		bodyParts: [
-			[WORK, 4],
+			[WORK, 3],
 			[CARRY, 2],
 			[MOVE, 2]
 		],
 		expectedCount: 2,
-		priority: 4
+		priority: 5
 	},
 	{
 		roleName: "GuardW59S11",
@@ -77,7 +77,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[HEAL, 1]
 		],
 		expectedCount: 1,
-		priority: 3
+		priority: 8
 	},
 	{
 		roleName: "RemoteHarvesterW59S11",

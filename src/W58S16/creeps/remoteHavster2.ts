@@ -1,7 +1,7 @@
 const roleRemoteHavster2 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W58S15";
-		const Home = "W58S14";
+		const Home = "W58S16";
 
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -18,7 +18,10 @@ const roleRemoteHavster2 = {
 				const sources = Game.getObjectById("5bbca9eb9099fc012e6305b9") as Source;
 				creep.say(creep.harvest(sources) as unknown as string);
 				if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" }, reusePath: 10 });
+					creep.moveTo(sources, {
+						visualizePathStyle: { stroke: "#ffaa00" },
+						reusePath: 10
+					});
 				}
 			}
 		} else if (!creep.memory.working) {

@@ -71,11 +71,11 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "UpgraderW59S11",
 		bodyParts: [
-			[WORK, 3],
-			[CARRY, 4],
+			[WORK, 4],
+			[CARRY, 2],
 			[MOVE, 2]
 		],
-		expectedCount: 1,
+		expectedCount: 2,
 		priority: 4
 	}
 ];

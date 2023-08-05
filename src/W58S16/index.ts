@@ -69,7 +69,7 @@ const W58S16 = {
 				terminalW58S16.send(W58S16.terminal);
 			}
 		}
-		let Towers = Game.rooms["W58S16"].find(FIND_MY_STRUCTURES, {
+		let Towers = W58S16.find(FIND_MY_STRUCTURES, {
 			filter: { structureType: STRUCTURE_TOWER }
 		}) as StructureTower[];
 		// 遍历每个塔

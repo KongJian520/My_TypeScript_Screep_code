@@ -26,7 +26,7 @@ const BuilderW59S11 = {
 				if (structuresToRepair.length) {
 					if (creep.repair(structuresToRepair[0]) === ERR_NOT_IN_RANGE) {
 						creep.moveTo(structuresToRepair[0], { visualizePathStyle: { stroke: "#00ff00" } });
-						let nearNeedToRepair = creep.pos.findInRange(FIND_MY_STRUCTURES, 2, {
+						let nearNeedToRepair = creep.pos.findInRange(FIND_MY_STRUCTURES, 1, {
 							filter: (structure: Structure) => structure.hits < structure.hitsMax
 						});
 						creep.repair(nearNeedToRepair[0]);

@@ -12,7 +12,7 @@ const tower = {
 						structure.structureType == STRUCTURE_SPAWN ||
 						structure.structureType == STRUCTURE_RAMPART) && // 判断建筑损伤是否小于最大值
 					// || structure.structureType == STRUCTURE_WALL
-					structure.hits < 10000000 &&
+
 					structure.hits != structure.hitsMax
 				);
 			}
@@ -34,12 +34,16 @@ const tower = {
 			console.log(tower.id + " 发现敌人,返回值：" + tower.attack(closestHostile));
 			tower.attack(closestHostile);
 		} else if (closestMyCreep) {
-			tower.heal(closestMyCreep);
+			if (tower.store.energy > 400) {
+				tower.heal(closestMyCreep);
+			}
 		} else {
 			// 如果没有敌人，且有受损建筑，且塔有足够能量，就修复
 			if (damagedStructures.length > 0) {
 				// console.log(tower.id + " 发现损坏的建筑:" + damagedStructures[0].pos)
-				tower.repair(damagedStructures[0]);
+				if (tower.store.energy > 500) {
+					tower.repair(damagedStructures[0]);
+				}
 			}
 		}
 	}

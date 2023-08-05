@@ -9,13 +9,14 @@ import UpgraderW59S11 from "./creeps/UpgraderW59S11";
 import CarrierW59S11 from "./creeps/CarrierW59S11";
 import TransferW59S11 from "./creeps/TransferW59S11";
 import GuardW59S11 from "./creeps/Guard";
+import RemoteHarvesterW59S11 from "./creeps/RemoteHavsterW59S11";
 
 const W59S11 = {
 	work: function (W59S11: Room) {
 		let name;
 		if (Game.time % 2 === 0) {
-			console.log("----------------W59S11-------------------");
-			console.log(`W59S11 能量:` + W59S11.energyAvailable + "/" + W59S11.energyCapacityAvailable);
+			console.log(`----------------${W59S11.name}-------------------`);
+			console.log(`${W59S11.name} 能量:` + W59S11.energyAvailable + "/" + W59S11.energyCapacityAvailable);
 			if (W59S11.storage) {
 				console.log("Storge-RESOURCE_ENERGY = " + W59S11.storage.store.getUsedCapacity(RESOURCE_ENERGY));
 			}
@@ -81,6 +82,9 @@ const W59S11 = {
 						break;
 					case "GuardW59S11":
 						GuardW59S11.run(creep);
+						break;
+					case "RemoteHarvesterW59S11":
+						RemoteHarvesterW59S11.run(creep);
 						break;
 				}
 			}

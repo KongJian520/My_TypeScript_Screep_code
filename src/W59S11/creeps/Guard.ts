@@ -1,6 +1,6 @@
 const roleGuard = {
 	run(creep: Creep): void {
-		if (creep.hits < creep.hitsMax * 0.8) {
+		if (creep.hits < creep.hitsMax * 0.7) {
 			creep.heal(creep);
 		} else {
 			const target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
@@ -9,7 +9,7 @@ const roleGuard = {
 					creep.moveTo(target, { visualizePathStyle: { stroke: "#ff0000" } });
 				}
 			} else {
-				creep.moveTo(creep.room.controller!, { visualizePathStyle: { stroke: "#ffffff" } });
+				creep.moveTo(25, 19, { visualizePathStyle: { stroke: "#ffffff" } });
 			}
 		}
 	}

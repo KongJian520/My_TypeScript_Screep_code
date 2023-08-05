@@ -1,24 +1,36 @@
-import tower from "./utils/tower";
-import link from "./utils/link";
-import terminalW58S16 from "./utils/term";
-import autoSpawn from "./utils/autoSpawn";
-import HarvesterW59S11 from "./creeps/HarvesterW59S11";
-import DismoveminerW59S11 from "./creeps/DismoveminerW59S11";
-import BuilderW59S11 from "./creeps/BuilderW59S11";
-import UpgraderW59S11 from "./creeps/UpgraderW59S11";
-import CarrierW59S11 from "./creeps/CarrierW59S11";
-import TransferW59S11 from "./creeps/TransferW59S11";
-import GuardW59S11 from "./creeps/Guard";
-import RemoteHarvesterW59S11 from "./creeps/RemoteHavsterW59S11";
+import tower
+	from "./utils/tower";
+import link
+	from "./utils/link";
+import terminalW58S16
+	from "./utils/term";
+import autoSpawn
+	from "./utils/autoSpawn";
+import HarvesterW59S11
+	from "./creeps/HarvesterW59S11";
+import DismoveminerW59S11
+	from "./creeps/DismoveminerW59S11";
+import BuilderW59S11
+	from "./creeps/BuilderW59S11";
+import UpgraderW59S11
+	from "./creeps/UpgraderW59S11";
+import CarrierW59S11
+	from "./creeps/CarrierW59S11";
+import TransferW59S11
+	from "./creeps/TransferW59S11";
+import GuardW59S11
+	from "./creeps/Guard";
+import RemoteHarvesterW59S11
+	from "./creeps/RemoteHavsterW59S11";
 
 const W59S11 = {
-	work: function (W59S11: Room) {
+	work: function(ThisRoom: Room) {
 		let name;
 		if (Game.time % 2 === 0) {
-			console.log(`----------------${W59S11.name}-------------------`);
-			console.log(`${W59S11.name} 能量:` + W59S11.energyAvailable + "/" + W59S11.energyCapacityAvailable);
-			if (W59S11.storage) {
-				console.log("Storge-RESOURCE_ENERGY = " + W59S11.storage.store.getUsedCapacity(RESOURCE_ENERGY));
+			console.log(`----------------${ThisRoom.name}-------------------`);
+			console.log(`${ThisRoom.name} 能量:` + ThisRoom.energyAvailable + "/" + ThisRoom.energyCapacityAvailable);
+			if (ThisRoom.storage) {
+				console.log("Storge-RESOURCE_ENERGY = " + ThisRoom.storage.store.getUsedCapacity(RESOURCE_ENERGY));
 			}
 			for (name in Memory.creeps) {
 				if (!Game.creeps[name]) {
@@ -29,7 +41,7 @@ const W59S11 = {
 			link.run();
 		}
 
-		for (const Spawns of W59S11.find(FIND_MY_SPAWNS)) {
+		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {
 				const spawningCreep = Game.creeps[Spawns.spawning.name];
 				Spawns.room.visual.text("🛠️" + spawningCreep.memory.role, Spawns.pos.x + 1, Spawns.pos.y, {
@@ -37,7 +49,7 @@ const W59S11 = {
 					opacity: 0.8
 				});
 				if (Game.time % 2 === 0) {
-					console.log(`🔁${Spawns.name} is Spawning ${spawningCreep.memory.role}`);
+					console.log(`🔁${ThisRoom.name}的${Spawns.name} is Spawning ${spawningCreep.memory.role}`);
 				}
 			} else {
 				if (Game.time % 2 === 0) {
@@ -46,11 +58,11 @@ const W59S11 = {
 			}
 		}
 		if (Game.time % 10 === 0) {
-			if (W59S11.terminal) {
-				terminalW58S16.send(W59S11.terminal);
+			if (ThisRoom.terminal) {
+				terminalW58S16.send(ThisRoom.terminal);
 			}
 		}
-		let Towers = W59S11.find(FIND_MY_STRUCTURES, {
+		let Towers = ThisRoom.find(FIND_MY_STRUCTURES, {
 			filter: { structureType: STRUCTURE_TOWER }
 		}) as StructureTower[];
 		// 遍历每个塔

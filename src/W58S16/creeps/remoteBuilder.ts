@@ -1,6 +1,5 @@
 const roleRemoteBuilderW58S14 = {
 	run: function (creep: Creep) {
-		const Home = creep.memory.room;
 		const targetRoom = "W58S13";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
@@ -10,14 +9,14 @@ const roleRemoteBuilderW58S14 = {
 			creep.memory.working = true;
 			creep.say("🚧 build");
 		}
-		if (creep.memory.working) {
-			if (creep.room.name !== targetRoom) {
-				creep.say("Moving");
-				creep.moveTo(new RoomPosition(20, 37, targetRoom), {
-					visualizePathStyle: { stroke: "#ffaa00" },
-					reusePath: 10
-				});
-			} else if (creep.room.name === targetRoom) {
+		if (creep.room.name !== targetRoom) {
+			creep.say("Moving");
+			creep.moveTo(new RoomPosition(20, 37, targetRoom), {
+				visualizePathStyle: { stroke: "#ffaa00" },
+				reusePath: 10
+			});
+		} else if (creep.room.name === targetRoom) {
+			if (creep.memory.working) {
 				const targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
 				if (targets.length !== 0) {
 					if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {

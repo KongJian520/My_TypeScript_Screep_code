@@ -17,7 +17,7 @@ const roleGuardW58S13 = {
 					creep.moveTo(target, { visualizePathStyle: { stroke: "#ff0000" } });
 				}
 			} else {
-				creep.moveTo(creep.room.controller!, { visualizePathStyle: { stroke: "#ffffff" } });
+				creep.moveTo(40, 27, { visualizePathStyle: { stroke: "#ffffff" } });
 			}
 		}
 	}

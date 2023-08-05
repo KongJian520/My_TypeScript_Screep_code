@@ -17,13 +17,14 @@ import roleRemoteHavsterW58S14 from "./creeps/remoteHavster";
 import roleremoteAttackerW58S14 from "./creeps/remoteattacker";
 import EXMANW58S14 from "./creeps/EXMAN";
 import roleGuardW58S14 from "./creeps/Guard";
-import roleEyeW58S13 from "./creeps/EyeW58S13";
+import GuardW58S13 from "./creeps/GuardW58S13";
 import roleClaim from "./creeps/claim";
 import roleClaimW58S13 from "./creeps/claimW58S13";
 import link from "./utils/link";
 import autoSpawn from "./utils/autoSpawn";
 import terminalW58S16 from "./utils/term";
 import Dismveableminer3W58S14 from "./creeps/dismoveableminer3";
+import roleGuardW58S13 from "./creeps/GuardW58S13";
 
 const W58S14 = {
 	work: function (W58S14: Room) {
@@ -114,8 +115,8 @@ const W58S14 = {
 				case "GuardW58S14":
 					roleGuardW58S14.run(creep);
 					break;
-				case "EyeW58S13":
-					roleEyeW58S13.run(creep);
+				case "GuardW58S13":
+					GuardW58S13.run(creep);
 					break;
 				case "claimW58S14":
 					roleClaim.run(creep);

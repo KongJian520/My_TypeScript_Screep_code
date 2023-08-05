@@ -1,6 +1,7 @@
 const roleDismveableminer = {
 	run: function (creep: Creep) {
-		const sources = Game.getObjectById("5bbca9eb9099fc012e6305bd") as Source;
+		// console.log(creep.pos);
+		const sources = Game.getObjectById("5bbca9de9099fc012e630419") as Source;
 		const continer = Game.getObjectById("64cd2934e3f07ff8ff3122ab") as StructureContainer;
 		// const link = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 		// 	filter: structure => {

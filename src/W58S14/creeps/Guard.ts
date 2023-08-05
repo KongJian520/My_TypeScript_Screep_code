@@ -12,7 +12,7 @@ const roleGuardW58S14 = {
 			} else {
 				creep.moveTo(new RoomPosition(48, 47, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
 			}
-			if (creep.hits < creep.hitsMax * 0.4) {
+			if (creep.hits < creep.hitsMax * 0.6) {
 				creep.heal(creep);
 			}
 		}

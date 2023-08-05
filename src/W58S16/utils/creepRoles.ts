@@ -85,15 +85,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 6
 	},
-	// {
-	// 	roleName: "Dismveableminer3",
-	// 	bodyParts: [
-	// 		[MOVE, 5],
-	// 		[WORK, 15]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 7
-	// },
+	{
+		roleName: "Dismveableminer3",
+		bodyParts: [
+			[MOVE, 5],
+			[WORK, 15]
+		],
+		expectedCount: 1,
+		priority: 7
+	},
 	{
 		roleName: "transfer",
 		bodyParts: [

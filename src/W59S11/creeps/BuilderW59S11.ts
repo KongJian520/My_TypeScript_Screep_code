@@ -1,27 +1,44 @@
 const BuilderW59S11 = {
-	run: function (creep: any) {
+	run: function (creep: Creep) {
 		const targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 		targets.sort((a: ConstructionSite, b: ConstructionSite) => a.progressTotal - b.progressTotal);
-		if (creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
-			creep.memory.building = false;
+		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
+			creep.memory.working = false;
 			creep.say("BU 🔄");
 		}
-		if (!creep.memory.building && creep.store.getFreeCapacity() == 0) {
-			creep.memory.building = true;
+		if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
+			creep.memory.working = true;
 			creep.say("🚧 build");
 		}
-		if (creep.memory.building) {
+		if (creep.memory.working) {
 			if (targets.length > 0) {
-				if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(targets[0], { visualizePathStyle: { stroke: "#ffffff" } });
+				let colestTargets = creep.pos.findClosestByPath(targets)!;
+				if (creep.build(colestTargets) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(colestTargets, { visualizePathStyle: { stroke: "#ffffff" } });
+				}
+			} else {
+				const structuresToRepair = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure: Structure) =>
+						structure.hits < structure.hitsMax &&
+						structure.structureType !== STRUCTURE_WALL &&
+						structure.structureType !== STRUCTURE_RAMPART
+				});
+				if (structuresToRepair.length) {
+					if (creep.repair(structuresToRepair[0]) === ERR_NOT_IN_RANGE) {
+						creep.moveTo(structuresToRepair[0], { visualizePathStyle: { stroke: "#00ff00" } });
+						let nearNeedToRepair = creep.pos.findInRange(FIND_MY_STRUCTURES, 2, {
+							filter: (structure: Structure) => structure.hits < structure.hitsMax
+						});
+						creep.repair(nearNeedToRepair[0]);
+					}
 				}
 			}
 		} else {
 			const sources = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure: any) => {
 					return (
-						// structure.structureType == STRUCTURE_CONTAINER ||
-						structure.structureType == STRUCTURE_STORAGE && structure.store.energy > 0
+						(structure.structureType == STRUCTURE_CONTAINER && structure.id == "64cd2b491b1090248eaed7de") ||
+						(structure.structureType == STRUCTURE_STORAGE && structure.store.energy > 0)
 					);
 				}
 			});
@@ -37,9 +54,6 @@ const BuilderW59S11 = {
 						creep.moveTo(closestContainer);
 					}
 				}
-			}
-			if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 			}
 		}
 	}

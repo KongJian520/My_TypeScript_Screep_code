@@ -19,7 +19,7 @@ const roleHarvesterW59S11 = {
 				filter: (structure: any) => {
 					return (
 						(structure.structureType == STRUCTURE_SPAWN ||
-							// structure.structureType == STRUCTURE_STORAGE ||
+							structure.structureType == STRUCTURE_CONTAINER ||
 							structure.structureType == STRUCTURE_EXTENSION) &&
 						structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 					);

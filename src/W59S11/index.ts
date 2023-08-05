@@ -5,8 +5,10 @@ import autoSpawn from "./utils/autoSpawn";
 import HarvesterW59S11 from "./creeps/HarvesterW59S11";
 import DismoveminerW59S11 from "./creeps/DismoveminerW59S11";
 import BuilderW59S11 from "./creeps/BuilderW59S11";
-import UpgraderW59S11 from "./creeps/Upgrader";
+import UpgraderW59S11 from "./creeps/UpgraderW59S11";
 import CarrierW59S11 from "./creeps/CarrierW59S11";
+import TransferW59S11 from "./creeps/TransferW59S11";
+import GuardW59S11 from "./creeps/Guard";
 
 const W59S11 = {
 	work: function (W59S11: Room) {
@@ -73,6 +75,12 @@ const W59S11 = {
 						break;
 					case "CarrierW59S11":
 						CarrierW59S11.run(creep);
+						break;
+					case "TransferW59S11":
+						TransferW59S11.runEnergy(creep);
+						break;
+					case "GuardW59S11":
+						GuardW59S11.run(creep);
 						break;
 				}
 			}

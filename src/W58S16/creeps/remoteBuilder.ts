@@ -1,6 +1,6 @@
 const roleBuilder = {
 	run(creep: Creep): void {
-		let targetRoom = "W59S11";
+		let targetRoom = "W58S13";
 		if (targetRoom && creep.room.name !== targetRoom) {
 			// 如果当前不在目标房间，就移动过去
 			// const exit = creep.room.findExitTo(targetRoom);
@@ -18,7 +18,7 @@ const roleBuilder = {
 
 		if (creep.memory.working) {
 			const targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-			if (targets.length) {
+			if (targets.length > 0) {
 				if (creep.build(targets[0]) === ERR_NOT_IN_RANGE) {
 					creep.moveTo(targets[0], { visualizePathStyle: { stroke: "#ffffff" } });
 				}

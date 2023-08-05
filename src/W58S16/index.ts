@@ -133,12 +133,12 @@ const W58S16 = {
 					case "RemoteUpgrader":
 						RemoteUpgrader.run(creep);
 						break;
-					case "transfer":
-						transfer.runEnergy(creep);
-						break;
-					// case 'transfer':
-					// 	transfer.runMineral(creep);
+					// case "transfer":
+					// 	transfer.runEnergy(creep);
 					// 	break;
+					case "transfer":
+						transfer.runMineral(creep);
+						break;
 					case "thief":
 						thief.run(creep);
 						break;

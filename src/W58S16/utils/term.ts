@@ -1,6 +1,6 @@
 const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
-		console.log("------------------------Terminal---------------------------");
+		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_HYDROGEN;
 		createEnergyBuyOrder();
 		createResourceSellOrder();
@@ -64,7 +64,7 @@ const terminalW58S16 = {
 		//创建能量购买订单
 		function createEnergyBuyOrder() {
 			const orderAmount = 10000; // 要购买的能量数量
-			const maxPrice = 15; // 设置一个最大购买价格
+			const maxPrice = 10; // 设置一个最大购买价格
 
 			const existingOrders = Game.market.getAllOrders({
 				type: ORDER_BUY,

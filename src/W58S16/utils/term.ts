@@ -3,7 +3,7 @@ const terminalW58S16 = {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_HYDROGEN;
 		createEnergyBuyOrder();
-		createResourceSellOrder();
+		// createResourceSellOrder();
 
 		processOrder(
 			Game.market
@@ -28,7 +28,7 @@ const terminalW58S16 = {
 		);
 
 		function processOrder(orderSell: Order[], OrderAmount: number, terminal: StructureTerminal) {
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < 20; i++) {
 				if (terminal.store[goods] >= orderSell[i].amount) {
 					console.log(`<font color=\"#87ceeb\">===============${orderSell[i].type}订单===============`);
 					console.log("订单ID:", orderSell[i].id);
@@ -63,7 +63,7 @@ const terminalW58S16 = {
 
 		//创建能量购买订单
 		function createEnergyBuyOrder() {
-			const orderAmount = 10000; // 要购买的能量数量
+			const orderAmount = 1000000; // 要购买的能量数量
 			const maxPrice = 10; // 设置一个最大购买价格
 
 			const existingOrders = Game.market.getAllOrders({

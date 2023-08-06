@@ -85,15 +85,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 6
 	},
-	{
-		roleName: "Dismveableminer3",
-		bodyParts: [
-			[MOVE, 5],
-			[WORK, 15]
-		],
-		expectedCount: 1,
-		priority: 7
-	},
+	// {
+	// 	roleName: "Dismveableminer3",
+	// 	bodyParts: [
+	// 		[MOVE, 5],
+	// 		[WORK, 15]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 7
+	// },
 	{
 		roleName: "transfer",
 		bodyParts: [
@@ -110,7 +110,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 6],
 			[MOVE, 6]
 		],
-		expectedCount: 1,
+		expectedCount: 3,
 		priority: 8
 	},
 	{
@@ -121,6 +121,16 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 9]
 		],
 		expectedCount: 1,
+		priority: 11
+	},
+	{
+		roleName: "RemoteUpgrader",
+		bodyParts: [
+			[WORK, 9],
+			[CARRY, 8],
+			[MOVE, 9]
+		],
+		expectedCount: 2,
 		priority: 11
 	},
 	{
@@ -139,29 +149,20 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 8],
 			[MOVE, 8]
 		],
-		expectedCount: 3,
+		expectedCount: 2,
 		priority: 10
 	},
-	{
-		roleName: "RemoteHavster2",
-		bodyParts: [
-			[WORK, 10],
-			[CARRY, 8],
-			[MOVE, 8]
-		],
-		expectedCount: 4,
-		priority: 11
-	},
-	{
-		roleName: "RemoteRepair",
-		bodyParts: [
-			[WORK, 10],
-			[CARRY, 8],
-			[MOVE, 8]
-		],
-		expectedCount: 1,
-		priority: 13
-	},
+	// {
+	// 	roleName: "RemoteHavster2",
+	// 	bodyParts: [
+	// 		[WORK, 10],
+	// 		[CARRY, 8],
+	// 		[MOVE, 8]
+	// 	],
+	// 	expectedCount: 2,
+	// 	priority: 11
+	// },
+
 	{
 		roleName: "Guard",
 		bodyParts: [
@@ -183,7 +184,7 @@ export const roleDefinitions: RoleDefinition[] = [
 		],
 		expectedCount: 1,
 		priority: 99
-	},
+	}
 	// {
 	// 	roleName: "thief",
 	// 	bodyParts: [
@@ -193,13 +194,13 @@ export const roleDefinitions: RoleDefinition[] = [
 	// 	expectedCount: 3,
 	// 	priority: 98
 	// },
-	{
-		roleName: "SelfH",
-		bodyParts: [
-			[MOVE, 8],
-			[HEAL, 6]
-		],
-		expectedCount: 1,
-		priority: 99
-	}
+	// {
+	// 	roleName: "SelfH",
+	// 	bodyParts: [
+	// 		[MOVE, 8],
+	// 		[HEAL, 6]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 99
+	// }
 ];

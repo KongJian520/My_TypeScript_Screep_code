@@ -2,7 +2,7 @@
 
 const RemoteHavster = {
 	run: function (creep: Creep) {
-		const targetRoom = "W59S9";
+		const targetRoom = "W59S7";
 		const Home = creep.memory.room;
 
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
@@ -15,21 +15,24 @@ const RemoteHavster = {
 		}
 		if (creep.memory.working) {
 			if (creep.room.name !== targetRoom) {
-				creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
+				creep.moveTo(new RoomPosition(20, 37, targetRoom), {
+					visualizePathStyle: { stroke: "#ffaa00" },
+					reusePath: 50
+				});
 			} else if (creep.room.name === targetRoom) {
 				const sources = creep.room.find(FIND_SOURCES);
 				creep.say(creep.harvest(sources[0]) as unknown as string);
 				if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[0], {
 						visualizePathStyle: { stroke: "#ffaa00" },
-						reusePath: 10
+						reusePath: 50
 					});
 				}
 				if (creep.harvest(sources[0]) == -6) {
 					if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
 						creep.moveTo(sources[1], {
 							visualizePathStyle: { stroke: "#ffaa00" },
-							reusePath: 10
+							reusePath: 50
 						});
 					}
 				}
@@ -54,7 +57,7 @@ const RemoteHavster = {
 						if (creep.transfer(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(closestContainer, {
 								visualizePathStyle: { stroke: "#ffaa00" },
-								reusePath: 10
+								reusePath: 50
 							});
 						}
 					}

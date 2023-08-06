@@ -22,7 +22,7 @@ const roletransferW58S14 = {
 			}
 		}
 	},
-	run: function (creep: any) {
+	runEnergy: function (creep: any) {
 		const Home = "W58S14";
 		if (_.filter(Game.creeps, creep => creep.memory.role == "CarrierW58S14").length == 0) {
 			creep.memory.role = "CarrierW58S14";

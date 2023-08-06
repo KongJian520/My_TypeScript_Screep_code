@@ -1,30 +1,19 @@
-import tower
-	from "./utils/tower";
-import link
-	from "./utils/link";
-import terminalW58S16
-	from "./utils/term";
-import autoSpawn
-	from "./utils/autoSpawn";
-import HarvesterW59S11
-	from "./creeps/HarvesterW59S11";
-import DismoveminerW59S11
-	from "./creeps/DismoveminerW59S11";
-import BuilderW59S11
-	from "./creeps/BuilderW59S11";
-import UpgraderW59S11
-	from "./creeps/UpgraderW59S11";
-import CarrierW59S11
-	from "./creeps/CarrierW59S11";
-import TransferW59S11
-	from "./creeps/TransferW59S11";
-import GuardW59S11
-	from "./creeps/Guard";
-import RemoteHarvesterW59S11
-	from "./creeps/RemoteHavsterW59S11";
+import tower from "./utils/tower";
+import link from "./utils/link";
+import terminalW58S16 from "./utils/term";
+import autoSpawn from "./utils/autoSpawn";
+import HarvesterW58S15 from "./creeps/HarvesterW58S15";
+import UpgraderW58S15 from "./creeps/UpgraderW58S15";
+import GuardW58S15 from "./creeps/Guard";
+import BuilderW58S15 from "./creeps/BuilderW58S15";
+import DismoveminerW58S15 from "./creeps/DismoveminerW58S15";
+import CarrierW58S15 from "./creeps/CarrierW58S15";
+import Dismveableminer2W58S15 from "./creeps/Dismoveminer2W58S15";
+import Transfer2W58S15 from "./creeps/Transfer2W58S15";
+import TransferW58S15 from "./creeps/TransferW58S15";
 
-const W59S11 = {
-	work: function(ThisRoom: Room) {
+const W58S15 = {
+	work: function (ThisRoom: Room) {
 		let name;
 		if (Game.time % 2 === 0) {
 			console.log(`----------------${ThisRoom.name}-------------------`);
@@ -74,33 +63,36 @@ const W59S11 = {
 				const creep = Game.creeps[name];
 				// 优化后的代码
 				switch (creep.memory.role) {
-					case "HarvesterW59S11":
-						HarvesterW59S11.run(creep);
+					case "HarvesterW58S15":
+						HarvesterW58S15.run(creep);
 						break;
-					case "DismoveminerW59S11":
-						DismoveminerW59S11.run(creep);
+					case "UpgraderW58S15":
+						UpgraderW58S15.run(creep);
 						break;
-					case "BuilderW59S11":
-						BuilderW59S11.run(creep);
+					// case "GuardW58S15":
+					// 	GuardW58S15.run(creep);
+					// 	break;
+					case "BuilderW58S15":
+						BuilderW58S15.run(creep);
 						break;
-					case "UpgraderW59S11":
-						UpgraderW59S11.run(creep);
+					case "DismoveminerW58S15":
+						DismoveminerW58S15.run(creep);
 						break;
-					case "CarrierW59S11":
-						CarrierW59S11.run(creep);
+					case "CarrierW58S15":
+						CarrierW58S15.run(creep);
 						break;
-					case "TransferW59S11":
-						TransferW59S11.runEnergy(creep);
+					case "Dismveableminer2W58S15":
+						Dismveableminer2W58S15.run(creep);
 						break;
-					case "GuardW59S11":
-						GuardW59S11.run(creep);
+					case "Transfer2W58S15":
+						Transfer2W58S15.runEnergy(creep);
 						break;
-					case "RemoteHarvesterW59S11":
-						RemoteHarvesterW59S11.run(creep);
+					case "TransferW58S15":
+						TransferW58S15.runEnergy(creep);
 						break;
 				}
 			}
 		}
 	}
 };
-export default W59S11;
+export default W58S15;

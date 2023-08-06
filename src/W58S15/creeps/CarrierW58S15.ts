@@ -1,8 +1,11 @@
-const roleCarrier = {
+const roleCarrierW58S15 = {
 	run: function (creep: Creep) {
-		const Home = "W59S11";
+		const Home = "W58S15";
 		if (creep.room.name !== Home) {
-			creep.moveTo(new RoomPosition(20, 37, Home));
+			creep.moveTo(new RoomPosition(20, 37, Home), {
+				visualizePathStyle: { stroke: "#0080ff" },
+				reusePath: 10
+			});
 		} else {
 			if (creep.memory.working && creep.store[RESOURCE_ENERGY] === 0) {
 				creep.memory.working = false;
@@ -27,7 +30,10 @@ const roleCarrier = {
 				const closestTarget = creep.pos.findClosestByPath(targets);
 				if (closestTarget) {
 					if (creep.transfer(closestTarget, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-						creep.moveTo(closestTarget, { visualizePathStyle: { stroke: "#ffffff" } });
+						creep.moveTo(closestTarget, {
+							visualizePathStyle: { stroke: "#ffffff" },
+							reusePath: 10
+						});
 					}
 				} else {
 					// 如果 EXT 和 Spawn 都已经填满，则填充 tower
@@ -43,20 +49,28 @@ const roleCarrier = {
 					const closestTower = creep.pos.findClosestByPath(towers);
 					if (closestTower) {
 						if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-							creep.moveTo(closestTower, { visualizePathStyle: { stroke: "#ffffff" } });
+							creep.moveTo(closestTower, {
+								visualizePathStyle: { stroke: "#ffffff" },
+								reusePath: 10
+							});
 						}
 					}
 				}
 			} else {
-				const sources = Game.getObjectById("64cd2b491b1090248eaed7de") as StructureContainer;
-				if (sources) {
+				const sources = Game.getObjectById("64cf2666bee72abe30889401") as StructureContainer;
+				if (sources.store.energy > 0) {
 					if (creep.withdraw(sources, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-						creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" } });
+						creep.moveTo(sources, {
+							visualizePathStyle: { stroke: "#ffff00" },
+							reusePath: 10
+						});
 					}
+				} else {
+					creep.memory.working = true;
 				}
 			}
 		}
 	}
 };
 
-export default roleCarrier;
+export default roleCarrierW58S15;

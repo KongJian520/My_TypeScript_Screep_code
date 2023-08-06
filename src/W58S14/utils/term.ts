@@ -2,8 +2,8 @@ const terminalW58S14 = {
 	send: function (terminal: StructureTerminal) {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_ZYNTHIUM;
-		createEnergyBuyOrder();
-		createResourceSellOrder();
+		// createEnergyBuyOrder();
+		// createResourceSellOrder();
 
 		processOrder(
 			Game.market
@@ -28,7 +28,7 @@ const terminalW58S14 = {
 		);
 
 		function processOrder(orderSell: Order[], OrderAmount: number, terminal: StructureTerminal) {
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < 20; i++) {
 				if (terminal.store[goods] >= orderSell[i].amount) {
 					console.log(`<font color=\"#87ceeb\">===============${orderSell[i].type}订单===============`);
 					console.log("订单ID:", orderSell[i].id);

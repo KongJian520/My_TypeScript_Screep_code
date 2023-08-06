@@ -28,6 +28,7 @@ import dismoveabletrasfer from "./creeps/dismoveabletrasfer";
 import RemoteRepair from "./creeps/remoteRepairer";
 import RemoteBuilder from "./creeps/remoteBuilder";
 import SelfH from "./creeps/AandH";
+import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -137,11 +138,17 @@ const W58S16 = {
 						RemoteUpgrader.run(creep);
 						break;
 					// case "transfer":
-					// 	transfer.runEnergy(creep);
+					//
 					// 	break;
 					case "transfer":
-						transfer.runMineral(creep);
-						break;
+						const sources = Game.getObjectById("64c8cfac58c500a5a104799d") as StructureContainer;
+						if (sources.store.energy == 0) {
+							transfer.runMineral(creep);
+							break;
+						} else {
+							transfer.runEnergy(creep);
+							break;
+						}
 					case "thief":
 						thief.run(creep);
 						break;
@@ -159,6 +166,10 @@ const W58S16 = {
 						break;
 					case "RemoteRepair":
 						RemoteRepair.run(creep);
+						break;
+					case "RemoteBuilder2W58S16":
+						RemoteBuilder2W58S16.run(creep);
+						break;
 				}
 			}
 		}

@@ -2,7 +2,7 @@ import roleCarrier from "./carrier";
 
 const roledismoveabletrasfer = {
 	run: function (creep: Creep) {
-		if (_.filter(Game.creeps, creep => creep.memory.role == "CarrierW58S14").length == 0) {
+		if (_.filter(Game.creeps, creep => creep.memory.role == "carrier").length == 0) {
 			roleCarrier.run(creep);
 		} else {
 			const W58S16 = "W58S16";

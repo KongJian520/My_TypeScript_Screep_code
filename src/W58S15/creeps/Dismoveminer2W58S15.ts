@@ -1,13 +1,8 @@
-const roleDismveableminer = {
+const Dismveableminer2 = {
 	run: function (creep: Creep) {
 		// console.log(creep.pos);
-		const sources = Game.getObjectById("5bbca9de9099fc012e630419") as Source;
-		const continer = Game.getObjectById("64cd2934e3f07ff8ff3122ab") as StructureContainer;
-		// const link = creep.pos.findInRange(FIND_STRUCTURES, 1, {
-		// 	filter: structure => {
-		// 		return structure.structureType === STRUCTURE_CONTAINER;
-		// 	}
-		// });
+		const sources = Game.getObjectById("5bbca9de9099fc012e630410") as Source;
+		const continer = Game.getObjectById("64cf073e8e7fe561ae6f1952") as StructureContainer;
 
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -32,4 +27,4 @@ const roleDismveableminer = {
 		}
 	}
 };
-export default roleDismveableminer;
+export default Dismveableminer2;

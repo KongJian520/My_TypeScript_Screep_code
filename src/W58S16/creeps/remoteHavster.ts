@@ -2,7 +2,7 @@
 
 const roleRemoteHavster = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S15";
+		const targetRoom = "W58S17";
 		const Home = "W58S16";
 
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {

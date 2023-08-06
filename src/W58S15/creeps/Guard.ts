@@ -9,7 +9,10 @@ const roleGuard = {
 					creep.moveTo(target, { visualizePathStyle: { stroke: "#ff0000" } });
 				}
 			} else {
-				creep.moveTo(25, 19, { visualizePathStyle: { stroke: "#ffffff" } });
+				creep.moveTo(25, 18, {
+					visualizePathStyle: { stroke: "#ffffff" },
+					reusePath: 50
+				});
 			}
 		}
 	}

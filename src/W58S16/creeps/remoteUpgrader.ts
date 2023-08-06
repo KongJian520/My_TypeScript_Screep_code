@@ -1,6 +1,6 @@
 const roleRemoteUpgrader = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S14";
+		const targetRoom = "W58S15";
 		const targetcontroller = Game.rooms[targetRoom].controller;
 		const Home = "W58S16";
 		const Storage = Game.rooms[Home].storage;
@@ -25,25 +25,22 @@ const roleRemoteUpgrader = {
 				} else if (creep.room.name === targetRoom) {
 					if (creep.memory.working) {
 						if (creep.upgradeController(targetcontroller) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targetcontroller, { visualizePathStyle: { stroke: "#ffffff" }, reusePath: 10 });
+							creep.moveTo(targetcontroller, {
+								visualizePathStyle: { stroke: "#ffffff" },
+								reusePath: 10
+							});
 						}
 					}
 				}
 			} else {
-				if (creep.room.name !== Home) {
-					creep.moveTo(new RoomPosition(31, 37, Home));
-				} else if (creep.room.name == Home) {
-					if (Storage) {
-						if (creep.withdraw(Storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(Storage, { visualizePathStyle: { stroke: "#ffaa00" }, reusePath: 10 });
-						}
+				const source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
+				if (source) {
+					if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
+						creep.moveTo(source, { visualizePathStyle: { stroke: "#ffff00" } });
 					}
 				}
 			}
 		}
-		// if (Game.rooms["W58S15"].find(FIND_CONSTRUCTION_SITES).length == 0){
-		// 	creep.memory.role = 'remoteHavster'
-		// }
 	}
 };
 export default roleRemoteUpgrader;

@@ -2,8 +2,8 @@ const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
 		console.log("------------------------Terminal---------------------------");
 		const goods = RESOURCE_HYDROGEN;
-		createEnergyBuyOrder();
-		createResourceSellOrder();
+		// createEnergyBuyOrder();
+		// createResourceSellOrder();
 
 		processOrder(
 			Game.market
@@ -23,12 +23,12 @@ const terminalW58S16 = {
 					resourceType: RESOURCE_ENERGY
 				})
 				.sort((a, b) => a.price - b.price),
-			500,
+			5000,
 			terminal
 		);
 
 		function processOrder(orderSell: Order[], OrderAmount: number, terminal: StructureTerminal) {
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < 20; i++) {
 				if (terminal.store[goods] >= orderSell[i].amount) {
 					console.log(`<font color=\"#87ceeb\">===============${orderSell[i].type}订单===============`);
 					console.log("订单ID:", orderSell[i].id);
@@ -46,9 +46,11 @@ const terminalW58S16 = {
 					);
 					console.log(`已充能：${terminal.store.energy} / ${orderNeededEnergy}`);
 					// 检查是否有足够的能量进行交易
-					if (terminal.store.energy >= orderNeededEnergy) {
+					if (terminal.store.energy >= orderNeededEnergy && orderNeededEnergy < 10000) {
 						const dealResult = Game.market.deal(orderSell[i].id, OrderAmount, terminal.room.name);
 						handleDealResult(dealResult);
+					} else if (orderNeededEnergy > 10000) {
+						console.log("不划算，跳过");
 					} else {
 						console.log(`路费不够，不执行函数`);
 					}

@@ -1,7 +1,7 @@
-const TransferW59S11 = {
+const TransferW58S15 = {
 	runEnergy: function (creep: Creep) {
-		const sources = Game.getObjectById("64cd2934e3f07ff8ff3122ab") as StructureContainer;
-		const targets = Game.getObjectById("64cd2b491b1090248eaed7de") as StructureContainer;
+		const sources = Game.getObjectById("64cf92ad0ffdb374f72d9d22") as StructureContainer;
+		const targets = Game.getObjectById("64cf9a2ea5626d26f2f0cd76") as StructureContainer;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("找contianer中");
@@ -13,12 +13,18 @@ const TransferW59S11 = {
 		if (!creep.memory.working) {
 			if (sources) {
 				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" } });
+					creep.moveTo(sources, {
+						visualizePathStyle: { stroke: "#ffaa00" },
+						reusePath: 50
+					});
 				}
 			}
 		} else if (creep.memory.working) {
 			if (creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(targets, { visualizePathStyle: { stroke: "#ffffff" } });
+				creep.moveTo(targets, {
+					visualizePathStyle: { stroke: "#ffffff" },
+					reusePath: 50
+				});
 			}
 		}
 	},
@@ -36,14 +42,20 @@ const TransferW59S11 = {
 		}
 		if (!creep.memory.working) {
 			if (creep.withdraw(Container, sources.mineralType) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources);
+				creep.moveTo(sources, {
+					visualizePathStyle: { stroke: "#ffff00" },
+					reusePath: 50
+				});
 			}
 		} else {
 			if (creep.transfer(storage, _.keys(creep.store)[0] as ResourceConstant) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(storage);
+				creep.moveTo(storage, {
+					visualizePathStyle: { stroke: "#ffff00" },
+					reusePath: 50
+				});
 			}
 		}
 	}
 };
 
-export default TransferW59S11;
+export default TransferW58S15;

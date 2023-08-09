@@ -1,5 +1,3 @@
-import GuardW57S9 from "../creeps/GuardW57S9";
-
 export type BodyPartConstantTuple = [BodyPartConstant, number];
 
 export interface RoleDefinition {

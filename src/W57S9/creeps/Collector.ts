@@ -1,10 +1,5 @@
-import roleCarrier from "./carrier";
-
-const roleCollector = {
+const CollectorW58S15 = {
 	run: function (creep: any) {
-		if (_.filter(Game.creeps, creep => creep.memory.role == "collector").length == 0) {
-			roleCarrier.run(creep);
-		}
 		// 如果creep没有能量，且房间内有掉落的资源或者墓碑
 		if (
 			creep.store.getUsedCapacity() == 0 &&
@@ -32,20 +27,27 @@ const roleCollector = {
 		// 如果creep的状态为获取能量
 		if (!creep.memory.working) {
 			// 寻找最近的掉落的资源或者墓碑
-			const target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
-			if (target) {
-				if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target);
+			const source =
+				creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES) ||
+				creep.pos.findClosestByPath(FIND_TOMBSTONES, {
+					filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
+				});
+
+			// 如果找到了资源或者墓碑
+			if (source != undefined) {
+				creep.say("找到能量了");
+				// 尝试从资源或者墓碑中取出能量
+				if (creep.pickup(source) == ERR_NOT_IN_RANGE || creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+					// 如果不在范围内，就向资源或者墓碑移动
+					creep.say("移动中");
+					creep.moveTo(source, { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
 			} else {
-				let targrts =
-					creep.room.find(FIND_TOMBSTONES, { filter: (t: any) => t.store.energy > 0 }).length > 0 ||
-					creep.room.find(FIND_RUINS, { filter: (t: any) => t.store.energy > 0 }).length > 0;
-				if (creep.withdraw(targrts) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(targrts);
-				}
+				creep.moveTo(25, 37);
 			}
-		} else {
+		}
+		// 如果creep的状态为送能量
+		else {
 			// 寻找最近的storage或者terminal
 			const target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 				filter: (s: any) =>
@@ -74,4 +76,4 @@ const roleCollector = {
 		}
 	}
 };
-export default roleCollector;
+export default CollectorW58S15;

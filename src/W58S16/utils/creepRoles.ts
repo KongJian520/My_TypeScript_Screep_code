@@ -57,16 +57,6 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 3
 	},
 	{
-		roleName: "repair",
-		bodyParts: [
-			[WORK, 8],
-			[CARRY, 6],
-			[MOVE, 7]
-		],
-		expectedCount: 1,
-		priority: 4
-	},
-	{
 		roleName: "builder",
 		bodyParts: [
 			[WORK, 10],
@@ -85,15 +75,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 6
 	},
-	// {
-	// 	roleName: "Dismveableminer3",
-	// 	bodyParts: [
-	// 		[MOVE, 5],
-	// 		[WORK, 15]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 7
-	// },
+	{
+		roleName: "Dismveableminer3",
+		bodyParts: [
+			[MOVE, 5],
+			[WORK, 15]
+		],
+		expectedCount: 1,
+		priority: 7
+	},
 	{
 		roleName: "transfer",
 		bodyParts: [
@@ -110,7 +100,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 6],
 			[MOVE, 6]
 		],
-		expectedCount: 3,
+		expectedCount: 2,
 		priority: 8
 	},
 	{
@@ -123,16 +113,16 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 11
 	},
-	{
-		roleName: "RemoteUpgrader",
-		bodyParts: [
-			[WORK, 9],
-			[CARRY, 8],
-			[MOVE, 9]
-		],
-		expectedCount: 2,
-		priority: 11
-	},
+	// {
+	// 	roleName: "RemoteUpgrader",
+	// 	bodyParts: [
+	// 		[WORK, 9],
+	// 		[CARRY, 8],
+	// 		[MOVE, 9]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 11
+	// },
 	{
 		roleName: "claim",
 		bodyParts: [
@@ -142,26 +132,36 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 12
 	},
-	{
-		roleName: "remoteHavster",
-		bodyParts: [
-			[WORK, 10],
-			[CARRY, 8],
-			[MOVE, 8]
-		],
-		expectedCount: 2,
-		priority: 10
-	},
 	// {
-	// 	roleName: "RemoteHavster2",
+	// 	roleName: "RemoteBuilder2W58S16",
 	// 	bodyParts: [
 	// 		[WORK, 10],
 	// 		[CARRY, 8],
 	// 		[MOVE, 8]
 	// 	],
 	// 	expectedCount: 2,
-	// 	priority: 11
+	// 	priority: 10
 	// },
+	{
+		roleName: "RemoteHavster2",
+		bodyParts: [
+			[WORK, 10],
+			[CARRY, 8],
+			[MOVE, 8]
+		],
+		expectedCount: 2,
+		priority: 11
+	},
+	{
+		roleName: "RemoteHavster",
+		bodyParts: [
+			[WORK, 10],
+			[CARRY, 8],
+			[MOVE, 8]
+		],
+		expectedCount: 2,
+		priority: 11
+	},
 
 	{
 		roleName: "Guard",
@@ -182,18 +182,18 @@ export const roleDefinitions: RoleDefinition[] = [
 			[ATTACK, 6],
 			[HEAL, 1]
 		],
-		expectedCount: 1,
+		expectedCount: 0,
 		priority: 99
+	},
+	{
+		roleName: "thief",
+		bodyParts: [
+			[MOVE, 5],
+			[CARRY, 5]
+		],
+		expectedCount: 3,
+		priority: 98
 	}
-	// {
-	// 	roleName: "thief",
-	// 	bodyParts: [
-	// 		[MOVE, 5],
-	// 		[CARRY, 5]
-	// 	],
-	// 	expectedCount: 3,
-	// 	priority: 98
-	// },
 	// {
 	// 	roleName: "SelfH",
 	// 	bodyParts: [

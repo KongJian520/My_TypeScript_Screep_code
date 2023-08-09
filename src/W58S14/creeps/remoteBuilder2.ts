@@ -1,6 +1,6 @@
-const roleRemoteBuilderW58S14 = {
+const RemoteBuilder2W58S14 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S15";
+		const targetRoom = "W57S9";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");
@@ -39,10 +39,17 @@ const roleRemoteBuilderW58S14 = {
 								reusePath: 10
 							});
 						}
+					} else {
+						if (creep.upgradeController(creep.room.controller!) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(creep.room.controller!, {
+								visualizePathStyle: { stroke: "#ffffff" },
+								reusePath: 10
+							});
+						}
 					}
 				}
 			} else {
-				let sources = creep.room.find(FIND_SOURCES);
+				let sources = creep.room.find(FIND_SOURCES_ACTIVE);
 				if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
@@ -75,4 +82,4 @@ const roleRemoteBuilderW58S14 = {
 		}
 	}
 };
-export default roleRemoteBuilderW58S14;
+export default RemoteBuilder2W58S14;

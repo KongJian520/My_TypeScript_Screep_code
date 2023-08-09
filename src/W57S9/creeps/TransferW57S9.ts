@@ -1,7 +1,7 @@
-const TransferW58S15 = {
+const TransferW57S9 = {
 	runEnergy: function (creep: Creep) {
-		const sources = Game.getObjectById("64cf92ad0ffdb374f72d9d22") as StructureContainer;
-		const targets = Game.getObjectById("64cf9a2ea5626d26f2f0cd76") as StructureContainer;
+		const sources = Game.getObjectById("64d24c9916e76858d1711609") as StructureContainer;
+		const targets = Game.getObjectById("64d25b5eabe1ba48401e7e6b") as StructureStorage;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("找contianer中");
@@ -15,7 +15,7 @@ const TransferW58S15 = {
 				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources, {
 						visualizePathStyle: { stroke: "#ffaa00" },
-						reusePath: 50
+						reusePath: 10
 					});
 				}
 			}
@@ -23,7 +23,7 @@ const TransferW58S15 = {
 			if (creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(targets, {
 					visualizePathStyle: { stroke: "#ffffff" },
-					reusePath: 50
+					reusePath: 10
 				});
 			}
 		}
@@ -58,4 +58,4 @@ const TransferW58S15 = {
 	}
 };
 
-export default TransferW58S15;
+export default TransferW57S9;

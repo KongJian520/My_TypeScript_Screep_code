@@ -2,15 +2,11 @@ import tower from "./utils/tower";
 import link from "./utils/link";
 import terminalW58S16 from "./utils/term";
 import autoSpawn from "./utils/autoSpawn";
-import HarvesterW58S15 from "./creeps/HarvesterW58S15";
-import UpgraderW58S15 from "./creeps/UpgraderW58S15";
-import GuardW58S15 from "./creeps/Guard";
-import BuilderW58S15 from "./creeps/BuilderW58S15";
-import DismoveminerW58S15 from "./creeps/DismoveminerW58S15";
-import CarrierW58S15 from "./creeps/CarrierW58S15";
-import Dismveableminer2W58S15 from "./creeps/Dismoveminer2W58S15";
-import Transfer2W58S15 from "./creeps/Transfer2W58S15";
-import TransferW58S15 from "./creeps/TransferW58S15";
+import HarvesterW57S9 from "./creeps/HarvesterW57S9";
+import UpgraderW57S9 from "./creeps/UpgraderW57S9";
+import BuilderW57S9 from "./creeps/BuilderW58S15";
+
+import GuardW57S9 from "./creeps/GuardW57S9";
 
 const W58S15 = {
 	work: function (ThisRoom: Room) {
@@ -29,7 +25,6 @@ const W58S15 = {
 			}
 			link.run();
 		}
-
 		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {
 				const spawningCreep = Game.creeps[Spawns.spawning.name];
@@ -63,32 +58,17 @@ const W58S15 = {
 				const creep = Game.creeps[name];
 				// 优化后的代码
 				switch (creep.memory.role) {
-					case "HarvesterW58S15":
-						HarvesterW58S15.run(creep);
+					case "HarvesterW57S9":
+						HarvesterW57S9.run(creep);
 						break;
-					case "UpgraderW58S15":
-						UpgraderW58S15.run(creep);
+					case "UpgraderW57S9":
+						UpgraderW57S9.run(creep);
 						break;
-					// case "GuardW58S15":
-					// 	GuardW58S15.run(creep);
-					// 	break;
-					case "BuilderW58S15":
-						BuilderW58S15.run(creep);
+					case "BuilderW57S9":
+						BuilderW57S9.run(creep);
 						break;
-					case "DismoveminerW58S15":
-						DismoveminerW58S15.run(creep);
-						break;
-					case "CarrierW58S15":
-						CarrierW58S15.run(creep);
-						break;
-					case "Dismveableminer2W58S15":
-						Dismveableminer2W58S15.run(creep);
-						break;
-					case "Transfer2W58S15":
-						Transfer2W58S15.runEnergy(creep);
-						break;
-					case "TransferW58S15":
-						TransferW58S15.runEnergy(creep);
+					case "GuardW57S9.ts":
+						GuardW57S9.run(creep);
 						break;
 				}
 			}

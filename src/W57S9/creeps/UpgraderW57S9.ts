@@ -1,6 +1,5 @@
-const roleUpgrader = {
+const UpgraderW57S9 = {
 	run: function (creep: any) {
-		const source = Game.getObjectById("64cf2666bee72abe30889401") as StructureContainer;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("🔄");
@@ -19,18 +18,23 @@ const roleUpgrader = {
 				});
 			}
 		} else {
-			// let sources = creep.room.find(FIND_SOURCES);
-			// if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-			// 	creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
-			// }
-			if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(source, {
-					visualizePathStyle: { stroke: "#ffff00" },
-					reusePath: 10
-				});
+			let sources = creep.room.find(FIND_SOURCES_ACTIVE);
+			if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 			}
+			// if (source.store.energy > 0) {
+			// 	if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+			// 		creep.moveTo(source, {
+			// 			visualizePathStyle: { stroke: "#ffff00" },
+			// 			reusePath: 10
+			// 		});
+			// 	}
+			// } else {
+			// 	creep.moveTo(25, 27);
+			// 	creep.memory.working = true;
+			// }
 		}
 	}
 };
 
-export default roleUpgrader;
+export default UpgraderW57S9;

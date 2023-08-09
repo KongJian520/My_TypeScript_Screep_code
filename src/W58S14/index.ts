@@ -96,14 +96,8 @@ const W58S14 = {
 					roleDismveableminer2.run(creep);
 					break;
 				case "transferW58S14":
-					const sources = Game.getObjectById("64ccae63fb14a1a07f57d4c0") as StructureContainer;
-					if (sources.store.energy == 0) {
-						roletransferW58S14.runMineral(creep);
-						break;
-					} else {
-						roletransferW58S14.runEnergy(creep);
-						break;
-					}
+					roletransferW58S14.runMineral(creep);
+					break;
 				case "MinerW58S14":
 					roleMinerW58S14.run(creep);
 					break;
@@ -142,6 +136,9 @@ const W58S14 = {
 					break;
 				case "DismveableminerW58S14":
 					roleDismveableminerW58S14.run(creep);
+					break;
+				case "RATTW58S14":
+					RATTW58S14.run(creep);
 					break;
 			}
 		}

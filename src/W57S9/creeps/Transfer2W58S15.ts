@@ -1,7 +1,7 @@
 const Transfer2W58S15 = {
 	runEnergy: function (creep: Creep) {
-		const sources = Game.getObjectById("64cf92ad0ffdb374f72d9d22") as StructureContainer;
-		const targets = Game.getObjectById("64cf9a2ea5626d26f2f0cd76") as StructureContainer;
+		const sources = Game.getObjectById("64d23cf640a8b33dd1aa7a9c") as StructureContainer;
+		const targets = Game.getObjectById("64d25b5eabe1ba48401e7e6b") as StructureStorage;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("找contianer中");

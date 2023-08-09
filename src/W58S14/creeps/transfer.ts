@@ -1,32 +1,5 @@
-const roletransferW58S14 = {
-	/** @param {Creep} creep **/
-	runMineral: function (creep: Creep) {
-		const sources = Game.getObjectById("5bbcb10940062e4259e92a51") as Mineral;
-		const Container = Game.getObjectById("64ccae63fb14a1a07f57d4c0") as StructureContainer;
-		const storage = Game.getObjectById("64cc047d1847494f15e51b4f") as StructureTerminal;
-		if (creep.memory.working && creep.store[sources.mineralType] == 0) {
-			creep.memory.working = false;
-			creep.say("准备拿取资源");
-		}
-		if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
-			creep.memory.working = true;
-			creep.say("向终端移动");
-		}
-		if (!creep.memory.working) {
-			if (creep.withdraw(Container, sources.mineralType) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources);
-			}
-		} else {
-			if (creep.transfer(storage, sources.mineralType) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(storage);
-			}
-		}
-	},
-	runEnergy: function (creep: any) {
-		const Home = "W58S14";
-		if (_.filter(Game.creeps, creep => creep.memory.role == "CarrierW58S14").length == 0) {
-			creep.memory.role = "CarrierW58S14";
-		}
+const roletransfer = {
+	runEnergy: function (creep: Creep) {
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("找contianer中");
@@ -40,6 +13,7 @@ const roletransferW58S14 = {
 				filter: (structure: any) => {
 					return (
 						structure.structureType == STRUCTURE_CONTAINER &&
+						// ||structure.sourceLinkId == '64b5d08fd3a05b4f1f6f0325'
 						// ||structure.structureType == STRUCTURE_LINK
 						structure.store.energy > 0
 					);
@@ -76,7 +50,29 @@ const roletransferW58S14 = {
 				}
 			}
 		}
+	},
+	runMineral: function (creep: Creep) {
+		const sources = Game.getObjectById("5bbcb10940062e4259e92a51") as Mineral;
+		const Container = Game.getObjectById("64ccae63fb14a1a07f57d4c0") as StructureContainer;
+		const storage = Game.getObjectById("64cc047d1847494f15e51b4f") as StructureTerminal;
+		if (creep.memory.working && creep.store[sources.mineralType] == 0) {
+			creep.memory.working = false;
+			creep.say("准备拿取资源");
+		}
+		if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
+			creep.memory.working = true;
+			creep.say("向仓库移动");
+		}
+		if (!creep.memory.working) {
+			if (creep.withdraw(Container, sources.mineralType) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(Container);
+			}
+		} else {
+			if (creep.transfer(storage, _.keys(creep.store)[0] as ResourceConstant) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(storage);
+			}
+		}
 	}
 };
 
-export default roletransferW58S14;
+export default roletransfer;

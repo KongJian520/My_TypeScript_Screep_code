@@ -1,7 +1,7 @@
 const SelfH = {
 	run: function (creep: Creep) {
-		const targetRoom = "W56S13";
-		const Home = "W57S13";
+		const targetRoom = "W54S12";
+		const Home = "W53S12";
 		creep.heal(creep);
 		if (!creep.memory.working && creep.hits > creep.hitsMax * 0.9) {
 			creep.memory.working = true;
@@ -13,15 +13,16 @@ const SelfH = {
 		}
 		if (creep.memory.working) {
 			if (creep.room.name !== targetRoom) {
-				creep.moveTo(new RoomPosition(1, 47, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(new RoomPosition(47, 32, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
 			} else if (creep.room.name === targetRoom) {
+				creep.moveTo(new RoomPosition(46, 32, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
 				creep.heal(creep);
 			}
 		} else {
 			if (creep.room.name !== Home) {
-				creep.moveTo(new RoomPosition(48, 47, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(new RoomPosition(1, 32, Home), { visualizePathStyle: { stroke: "#ff0000" } });
 			} else if (creep.room.name === Home) {
-				creep.moveTo(new RoomPosition(47, 47, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(new RoomPosition(1, 32, Home), { visualizePathStyle: { stroke: "#ff0000" } });
 			}
 		}
 	}

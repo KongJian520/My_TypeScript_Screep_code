@@ -57,7 +57,7 @@ const roleCarrierW58S15 = {
 					}
 				}
 			} else {
-				const sources = Game.getObjectById("64cf2666bee72abe30889401") as StructureContainer;
+				const sources = Game.getObjectById("64d25b5eabe1ba48401e7e6b") as StructureStorage;
 				if (sources.store.energy > 0) {
 					if (creep.withdraw(sources, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
 						creep.moveTo(sources, {

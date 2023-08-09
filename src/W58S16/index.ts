@@ -7,7 +7,7 @@ import upgrader from "./creeps/Upgrader";
 import builder from "./creeps/Builder";
 import miner from "./creeps/miner";
 import carrier from "./creeps/carrier";
-import repair from "./creeps/repair";
+
 import collector from "./creeps/Collector";
 import dismoveableminer from "./creeps/dismoveableminer";
 import dismoveableminer2 from "./creeps/dismoveableminer2";
@@ -100,9 +100,7 @@ const W58S16 = {
 					case "carrier":
 						carrier.run(creep);
 						break;
-					case "repair":
-						repair.run(creep);
-						break;
+
 					case "collector":
 						collector.run(creep);
 						break;
@@ -125,7 +123,7 @@ const W58S16 = {
 						claim.run(creep);
 						break;
 					// case 'ChaiQian': roleChaiQian.run(creep); break;
-					case "remoteHavster":
+					case "RemoteHavster":
 						remoteHavster.run(creep);
 						break;
 					case "RemoteHavster2":
@@ -137,18 +135,9 @@ const W58S16 = {
 					case "RemoteUpgrader":
 						RemoteUpgrader.run(creep);
 						break;
-					// case "transfer":
-					//
-					// 	break;
 					case "transfer":
-						const sources = Game.getObjectById("64c8cfac58c500a5a104799d") as StructureContainer;
-						if (sources.store.energy == 0) {
-							transfer.runMineral(creep);
-							break;
-						} else {
-							transfer.runEnergy(creep);
-							break;
-						}
+						transfer.runMineral(creep);
+						break;
 					case "thief":
 						thief.run(creep);
 						break;

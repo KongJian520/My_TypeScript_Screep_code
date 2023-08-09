@@ -2,8 +2,8 @@ const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_HYDROGEN;
-		createEnergyBuyOrder();
-		// createResourceSellOrder();
+		createEnergyBuyOrder(500, 10);
+		createResourceSellOrder();
 
 		processOrder(
 			Game.market
@@ -12,7 +12,7 @@ const terminalW58S16 = {
 					resourceType: goods
 				})
 				.sort((a, b) => b.price - a.price),
-			500,
+			20,
 			terminal
 		);
 
@@ -62,57 +62,31 @@ const terminalW58S16 = {
 		// 假设 "goods" 是你要出售的资源种类
 
 		//创建能量购买订单
-		function createEnergyBuyOrder() {
-			const orderAmount = 1000000; // 要购买的能量数量
-			const maxPrice = 10; // 设置一个最大购买价格
-
-			const existingOrders = Game.market.getAllOrders({
+		function createEnergyBuyOrder(orderAmount: number, maxPrice: number) {
+			const dealResult = Game.market.createOrder({
 				type: ORDER_BUY,
 				resourceType: RESOURCE_ENERGY,
-				price: maxPrice
+				price: maxPrice,
+				totalAmount: orderAmount,
+				roomName: terminal.room.name
 			});
-
-			if (existingOrders.length === 0) {
-				const dealResult = Game.market.createOrder({
-					type: ORDER_BUY,
-					resourceType: RESOURCE_ENERGY,
-					price: maxPrice,
-					totalAmount: orderAmount,
-					roomName: terminal.room.name
-				});
-
-				console.log("创建能量购买订单结果：");
-				handleDealResult(dealResult);
-			} else {
-				console.log("已存在符合条件的购买订单，无需创建新订单。");
-			}
+			console.log("创建能量购买订单结果：");
+			handleDealResult(dealResult);
 		}
 
 		//创建资源出售订单
 		function createResourceSellOrder() {
 			const orderAmount = 10000; // 要出售数量
 			const maxPrice = 90; // 设置一个最大购买价格
-
-			const existingOrders = Game.market.getAllOrders({
+			const dealResult = Game.market.createOrder({
 				type: ORDER_SELL,
 				resourceType: goods,
-				price: maxPrice
+				price: maxPrice,
+				totalAmount: orderAmount,
+				roomName: terminal.room.name
 			});
-
-			if (existingOrders.length === 0) {
-				const dealResult = Game.market.createOrder({
-					type: ORDER_SELL,
-					resourceType: goods,
-					price: maxPrice,
-					totalAmount: orderAmount,
-					roomName: terminal.room.name
-				});
-
-				console.log(`创建${goods}售出订单结果：`);
-				handleDealResult(dealResult);
-			} else {
-				console.log(`已存在符合条件的出售${goods}订单，无需创建新订单。`);
-			}
+			console.log(`创建${goods}售出订单结果：`);
+			handleDealResult(dealResult);
 		}
 
 		// 处理出售资源的通用函数

@@ -19,17 +19,6 @@ const roleUpgrader = {
 					creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: "#ffffff" }, reusePath: 10 });
 				}
 			} else {
-				// var sources = creep.room.find(FIND_SOURCES);
-				// if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-				//     creep.moveTo(sources[1], { visualizePathStyle: { stroke: '#ffaa00' }, reusePath: 4 });
-				// }
-				// var sources =
-				// creep.room.find(FIND_STRUCTURES, {
-				// 	filter: (s: any) => (
-				// 		s.structureType == STRUCTURE_CONTAINER &&
-				//         s.store.energy <= s.storeCapacity &&
-				//         s.store.energy > 0)
-				// });
 				const sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) => {
 						return (
@@ -50,12 +39,10 @@ const roleUpgrader = {
 							creep.moveTo(closestContainer, { visualizePathStyle: { stroke: "#ffffff" }, reusePath: 10 });
 						}
 					}
-				}
-				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" } });
+				} else {
+					creep.memory.working = true;
 				}
 			}
-			// creep.memory.role = 'upgrader'
 		}
 	}
 };

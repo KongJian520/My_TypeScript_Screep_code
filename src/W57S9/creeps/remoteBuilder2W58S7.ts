@@ -1,6 +1,6 @@
 const roleRemoteBuilder = {
 	run: function (creep: Creep) {
-		const targetRoom = "W59S7";
+		const targetRoom = "W57S9";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");
@@ -28,7 +28,10 @@ const roleRemoteBuilder = {
 				} else {
 					const targets = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure: any) => {
-							return structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax;
+							return (
+								(structure.structureType == STRUCTURE_ROAD || structure.structureType === STRUCTURE_CONTAINER) &&
+								structure.hits < structure.hitsMax
+							);
 						}
 					});
 					targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);

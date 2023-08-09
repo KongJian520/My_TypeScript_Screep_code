@@ -1,8 +1,6 @@
-// noinspection DuplicatedCode
-
 const roleRemoteHavster = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S17";
+		const targetRoom = "W58S15";
 		const Home = "W58S16";
 
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
@@ -17,21 +15,13 @@ const roleRemoteHavster = {
 			if (creep.room.name !== targetRoom) {
 				creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
 			} else if (creep.room.name === targetRoom) {
-				const sources = creep.room.find(FIND_SOURCES);
+				const sources = creep.room.find(FIND_SOURCES_ACTIVE);
 				creep.say(creep.harvest(sources[0]) as unknown as string);
 				if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[0], {
 						visualizePathStyle: { stroke: "#ffaa00" },
 						reusePath: 10
 					});
-				}
-				if (creep.harvest(sources[0]) == -6) {
-					if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-						creep.moveTo(sources[1], {
-							visualizePathStyle: { stroke: "#ffaa00" },
-							reusePath: 10
-						});
-					}
 				}
 			}
 		} else if (!creep.memory.working) {
@@ -49,8 +39,6 @@ const roleRemoteHavster = {
 				if (targets.length > 0) {
 					const closestContainer = creep.pos.findClosestByPath(targets);
 					if (closestContainer) {
-						// creep.say('RH 最近的找到了')
-						// 移动到最近的 container 并从中放入能量
 						if (creep.transfer(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(closestContainer, {
 								visualizePathStyle: { stroke: "#ffaa00" },

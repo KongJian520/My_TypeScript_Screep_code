@@ -3,7 +3,7 @@
 import W58S16 from "W58S16";
 import W58S14 from "W58S14";
 
-import W58S15 from "W58S15";
+import W57S9 from "W57S9";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
 // Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'claim', room: '', working: false } })
@@ -54,7 +54,7 @@ cancelZeroAmountOwnOrders();
 export const loop = () => {
 	// if (Game.cpu.bucket === 10000) {
 	// 	Game.cpu.generatePixel();
-	// 	Game.market.deal("64c813840b755a87a6a3b510", 2);
+	// 	Game.market.deal("64c813840b755a87a6a3b510", 1);
 	// }
 	if (Game.time % 2 === 0) {
 		console.log("\r");
@@ -71,8 +71,8 @@ export const loop = () => {
 			case "W58S14":
 				W58S14.work(Game.rooms[RoomName]);
 				break;
-			case "W58S15":
-				W58S15.work(Game.rooms[RoomName]);
+			case "W57S9":
+				W57S9.work(Game.rooms[RoomName]);
 				break;
 		}
 	}

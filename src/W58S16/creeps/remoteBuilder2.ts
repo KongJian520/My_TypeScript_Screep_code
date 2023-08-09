@@ -31,11 +31,19 @@ const roleRemoteBuilderW58S14 = {
 							return structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax;
 						}
 					});
-					targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
-					if (targets.length > 0) {
+					// targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
+
+					if (targets.length !== 0) {
 						if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(targets[0], {
 								visualizePathStyle: { stroke: "#f00fff" },
+								reusePath: 10
+							});
+						}
+					} else {
+						if (creep.upgradeController(creep.room.controller!) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(creep.room.controller!, {
+								visualizePathStyle: { stroke: "#ffffff" },
 								reusePath: 10
 							});
 						}

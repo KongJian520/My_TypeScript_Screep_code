@@ -1,6 +1,6 @@
 const roleRemoteBuilderW58S14 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S15";
+		const targetRoom = "W58S17";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");

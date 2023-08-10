@@ -29,6 +29,8 @@ import RemoteRepair from "./creeps/remoteRepairer";
 import RemoteBuilder from "./creeps/remoteBuilder";
 import SelfH from "./creeps/AandH";
 import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
+import LabTransfer from "./creeps/LabTransfer";
+import RATTW58S16 from "./creeps/RATTW58S16";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -158,6 +160,12 @@ const W58S16 = {
 						break;
 					case "RemoteBuilder2W58S16":
 						RemoteBuilder2W58S16.run(creep);
+						break;
+					case "LabTransfer":
+						LabTransfer.runLabGO(creep);
+						break;
+					case "RATTW58S16":
+						RATTW58S16.run(creep);
 						break;
 				}
 			}

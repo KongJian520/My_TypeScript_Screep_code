@@ -17,3 +17,4 @@ const RATTW58S14 = {
 		}
 	}
 };
+export default RATTW58S14;

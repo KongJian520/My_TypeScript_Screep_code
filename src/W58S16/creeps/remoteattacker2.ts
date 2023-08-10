@@ -1,7 +1,6 @@
 const roleremoteAttackerW57S13 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W59S6";
-
+		const targetRoom = "W58S15";
 		if (creep.room.name !== targetRoom) {
 			// 如果当前不在目标房间，就移动过去
 			creep.moveTo(new RoomPosition(20, 20, targetRoom), {

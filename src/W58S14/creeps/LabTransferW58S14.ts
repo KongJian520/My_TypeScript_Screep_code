@@ -1,9 +1,9 @@
-const LabTransfer = {
+const LabTransferW58S14 = {
 	runLabGO: function (creep: Creep) {
-		const storage = Game.getObjectById("64ae33b7d36572291f61089a") as StructureStorage;
-		const Lab1 = Game.getObjectById("64c3e1f07e68f82e2d5f13fa") as StructureLab;
-		const Lab2 = Game.getObjectById("64c39dae5785eddb4042cbb6") as StructureLab;
-		const Lab3 = Game.getObjectById("64c3f9afb10a865fabd2ebf0") as StructureLab;
+		const storage = Game.getObjectById("64bce1d286165e47d28a42f4") as StructureStorage;
+		const Lab1 = Game.getObjectById("64ce1d84576ad42b277e5428") as StructureLab;
+		const Lab2 = Game.getObjectById("64cd418407af5349a897e696") as StructureLab;
+		const Lab3 = Game.getObjectById("64cdb61dfed0be7b914be5e1") as StructureLab;
 
 		const GO = RESOURCE_GHODIUM_OXIDE;
 		if (creep.memory.working && creep.store[GO] == 0) {
@@ -26,4 +26,4 @@ const LabTransfer = {
 	}
 };
 
-export default LabTransfer;
+export default LabTransferW58S14;

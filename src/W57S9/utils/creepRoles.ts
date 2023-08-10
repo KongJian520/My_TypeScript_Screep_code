@@ -15,10 +15,19 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 1],
 			[MOVE, 1]
 		],
-		expectedCount: 1,
+		expectedCount: 2,
 		priority: 1
 	},
-
+	{
+		roleName: "Dismveableminer2W57S9",
+		bodyParts: [
+			[WORK, 4],
+			[CARRY, 1],
+			[MOVE, 1]
+		],
+		expectedCount: 1,
+		priority: 3
+	},
 	{
 		roleName: "GuardW57S9",
 		bodyParts: [
@@ -27,26 +36,26 @@ export const roleDefinitions: RoleDefinition[] = [
 			[HEAL, 1]
 		],
 		expectedCount: 1,
-		priority: 49
+		priority: 51
 	},
 	{
 		roleName: "UpgraderW57S9",
 		bodyParts: [
 			[WORK, 2],
-			[CARRY, 1],
-			[MOVE, 1]
+			[CARRY, 2],
+			[MOVE, 2]
 		],
-		expectedCount: 1,
+		expectedCount: 3,
 		priority: 49
 	},
 	{
 		roleName: "BuilderW57S9",
 		bodyParts: [
 			[WORK, 2],
-			[CARRY, 1],
-			[MOVE, 1]
+			[CARRY, 2],
+			[MOVE, 2]
 		],
-		expectedCount: 1,
+		expectedCount: 4,
 		priority: 50
 	}
 ];

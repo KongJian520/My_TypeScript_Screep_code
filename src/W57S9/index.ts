@@ -7,6 +7,8 @@ import UpgraderW57S9 from "./creeps/UpgraderW57S9";
 import BuilderW57S9 from "./creeps/BuilderW58S15";
 
 import GuardW57S9 from "./creeps/GuardW57S9";
+import CarrierW57S9 from "./creeps/CarrierW58S15";
+import Dismveableminer2W57S9 from "./creeps/Dismoveminer2W58S15";
 
 const W58S15 = {
 	work: function (ThisRoom: Room) {
@@ -67,8 +69,14 @@ const W58S15 = {
 					case "BuilderW57S9":
 						BuilderW57S9.run(creep);
 						break;
-					case "GuardW57S9.ts":
+					case "GuardW57S9":
 						GuardW57S9.run(creep);
+						break;
+					case "Dismveableminer2W57S9":
+						Dismveableminer2W57S9.run(creep);
+						break;
+					case "CarrierW57S9":
+						CarrierW57S9.run(creep);
 						break;
 				}
 			}

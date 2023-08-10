@@ -1,4 +1,4 @@
-const roleRemoteBuilderW58S14 = {
+const RemoteBuilderW58S14 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W58S13";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
@@ -75,4 +75,4 @@ const roleRemoteBuilderW58S14 = {
 		}
 	}
 };
-export default roleRemoteBuilderW58S14;
+export default RemoteBuilderW58S14;

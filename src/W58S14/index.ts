@@ -24,6 +24,7 @@ import link from "./utils/link";
 import autoSpawn from "./utils/autoSpawn";
 import terminalW58S16 from "./utils/term";
 import Dismveableminer3W58S14 from "./creeps/dismoveableminer3";
+import RATTW58S14 from "./creeps/RATTW58S14";
 
 const W58S14 = {
 	work: function (ThisRoom: Room) {

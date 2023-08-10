@@ -1,5 +1,5 @@
 const Claim2W58S15 = {
-	run: function (creep: Creep) {
+	run: function (creep: any) {
 		const targetRoom = "W58S15";
 		if (creep.room.name !== targetRoom) {
 			creep.moveTo(new RoomPosition(10, 10, targetRoom), { visualizePathStyle: { stroke: "#ffffff" } });
@@ -12,8 +12,8 @@ const Claim2W58S15 = {
 				}
 			} else {
 				if (
-					creep.reserveController(creep.room.controller!) == ERR_NOT_IN_RANGE ||
-					creep.attackController(creep.room.controller!) == ERR_NOT_IN_RANGE
+					creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE ||
+					creep.attackController(creep.room.controller) == ERR_NOT_IN_RANGE
 				) {
 					creep.moveTo(new RoomPosition(10, 10, targetRoom), { visualizePathStyle: { stroke: "#ffffff" } });
 				}

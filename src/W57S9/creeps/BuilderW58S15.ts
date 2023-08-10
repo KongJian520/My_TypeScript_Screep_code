@@ -56,7 +56,7 @@ const BuilderW57S9 = {
 				// 		reusePath: 10
 				// 	});
 				// }
-				const sources = Game.getObjectById<StructureContainer>("64d48f2613ecbf1099277d31")!;
+				const sources = Game.getObjectById<StructureContainer>("64d4e1d69007c3d923221ac0")!;
 				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources);
 				}

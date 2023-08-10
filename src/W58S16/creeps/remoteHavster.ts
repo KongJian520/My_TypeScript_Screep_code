@@ -1,8 +1,7 @@
-const roleRemoteHavster = {
+const RemoteHavster = {
 	run: function (creep: Creep) {
 		const targetRoom = "W58S15";
 		const Home = "W58S16";
-
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
 			creep.say("RH 挖矿");
@@ -52,4 +51,4 @@ const roleRemoteHavster = {
 	}
 };
 
-export default roleRemoteHavster;
+export default RemoteHavster;

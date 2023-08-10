@@ -14,7 +14,7 @@ import dismoveableminer2 from "./creeps/dismoveableminer2";
 import Dismveableminer3 from "./creeps/dismoveableminer3";
 import Guard from "./creeps/Guard";
 import claim from "./creeps/claim";
-import remoteHavster from "./creeps/remoteHavster";
+import RemoteHavster from "./creeps/remoteHavster";
 import RemoteHavster2 from "./creeps/remoteHavster2";
 
 import RemoteUpgrader from "./creeps/remoteUpgrader";
@@ -31,6 +31,7 @@ import SelfH from "./creeps/AandH";
 import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
 import LabTransfer from "./creeps/LabTransfer";
 import RATTW58S16 from "./creeps/RATTW58S16";
+import Claim2W58S15 from "./creeps/Claim2W58S16";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -124,9 +125,12 @@ const W58S16 = {
 					case "claim":
 						claim.run(creep);
 						break;
+					case "Claim2W58S15":
+						Claim2W58S15.run(creep);
+						break;
 					// case 'ChaiQian': roleChaiQian.run(creep); break;
 					case "RemoteHavster":
-						remoteHavster.run(creep);
+						RemoteHavster.run(creep);
 						break;
 					case "RemoteHavster2":
 						RemoteHavster2.run(creep);
@@ -138,7 +142,7 @@ const W58S16 = {
 						RemoteUpgrader.run(creep);
 						break;
 					case "transfer":
-						transfer.runMineral(creep);
+						transfer.run(creep);
 						break;
 					case "thief":
 						thief.run(creep);

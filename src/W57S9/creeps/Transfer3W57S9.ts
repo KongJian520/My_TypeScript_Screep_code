@@ -1,6 +1,6 @@
-const TransferW57S9 = {
+const Transfer3W57S9 = {
 	run: function (creep: Creep) {
-		const sources = Game.getObjectById("64d4d1913f14a869960b3efa") as StructureContainer;
+		const sources = Game.getObjectById("64d4e1d69007c3d923221ac0") as StructureContainer;
 		const targets = Game.getObjectById("64d4e1d69007c3d923221ac0") as StructureStorage;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
@@ -30,4 +30,4 @@ const TransferW57S9 = {
 	}
 };
 
-export default TransferW57S9;
+export default Transfer3W57S9;

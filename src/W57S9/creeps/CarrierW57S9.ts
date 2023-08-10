@@ -57,7 +57,7 @@ const CarrierW57S9 = {
 					}
 				}
 			} else {
-				const sources = Game.getObjectById("64d25b5eabe1ba48401e7e6b") as StructureStorage;
+				const sources = Game.getObjectById("64d4d1913f14a869960b3efa") as StructureStorage;
 				if (sources.store.energy > 0) {
 					if (creep.withdraw(sources, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
 						creep.moveTo(sources, {

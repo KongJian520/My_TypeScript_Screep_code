@@ -49,16 +49,13 @@ const BuilderW57S9 = {
 					}
 				}
 			} else {
-				// const sources = Game.getObjectById<Source>("5bbca9f59099fc012e63072c")!;
-				// if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-				// 	creep.moveTo(sources, {
-				// 		visualizePathStyle: { stroke: "#ffaa00" },
-				// 		reusePath: 10
-				// 	});
-				// }
 				const sources = Game.getObjectById<StructureContainer>("64d4e1d69007c3d923221ac0")!;
-				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources);
+				if (sources.store.energy !== 0) {
+					if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(sources);
+					}
+				} else {
+					creep.moveTo(sources.pos.x + 2, sources.pos.y - 2);
 				}
 			}
 		}

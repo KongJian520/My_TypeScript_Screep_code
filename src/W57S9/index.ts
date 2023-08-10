@@ -4,14 +4,15 @@ import terminalW58S16 from "./utils/term";
 import autoSpawn from "./utils/autoSpawn";
 import HarvesterW57S9 from "./creeps/HarvesterW57S9";
 import UpgraderW57S9 from "./creeps/UpgraderW57S9";
-import BuilderW57S9 from "./creeps/BuilderW58S15";
+import BuilderW57S9 from "./creeps/BuilderW57S9";
 
 import GuardW57S9 from "./creeps/GuardW57S9";
 import CarrierW57S9 from "./creeps/CarrierW57S9";
 import Dismveableminer2W57S9 from "./creeps/Dismoveminer2W58S15";
 import DismveableminerW57S9 from "./creeps/DismoveminerW58S15";
 import TransferW57S9 from "./creeps/TransferW57S9";
-import Transfer2W57S9 from "./creeps/Transfer2W58S15";
+import Transfer2W57S9 from "./creeps/Transfer2W57S9";
+import Transfer3W57S9 from "./creeps/Transfer3W57S9";
 
 const W58S15 = {
 	work: function (ThisRoom: Room) {
@@ -66,7 +67,9 @@ const W58S15 = {
 					case "HarvesterW57S9":
 						HarvesterW57S9.run(creep);
 						break;
-
+					case "UpgraderW57S9":
+						UpgraderW57S9.run(creep);
+						break;
 					case "BuilderW57S9":
 						BuilderW57S9.run(creep);
 						break;
@@ -84,6 +87,9 @@ const W58S15 = {
 						break;
 					case "Transfer2W57S9":
 						Transfer2W57S9.run(creep);
+						break;
+					case "Transfer3W57S9":
+						Transfer3W57S9.run(creep);
 						break;
 					case "CarrierW57S9":
 						CarrierW57S9.run(creep);

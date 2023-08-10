@@ -1,6 +1,6 @@
 const DismveableminerW57S9 = {
 	run: function (creep: Creep) {
-		creep.moveTo(7, 13);
+		creep.moveTo(7, 12);
 		const sources = Game.getObjectById("5bbca9f59099fc012e63072b") as Source;
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;

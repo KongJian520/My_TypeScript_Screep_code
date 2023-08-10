@@ -70,10 +70,19 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 51
 	},
 	{
+		roleName: "Transfer3W57S9",
+		bodyParts: [
+			[CARRY, 5],
+			[MOVE, 3]
+		],
+		expectedCount: 2,
+		priority: 48
+	},
+	{
 		roleName: "UpgraderW57S9",
 		bodyParts: [
-			[WORK, 2],
-			[CARRY, 2],
+			[WORK, 3],
+			[CARRY, 1],
 			[MOVE, 2]
 		],
 		expectedCount: 3,

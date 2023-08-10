@@ -168,7 +168,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 8],
 			[MOVE, 8]
 		],
-		expectedCount: 2,
+		expectedCount: 4,
 		priority: 11
 	},
 

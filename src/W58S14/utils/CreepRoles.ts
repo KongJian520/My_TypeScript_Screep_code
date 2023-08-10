@@ -202,7 +202,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 8],
 			[MOVE, 8]
 		],
-		expectedCount: 4,
+		expectedCount: 1,
 		priority: 96
 	},
 	{
@@ -214,7 +214,7 @@ export const roleDefinitions: RoleDefinition[] = [
 		],
 		expectedCount: 1,
 		priority: 96
-	},
+	}
 	// {
 	//     roleName: "RemoteAttackerW58S14",
 	//     bodyParts: [
@@ -225,15 +225,15 @@ export const roleDefinitions: RoleDefinition[] = [
 	//     expectedCount: 1,
 	//     priority: 97,
 	// },
-	{
-		roleName: "RATTW58S14",
-		bodyParts: [
-			[TOUGH, 5],
-			[MOVE, 8],
-			[RANGED_ATTACK, 4],
-			[HEAL, 5]
-		],
-		expectedCount: 1,
-		priority: 99
-	}
+	// {
+	// 	roleName: "RATTW58S14",
+	// 	bodyParts: [
+	// 		[TOUGH, 5],
+	// 		[MOVE, 8],
+	// 		[RANGED_ATTACK, 4],
+	// 		[HEAL, 5]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 99
+	// }
 ];

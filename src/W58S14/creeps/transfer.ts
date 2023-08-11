@@ -1,4 +1,4 @@
-const roletransfer = {
+const transferW58S14 = {
 	runEnergy: function (creep: Creep) {
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
@@ -11,12 +11,7 @@ const roletransfer = {
 		if (!creep.memory.working) {
 			const sources = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure: any) => {
-					return (
-						structure.structureType == STRUCTURE_CONTAINER &&
-						// ||structure.sourceLinkId == '64b5d08fd3a05b4f1f6f0325'
-						// ||structure.structureType == STRUCTURE_LINK
-						structure.store.energy > 0
-					);
+					return structure.structureType == STRUCTURE_CONTAINER && structure.store.energy > 0;
 				}
 			});
 			// 如果找到了 sources
@@ -25,15 +20,6 @@ const roletransfer = {
 				if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
-				// 使用 pos.findClosestByPath 方法找到距离最近的 container
-				// var closestContainer = creep.pos.findClosestByPath(sources);
-				// // 如果找到了最近的 container
-				// if (closestContainer) {
-				//     // creep.say('UP 最近的找到了')
-				//     // 移动到最近的 container 并从中取出能量
-				//     if (creep.withdraw(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				//         creep.moveTo(closestContainer, { visualizePathStyle: { stroke: '#ffffff' } });
-				//     }
 			}
 		} else if (creep.memory.working) {
 			const targets = creep.room.find(FIND_STRUCTURES, {
@@ -75,4 +61,4 @@ const roletransfer = {
 	}
 };
 
-export default roletransfer;
+export default transferW58S14;

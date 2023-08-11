@@ -6,8 +6,8 @@ const roleClaimW58S13 = {
 		} else {
 			creep.moveTo(creep.room.controller!.pos);
 			if (creep.room.controller && !creep.room.controller.my) {
-				// creep.reserveController(creep.room.controller);
-				creep.claimController(creep.room.controller);
+				creep.reserveController(creep.room.controller);
+				// creep.claimController(creep.room.controller);
 				if (creep.room.controller.reservation)
 					if (creep.room.controller.reservation.username !== creep.owner.username) {
 						if (creep.attackController(creep.room.controller) == ERR_NOT_IN_RANGE) {

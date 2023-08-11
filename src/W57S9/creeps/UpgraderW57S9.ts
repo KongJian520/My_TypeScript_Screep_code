@@ -25,6 +25,7 @@ const UpgraderW57S9 = {
 				});
 			} else {
 				creep.say(creep.withdraw(source, RESOURCE_ENERGY) as unknown as string);
+				creep.memory.working = true;
 			}
 		}
 	}

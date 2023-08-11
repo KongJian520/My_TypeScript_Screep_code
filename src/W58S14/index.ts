@@ -5,7 +5,7 @@ import roleCarrierW58S14 from "./creeps/carrier";
 import roleCollectorW58S14 from "./creeps/Collector";
 import roleRepairW58S14 from "./creeps/repair";
 import tower from "./utils/tower";
-import roletransferW58S14 from "./creeps/transfer";
+import transferW58S14 from "./creeps/transfer";
 import roleDismveableminer2 from "./creeps/dismoveableminer2";
 import roleMinerW58S14 from "./creeps/Miner";
 import roledismoveabletrasferW58S14 from "./creeps/dismoveabletrasfer";
@@ -97,7 +97,8 @@ const W58S14 = {
 					roleDismveableminer2.run(creep);
 					break;
 				case "transferW58S14":
-					roletransferW58S14.runMineral(creep);
+					// roletransferW58S14.runMineral(creep);
+					transferW58S14.runEnergy(creep);
 					break;
 				case "MinerW58S14":
 					roleMinerW58S14.run(creep);

@@ -18,10 +18,33 @@ const tower = {
 			}
 		});
 		damagedStructures.sort((a, b) => {
-			return a.hits - b.hits;
+			return a.hits / a.hitsMax - b.hits / b.hitsMax;
 		});
-		if (damagedStructures.length > 0) {
-			tower.repair(damagedStructures[0]);
+
+		// 找到最近的敌人
+		const closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+		const closestMyCreep = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
+			filter: (MY_creep: Creep) => {
+				return MY_creep.hits < MY_creep.hitsMax;
+			}
+		});
+
+		// 如果有敌人，就攻击
+		if (closestHostile) {
+			console.log(tower.id + " 发现敌人,返回值：" + tower.attack(closestHostile));
+			tower.attack(closestHostile);
+		} else if (closestMyCreep) {
+			if (tower.store.energy > 400) {
+				tower.heal(closestMyCreep);
+			}
+		} else {
+			// 如果没有敌人，且有受损建筑，且塔有足够能量，就修复
+			if (damagedStructures.length > 0) {
+				// console.log(tower.id + " 发现损坏的建筑:" + damagedStructures[0].pos)
+				if (tower.store.energy > 500) {
+					tower.repair(damagedStructures[0]);
+				}
+			}
 		}
 	}
 };

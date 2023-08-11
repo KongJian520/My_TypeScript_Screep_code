@@ -25,31 +25,16 @@ const BuilderW57S9 = {
 							reusePath: 10
 						});
 					}
-				} else if (targets.length == 0) {
-					const Rtargets = creep.room.find(FIND_STRUCTURES, {
-						filter: (structure: any) => {
-							return structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax;
-						}
-					});
-					Rtargets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
-					if (Rtargets.length > 0) {
-						if (creep.repair(Rtargets[0]) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0], {
-								visualizePathStyle: { stroke: "#f00fff" },
-								reusePath: 10
-							});
-						} else {
-							if (creep.upgradeController(creep.room.controller!) == ERR_NOT_IN_RANGE) {
-								creep.moveTo(creep.room.controller!, {
-									visualizePathStyle: { stroke: "#ffffff" },
-									reusePath: 10
-								});
-							}
-						}
+				} else {
+					if (creep.upgradeController(creep.room.controller!) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(creep.room.controller!, {
+							visualizePathStyle: { stroke: "#ffffff" },
+							reusePath: 10
+						});
 					}
 				}
 			} else {
-				const sources = Game.getObjectById<StructureContainer>("64d4e1d69007c3d923221ac0")!;
+				const sources = Game.getObjectById<StructureStorage>("64d64646b5f538e742f592a7")!;
 				if (sources.store.energy !== 0) {
 					if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 						creep.moveTo(sources);

@@ -2,7 +2,6 @@
 
 import W58S16 from "W58S16";
 import W58S14 from "W58S14";
-
 import W57S9 from "W57S9";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
@@ -20,6 +19,7 @@ declare global {
 		role: string;
 		room: string;
 		working: boolean;
+		boosted?: boolean;
 	}
 
 	namespace NodeJS {
@@ -34,6 +34,46 @@ console.log("code is Updated!...,The Game tickis .." + Game.time);
 console.log("=========================================");
 
 // Game.market.deal('64c35b138afb1c39b4c12983', 2000, 'W58S16')
+
+export const loop = () => {
+	if (Game.cpu.bucket === 10000) {
+		Game.cpu.generatePixel();
+		Game.market.deal("64c813840b755a87a6a3b510", 1);
+	}
+	if (Game.time % 2 === 0) {
+		console.log("\r");
+		console.log("\r");
+		console.log("\r");
+		console.log("========" + "Game.time = " + Game.time + "==" + "cpu.bucket=" + Game.cpu.bucket + "========");
+	}
+	// cancelZeroAmountOwnOrders();
+	for (let RoomName in Game.rooms)
+		switch (RoomName) {
+			case "W58S16":
+				try {
+					W58S16.work(Game.rooms[RoomName]);
+				} catch (e) {
+					console.log(`W58S16出错，异常抛出：${e}`);
+				}
+				break;
+			case "W58S14":
+				try {
+					W58S14.work(Game.rooms[RoomName]);
+				} catch (e) {
+					console.log(`W58S16出错，异常抛出：${e}`);
+				}
+
+				break;
+			case "W57S9":
+				try {
+					W57S9.work(Game.rooms[RoomName]);
+				} catch (e) {
+					console.log(`W58S16出错，异常抛出：${e}`);
+				}
+				break;
+		}
+};
+
 function cancelZeroAmountOwnOrders(): void {
 	const myOrders = Game.market.orders;
 
@@ -51,29 +91,3 @@ function cancelZeroAmountOwnOrders(): void {
 }
 
 cancelZeroAmountOwnOrders();
-export const loop = () => {
-	// if (Game.cpu.bucket === 10000) {
-	// 	Game.cpu.generatePixel();
-	// 	Game.market.deal("64c813840b755a87a6a3b510", 1);
-	// }
-	if (Game.time % 2 === 0) {
-		console.log("\r");
-		console.log("\r");
-		console.log("\r");
-		console.log("========" + "Game.time = " + Game.time + "==" + "cpu.bucket=" + Game.cpu.bucket + "========");
-	}
-	// cancelZeroAmountOwnOrders();
-	for (let RoomName in Game.rooms) {
-		switch (RoomName) {
-			case "W58S16":
-				W58S16.work(Game.rooms[RoomName]);
-				break;
-			case "W58S14":
-				W58S14.work(Game.rooms[RoomName]);
-				break;
-			case "W57S9":
-				W57S9.work(Game.rooms[RoomName]);
-				break;
-		}
-	}
-};

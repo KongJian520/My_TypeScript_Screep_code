@@ -20,15 +20,15 @@ const DismveableminerW57S9 = {
 				creep.memory.working = false;
 			}
 		} else if (!creep.memory.working) {
-			const tower = Game.getObjectById<StructureTower>("64d46ee982ec1b18b158e1a4")!;
+			// const tower = Game.getObjectById<StructureTower>("64d46ee982ec1b18b158e1a4")!;
 			const continer = Game.getObjectById("64d4d1913f14a869960b3efa") as StructureContainer;
-			if (tower.store.energy < 10) {
-				creep.say("Tower");
-				creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
-			} else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
-				creep.say("continer");
-				creep.transfer(continer, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
-			}
+			// if (tower.store.energy < 10) {
+			// 	creep.say("Tower");
+			// 	creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
+			// } else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
+			creep.say("continer");
+			creep.transfer(continer, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
+			// }
 		}
 	}
 };

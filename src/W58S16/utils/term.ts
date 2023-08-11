@@ -3,18 +3,18 @@ const terminalW58S16 = {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_HYDROGEN;
 		createEnergyBuyOrder(500, 10);
-		createResourceSellOrder();
+		// createResourceSellOrder();
 
-		processOrder(
-			Game.market
-				.getAllOrders({
-					type: ORDER_BUY,
-					resourceType: goods
-				})
-				.sort((a, b) => b.price - a.price),
-			20,
-			terminal
-		);
+		// processOrder(
+		// 	Game.market
+		// 		.getAllOrders({
+		// 			type: ORDER_BUY,
+		// 			resourceType: goods
+		// 		})
+		// 		.sort((a, b) => b.price - a.price),
+		// 	20,
+		// 	terminal
+		// );
 
 		processOrder(
 			Game.market

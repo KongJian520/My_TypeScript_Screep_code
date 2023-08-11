@@ -13,6 +13,7 @@ import DismveableminerW57S9 from "./creeps/DismoveminerW58S15";
 import TransferW57S9 from "./creeps/TransferW57S9";
 import Transfer2W57S9 from "./creeps/Transfer2W57S9";
 import Transfer3W57S9 from "./creeps/Transfer3W57S9";
+import CollectorW57S9 from "./creeps/CollectorW57S9";
 
 const W58S15 = {
 	work: function (ThisRoom: Room) {
@@ -93,6 +94,9 @@ const W58S15 = {
 						break;
 					case "CarrierW57S9":
 						CarrierW57S9.run(creep);
+						break;
+					case "CollectorW57S9":
+						CollectorW57S9.run(creep);
 						break;
 				}
 			}

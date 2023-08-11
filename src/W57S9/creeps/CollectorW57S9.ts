@@ -1,4 +1,4 @@
-const CollectorW58S15 = {
+const CollectorW57S9 = {
 	run: function (creep: any) {
 		// 如果creep没有能量，且房间内有掉落的资源或者墓碑
 		if (
@@ -28,6 +28,9 @@ const CollectorW58S15 = {
 		if (!creep.memory.working) {
 			// 寻找最近的掉落的资源或者墓碑
 			const source =
+				creep.pos.findClosestByPath(FIND_RUINS, {
+					filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
+				}) ||
 				creep.pos.findClosestByPath(FIND_DROPPED_RESOURCES) ||
 				creep.pos.findClosestByPath(FIND_TOMBSTONES, {
 					filter: (t: any) => t.store.getUsedCapacity(RESOURCE_ENERGY) > 0
@@ -54,7 +57,7 @@ const CollectorW58S15 = {
 					(s.structureType == STRUCTURE_TOWER ||
 						s.structureType == STRUCTURE_SPAWN ||
 						s.structureType == STRUCTURE_CONTAINER ||
-						s.structureType == STRUCTURE_TERMINAL) &&
+						s.structureType == STRUCTURE_STORAGE) &&
 					s.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 			});
 			// 如果找到了目标
@@ -76,4 +79,4 @@ const CollectorW58S15 = {
 		}
 	}
 };
-export default CollectorW58S15;
+export default CollectorW57S9;

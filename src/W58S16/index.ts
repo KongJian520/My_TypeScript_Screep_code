@@ -32,6 +32,8 @@ import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
 import LabTransfer from "./creeps/LabTransfer";
 import RATTW58S16 from "./creeps/RATTW58S16";
 import Claim2W58S15 from "./creeps/Claim2W58S16";
+import LabW58S16 from "./utils/Lab";
+import RemoteHavster3W58S16 from "./creeps/RemoteHavster3W58S16";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -53,6 +55,7 @@ const W58S16 = {
 		if (Game.time % 15 === 0) {
 			link.run();
 		}
+		LabW58S16.run();
 
 		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {
@@ -135,6 +138,9 @@ const W58S16 = {
 					case "RemoteHavster2":
 						RemoteHavster2.run(creep);
 						break;
+					case "RemoteHavster3W58S16":
+						RemoteHavster3W58S16.run(creep);
+						break;
 					case "RemoteBuilder":
 						RemoteBuilder.run(creep);
 						break;
@@ -166,7 +172,7 @@ const W58S16 = {
 						RemoteBuilder2W58S16.run(creep);
 						break;
 					case "LabTransfer":
-						LabTransfer.runLabGO(creep);
+						LabTransfer.run(creep);
 						break;
 					case "RATTW58S16":
 						RATTW58S16.run(creep);

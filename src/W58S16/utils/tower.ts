@@ -18,7 +18,7 @@ const tower = {
 			}
 		});
 		damagedStructures.sort((a, b) => {
-			return a.hits - b.hits;
+			return a.hits / a.hitsMax - b.hits / b.hitsMax;
 		});
 
 		// 找到最近的敌人

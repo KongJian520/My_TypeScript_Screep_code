@@ -1,6 +1,3 @@
-import DismveableminerW57S9 from "../creeps/DismoveminerW58S15";
-import CarrierW57S9 from "../creeps/CarrierW57S9";
-
 export type BodyPartConstantTuple = [BodyPartConstant, number];
 
 export interface RoleDefinition {
@@ -22,28 +19,37 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 1
 	},
 	{
-		roleName: "TransferW57S9",
+		roleName: "CarrierW57S9",
 		bodyParts: [
 			[CARRY, 4],
 			[MOVE, 2]
 		],
 		expectedCount: 2,
 		priority: 2
+	},
+	{
+		roleName: "TransferW57S9",
+		bodyParts: [
+			[CARRY, 6],
+			[MOVE, 4]
+		],
+		expectedCount: 1,
+		priority: 3
 	},
 	{
 		roleName: "Transfer2W57S9",
 		bodyParts: [
-			[CARRY, 4],
-			[MOVE, 2]
+			[CARRY, 6],
+			[MOVE, 4]
 		],
-		expectedCount: 2,
-		priority: 2
+		expectedCount: 1,
+		priority: 3
 	},
 	{
 		roleName: "DismveableminerW57S9",
 		bodyParts: [
-			[WORK, 4],
-			[CARRY, 1],
+			[WORK, 10],
+			[CARRY, 2],
 			[MOVE, 1]
 		],
 		expectedCount: 1,
@@ -52,8 +58,8 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "Dismveableminer2W57S9",
 		bodyParts: [
-			[WORK, 4],
-			[CARRY, 1],
+			[WORK, 10],
+			[CARRY, 2],
 			[MOVE, 1]
 		],
 		expectedCount: 1,
@@ -62,9 +68,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "GuardW57S9",
 		bodyParts: [
-			[MOVE, 1],
-			[ATTACK, 2],
-			[HEAL, 1]
+			[MOVE, 4],
+			[ATTACK, 5],
+			[HEAL, 2]
 		],
 		expectedCount: 1,
 		priority: 51
@@ -81,21 +87,21 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "UpgraderW57S9",
 		bodyParts: [
-			[WORK, 3],
-			[CARRY, 1],
-			[MOVE, 2]
+			[WORK, 9],
+			[CARRY, 2],
+			[MOVE, 5]
 		],
-		expectedCount: 3,
+		expectedCount: 2,
 		priority: 49
 	},
 	{
 		roleName: "BuilderW57S9",
 		bodyParts: [
-			[WORK, 2],
-			[CARRY, 2],
-			[MOVE, 2]
+			[WORK, 8],
+			[CARRY, 41],
+			[MOVE, 6]
 		],
-		expectedCount: 4,
+		expectedCount: 2,
 		priority: 50
 	}
 ];

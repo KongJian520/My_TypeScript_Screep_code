@@ -1,4 +1,4 @@
-const roleRemoteHavster2 = {
+const RemoteHavster2W58S16 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W58S17";
 		const Home = "W58S16";
@@ -28,26 +28,13 @@ const roleRemoteHavster2 = {
 			if (creep.room.name !== Home) {
 				creep.moveTo(new RoomPosition(31, 37, Home), { reusePath: 10 });
 			} else {
-				// const targets = Game.getObjectById("64c0730c64271e64bf03f388") as StructureLink;
-				// if (creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-				// 	creep.moveTo(targets);
-				// }
-				const targets = creep.room.find(FIND_STRUCTURES, {
-					filter: structure => {
-						return structure.structureType == STRUCTURE_STORAGE && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-					}
-				});
-				if (targets.length > 0) {
-					const closestContainer = creep.pos.findClosestByPath(targets);
-					if (closestContainer) {
-						// creep.say('RH 最近的找到了')
-						// 移动到最近的 container 并从中放入能量
-						if (creep.transfer(closestContainer, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(closestContainer, {
-								visualizePathStyle: { stroke: "#ffaa00" },
-								reusePath: 10
-							});
-						}
+				const targets = Game.getObjectById<StructureContainer>("64d71a88ba4a40b1c74ab6df");
+				if (targets) {
+					if (creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(targets, {
+							visualizePathStyle: { stroke: "#ffaa00" },
+							reusePath: 10
+						});
 					}
 				}
 			}
@@ -55,4 +42,4 @@ const roleRemoteHavster2 = {
 	}
 };
 
-export default roleRemoteHavster2;
+export default RemoteHavster2W58S16;

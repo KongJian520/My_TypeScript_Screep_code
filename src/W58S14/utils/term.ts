@@ -2,19 +2,19 @@ const terminalW58S14 = {
 	send: function (terminal: StructureTerminal) {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_ZYNTHIUM;
-		createEnergyBuyOrder();
-		// createResourceSellOrder();
+		createEnergyBuyOrder(500, 5);
+		createResourceSellOrder();
 
-		processOrder(
-			Game.market
-				.getAllOrders({
-					type: ORDER_BUY,
-					resourceType: goods
-				})
-				.sort((a, b) => b.price - a.price),
-			500,
-			terminal
-		);
+		1; // processOrder(
+		// 	Game.market
+		// 		.getAllOrders({
+		// 			type: ORDER_BUY,
+		// 			resourceType: goods
+		// 		})
+		// 		.sort((a, b) => b.price - a.price),
+		// 	500,
+		// 	terminal
+		// );
 
 		// processOrder(
 		// 	Game.market
@@ -62,10 +62,7 @@ const terminalW58S14 = {
 		// 假设 "goods" 是你要出售的资源种类
 
 		//创建能量购买订单
-		function createEnergyBuyOrder() {
-			const orderAmount = 50000; // 要购买的能量数量
-			const maxPrice = 10; // 设置一个最大购买价格
-
+		function createEnergyBuyOrder(orderAmount: number, maxPrice: number) {
 			const existingOrders = Game.market.getAllOrders({
 				type: ORDER_BUY,
 				resourceType: RESOURCE_ENERGY,

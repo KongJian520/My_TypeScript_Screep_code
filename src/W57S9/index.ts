@@ -14,8 +14,12 @@ import TransferW57S9 from "./creeps/TransferW57S9";
 import Transfer2W57S9 from "./creeps/Transfer2W57S9";
 import Transfer3W57S9 from "./creeps/Transfer3W57S9";
 import CollectorW57S9 from "./creeps/CollectorW57S9";
+import RemoteHavsterW58S16 from "./creeps/RemoteHavsterWS57S9";
+import ClaimW57S9 from "./creeps/ClaimerW57S9";
+import Transfer4W57S9 from "./creeps/Transfer4W57S9";
+import GuardW56S8 from "./creeps/GuardW56S8";
 
-const W58S15 = {
+const W57S9 = {
 	work: function (ThisRoom: Room) {
 		let name;
 		if (Game.time % 2 === 0) {
@@ -98,9 +102,21 @@ const W58S15 = {
 					case "CollectorW57S9":
 						CollectorW57S9.run(creep);
 						break;
+					case "RemoteHavsterW58S16":
+						RemoteHavsterW58S16.run(creep);
+						break;
+					case "ClaimW57S9":
+						ClaimW57S9.run(creep);
+						break;
+					case "Transfer4W57S9":
+						Transfer4W57S9.run(creep);
+						break;
+					case "GuardW56S8":
+						GuardW56S8.run(creep);
+						break;
 				}
 			}
 		}
 	}
 };
-export default W58S15;
+export default W57S9;

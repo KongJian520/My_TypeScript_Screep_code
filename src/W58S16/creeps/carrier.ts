@@ -17,7 +17,7 @@ const roleCarrier = {
 				const closestLab = creep.pos.findClosestByPath(
 					creep.room.find(FIND_STRUCTURES, {
 						filter: (structure: any) =>
-							structure.structureType === STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+							structure.structureType === STRUCTURE_LAB && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 					})
 				);
 				const closestTower = creep.pos.findClosestByPath(
@@ -42,14 +42,15 @@ const roleCarrier = {
 					if (creep.transfer(closestLab, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
 						creep.moveTo(closestLab, { visualizePathStyle: { stroke: "#ffffff" } });
 					}
-				} else if (closestTower) {
-					// 如果 EXT 和 Spawn 都已经填满，则填充 tower
-					if (closestTower) {
-						if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-							creep.moveTo(closestTower, { visualizePathStyle: { stroke: "#ffffff" } });
-						}
-					}
 				}
+				// else if (closestTower) {
+				// 	// 如果 EXT 和 Spawn 都已经填满，则填充 tower
+				// 	if (closestTower) {
+				// 		if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+				// 			creep.moveTo(closestTower, { visualizePathStyle: { stroke: "#ffffff" } });
+				// 		}
+				// 	}
+				// }
 			} else {
 				const sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) =>

@@ -2,7 +2,7 @@ const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_HYDROGEN;
-		createEnergyBuyOrder(500, 10);
+		createEnergyBuyOrder(500, 5);
 		// createResourceSellOrder();
 
 		// processOrder(

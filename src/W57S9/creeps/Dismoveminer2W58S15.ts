@@ -22,7 +22,7 @@ const Dismveableminer2W57S9 = {
 		} else if (!creep.memory.working) {
 			const tower = Game.getObjectById<StructureTower>("64d46ee982ec1b18b158e1a4")!;
 			const continer = Game.getObjectById("64d48f2613ecbf1099277d31") as StructureContainer;
-			if (tower.store.energy < 10) {
+			if (tower.store.energy < 800) {
 				creep.say("Tower");
 				creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
 			} else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {

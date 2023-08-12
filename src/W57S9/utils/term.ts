@@ -2,30 +2,30 @@ const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
 		console.log("------------------------Terminal---------------------------");
 		const goods = RESOURCE_HYDROGEN;
-		createEnergyBuyOrder();
+		createEnergyBuyOrder(500, 5);
 		// createResourceSellOrder();
 
-		processOrder(
-			Game.market
-				.getAllOrders({
-					type: ORDER_BUY,
-					resourceType: goods
-				})
-				.sort((a, b) => b.price - a.price),
-			500,
-			terminal
-		);
-
-		processOrder(
-			Game.market
-				.getAllOrders({
-					type: ORDER_SELL,
-					resourceType: RESOURCE_ENERGY
-				})
-				.sort((a, b) => a.price - b.price),
-			5000,
-			terminal
-		);
+		// processOrder(
+		// 	Game.market
+		// 		.getAllOrders({
+		// 			type: ORDER_BUY,
+		// 			resourceType: goods
+		// 		})
+		// 		.sort((a, b) => b.price - a.price),
+		// 	500,
+		// 	terminal
+		// );
+		//
+		// processOrder(
+		// 	Game.market
+		// 		.getAllOrders({
+		// 			type: ORDER_SELL,
+		// 			resourceType: RESOURCE_ENERGY
+		// 		})
+		// 		.sort((a, b) => a.price - b.price),
+		// 	5000,
+		// 	terminal
+		// );
 
 		function processOrder(orderSell: Order[], OrderAmount: number, terminal: StructureTerminal) {
 			for (let i = 0; i < 20; i++) {
@@ -64,10 +64,7 @@ const terminalW58S16 = {
 		// 假设 "goods" 是你要出售的资源种类
 
 		//创建能量购买订单
-		function createEnergyBuyOrder() {
-			const orderAmount = 50000; // 要购买的能量数量
-			const maxPrice = 15; // 设置一个最大购买价格
-
+		function createEnergyBuyOrder(orderAmount: number, maxPrice: number) {
 			const existingOrders = Game.market.getAllOrders({
 				type: ORDER_BUY,
 				resourceType: RESOURCE_ENERGY,

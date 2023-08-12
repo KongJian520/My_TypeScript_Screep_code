@@ -46,15 +46,15 @@ const CarrierW57S9 = {
 							a.store.energy / a.store.getCapacity(RESOURCE_ENERGY) -
 							b.store.energy / b.store.getCapacity(RESOURCE_ENERGY)
 					);
-					const closestTower = creep.pos.findClosestByPath(towers);
-					if (closestTower) {
-						if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-							creep.moveTo(closestTower, {
-								visualizePathStyle: { stroke: "#ffffff" },
-								reusePath: 10
-							});
-						}
-					}
+					// const closestTower = creep.pos.findClosestByPath(towers);
+					// if (closestTower) {
+					// 	if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+					// 		creep.moveTo(closestTower, {
+					// 			visualizePathStyle: { stroke: "#ffffff" },
+					// 			reusePath: 10
+					// 		});
+					// 	}
+					// }
 				}
 			} else {
 				const sources = Game.getObjectById("64d64646b5f538e742f592a7") as StructureStorage;

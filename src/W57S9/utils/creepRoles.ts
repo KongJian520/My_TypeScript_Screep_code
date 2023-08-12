@@ -98,10 +98,40 @@ export const roleDefinitions: RoleDefinition[] = [
 		roleName: "BuilderW57S9",
 		bodyParts: [
 			[WORK, 8],
-			[CARRY, 41],
+			[CARRY, 4],
 			[MOVE, 6]
 		],
 		expectedCount: 2,
 		priority: 50
+	},
+	{
+		roleName: "RemoteHavsterW58S16",
+		bodyParts: [
+			[WORK, 5],
+			[CARRY, 8],
+			[MOVE, 6]
+		],
+		expectedCount: 2,
+		priority: 40
+	},
+	{
+		roleName: "ClaimW57S9",
+		bodyParts: [
+			[CLAIM, 2],
+			[MOVE, 2]
+		],
+		expectedCount: 1,
+		priority: 39
+	},
+	{
+		roleName: "GuardW56S8",
+		bodyParts: [
+			[TOUGH, 5],
+			[MOVE, 4],
+			[ATTACK, 4],
+			[HEAL, 1]
+		],
+		expectedCount: 1,
+		priority: 38
 	}
 ];

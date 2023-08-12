@@ -12,7 +12,6 @@ import roledismoveabletrasferW58S14 from "./creeps/dismoveabletrasfer";
 import roleDismveableminerW58S14 from "./creeps/dismoveableminer";
 import RemoteBuilder2W58S14 from "./creeps/remoteBuilder2";
 import roleRemoteBuilderW58S14 from "./creeps/remoteBuilder";
-import roleRemoteRepairW58S14 from "./creeps/remoteRepairer";
 import roleRemoteHavsterW58S14 from "./creeps/remoteHavster";
 import roleremoteAttackerW58S14 from "./creeps/remoteattacker";
 import EXMANW58S14 from "./creeps/EXMAN";
@@ -25,6 +24,8 @@ import autoSpawn from "./utils/autoSpawn";
 import terminalW58S16 from "./utils/term";
 import Dismveableminer3W58S14 from "./creeps/dismoveableminer3";
 import RATTW58S14 from "./creeps/RATTW58S14";
+import RemoteBuilder3W58S14 from "./creeps/RemoteBuilder3W58S14";
+import LabTransferW58S14 from "./creeps/LabTransferW58S14";
 
 const W58S14 = {
 	work: function (ThisRoom: Room) {
@@ -97,8 +98,8 @@ const W58S14 = {
 					roleDismveableminer2.run(creep);
 					break;
 				case "transferW58S14":
-					// roletransferW58S14.runMineral(creep);
-					transferW58S14.runEnergy(creep);
+					transferW58S14.runMineral(creep);
+					// transferW58S14.runEnergy(creep);
 					break;
 				case "MinerW58S14":
 					roleMinerW58S14.run(creep);
@@ -112,8 +113,8 @@ const W58S14 = {
 				case "RemoteBuilder2W58S14":
 					RemoteBuilder2W58S14.run(creep);
 					break;
-				case "RemoteRepairW58S14":
-					roleRemoteRepairW58S14.run(creep);
+				case "RemoteBuilder3W58S14":
+					RemoteBuilder3W58S14.run(creep);
 					break;
 				case "RemoteHavsterW58S14":
 					roleRemoteHavsterW58S14.run(creep);
@@ -141,6 +142,9 @@ const W58S14 = {
 					break;
 				case "RATTW58S14":
 					RATTW58S14.run(creep);
+					break;
+				case "LabTransferW58S14":
+					LabTransferW58S14.run(creep);
 					break;
 			}
 		}

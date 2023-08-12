@@ -9,8 +9,7 @@ const tower = {
 					(structure.structureType == STRUCTURE_TOWER ||
 						structure.structureType == STRUCTURE_CONTAINER ||
 						structure.structureType == STRUCTURE_ROAD ||
-						structure.structureType == STRUCTURE_SPAWN ||
-						structure.structureType == STRUCTURE_RAMPART) && // 判断建筑损伤是否小于最大值
+						structure.structureType == STRUCTURE_SPAWN) && // 判断建筑损伤是否小于最大值
 					// || structure.structureType == STRUCTURE_WALL
 
 					structure.hits != structure.hitsMax

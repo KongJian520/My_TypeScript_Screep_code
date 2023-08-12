@@ -14,8 +14,7 @@ import dismoveableminer2 from "./creeps/dismoveableminer2";
 import Dismveableminer3 from "./creeps/dismoveableminer3";
 import Guard from "./creeps/Guard";
 import claim from "./creeps/claim";
-import RemoteHavster from "./creeps/remoteHavster";
-import RemoteHavster2 from "./creeps/remoteHavster2";
+import RemoteHavster from "./creeps/RemoteHavsterW58S16";
 
 import RemoteUpgrader from "./creeps/remoteUpgrader";
 import transfer from "./creeps/transfer";
@@ -29,11 +28,14 @@ import RemoteRepair from "./creeps/remoteRepairer";
 import RemoteBuilder from "./creeps/remoteBuilder";
 import SelfH from "./creeps/AandH";
 import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
-import LabTransfer from "./creeps/LabTransfer";
+import LabTransferW58S16 from "./creeps/LabTransfer";
 import RATTW58S16 from "./creeps/RATTW58S16";
 import Claim2W58S15 from "./creeps/Claim2W58S16";
 import LabW58S16 from "./utils/Lab";
 import RemoteHavster3W58S16 from "./creeps/RemoteHavster3W58S16";
+import Transfer2W58S16 from "./creeps/Transfer2W58S16";
+import RemoteHavster2W58S16 from "./creeps/RemoteHavster2W58S16";
+import Transfer3W58S16 from "./creeps/Transfer3W58S16";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -135,8 +137,14 @@ const W58S16 = {
 					case "RemoteHavster":
 						RemoteHavster.run(creep);
 						break;
-					case "RemoteHavster2":
-						RemoteHavster2.run(creep);
+					case "Transfer2W58S16":
+						Transfer2W58S16.run(creep);
+						break;
+					case "Transfer3W58S16":
+						Transfer3W58S16.run(creep);
+						break;
+					case "RemoteHavster2W58S16":
+						RemoteHavster2W58S16.run(creep);
 						break;
 					case "RemoteHavster3W58S16":
 						RemoteHavster3W58S16.run(creep);
@@ -171,8 +179,8 @@ const W58S16 = {
 					case "RemoteBuilder2W58S16":
 						RemoteBuilder2W58S16.run(creep);
 						break;
-					case "LabTransfer":
-						LabTransfer.run(creep);
+					case "LabTransferW58S16":
+						LabTransferW58S16.run(creep);
 						break;
 					case "RATTW58S16":
 						RATTW58S16.run(creep);

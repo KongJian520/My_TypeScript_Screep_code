@@ -2,7 +2,7 @@ const roleGuardW58S14 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W59S14";
 		if (creep.room.name !== targetRoom) {
-			creep.moveTo(new RoomPosition(48, 47, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
+			creep.moveTo(new RoomPosition(15, 33, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
 		} else {
 			let target = creep.room.find(FIND_HOSTILE_CREEPS);
 			if (target.length > 0) {
@@ -10,7 +10,7 @@ const roleGuardW58S14 = {
 					creep.moveTo(target[0], { visualizePathStyle: { stroke: "#ff0000" } });
 				}
 			} else {
-				creep.moveTo(new RoomPosition(48, 47, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
+				creep.moveTo(new RoomPosition(15, 33, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
 			}
 			if (creep.hits < creep.hitsMax * 0.6) {
 				creep.heal(creep);

@@ -1,5 +1,3 @@
-import RemoteBuilderW56S8 from "../creeps/RemoteBuilderW56S8";
-
 export type BodyPartConstantTuple = [BodyPartConstant, number];
 
 export interface RoleDefinition {

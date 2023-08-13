@@ -1,6 +1,3 @@
-import Transfer2W58S14 from "../creeps/TransferW58S14";
-import RemoteHavsterW59S15 from "../creeps/RemoteHavsterW59S15";
-
 export type BodyPartConstantTuple = [BodyPartConstant, number];
 
 export interface RoleDefinition {

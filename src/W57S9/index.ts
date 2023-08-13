@@ -18,6 +18,7 @@ import RemoteHavsterW58S16 from "./creeps/RemoteHavsterWS57S9";
 import ClaimW57S9 from "./creeps/ClaimerW57S9";
 import Transfer4W57S9 from "./creeps/Transfer4W57S9";
 import GuardW56S8 from "./creeps/GuardW56S8";
+import DismoveTransferW57S9 from "./creeps/DismoveTransferW57S9";
 
 const W57S9 = {
 	work: function (ThisRoom: Room) {
@@ -110,6 +111,9 @@ const W57S9 = {
 						break;
 					case "Transfer4W57S9":
 						Transfer4W57S9.run(creep);
+						break;
+					case "DismoveTransferW57S9":
+						DismoveTransferW57S9.run(creep);
 						break;
 					case "GuardW56S8":
 						GuardW56S8.run(creep);

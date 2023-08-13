@@ -1,4 +1,13 @@
-const transferW58S14 = {
+const roletransfer = {
+	run: function (creep: Creep) {
+		const Container = Game.getObjectById("64ccae63fb14a1a07f57d4c0") as StructureContainer;
+		if (Container.store[RESOURCE_ENERGY] !== 0) {
+			this.runEnergy(creep);
+		} else {
+			this.runMineral(creep);
+		}
+	},
+
 	runEnergy: function (creep: Creep) {
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
@@ -20,6 +29,8 @@ const transferW58S14 = {
 				if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
+			} else {
+				creep.memory.working = true;
 			}
 		} else if (creep.memory.working) {
 			const targets = creep.room.find(FIND_STRUCTURES, {
@@ -52,6 +63,8 @@ const transferW58S14 = {
 		if (!creep.memory.working) {
 			if (creep.withdraw(Container, sources.mineralType) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(Container);
+			} else {
+				creep.memory.working = true;
 			}
 		} else {
 			if (creep.transfer(storage, _.keys(creep.store)[0] as ResourceConstant) == ERR_NOT_IN_RANGE) {
@@ -61,4 +74,4 @@ const transferW58S14 = {
 	}
 };
 
-export default transferW58S14;
+export default roletransfer;

@@ -1,3 +1,6 @@
+import Transfer2W58S14 from "../creeps/TransferW58S14";
+import RemoteHavsterW59S15 from "../creeps/RemoteHavsterW59S15";
+
 export type BodyPartConstantTuple = [BodyPartConstant, number];
 
 export interface RoleDefinition {
@@ -76,16 +79,7 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 5
 	},
-	{
-		roleName: "RepairW58S14",
-		bodyParts: [
-			[WORK, 8],
-			[CARRY, 6],
-			[MOVE, 7]
-		],
-		expectedCount: 1,
-		priority: 6
-	},
+
 	{
 		roleName: "UpgraderW58S14",
 		bodyParts: [
@@ -106,25 +100,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 11
 	},
-	{
-		roleName: "RepairW58S14",
-		bodyParts: [
-			[WORK, 8],
-			[CARRY, 8],
-			[MOVE, 9]
-		],
-		expectedCount: 1,
-		priority: 11
-	},
-	{
-		roleName: "Dismveableminer3W58S14",
-		bodyParts: [
-			[MOVE, 5],
-			[WORK, 15]
-		],
-		expectedCount: 1,
-		priority: 12
-	},
+	// {
+	// 	roleName: "Dismveableminer3W58S14",
+	// 	bodyParts: [
+	// 		[MOVE, 5],
+	// 		[WORK, 15]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 12
+	// },
 	{
 		roleName: "GuardW58S14",
 		bodyParts: [
@@ -166,6 +150,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 94
 	},
 	{
+		roleName: "Transfer2W58S14",
+		bodyParts: [
+			[CARRY, 6],
+			[MOVE, 6]
+		],
+		expectedCount: 1,
+		priority: 96
+	},
+	{
 		roleName: "RemoteHavsterW58S14",
 		bodyParts: [
 			[WORK, 8],
@@ -189,11 +182,11 @@ export const roleDefinitions: RoleDefinition[] = [
 		roleName: "RemoteBuilderW58S14",
 		bodyParts: [
 			[WORK, 8],
-			[CARRY, 8],
-			[MOVE, 8]
+			[CARRY, 6],
+			[MOVE, 6]
 		],
 		expectedCount: 1,
-		priority: 96
+		priority: 95
 	},
 	{
 		roleName: "RemoteBuilder2W58S14",
@@ -206,34 +199,32 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 96
 	},
 	{
-		roleName: "RemoteRepairW58S14",
+		roleName: "RemoteHavsterW59S15",
+		bodyParts: [
+			[WORK, 8],
+			[CARRY, 8],
+			[MOVE, 8]
+		],
+		expectedCount: 2,
+		priority: 97
+	},
+	{
+		roleName: "RemoteBuilder3W58S14",
 		bodyParts: [
 			[WORK, 8],
 			[CARRY, 8],
 			[MOVE, 8]
 		],
 		expectedCount: 1,
-		priority: 96
+		priority: 97
+	},
+	{
+		roleName: "ClaimW59S15",
+		bodyParts: [
+			[MOVE, 2],
+			[CLAIM, 2]
+		],
+		expectedCount: 1,
+		priority: 97
 	}
-	// {
-	//     roleName: "RemoteAttackerW58S14",
-	//     bodyParts: [
-	//         [TOUGH, 5],
-	//         [ATTACK, 6],
-	//         [MOVE, 7],
-	//     ],
-	//     expectedCount: 1,
-	//     priority: 97,
-	// },
-	// {
-	// 	roleName: "RATTW58S14",
-	// 	bodyParts: [
-	// 		[TOUGH, 5],
-	// 		[MOVE, 8],
-	// 		[RANGED_ATTACK, 4],
-	// 		[HEAL, 5]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 99
-	// }
 ];

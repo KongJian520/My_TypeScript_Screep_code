@@ -75,15 +75,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 6
 	},
-	{
-		roleName: "Dismveableminer3",
-		bodyParts: [
-			[MOVE, 5],
-			[WORK, 15]
-		],
-		expectedCount: 1,
-		priority: 7
-	},
+	// {
+	// 	roleName: "Dismveableminer3",
+	// 	bodyParts: [
+	// 		[MOVE, 5],
+	// 		[WORK, 15]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 7
+	// },
 	{
 		roleName: "transfer",
 		bodyParts: [
@@ -100,7 +100,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 6],
 			[MOVE, 8]
 		],
-		expectedCount: 2,
+		expectedCount: 3,
 		priority: 8
 	},
 	{
@@ -154,8 +154,8 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "Transfer2W58S16",
 		bodyParts: [
-			[CARRY, 15],
-			[MOVE, 15]
+			[CARRY, 20],
+			[MOVE, 20]
 		],
 		expectedCount: 3,
 		priority: 10

@@ -1,7 +1,7 @@
-const Transfer4W57S9 = {
+const Transfer2W58S14 = {
 	run: function (creep: Creep) {
-		const Container = Game.getObjectById("64d79d520ffdb3c4152f883c") as StructureContainer;
-		const Storage = Game.getObjectById("64d64646b5f538e742f592a7") as StructureStorage;
+		const Container = Game.getObjectById("64d8857d4098bde67d436766") as StructureContainer;
+		const Storage = Game.getObjectById("64bce1d286165e47d28a42f4") as StructureStorage;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("寻找能量");
@@ -40,4 +40,4 @@ const Transfer4W57S9 = {
 	}
 };
 
-export default Transfer4W57S9;
+export default Transfer2W58S14;

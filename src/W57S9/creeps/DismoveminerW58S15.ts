@@ -1,4 +1,4 @@
-const DismveableminerW57S9 = {
+const Dismveableminer2W57S9 = {
 	run: function (creep: Creep) {
 		creep.moveTo(7, 12);
 		const sources = Game.getObjectById("5bbca9f59099fc012e63072b") as Source;
@@ -20,16 +20,16 @@ const DismveableminerW57S9 = {
 				creep.memory.working = false;
 			}
 		} else if (!creep.memory.working) {
-			// const tower = Game.getObjectById<StructureTower>("64d46ee982ec1b18b158e1a4")!;
-			const continer = Game.getObjectById("64d4d1913f14a869960b3efa") as StructureContainer;
-			// if (tower.store.energy < 10) {
-			// 	creep.say("Tower");
-			// 	creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
-			// } else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
-			creep.say("continer");
-			creep.transfer(continer, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
-			// }
+			const tower = Game.getObjectById<StructureTower>("64d8c80d021ca54fb79a8a18")!;
+			const Link = Game.getObjectById<StructureLink>("64d8af98ac37e89133229d57")!;
+			if (tower.store.energy < 800) {
+				creep.say("Tower");
+				creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
+			} else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
+				creep.say("continer");
+				creep.transfer(Link, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
+			}
 		}
 	}
 };
-export default DismveableminerW57S9;
+export default Dismveableminer2W57S9;

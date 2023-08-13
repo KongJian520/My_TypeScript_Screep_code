@@ -1,30 +1,41 @@
 const Transfer2W58S16 = {
 	run: function (creep: Creep) {
+		const Container = Game.getObjectById("64d736d24098bd8a93431c7e") as StructureContainer;
+		const Storage = Game.getObjectById("64ae33b7d36572291f61089a") as StructureStorage;
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
-			creep.say("找contianer中");
+			creep.say("寻找能量");
+			this.toContainer(creep, Container);
 		}
 		if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
 			creep.memory.working = true;
-			creep.say("运输中");
+			creep.say("运输到up");
+			this.toStorage(creep, Storage);
 		}
 		if (!creep.memory.working) {
-			const sources = Game.getObjectById<StructureContainer>("64d736d24098bd8a93431c7e")!;
-			// 如果找到了 sources
-			if (sources.store.energy > 0) {
-				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" } });
-				}
+			if (Container.store.energy !== 0) {
+				this.toContainer(creep, Container);
 			} else {
 				creep.memory.working = true;
 			}
 		} else if (creep.memory.working) {
-			const STORAGE = Game.getObjectById<StructureStorage>("64ae33b7d36572291f61089a");
-			if (STORAGE) {
-				if (creep.transfer(STORAGE, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(STORAGE, { visualizePathStyle: { stroke: "#ffffff" } });
-				}
-			}
+			this.toStorage(creep, Storage);
+		}
+	},
+	toStorage: function (creep: Creep, Storage: StructureStorage) {
+		if (creep.transfer(Storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+			creep.moveTo(Storage, {
+				visualizePathStyle: { stroke: "#ffffff" },
+				reusePath: 10
+			});
+		}
+	},
+	toContainer: function (creep: Creep, Container: StructureContainer) {
+		if (creep.withdraw(Container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+			creep.moveTo(Container, {
+				visualizePathStyle: { stroke: "#ffaa00" },
+				reusePath: 10
+			});
 		}
 	}
 };

@@ -1,10 +1,17 @@
-const roletransfer = {
+import Transfer2W58S16 from "./Transfer2W58S16";
+
+const Transfer = {
 	run: function (creep: Creep) {
 		const Container = Game.getObjectById("64d15b51691b1ed3cd8308d1") as StructureContainer;
-		if (Container.store[RESOURCE_ENERGY] !== 0) {
-			this.runEnergy(creep);
+
+		if (_.filter(Game.creeps, creep => creep.memory.role == "Dismveableminer3").length !== 0) {
+			if (Container.store[RESOURCE_ENERGY] !== 0) {
+				this.runEnergy(creep);
+			} else {
+				this.runMineral(creep);
+			}
 		} else {
-			this.runMineral(creep);
+			Transfer2W58S16.run(creep);
 		}
 	},
 
@@ -74,4 +81,4 @@ const roletransfer = {
 	}
 };
 
-export default roletransfer;
+export default Transfer;

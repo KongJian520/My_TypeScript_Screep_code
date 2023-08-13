@@ -7,13 +7,13 @@ const LabTransferW58S16 = {
 		const Lab3 = Game.getObjectById("64c3f9afb10a865fabd2ebf0") as StructureLab;
 		const Container = Game.getObjectById("64d637dafed0bece934dcf11") as StructureContainer;
 
-		// this.Lab_On(creep, Lab3, storage, "GO");
-		// this.Lab_Off(creep, Lab3, storage, "GO");
+		this.Lab_On(creep, Lab3, storage, "GO");
+		// this.Lab_Off(creep, Lab1, storage, "O");
 		// this.Lab_On(creep, Lab3, Container, "GH");
-
-		this.Lab_Off(creep, Lab1, storage, "H");
+		// this.Lab_Off(creep, Lab1, storage, "H");
+		// this.Lab_On(creep, Lab1, Term, "H");
 	},
-	Lab_Off: function (creep: Creep, Lab: StructureLab, storage: StructureStorage, resType: ResourceConstant) {
+	Lab_Off: function (creep: Creep, Lab: StructureLab, storage: Structure, resType: ResourceConstant) {
 		if (creep.memory.working && creep.store.getFreeCapacity() == 0) {
 			creep.memory.working = false;
 			creep.say(`🔄${resType}送回`);

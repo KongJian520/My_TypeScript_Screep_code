@@ -9,9 +9,9 @@ const HarvesterW57S9 = {
 			creep.say("存放");
 		}
 		if (creep.memory.working) {
-			const sources = creep.room.find(FIND_SOURCES_ACTIVE);
-			if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[0], {
+			const sources = Game.getObjectById<Source>("5bbca9f59099fc012e63072b")!;
+			if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(7, 13, {
 					visualizePathStyle: { stroke: "#ffaa00" },
 					reusePath: 10
 				});

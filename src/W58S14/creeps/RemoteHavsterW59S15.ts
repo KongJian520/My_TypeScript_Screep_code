@@ -1,6 +1,6 @@
-const roleRemoteHavsterW58S14 = {
+const RemoteHavsterW59S15 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W59S14";
+		const targetRoom = "W59S15";
 		const Home = "W58S14";
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -39,4 +39,4 @@ const roleRemoteHavsterW58S14 = {
 	}
 };
 
-export default roleRemoteHavsterW58S14;
+export default RemoteHavsterW59S15;

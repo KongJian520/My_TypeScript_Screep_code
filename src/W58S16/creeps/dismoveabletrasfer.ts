@@ -26,11 +26,11 @@ const roledismoveabletrasfer = {
 				}
 				if (targetLink.store[RESOURCE_ENERGY] == 0) {
 					if (terminal) {
-						if (terminal.store[RESOURCE_ENERGY] <= 30000) {
+						if (terminal.store[RESOURCE_ENERGY] <= 100000) {
 							creep.withdraw(Storage, RESOURCE_ENERGY);
 							creep.transfer(terminal, RESOURCE_ENERGY);
 						}
-						if (terminal.store[RESOURCE_ENERGY] >= 35000) {
+						if (terminal.store[RESOURCE_ENERGY] >= 110000) {
 							creep.withdraw(terminal, RESOURCE_ENERGY);
 							creep.transfer(Storage, RESOURCE_ENERGY);
 						}

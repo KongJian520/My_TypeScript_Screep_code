@@ -1,6 +1,6 @@
-const GuardW56S8 = {
+const GuardW59S15 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W56S8";
+		const targetRoom = "W59S15";
 		if (creep.room.name !== targetRoom) {
 			// 如果当前不在目标房间，就移动过去
 			creep.moveTo(new RoomPosition(20, 20, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
@@ -21,9 +21,9 @@ const GuardW56S8 = {
 					creep.moveTo(targetSrtuc[0], { visualizePathStyle: { stroke: "#ff0000" } });
 				}
 			} else {
-				creep.moveTo(24, 11, { visualizePathStyle: { stroke: "#ffffff" } });
+				creep.moveTo(40, 27, { visualizePathStyle: { stroke: "#ffffff" } });
 			}
 		}
 	}
 };
-export default GuardW56S8;
+export default GuardW59S15;

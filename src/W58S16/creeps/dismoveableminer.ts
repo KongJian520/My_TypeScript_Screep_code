@@ -1,4 +1,4 @@
-const roleDismveableminer = {
+const Dismveableminer = {
 	run: function (creep: Creep) {
 		const sources = Game.getObjectById("5bbca9eb9099fc012e6305bd") as Source;
 		const link = creep.pos.findInRange(FIND_STRUCTURES, 1, {
@@ -35,4 +35,4 @@ const roleDismveableminer = {
 		}
 	}
 };
-export default roleDismveableminer;
+export default Dismveableminer;

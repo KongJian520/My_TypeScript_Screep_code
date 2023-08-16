@@ -5,7 +5,6 @@ import autoSpawn from "./utils/autoSpawn";
 import HarvesterW57S9 from "./creeps/HarvesterW57S9";
 import UpgraderW57S9 from "./creeps/UpgraderW57S9";
 import BuilderW57S9 from "./creeps/BuilderW57S9";
-
 import GuardW57S9 from "./creeps/GuardW57S9";
 import CarrierW57S9 from "./creeps/CarrierW57S9";
 import Dismveableminer2W57S9 from "./creeps/Dismoveminer2W58S15";
@@ -14,29 +13,37 @@ import TransferW57S9 from "./creeps/TransferW57S9";
 import Transfer2W57S9 from "./creeps/Transfer2W57S9";
 import Transfer3W57S9 from "./creeps/Transfer3W57S9";
 import CollectorW57S9 from "./creeps/CollectorW57S9";
-import RemoteHavsterW58S16 from "./creeps/RemoteHavsterWS57S9";
-import ClaimW57S9 from "./creeps/ClaimerW57S9";
-import Transfer4W57S9 from "./creeps/Transfer4W57S9";
+
+import ClaimW56S8 from "./creeps/ClaimerW57S9";
 import GuardW56S8 from "./creeps/GuardW56S8";
 import DismoveTransferW57S9 from "./creeps/DismoveTransferW57S9";
+import RemoteBuilderW56S8 from "./creeps/RemoteBuilderW56S8";
+import EnergyTransfer1W56S8 from "./creeps/EnergyTransfer1W56S8";
+import RemoteBuilderW57S8 from "./creeps/RemoteBuilderW57S8";
+import RemoteHavsterW56S8 from "./creeps/RemoteHavsterWS57S9";
 
 const W57S9 = {
 	work: function (ThisRoom: Room) {
-		let name;
-		if (Game.time % 2 === 0) {
+		function logRoomInfo() {
 			console.log(`----------------${ThisRoom.name}-------------------`);
 			console.log(`${ThisRoom.name} 能量:` + ThisRoom.energyAvailable + "/" + ThisRoom.energyCapacityAvailable);
 			if (ThisRoom.storage) {
 				console.log("Storge-RESOURCE_ENERGY = " + ThisRoom.storage.store.getUsedCapacity(RESOURCE_ENERGY));
 			}
+		}
+
+		let name;
+
+		if (Game.time % 2 === 0) {
+			logRoomInfo();
 			for (name in Memory.creeps) {
 				if (!Game.creeps[name]) {
 					delete Memory.creeps[name];
-					// console.log('Clearing non-existing creep memory:', name);
 				}
 			}
 			link.run();
 		}
+
 		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {
 				const spawningCreep = Game.creeps[Spawns.spawning.name];
@@ -45,7 +52,7 @@ const W57S9 = {
 					opacity: 0.8
 				});
 				if (Game.time % 2 === 0) {
-					console.log(`🔁${ThisRoom.name}的${Spawns.name} is Spawning ${spawningCreep.memory.role}`);
+					console.log(`🔁${ThisRoom.name}的${Spawns.name}正在生成 ${spawningCreep.memory.role}`);
 				}
 			} else {
 				if (Game.time % 2 === 0) {
@@ -53,74 +60,48 @@ const W57S9 = {
 				}
 			}
 		}
-		if (Game.time % 10 === 0) {
-			if (ThisRoom.terminal) {
-				terminalW58S16.send(ThisRoom.terminal);
-			}
+
+		if (Game.time % 10 === 0 && ThisRoom.terminal) {
+			terminalW58S16.send(ThisRoom.terminal);
 		}
+
 		let Towers = ThisRoom.find(FIND_MY_STRUCTURES, {
 			filter: { structureType: STRUCTURE_TOWER }
 		}) as StructureTower[];
-		// 遍历每个塔
 		for (let Tower of Towers) {
 			tower.run(Tower);
 		}
+
+		const roleToFunction: { [roleName: string]: { run(creep: Creep): void } } = {
+			HarvesterW57S9: HarvesterW57S9,
+			UpgraderW57S9: UpgraderW57S9,
+			BuilderW57S9: BuilderW57S9,
+			GuardW57S9: GuardW57S9,
+			CarrierW57S9: CarrierW57S9,
+			Dismveableminer2W57S9: Dismveableminer2W57S9,
+			DismveableminerW57S9: DismveableminerW57S9,
+			TransferW57S9: TransferW57S9,
+			Transfer2W57S9: Transfer2W57S9,
+			Transfer3W57S9: Transfer3W57S9,
+			CollectorW57S9: CollectorW57S9,
+			ClaimW56S8: ClaimW56S8,
+			Transfer4W57S9: EnergyTransfer1W56S8,
+			GuardW56S8: GuardW56S8,
+			DismoveTransferW57S9: DismoveTransferW57S9,
+			RemoteBuilderW56S8: RemoteBuilderW56S8,
+			EnergyTransfer1W56S8: EnergyTransfer1W56S8,
+			RemoteBuilderW57S8: RemoteBuilderW57S8,
+			RemoteHavsterW56S8: RemoteHavsterW56S8
+		};
+
 		for (name in Game.creeps) {
-			{
-				const creep = Game.creeps[name];
-				// 优化后的代码
-				switch (creep.memory.role) {
-					case "HarvesterW57S9":
-						HarvesterW57S9.run(creep);
-						break;
-					case "UpgraderW57S9":
-						UpgraderW57S9.run(creep);
-						break;
-					case "BuilderW57S9":
-						BuilderW57S9.run(creep);
-						break;
-					case "GuardW57S9":
-						GuardW57S9.run(creep);
-						break;
-					case "Dismveableminer2W57S9":
-						Dismveableminer2W57S9.run(creep);
-						break;
-					case "DismveableminerW57S9":
-						DismveableminerW57S9.run(creep);
-						break;
-					case "TransferW57S9":
-						TransferW57S9.run(creep);
-						break;
-					case "Transfer2W57S9":
-						Transfer2W57S9.run(creep);
-						break;
-					case "Transfer3W57S9":
-						Transfer3W57S9.run(creep);
-						break;
-					case "CarrierW57S9":
-						CarrierW57S9.run(creep);
-						break;
-					case "CollectorW57S9":
-						CollectorW57S9.run(creep);
-						break;
-					case "RemoteHavsterW58S16":
-						RemoteHavsterW58S16.run(creep);
-						break;
-					case "ClaimW57S9":
-						ClaimW57S9.run(creep);
-						break;
-					case "Transfer4W57S9":
-						Transfer4W57S9.run(creep);
-						break;
-					case "DismoveTransferW57S9":
-						DismoveTransferW57S9.run(creep);
-						break;
-					case "GuardW56S8":
-						GuardW56S8.run(creep);
-						break;
-				}
+			const creep = Game.creeps[name];
+			const roleFunction = roleToFunction[creep.memory.role];
+			if (roleFunction) {
+				roleFunction.run(creep);
 			}
 		}
 	}
 };
+
 export default W57S9;

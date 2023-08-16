@@ -7,11 +7,13 @@ const LabTransferW58S16 = {
 		const Lab3 = Game.getObjectById("64c3f9afb10a865fabd2ebf0") as StructureLab;
 		const Container = Game.getObjectById("64d637dafed0bece934dcf11") as StructureContainer;
 
-		this.Lab_On(creep, Lab3, storage, "GO");
+		// this.Lab_On(creep, Lab3, storage, "GO");
+		// this.Lab_Off(creep, Lab3, storage, "GO");
 		// this.Lab_Off(creep, Lab1, storage, "O");
 		// this.Lab_On(creep, Lab3, Container, "GH");
+		// this.Lab_On(creep, Lab3, Container, "energy");
 		// this.Lab_Off(creep, Lab1, storage, "H");
-		// this.Lab_On(creep, Lab1, Term, "H");
+		this.Lab_On(creep, Lab1, Term, "H");
 	},
 	Lab_Off: function (creep: Creep, Lab: StructureLab, storage: Structure, resType: ResourceConstant) {
 		if (creep.memory.working && creep.store.getFreeCapacity() == 0) {
@@ -27,10 +29,16 @@ const LabTransferW58S16 = {
 			let result = creep.withdraw(Lab, resType);
 			creep.moveTo(Lab);
 			creep.say(("Working" + result) as unknown as string);
+			if (result == ERR_NOT_ENOUGH_RESOURCES) {
+				creep.memory.working = false;
+			}
 		} else if (!creep.memory.working) {
 			let result = creep.transfer(storage, resType);
 			creep.moveTo(storage);
 			creep.say(("!wording" + result) as unknown as string);
+			if (result == ERR_NOT_ENOUGH_RESOURCES) {
+				creep.memory.working = true;
+			}
 		}
 	},
 	//爬爬/放入lab/在何处拿/种类

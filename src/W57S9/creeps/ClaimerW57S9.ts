@@ -1,4 +1,4 @@
-const ClaimW57S9 = {
+const ClaimW56S8 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W56S8";
 		const controller = Game.rooms[targetRoom]?.controller; // 使用安全导航操作符确保获取不会导致错误
@@ -48,4 +48,4 @@ const ClaimW57S9 = {
 	}
 };
 
-export default ClaimW57S9;
+export default ClaimW56S8;

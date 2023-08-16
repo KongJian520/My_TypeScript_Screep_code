@@ -1,6 +1,6 @@
-const RemoteBuilderW56S8 = {
+const RemoteBuilderW57S8 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W56S8";
+		const targetRoom = "W57S8";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");
@@ -43,15 +43,12 @@ const RemoteBuilderW56S8 = {
 					}
 				}
 			} else {
-				let sources = Game.getObjectById<Source>("5bbcaa009099fc012e630926")!;
-				if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" } });
-				}
-				if (sources.energy == 0) {
-					creep.memory.working = true;
+				let sources = creep.room.find(FIND_SOURCES_ACTIVE);
+				if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
 			}
 		}
 	}
 };
-export default RemoteBuilderW56S8;
+export default RemoteBuilderW57S8;

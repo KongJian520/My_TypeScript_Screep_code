@@ -37,6 +37,7 @@ console.log("=========================================");
 
 export const loop = () => {
 	if (Game.cpu.bucket === 10000) {
+		cancelZeroAmountOwnOrders();
 		Game.cpu.generatePixel();
 		Game.market.deal("64c813840b755a87a6a3b510", 1);
 	}
@@ -52,23 +53,33 @@ export const loop = () => {
 			case "W58S16":
 				try {
 					W58S16.work(Game.rooms[RoomName]);
-				} catch (e) {
-					console.log(`W58S16出错，异常抛出：${e}`);
+				} catch (error) {
+					if (error instanceof Error) {
+						console.log(`W58S16，异常抛出：${error}`);
+						console.log(error.stack);
+					}
 				}
 				break;
 			case "W58S14":
 				try {
 					W58S14.work(Game.rooms[RoomName]);
-				} catch (e) {
-					console.log(`W58S16出错，异常抛出：${e}`);
+				} catch (error) {
+					if (error instanceof Error) {
+						console.log(`W58S14，异常抛出：${error}`);
+						console.log(error.stack);
+					}
 				}
 
 				break;
 			case "W57S9":
 				try {
 					W57S9.work(Game.rooms[RoomName]);
-				} catch (e) {
-					console.log(`W58S16出错，异常抛出：${e}`);
+				} catch (error) {
+					// 显示错误的位置
+					if (error instanceof Error) {
+						console.log(`W57S9，异常抛出：${error}`);
+						console.log(error.stack);
+					}
 				}
 				break;
 		}
@@ -89,5 +100,3 @@ function cancelZeroAmountOwnOrders(): void {
 		}
 	}
 }
-
-cancelZeroAmountOwnOrders();

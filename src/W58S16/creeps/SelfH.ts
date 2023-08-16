@@ -13,16 +13,15 @@ const SelfH = {
 		}
 		if (creep.memory.working) {
 			if (creep.room.name !== targetRoom) {
-				creep.moveTo(new RoomPosition(47, 32, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(new RoomPosition(48, 41, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
 			} else if (creep.room.name === targetRoom) {
-				creep.moveTo(new RoomPosition(46, 32, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
-				creep.heal(creep);
+				creep.moveTo(new RoomPosition(48, 41, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
 			}
 		} else {
 			if (creep.room.name !== Home) {
-				creep.moveTo(new RoomPosition(1, 32, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(new RoomPosition(1, 47, Home), { visualizePathStyle: { stroke: "#ff0000" } });
 			} else if (creep.room.name === Home) {
-				creep.moveTo(new RoomPosition(1, 32, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(new RoomPosition(1, 47, Home), { visualizePathStyle: { stroke: "#ff0000" } });
 			}
 		}
 	}

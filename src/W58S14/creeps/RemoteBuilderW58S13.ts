@@ -1,6 +1,6 @@
-const RemoteBuilder2W58S14 = {
+const RemoteBuilderW58S13 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S15";
+		const targetRoom = "W58S13";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");
@@ -82,4 +82,4 @@ const RemoteBuilder2W58S14 = {
 		}
 	}
 };
-export default RemoteBuilder2W58S14;
+export default RemoteBuilderW58S13;

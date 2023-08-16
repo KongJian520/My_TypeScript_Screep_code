@@ -2,30 +2,30 @@ const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
 		const goods = RESOURCE_HYDROGEN;
-		createEnergyBuyOrder(500, 5);
-		createResourceSellOrder();
-
-		processOrder(
-			Game.market
-				.getAllOrders({
-					type: ORDER_BUY,
-					resourceType: goods
-				})
-				.sort((a, b) => b.price - a.price),
-			20,
-			terminal
-		);
+		createEnergyBuyOrder(5000, 4.5);
+		// createResourceSellOrder();
 
 		// processOrder(
 		// 	Game.market
 		// 		.getAllOrders({
-		// 			type: ORDER_SELL,
-		// 			resourceType: RESOURCE_ENERGY
+		// 			type: ORDER_BUY,
+		// 			resourceType: goods
 		// 		})
-		// 		.sort((a, b) => a.price - b.price),
-		// 	500,
+		// 		.sort((a, b) => b.price - a.price),
+		// 	20,
 		// 	terminal
 		// );
+
+		processOrder(
+			Game.market
+				.getAllOrders({
+					type: ORDER_SELL,
+					resourceType: RESOURCE_ENERGY
+				})
+				.sort((a, b) => a.price - b.price),
+			500,
+			terminal
+		);
 
 		function processOrder(orderSell: Order[], OrderAmount: number, terminal: StructureTerminal) {
 			for (let i = 0; i < 20; i++) {

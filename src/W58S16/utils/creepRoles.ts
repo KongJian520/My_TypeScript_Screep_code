@@ -8,22 +8,22 @@ export interface RoleDefinition {
 }
 
 export const roleDefinitions: RoleDefinition[] = [
-	{
-		roleName: "harvester",
-		bodyParts: [
-			[WORK, 1],
-			[CARRY, 1],
-			[MOVE, 2]
-		],
-		expectedCount: 1,
-		priority: 1
-	},
+	// {
+	// 	roleName: "harvester",
+	// 	bodyParts: [
+	// 		[WORK, 1],
+	// 		[CARRY, 2],
+	// 		[MOVE, 2]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 1
+	// },
 	{
 		roleName: "dismoveableminer",
 		bodyParts: [
-			[WORK, 10],
-			[CARRY, 2],
-			[MOVE, 1]
+			[WORK, 20],
+			[CARRY, 4],
+			[MOVE, 10]
 		],
 		expectedCount: 1,
 		priority: 2
@@ -31,9 +31,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "dismoveableminer2",
 		bodyParts: [
-			[WORK, 10],
-			[CARRY, 2],
-			[MOVE, 1]
+			[WORK, 20],
+			[CARRY, 4],
+			[MOVE, 10]
 		],
 		expectedCount: 1,
 		priority: 2
@@ -41,7 +41,7 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "dismoveabletrasfer",
 		bodyParts: [
-			[CARRY, 5],
+			[CARRY, 10],
 			[MOVE, 1]
 		],
 		expectedCount: 1,
@@ -50,20 +50,20 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "carrier",
 		bodyParts: [
-			[CARRY, 4],
-			[MOVE, 2]
+			[CARRY, 10],
+			[MOVE, 10]
 		],
 		expectedCount: 2,
-		priority: 3
+		priority: 1
 	},
 	{
-		roleName: "builder",
+		roleName: "BuilderW58S16",
 		bodyParts: [
-			[WORK, 10],
-			[CARRY, 6],
-			[MOVE, 7]
+			[WORK, 30],
+			[CARRY, 10],
+			[MOVE, 10]
 		],
-		expectedCount: 1,
+		expectedCount: 2,
 		priority: 4
 	},
 	{
@@ -75,15 +75,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 6
 	},
-	// {
-	// 	roleName: "Dismveableminer3",
-	// 	bodyParts: [
-	// 		[MOVE, 5],
-	// 		[WORK, 15]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 7
-	// },
+	{
+		roleName: "Dismveableminer3",
+		bodyParts: [
+			[MOVE, 5],
+			[WORK, 20]
+		],
+		expectedCount: 1,
+		priority: 7
+	},
 	{
 		roleName: "transfer",
 		bodyParts: [
@@ -94,13 +94,13 @@ export const roleDefinitions: RoleDefinition[] = [
 		priority: 7
 	},
 	{
-		roleName: "upgrader",
+		roleName: "UpgraderW58S16",
 		bodyParts: [
-			[WORK, 10],
-			[CARRY, 6],
-			[MOVE, 8]
+			[WORK, 13],
+			[CARRY, 10],
+			[MOVE, 10]
 		],
-		expectedCount: 3,
+		expectedCount: 1,
 		priority: 8
 	},
 	{
@@ -151,15 +151,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 2,
 		priority: 11
 	},
-	{
-		roleName: "Transfer2W58S16",
-		bodyParts: [
-			[CARRY, 20],
-			[MOVE, 20]
-		],
-		expectedCount: 3,
-		priority: 10
-	},
+	// {
+	// 	roleName: "Transfer2W58S16",
+	// 	bodyParts: [
+	// 		[CARRY, 20],
+	// 		[MOVE, 20]
+	// 	],
+	// 	expectedCount: 2,
+	// 	priority: 10
+	// },
 	{
 		roleName: "Transfer3W58S16",
 		bodyParts: [
@@ -210,16 +210,28 @@ export const roleDefinitions: RoleDefinition[] = [
 		],
 		expectedCount: 0,
 		priority: 99
+	},
+	{
+		roleName: "RATTW58S16",
+		bodyParts: [
+			[TOUGH, 10],
+			[MOVE, 5],
+			[RANGED_ATTACK, 5],
+			[HEAL, 5],
+			[MOVE, 5],
+			[HEAL, 5],
+			[MOVE, 3]
+		],
+		expectedCount: 1,
+		priority: 100
+	},
+	{
+		roleName: "SelfH",
+		bodyParts: [
+			[MOVE, 15],
+			[HEAL, 19]
+		],
+		expectedCount: 1,
+		priority: 100
 	}
-	// {
-	// 	roleName: "RATTW58S16",
-	// 	bodyParts: [
-	// 		[TOUGH, 5],
-	// 		[MOVE, 8],
-	// 		[RANGED_ATTACK, 4],
-	// 		[HEAL, 5]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 100
-	// }
 ];

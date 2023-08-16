@@ -1,4 +1,4 @@
-const RemoteBuilder3W58S14 = {
+const RemoteBuilder3W59S15 = {
 	run: function (creep: Creep) {
 		const targetRoom = "W59S15";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
@@ -50,4 +50,4 @@ const RemoteBuilder3W58S14 = {
 		}
 	}
 };
-export default RemoteBuilder3W58S14;
+export default RemoteBuilder3W59S15;

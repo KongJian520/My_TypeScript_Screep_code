@@ -3,8 +3,8 @@ import link from "./utils/link";
 import terminalW58S16 from "./utils/term";
 import autoSpawn from "./utils/autoSpawn";
 import harvester from "./creeps/Harvester";
-import upgrader from "./creeps/Upgrader";
-import builder from "./creeps/Builder";
+import UpgraderW58S16 from "./creeps/UpgraderW58S16";
+
 import miner from "./creeps/miner";
 import carrier from "./creeps/carrier";
 
@@ -26,7 +26,7 @@ import eye from "./creeps/eye";
 import dismoveabletrasfer from "./creeps/dismoveabletrasfer";
 import RemoteRepair from "./creeps/remoteRepairer";
 import RemoteBuilder from "./creeps/remoteBuilder";
-import SelfH from "./creeps/AandH";
+import SelfH from "./creeps/SelfH";
 import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
 import LabTransferW58S16 from "./creeps/LabTransfer";
 import RATTW58S16 from "./creeps/RATTW58S16";
@@ -36,6 +36,8 @@ import RemoteHavster3W58S16 from "./creeps/RemoteHavster3W58S16";
 import Transfer2W58S16 from "./creeps/Transfer2W58S16";
 import RemoteHavster2W58S16 from "./creeps/RemoteHavster2W58S16";
 import Transfer3W58S16 from "./creeps/Transfer3W58S16";
+import BuilderW57S9 from "./creeps/BuilderW58S16";
+import BuilderW58S16 from "./creeps/BuilderW58S16";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -54,9 +56,7 @@ const W58S16 = {
 				}
 			}
 		}
-		if (Game.time % 15 === 0) {
-			link.run();
-		}
+		link.run();
 		LabW58S16.run();
 
 		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
@@ -96,11 +96,11 @@ const W58S16 = {
 					case "harvester":
 						harvester.run(creep);
 						break;
-					case "upgrader":
-						upgrader.run(creep);
+					case "UpgraderW58S16":
+						UpgraderW58S16.run(creep);
 						break;
-					case "builder":
-						builder.run(creep);
+					case "BuilderW58S16":
+						BuilderW58S16.run(creep);
 						break;
 					case "miner":
 						miner.run(creep);
@@ -108,7 +108,6 @@ const W58S16 = {
 					case "carrier":
 						carrier.run(creep);
 						break;
-
 					case "collector":
 						collector.run(creep);
 						break;

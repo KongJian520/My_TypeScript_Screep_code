@@ -32,7 +32,7 @@ const RemoteHavsterW58S16 = {
 			if (creep.room.name !== Home) {
 				creep.moveTo(new RoomPosition(31, 37, Home), { reusePath: 10 });
 			} else {
-				const targets = Game.getObjectById<StructureContainer>("64d736d24098bd8a93431c7e");
+				const targets = Game.getObjectById<StructureContainer>("64dcea84f805462420214079");
 				if (targets) {
 					if (creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 						creep.moveTo(targets, {

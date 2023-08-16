@@ -29,7 +29,7 @@ const RemoteHavster3W58S16 = {
 				}
 			}
 		} else if (!creep.memory.working) {
-			const targets = Game.getObjectById<StructureContainer>("64d736d24098bd8a93431c7e")!;
+			const targets = Game.getObjectById<StructureContainer>("64dcea84f805462420214079")!;
 			if (creep.room.name !== Home) {
 				creep.moveTo(targets.pos, { reusePath: 10 });
 			} else {

@@ -97,15 +97,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 11
 	},
-	// {
-	// 	roleName: "Dismveableminer3W58S14",
-	// 	bodyParts: [
-	// 		[MOVE, 5],
-	// 		[WORK, 15]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 12
-	// },
+	{
+		roleName: "Dismveableminer3W58S14",
+		bodyParts: [
+			[MOVE, 5],
+			[WORK, 15]
+		],
+		expectedCount: 1,
+		priority: 12
+	},
 	{
 		roleName: "GuardW58S14",
 		bodyParts: [

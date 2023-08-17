@@ -29,7 +29,10 @@ const RemoteBuilderW56S8 = {
 				} else {
 					const targets = creep.room.find(FIND_STRUCTURES, {
 						filter: (structure: any) => {
-							return structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax;
+							return (
+								(structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_CONTAINER) &&
+								structure.hits < structure.hitsMax
+							);
 						}
 					});
 					targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);

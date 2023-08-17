@@ -81,19 +81,19 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 38
 	},
-	{
-		roleName: "GuardW56S8",
-		bodyParts: [
-			[MOVE, 5],
-			[ATTACK, 5],
-			[MOVE, 4],
-			[ATTACK, 4],
-			[MOVE, 1],
-			[HEAL, 1]
-		],
-		expectedCount: 2,
-		priority: 49
-	},
+	// {
+	// 	roleName: "GuardW56S8",
+	// 	bodyParts: [
+	// 		[MOVE, 5],
+	// 		[ATTACK, 5],
+	// 		[MOVE, 4],
+	// 		[ATTACK, 4],
+	// 		[MOVE, 1],
+	// 		[HEAL, 1]
+	// 	],
+	// 	expectedCount: 2,
+	// 	priority: 49
+	// },
 	{
 		roleName: "BuilderW57S9",
 		bodyParts: [
@@ -140,7 +140,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 15],
 			[WORK, 1]
 		],
-		expectedCount: 4,
+		expectedCount: 3,
 		priority: 61
 	},
 	{

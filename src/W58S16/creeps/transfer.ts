@@ -1,21 +1,19 @@
-import Transfer2W58S16 from "./Transfer2W58S16";
-
 const Transfer = {
 	run: function (creep: Creep) {
-		const Container = Game.getObjectById("64d15b51691b1ed3cd8308d1") as StructureContainer;
-
 		if (_.filter(Game.creeps, creep => creep.memory.role == "Dismveableminer3").length !== 0) {
+			const Container = Game.getObjectById("64d15b51691b1ed3cd8308d1") as StructureContainer;
 			if (Container.store[RESOURCE_ENERGY] !== 0) {
-				this.runEnergy(creep);
+				this.runEnergy(creep, Container);
 			} else {
 				this.runMineral(creep);
 			}
 		} else {
-			Transfer2W58S16.run(creep);
+			const Container = Game.getObjectById("64d6edc29e07e737ff38c47f") as StructureContainer;
+			this.runEnergy(creep, Container);
 		}
 	},
 
-	runEnergy: function (creep: Creep) {
+	runEnergy: function (creep: Creep, sources: StructureContainer) {
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("找contianer中");
@@ -25,16 +23,10 @@ const Transfer = {
 			creep.say("运输中");
 		}
 		if (!creep.memory.working) {
-			const sources = creep.room.find(FIND_STRUCTURES, {
-				filter: (structure: any) => {
-					return structure.structureType == STRUCTURE_CONTAINER && structure.store.energy > 0;
-				}
-			});
 			// 如果找到了 sources
-			if (sources.length > 0) {
-				sources.sort((a: any, b: any) => b.store.energy - a.store.energy);
-				if (creep.withdraw(sources[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
+			if (sources) {
+				if (creep.withdraw(sources, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(sources, { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
 			} else {
 				creep.memory.working = true;

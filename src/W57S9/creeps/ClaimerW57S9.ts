@@ -1,16 +1,12 @@
 const ClaimW56S8 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W56S8";
-		const controller = Game.rooms[targetRoom]?.controller; // 使用安全导航操作符确保获取不会导致错误
-
-		if (!controller) {
-			creep.say("No controller");
-			return;
-		}
-
+		const targetFlag = Game.flags.ClaimW56S8Ta;
+		const targetRoom = Game.flags.ClaimW56S8Ta.pos.roomName;
+		creep.say(creep.moveTo(targetFlag.pos) as unknown as string);
 		if (creep.room.name !== targetRoom) {
-			creep.moveTo(new RoomPosition(controller.pos.x, controller.pos.y, targetRoom));
+			creep.moveTo(targetFlag.pos);
 		} else {
+			const controller = Game.rooms[targetRoom].controller!;
 			if (!controller.owner) {
 				if (!controller.reservation) {
 					this.reserveController(creep, controller);

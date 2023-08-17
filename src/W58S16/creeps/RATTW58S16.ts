@@ -1,6 +1,6 @@
 const RATTW58S16 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W56S14";
+		const targetRoom = "W57S14";
 		const Home = "W57S14";
 		creep.heal(creep);
 
@@ -16,7 +16,7 @@ const RATTW58S16 = {
 			if (creep.room.name !== targetRoom) {
 				creep.moveTo(new RoomPosition(4, 39, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
 			} else if (creep.room.name === targetRoom) {
-				creep.moveTo(22, 12);
+				creep.moveTo(31, 25);
 				// creep.rangedMassAttack();
 				let nearNeedToATT = creep.pos.findInRange(FIND_STRUCTURES, 2);
 				let nearNeedToATTCREEPS = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 2);

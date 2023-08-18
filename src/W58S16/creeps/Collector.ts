@@ -1,10 +1,5 @@
-import roleCarrier from "./carrier";
-
 const roleCollector = {
 	run: function (creep: Creep) {
-		if (_.filter(Game.creeps, creep => creep.memory.role === "collector").length === 0) {
-			roleCarrier.run(creep);
-		}
 		// 如果creep没有能量，且房间内有掉落的资源或者墓碑
 		if (
 			creep.store.getUsedCapacity() === 0 &&

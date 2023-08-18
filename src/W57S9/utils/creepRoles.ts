@@ -30,15 +30,11 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "CarrierW57S9",
 		bodyParts: [
-			// [CARRY, 4],
-			// [MOVE, 2],
-			// [CARRY, 4],
-			// [MOVE, 2],
 			[CARRY, 4],
 			[MOVE, 2]
 		],
 		expectedCount: 2,
-		priority: 5
+		priority: 3
 	},
 
 	{
@@ -48,7 +44,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 2]
 		],
 		expectedCount: 1,
-		priority: 4
+		priority: 6
 	},
 	{
 		roleName: "DismveableminerW57S9",
@@ -81,19 +77,19 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 38
 	},
-	// {
-	// 	roleName: "GuardW56S8",
-	// 	bodyParts: [
-	// 		[MOVE, 5],
-	// 		[ATTACK, 5],
-	// 		[MOVE, 4],
-	// 		[ATTACK, 4],
-	// 		[MOVE, 1],
-	// 		[HEAL, 1]
-	// 	],
-	// 	expectedCount: 2,
-	// 	priority: 49
-	// },
+	{
+		roleName: "GuardW56S8",
+		bodyParts: [
+			[MOVE, 5],
+			[ATTACK, 5],
+			[MOVE, 4],
+			[ATTACK, 4],
+			[MOVE, 1],
+			[HEAL, 1]
+		],
+		expectedCount: 1,
+		priority: 47
+	},
 	{
 		roleName: "BuilderW57S9",
 		bodyParts: [
@@ -130,39 +126,39 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CLAIM, 2],
 			[MOVE, 2]
 		],
-		expectedCount: 1,
-		priority: 59
-	},
-	{
-		roleName: "EnergyTransfer1W56S8",
-		bodyParts: [
-			[CARRY, 15],
-			[MOVE, 15],
-			[WORK, 1]
-		],
-		expectedCount: 3,
-		priority: 61
-	},
-	{
-		roleName: "RemoteHavsterW56S8",
-		bodyParts: [
-			[WORK, 8],
-			[CARRY, 1],
-			[MOVE, 8]
-		],
 		expectedCount: 2,
-		priority: 60
-	},
-	{
-		roleName: "RemoteBuilderW56S8",
-		bodyParts: [
-			[WORK, 6],
-			[CARRY, 6],
-			[MOVE, 6]
-		],
-		expectedCount: 1,
 		priority: 59
 	},
+	// {
+	// 	roleName: "EnergyTransfer1W56S8",
+	// 	bodyParts: [
+	// 		[CARRY, 15],
+	// 		[MOVE, 15],
+	// 		[WORK, 1]
+	// 	],
+	// 	expectedCount: 3,
+	// 	priority: 61
+	// },
+	// {
+	// 	roleName: "RemoteHavsterW56S8",
+	// 	bodyParts: [
+	// 		[WORK, 8],
+	// 		[CARRY, 1],
+	// 		[MOVE, 8]
+	// 	],
+	// 	expectedCount: 2,
+	// 	priority: 60
+	// },
+	// {
+	// 	roleName: "RemoteBuilderW56S8",
+	// 	bodyParts: [
+	// 		[WORK, 6],
+	// 		[CARRY, 6],
+	// 		[MOVE, 6]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 59
+	// },
 	{
 		roleName: "RemoteBuilderW57S8",
 		bodyParts: [

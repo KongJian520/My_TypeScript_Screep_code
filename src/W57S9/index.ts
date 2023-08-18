@@ -14,13 +14,13 @@ import Transfer2W57S9 from "./creeps/Transfer2W57S9";
 import Transfer3W57S9 from "./creeps/Transfer3W57S9";
 import CollectorW57S9 from "./creeps/CollectorW57S9";
 
-import ClaimW56S8 from "./creeps/ClaimerW57S9";
+import ClaimW56S8 from "./creeps/ClaimW56S8";
 import GuardW56S8 from "./creeps/GuardW56S8";
 import DismoveTransferW57S9 from "./creeps/DismoveTransferW57S9";
 import RemoteBuilderW56S8 from "./creeps/RemoteBuilderW56S8";
 import EnergyTransfer1W56S8 from "./creeps/EnergyTransfer1W56S8";
 import RemoteBuilderW57S8 from "./creeps/RemoteBuilderW57S8";
-import RemoteHavsterW56S8 from "./creeps/RemoteHavsterWS57S9";
+import RemoteHavsterW56S8 from "./creeps/RemoteHavsterW56S8";
 
 const W57S9 = {
 	work: function (ThisRoom: Room) {
@@ -72,7 +72,11 @@ const W57S9 = {
 			tower.run(Tower);
 		}
 
-		const roleToFunction: { [roleName: string]: { run(creep: Creep): void } } = {
+		const roleToFunction: {
+			[roleName: string]: {
+				run(creep: Creep): void;
+			};
+		} = {
 			HarvesterW57S9: HarvesterW57S9,
 			UpgraderW57S9: UpgraderW57S9,
 			BuilderW57S9: BuilderW57S9,

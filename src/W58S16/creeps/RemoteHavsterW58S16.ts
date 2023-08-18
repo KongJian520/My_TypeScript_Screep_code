@@ -14,10 +14,10 @@ const RemoteHavsterW58S16 = {
 			if (creep.room.name !== targetRoom) {
 				creep.moveTo(new RoomPosition(20, 37, targetRoom), { visualizePathStyle: { stroke: "#ffaa00" } });
 			} else if (creep.room.name === targetRoom) {
-				const sources = Game.getObjectById<Source>("5bbca9eb9099fc012e6305b8")!;
-				if (sources.energy > 0) {
-					if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-						creep.moveTo(sources, {
+				const sources = creep.room.find(FIND_SOURCES_ACTIVE);
+				if (sources[0].energy > 0) {
+					if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(sources[0], {
 							visualizePathStyle: { stroke: "#ffaa00" },
 							reusePath: 10
 						});
@@ -25,7 +25,7 @@ const RemoteHavsterW58S16 = {
 				} else if (creep.store.energy !== 0) {
 					creep.memory.working = false;
 				} else {
-					creep.moveTo(sources);
+					creep.moveTo(sources[0]);
 				}
 			}
 		} else if (!creep.memory.working) {

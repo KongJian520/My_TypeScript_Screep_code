@@ -14,7 +14,6 @@ import dismoveableminer2 from "./creeps/dismoveableminer2";
 import Dismveableminer3 from "./creeps/dismoveableminer3";
 import Guard from "./creeps/Guard";
 import claim from "./creeps/claim";
-import RemoteHavster from "./creeps/RemoteHavsterW58S16";
 
 import RemoteUpgrader from "./creeps/remoteUpgrader";
 import transfer from "./creeps/transfer";
@@ -25,9 +24,8 @@ import ChaiQian from "./creeps/remoteChaiQian";
 import eye from "./creeps/eye";
 import dismoveabletrasfer from "./creeps/dismoveabletrasfer";
 import RemoteRepair from "./creeps/remoteRepairer";
-import RemoteBuilder from "./creeps/remoteBuilder";
+import RemoteBuilderW58S17 from "./creeps/RemoteBuilderW58S17";
 import SelfH from "./creeps/SelfH";
-import RemoteBuilder2W58S16 from "./creeps/remoteBuilder2";
 import LabTransferW58S16 from "./creeps/LabTransfer";
 import RATTW58S16 from "./creeps/RATTW58S16";
 import Claim2W58S15 from "./creeps/Claim2W58S16";
@@ -36,8 +34,9 @@ import RemoteHavster3W58S16 from "./creeps/RemoteHavster3W58S16";
 import Transfer2W58S16 from "./creeps/Transfer2W58S16";
 import RemoteHavster2W58S16 from "./creeps/RemoteHavster2W58S16";
 import Transfer3W58S16 from "./creeps/Transfer3W58S16";
-import BuilderW57S9 from "./creeps/BuilderW58S16";
 import BuilderW58S16 from "./creeps/BuilderW58S16";
+import RemoteBuilderW58S15 from "./creeps/RemoteBuilderW58S15";
+import RemoteHavsterW58S16 from "./creeps/RemoteHavsterW58S16";
 
 const W58S16 = {
 	work: function (ThisRoom: Room) {
@@ -133,8 +132,8 @@ const W58S16 = {
 						Claim2W58S15.run(creep);
 						break;
 					// case 'ChaiQian': roleChaiQian.run(creep); break;
-					case "RemoteHavster":
-						RemoteHavster.run(creep);
+					case "RemoteHavsterW58S16":
+						RemoteHavsterW58S16.run(creep);
 						break;
 					case "Transfer2W58S16":
 						Transfer2W58S16.run(creep);
@@ -148,8 +147,8 @@ const W58S16 = {
 					case "RemoteHavster3W58S16":
 						RemoteHavster3W58S16.run(creep);
 						break;
-					case "RemoteBuilder":
-						RemoteBuilder.run(creep);
+					case "RemoteBuilderW58S17":
+						RemoteBuilderW58S17.run(creep);
 						break;
 					case "RemoteUpgrader":
 						RemoteUpgrader.run(creep);
@@ -175,8 +174,8 @@ const W58S16 = {
 					case "RemoteRepair":
 						RemoteRepair.run(creep);
 						break;
-					case "RemoteBuilder2W58S16":
-						RemoteBuilder2W58S16.run(creep);
+					case "RemoteBuilderW58S15":
+						RemoteBuilderW58S15.run(creep);
 						break;
 					case "LabTransferW58S16":
 						LabTransferW58S16.run(creep);

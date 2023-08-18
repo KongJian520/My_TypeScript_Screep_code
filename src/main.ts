@@ -39,7 +39,7 @@ export const loop = () => {
 	if (Game.cpu.bucket === 10000) {
 		cancelZeroAmountOwnOrders();
 		Game.cpu.generatePixel();
-		Game.market.deal("64c813840b755a87a6a3b510", 1);
+		// Game.market.deal("64c813840b755a87a6a3b510", 1);
 	}
 	if (Game.time % 2 === 0) {
 		console.log("\r");

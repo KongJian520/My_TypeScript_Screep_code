@@ -17,12 +17,12 @@ const HarvesterW57S9 = {
 				});
 			}
 		} else {
-			storeEnergyInSpawn();
-			// storeEnergyInContianer()
+			// storeEnergyInSpawn();
+			storeEnergyInContianer();
 		}
 
 		function storeEnergyInContianer() {
-			const targets = Game.getObjectById("64cd2934e3f07ff8ff3122ab") as StructureContainer;
+			const targets = Game.getObjectById("64ccae63fb14a1a07f57d4c0") as StructureContainer;
 			if (creep.transfer(targets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(targets, {
 					visualizePathStyle: { stroke: "#ffff00" },

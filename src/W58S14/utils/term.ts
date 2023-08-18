@@ -5,27 +5,27 @@ const terminalW58S14 = {
 		createEnergyBuyOrder(500, 5);
 		createResourceSellOrder();
 
-		1; // processOrder(
-		// 	Game.market
-		// 		.getAllOrders({
-		// 			type: ORDER_BUY,
-		// 			resourceType: goods
-		// 		})
-		// 		.sort((a, b) => b.price - a.price),
-		// 	500,
-		// 	terminal
-		// );
+		processOrder(
+			Game.market
+				.getAllOrders({
+					type: ORDER_BUY,
+					resourceType: goods
+				})
+				.sort((a, b) => b.price - a.price),
+			500,
+			terminal
+		);
 
-		// processOrder(
-		// 	Game.market
-		// 		.getAllOrders({
-		// 			type: ORDER_SELL,
-		// 			resourceType: RESOURCE_ENERGY
-		// 		})
-		// 		.sort((a, b) => a.price - b.price),
-		// 	500,
-		// 	terminal
-		// );
+		processOrder(
+			Game.market
+				.getAllOrders({
+					type: ORDER_SELL,
+					resourceType: RESOURCE_ENERGY
+				})
+				.sort((a, b) => a.price - b.price),
+			500,
+			terminal
+		);
 
 		function processOrder(orderSell: Order[], OrderAmount: number, terminal: StructureTerminal) {
 			for (let i = 0; i < 20; i++) {

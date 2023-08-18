@@ -1,4 +1,4 @@
-const roleCarrier = {
+const CarrierW58S14 = {
 	run: function (creep: Creep) {
 		const Home = "W58S14";
 		if (creep.room.name !== Home) {
@@ -42,14 +42,15 @@ const roleCarrier = {
 					if (creep.transfer(closestLab, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
 						creep.moveTo(closestLab, { visualizePathStyle: { stroke: "#ffffff" } });
 					}
-				} else if (closestTower) {
-					// 如果 EXT 和 Spawn 都已经填满，则填充 tower
-					if (closestTower) {
-						if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-							creep.moveTo(closestTower, { visualizePathStyle: { stroke: "#ffffff" } });
-						}
-					}
 				}
+				// else if (closestTower) {
+				// 	// 如果 EXT 和 Spawn 都已经填满，则填充 tower
+				// 	if (closestTower) {
+				// 		if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+				// 			creep.moveTo(closestTower, { visualizePathStyle: { stroke: "#ffffff" } });
+				// 		}
+				// 	}
+				// }
 			} else {
 				const sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) =>
@@ -73,4 +74,4 @@ const roleCarrier = {
 	}
 };
 
-export default roleCarrier;
+export default CarrierW58S14;

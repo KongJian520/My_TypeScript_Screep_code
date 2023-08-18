@@ -9,9 +9,8 @@ import transferW58S14 from "./creeps/transfer";
 import roleDismveableminer2 from "./creeps/dismoveableminer2";
 import roleMinerW58S14 from "./creeps/Miner";
 import roledismoveabletrasferW58S14 from "./creeps/dismoveabletrasfer";
-import roleDismveableminerW58S14 from "./creeps/dismoveableminer";
 import RemoteBuilderW58S13 from "./creeps/RemoteBuilderW58S13";
-import roleRemoteBuilderW58S14 from "./creeps/remoteBuilder";
+
 import roleRemoteHavsterW58S14 from "./creeps/remoteHavster";
 import roleremoteAttackerW58S14 from "./creeps/remoteattacker";
 import EXMANW58S14 from "./creeps/EXMAN";
@@ -30,6 +29,8 @@ import Transfer2W58S14 from "./creeps/TransferW58S14";
 import ClaimW59S15 from "./creeps/ClaimW59S15";
 import RemoteHavsterW59S15 from "./creeps/RemoteHavsterW59S15";
 import GuardW59S15 from "./creeps/GuardW59S15";
+import DismveableminerW58S16 from "./creeps/dismoveableminer";
+import RemoteBuilderW58S14 from "./creeps/RemoteBuilderW58S14";
 
 const W58S14 = {
 	work: function (ThisRoom: Room) {
@@ -115,7 +116,7 @@ const W58S14 = {
 					roledismoveabletrasferW58S14.run(creep);
 					break;
 				case "RemoteBuilderW58S14":
-					roleRemoteBuilderW58S14.run(creep);
+					RemoteBuilderW58S14.run(creep);
 					break;
 				case "RemoteBuilderW58S13":
 					RemoteBuilderW58S13.run(creep);
@@ -151,7 +152,7 @@ const W58S14 = {
 					EXMANW58S14.run(creep);
 					break;
 				case "DismveableminerW58S14":
-					roleDismveableminerW58S14.run(creep);
+					DismveableminerW58S16.run(creep);
 					break;
 				case "RATTW58S14":
 					RATTW58S14.run(creep);

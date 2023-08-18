@@ -1,7 +1,9 @@
 const RATTW58S16 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W57S14";
-		const Home = "W57S14";
+		let targetFlag = Game.flags.RATTT;
+		const targetRoom = targetFlag.pos.roomName;
+		let HomeFlag = Game.flags.RATTH;
+		const Home = HomeFlag.pos.roomName;
 		creep.heal(creep);
 
 		if (!creep.memory.working && creep.hits > creep.hitsMax * 0.9) {
@@ -14,7 +16,7 @@ const RATTW58S16 = {
 		}
 		if (creep.memory.working) {
 			if (creep.room.name !== targetRoom) {
-				creep.moveTo(new RoomPosition(4, 39, targetRoom), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(targetFlag, { visualizePathStyle: { stroke: "#ff0000" } });
 			} else if (creep.room.name === targetRoom) {
 				creep.moveTo(31, 25);
 				// creep.rangedMassAttack();
@@ -23,6 +25,7 @@ const RATTW58S16 = {
 				if (nearNeedToATTCREEPS.length > 1) {
 					creep.rangedMassAttack();
 				} else if (nearNeedToATTCREEPS.length == 1) {
+					creep.rangedAttack(nearNeedToATTCREEPS[0]);
 				} else if (nearNeedToATT.length > 0) {
 					creep.rangedAttack(nearNeedToATT[0]);
 				} else {
@@ -31,11 +34,11 @@ const RATTW58S16 = {
 			}
 		} else {
 			if (creep.room.name !== Home) {
-				creep.moveTo(new RoomPosition(48, 40, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(HomeFlag, { visualizePathStyle: { stroke: "#ff0000" } });
 				let nearNeedToATT = creep.pos.findInRange(FIND_STRUCTURES, 2);
 				creep.rangedAttack(nearNeedToATT[0]);
 			} else if (creep.room.name === Home) {
-				creep.moveTo(new RoomPosition(48, 40, Home), { visualizePathStyle: { stroke: "#ff0000" } });
+				creep.moveTo(HomeFlag, { visualizePathStyle: { stroke: "#ff0000" } });
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-const Dismveableminer2W57S9 = {
+const DismveableminerW57S9 = {
 	run: function (creep: Creep) {
 		creep.moveTo(7, 12);
 		const sources = Game.getObjectById("5bbca9f59099fc012e63072b") as Source;
@@ -32,4 +32,4 @@ const Dismveableminer2W57S9 = {
 		}
 	}
 };
-export default Dismveableminer2W57S9;
+export default DismveableminerW57S9;

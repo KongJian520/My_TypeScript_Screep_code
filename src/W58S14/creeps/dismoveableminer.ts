@@ -1,4 +1,4 @@
-const roleDismveableminer = {
+const DismveableminerW58S16 = {
 	run: function (creep: Creep) {
 		const sources = Game.getObjectById("5bbca9eb9099fc012e6305b4") as Source;
 		const link = creep.pos.findInRange(FIND_STRUCTURES, 1, {
@@ -28,7 +28,7 @@ const roleDismveableminer = {
 		} else if (!creep.memory.working) {
 			const tower = Game.getObjectById<StructureTower>("64dcc32b1d73224f430da711")!;
 			const Link = Game.getObjectById<StructureLink>("64c0730c64271e64bf03f388")!;
-			if (tower.store.energy < 800) {
+			if (tower.store.energy < 600) {
 				creep.say("Tower");
 				creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
 			} else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
@@ -38,4 +38,4 @@ const roleDismveableminer = {
 		}
 	}
 };
-export default roleDismveableminer;
+export default DismveableminerW58S16;

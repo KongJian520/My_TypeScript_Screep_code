@@ -1,18 +1,21 @@
-const UpgraderW58S16 = {
+import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
+
+export const UpgraderW46S11 = {
 	run: function (creep: Creep) {
-		if (this.boostIfNeeded(creep)) {
-			return;
-		}
+		// if (this.boostIfNeeded(creep)) {
+		// 	return;
+		// }
 
 		if (!this.working(creep)) {
-			this.acquireEnergy(creep);
+			// this.acquireStoreEnergy(creep);
+			HarvestSource(creep, "5bbcaa8b9099fc012e63198c");
 		} else {
 			this.upgradeController(creep);
 		}
 	},
 
 	boostIfNeeded: function (creep: Creep): boolean {
-		const LAB = Game.getObjectById<StructureLab>("64c3f9afb10a865fabd2ebf0")!;
+		const LAB = Game.getObjectById<StructureLab>("")!;
 		if (LAB && LAB.store.energy >= 20 && LAB.store[RESOURCE_GHODIUM_HYDRIDE] >= 30) {
 			if (creep.ticksToLive! > 300) {
 				if (!creep.body.some(part => part.type === WORK && part.boost)) {
@@ -44,7 +47,7 @@ const UpgraderW58S16 = {
 		return creep.memory.working;
 	},
 
-	acquireEnergy: function (creep: Creep): void {
+	acquireStoreEnergy: function (creep: Creep): void {
 		const sources = creep.room.find(FIND_STRUCTURES, {
 			filter: (structure: any) => {
 				return (
@@ -77,5 +80,3 @@ const UpgraderW58S16 = {
 		}
 	}
 };
-
-export default UpgraderW58S16;

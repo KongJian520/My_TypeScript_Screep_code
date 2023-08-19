@@ -1,6 +1,6 @@
-const RemoteBuilderW58S15 = {
+const RemoteBuilderW58S17 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S15";
+		const targetRoom = "W58S17";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");
@@ -31,30 +31,20 @@ const RemoteBuilderW58S15 = {
 							return structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax;
 						}
 					});
-					// targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
-
-					if (targets.length !== 0) {
+					targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
+					if (targets.length > 0) {
 						if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
 							creep.moveTo(targets[0], {
 								visualizePathStyle: { stroke: "#f00fff" },
 								reusePath: 10
 							});
 						}
-					} else {
-						if (creep.upgradeController(creep.room.controller!) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(creep.room.controller!, {
-								visualizePathStyle: { stroke: "#ffffff" },
-								reusePath: 10
-							});
-						}
 					}
 				}
 			} else {
-				const source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
-				if (source) {
-					if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
-						creep.moveTo(source, { visualizePathStyle: { stroke: "#ffff00" } });
-					}
+				let sources = creep.room.find(FIND_SOURCES);
+				if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
 				}
 			}
 			// if (creep.room.name !== Home) {
@@ -85,4 +75,4 @@ const RemoteBuilderW58S15 = {
 		}
 	}
 };
-export default RemoteBuilderW58S15;
+export default RemoteBuilderW58S17;

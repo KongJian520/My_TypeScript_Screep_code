@@ -1,12 +1,10 @@
 /// <reference types="@screepscn/types" />+
 
-import W58S16 from "W46S11";
-import W58S14 from "W58S14";
-import W57S9 from "W57S9";
 import W46S11 from "W46S11";
+import W46S12 from "W46S12";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
-// Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'claim', room: '', working: false } })
+// Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'ClaimW46S12', room: '', working: false } })
 // Game.spawns['Spawn1'].room.createConstructionSite( 23, 22, STRUCTURE_TOWER );
 
 declare global {
@@ -56,22 +54,22 @@ export const loop = () => {
 					W46S11.work(Game.rooms[RoomName]);
 				} catch (error) {
 					if (error instanceof Error) {
-						console.log(`W46S11，异常抛出：${error}`);
+						console.log(`${RoomName}，异常抛出：${error}`);
 						console.log(error.stack);
 					}
 				}
 				break;
-			// case "W58S14":
-			// 	try {
-			// 		W58S14.work(Game.rooms[RoomName]);
-			// 	} catch (error) {
-			// 		if (error instanceof Error) {
-			// 			console.log(`W58S14，异常抛出：${error}`);
-			// 			console.log(error.stack);
-			// 		}
-			// 	}
-			//
-			// 	break;
+			case "W46S12":
+				try {
+					W46S12.work(Game.rooms[RoomName]);
+				} catch (error) {
+					if (error instanceof Error) {
+						console.log(`${RoomName}，异常抛出：${error}`);
+						console.log(error.stack);
+					}
+				}
+
+				break;
 			// case "W57S9":
 			// 	try {
 			// 		W57S9.work(Game.rooms[RoomName]);

@@ -8,22 +8,22 @@ export interface RoleDefinition {
 }
 
 export const roleDefinitions: RoleDefinition[] = [
-	{
-		roleName: "DismveableminerW46S12",
-		bodyParts: [
-			[WORK, 5],
-			[CARRY, 2],
-			[MOVE, 2]
-		],
-		expectedCount: 1,
-		priority: 1
-	},
+	// {
+	// 	roleName: "DismveableminerW46S11",
+	// 	bodyParts: [
+	// 		[WORK, 5],
+	// 		[CARRY, 1],
+	// 		[MOVE, 2]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 1
+	// },
 	{
 		roleName: "BuilderW46S12",
 		bodyParts: [
-			[WORK, 4],
-			[CARRY, 4],
-			[MOVE, 4]
+			[WORK, 2],
+			[CARRY, 1],
+			[MOVE, 1]
 		],
 		expectedCount: 10,
 		priority: 50
@@ -40,21 +40,11 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "UpgraderW46S12",
 		bodyParts: [
-			[WORK, 4],
-			[CARRY, 4],
-			[MOVE, 4]
+			[WORK, 2],
+			[CARRY, 1],
+			[MOVE, 1]
 		],
 		expectedCount: 3,
 		priority: 51
-	},
-	{
-		roleName: "RemoteBuilderW46S12",
-		bodyParts: [
-			[WORK, 4],
-			[CARRY, 4],
-			[MOVE, 4]
-		],
-		expectedCount: 4,
-		priority: 100
 	}
 ];

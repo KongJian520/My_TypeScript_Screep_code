@@ -2,6 +2,7 @@
 
 import W46S11 from "W46S11";
 import W46S12 from "W46S12";
+import { W49S11 } from "./W49S11";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
 // Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'ClaimW46S12', room: '', working: false } })
@@ -70,17 +71,17 @@ export const loop = () => {
 				}
 
 				break;
-			// case "W57S9":
-			// 	try {
-			// 		W57S9.work(Game.rooms[RoomName]);
-			// 	} catch (error) {
-			// 		// 显示错误的位置
-			// 		if (error instanceof Error) {
-			// 			console.log(`W57S9，异常抛出：${error}`);
-			// 			console.log(error.stack);
-			// 		}
-			// 	}
-			// 	break;
+			case "W49S11":
+				try {
+					W49S11.work(Game.rooms[RoomName]);
+				} catch (error) {
+					// 显示错误的位置
+					if (error instanceof Error) {
+						console.log(`W57S9，异常抛出：${error}`);
+						console.log(error.stack);
+					}
+				}
+				break;
 		}
 };
 

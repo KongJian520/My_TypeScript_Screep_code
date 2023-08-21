@@ -1,7 +1,7 @@
 import { WithdrawEnergyFromContainer } from "../../GlobalUtil/utils/WithdrawEnergyFromContainer";
 import { transferToStore } from "../../GlobalUtil/utils/StoreSource";
 
-export const Transfer3W46S11 = {
+export const Transfer2W46S12 = {
 	run: function (creep: Creep) {
 		if (creep.memory.working && creep.store.getUsedCapacity() == 0) {
 			creep.memory.working = false;
@@ -12,9 +12,9 @@ export const Transfer3W46S11 = {
 			creep.say("T 🚚S");
 		}
 		if (!creep.memory.working) {
-			WithdrawEnergyFromContainer(creep, "64e0954ba2e7eef395fb2f55");
+			WithdrawEnergyFromContainer(creep, "64e15632c1476ec785e2ac9f");
 		} else if (creep.memory.working) {
-			transferToStore(creep, "64e1527a054f113997c1aa2a");
+			transferToStore(creep, "64e1bfd97aac6f642206ba76");
 		}
 	}
 };

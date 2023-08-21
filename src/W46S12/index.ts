@@ -6,6 +6,11 @@ import { HarvesterW46S12 } from "./creeps/HarvesterW46S12";
 import { UpgraderW46S12 } from "./creeps/UpgraderW58S16";
 import { CollectorW46S12 } from "./creeps/CollectorW46S12";
 import { BuilderW46S12 } from "./creeps/BuilderW46S12";
+import { CarrierW46S12 } from "./creeps/CarrierW46S12";
+import { DismveableminerW46S12 } from "./creeps/DismveableminerW46S12";
+import { Dismoveableminer2W46S12 } from "./creeps/Dismoveableminer2W46S12";
+import { TransferW46S12 } from "./creeps/TransferW46S12";
+import { Transfer2W46S12 } from "./creeps/Transfer2W46S12";
 
 const W57S9 = {
 	work: function (ThisRoom: Room) {
@@ -15,7 +20,12 @@ const W57S9 = {
 			HarvesterW46S12: HarvesterW46S12,
 			UpgraderW46S12: UpgraderW46S12,
 			CollectorW46S12: CollectorW46S12,
-			BuilderW46S12: BuilderW46S12
+			BuilderW46S12: BuilderW46S12,
+			CarrierW46S12: CarrierW46S12,
+			DismveableminerW46S12: DismveableminerW46S12,
+			Dismoveableminer2W46S12: Dismoveableminer2W46S12,
+			TransferW46S12: TransferW46S12,
+			Transfer2W46S12: Transfer2W46S12
 			// RemoteBuilderW46S12: RemoteBuilderW46S12
 		};
 
@@ -64,9 +74,9 @@ const W57S9 = {
 				}
 			}
 		}
-		if (Game.time % 10 === 0 && ThisRoom.terminal) {
-			term.send(ThisRoom.terminal);
-		}
+		// if (Game.time % 10 === 0 && ThisRoom.terminal) {
+		// 	term.send(ThisRoom.terminal);
+		// }
 	}
 };
 

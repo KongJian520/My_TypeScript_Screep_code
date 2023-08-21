@@ -1,4 +1,4 @@
-import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
+import { WithdrawEnergyFromContainer } from "GlobalUtil/utils/WithdrawEnergyFromContainer";
 
 export const UpgraderW46S12 = {
 	run: function (creep: Creep) {
@@ -8,29 +8,11 @@ export const UpgraderW46S12 = {
 
 		if (!this.working(creep)) {
 			// this.acquireStoreEnergy(creep);
-			HarvestSource(creep, "5bbcaa8b9099fc012e63198c");
+			// HarvestSource(creep, "5bbcaa8b9099fc012e631991");
+			WithdrawEnergyFromContainer(creep, "64e35ec18251010ee01a5e14");
 		} else {
 			this.upgradeController(creep);
 		}
-	},
-
-	boostIfNeeded: function (creep: Creep): boolean {
-		const LAB = Game.getObjectById<StructureLab>("")!;
-		if (LAB && LAB.store.energy >= 20 && LAB.store[RESOURCE_GHODIUM_HYDRIDE] >= 30) {
-			if (creep.ticksToLive! > 300) {
-				if (!creep.body.some(part => part.type === WORK && part.boost)) {
-					creep.say("Boosting");
-					const boostResult = LAB.boostCreep(creep);
-					if (boostResult === OK) {
-						creep.say("Boosted");
-					} else if (boostResult === ERR_NOT_IN_RANGE) {
-						creep.moveTo(LAB);
-					}
-					return true;
-				}
-			}
-		}
-		return false;
 	},
 
 	working: function (creep: Creep): boolean {

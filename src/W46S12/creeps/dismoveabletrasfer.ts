@@ -1,4 +1,4 @@
-import roleCarrier from "./carrier";
+import roleCarrier from "./CarrierW46S12";
 
 const roledismoveabletrasfer = {
 	run: function (creep: Creep) {

@@ -1,4 +1,4 @@
-const roledismoveabletrasfer = {
+export const roledismoveabletrasfer = {
 	run: function (creep: Creep) {
 		const W58S16 = "W58S16";
 		creep.moveTo(32, 37);
@@ -42,4 +42,3 @@ const roledismoveabletrasfer = {
 		}
 	}
 };
-export default roledismoveabletrasfer;

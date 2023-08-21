@@ -1,31 +1,25 @@
 import tower from "./utils/tower";
 import link from "./utils/link";
 import autoSpawn from "./utils/autoSpawn";
-import term from "./utils/term";
-import { HarvesterW46S11 } from "./creeps/HarvesterW46S11";
-import { UpgraderW46S11 } from "./creeps/UpgraderW46S11";
-import { ScavengerW46S11 } from "./creeps/ScavengerW46S11";
-import { BuilderW46S11 } from "./creeps/BuilderW46S11";
-import { DismveableminerW46S11 } from "./creeps/DismveableminerW46S11";
-import { RemoteBuilderW46S11 } from "./creeps/RemoteBuilderW46S11";
-import { CarrierW46S11 } from "./creeps/CarrierW46S11";
-import { Transfer3W46S11 } from "./creeps/Transfer3W58S16";
-import { Dismoveableminer2W46S11 } from "./creeps/dismoveableminer2";
+// import term from "./utils/term";
+import { HarvesterW49S11 } from "./creeps/HarvesterW46S11";
+import { DismveableminerW49S11 } from "./creeps/DismveableminerW46S11";
+import { CarrierW49S11 } from "./creeps/CarrierW46S11";
+import { TransferW49S11 } from "./creeps/TransferW49S11";
+import { BuilderW49S11 } from "./creeps/BuilderW49S11";
 
-const W57S9 = {
+export const W49S11 = {
 	work: function (ThisRoom: Room) {
 		const roleToFunction: {
-			[roleName: string]: { run(creep: Creep): void };
+			[roleName: string]: {
+				run(creep: Creep): void;
+			};
 		} = {
-			HarvesterW46S11: HarvesterW46S11,
-			UpgraderW46S11: UpgraderW46S11,
-			ScavengerW46S11: ScavengerW46S11,
-			BuilderW46S11: BuilderW46S11,
-			DismveableminerW46S11: DismveableminerW46S11,
-			CarrierW46S11: CarrierW46S11,
-			RemoteBuilderW46S11: RemoteBuilderW46S11,
-			Transfer3W46S11: Transfer3W46S11,
-			Dismoveableminer2W46S11: Dismoveableminer2W46S11
+			HarvesterW49S11: HarvesterW49S11,
+			BuilderW49S11: BuilderW49S11,
+			DismveableminerW49S11: DismveableminerW49S11,
+			CarrierW49S11: CarrierW49S11,
+			TransferW49S11: TransferW49S11
 		};
 
 		function logRoomInfo() {
@@ -78,5 +72,3 @@ const W57S9 = {
 		// }
 	}
 };
-
-export default W57S9;

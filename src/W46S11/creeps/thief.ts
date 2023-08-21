@@ -40,11 +40,6 @@ const roleThief = {
 						}
 					}
 				}
-				// if (targets) {
-				//     if (creep.transfer(targets, source[0]) == ERR_NOT_IN_RANGE) {
-				//         creep.moveTo(targets, { visualizePathStyle: { stroke: '#ffffff' }, reusePath: 6 });
-				//     }
-				// }
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 import { WithdrawEnergyFromContainer } from "../../GlobalUtil/utils/WithdrawEnergyFromContainer";
 import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
 
-export const BuilderW46S12 = {
+export const BuilderW49S11 = {
 	upgradeController: function (creep: Creep): void {
 		const controller = creep.room.controller;
 		if (controller && creep.upgradeController(controller) === ERR_NOT_IN_RANGE) {
@@ -12,7 +12,7 @@ export const BuilderW46S12 = {
 		}
 	},
 	run: function (creep: Creep) {
-		const targetRoom = "W46S12";
+		const targetRoom = "W49S11";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("BU 🔄 ");
@@ -28,7 +28,10 @@ export const BuilderW46S12 = {
 				reusePath: 10
 			});
 		} else if (creep.room.name === targetRoom) {
-			if (creep.memory.working) {
+			if (!creep.memory.working) {
+				// WithdrawEnergyFromContainer(creep, "64e18494ac377c123bae7203");
+				HarvestSource(creep, "5bbcaa8b9099fc012e631991");
+			} else {
 				const targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
 				if (targets.length !== 0) {
 					let colesttargets = creep.pos.findClosestByPath(targets);
@@ -43,9 +46,6 @@ export const BuilderW46S12 = {
 				} else {
 					this.upgradeController(creep);
 				}
-			} else {
-				// WithdrawEnergyFromContainer(creep, "64e1bfd97aac6f642206ba76");
-				HarvestSource(creep, "5bbcaa8b9099fc012e63198f");
 			}
 		}
 	}

@@ -1,11 +1,16 @@
-export const StoreSource = (creep: Creep, ContianerId: string) => {
-	let Container = Game.getObjectById<StructureStorage>(ContianerId);
+export const transferToStore = (creep: Creep, ContianerId: string) => {
+	let Container = Game.getObjectById<StructureContainer>(ContianerId)!;
+	creep.moveTo(Container, {
+		visualizePathStyle: { stroke: "#ffaa00" },
+		reusePath: 6
+	});
 	if (Container) {
-		creep.moveTo(Container);
-		let CreepCarrySource: ResourceConstant = _.keysIn(creep.store) as unknown as ResourceConstant;
-		return creep.transfer(Container, CreepCarrySource);
+		for (const resourceType in creep.store) {
+			let result = creep.transfer(Container, resourceType as ResourceConstant);
+			creep.say(`${result}`);
+		}
 	} else {
+		creep.memory.working = false;
 		creep.say("🔍❌");
-		return ERR_INVALID_TARGET; // 返回一个错误码，表示无效目标
 	}
 };

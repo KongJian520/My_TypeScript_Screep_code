@@ -21,10 +21,10 @@ export const DismveableminerW46S11 = {
 				creep.memory.working = false;
 			}
 		} else if (!creep.memory.working) {
-			if (tower.store.getUsedCapacity(RESOURCE_ENERGY) <= 1000) {
+			if (tower.store.getUsedCapacity(RESOURCE_ENERGY) <= 600) {
 				creep.say("Tower");
 				creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
-			} else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
+			} else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 500) {
 				creep.say("Link");
 				creep.transfer(link, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
 			}

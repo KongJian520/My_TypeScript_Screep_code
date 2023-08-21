@@ -1,6 +1,6 @@
-const roleCarrier = {
+export const CarrierW46S11 = {
 	run: function (creep: Creep) {
-		const Home = "W49S11";
+		const Home = "W46S11";
 		if (creep.room.name !== Home) {
 			creep.moveTo(new RoomPosition(20, 37, Home));
 		} else {
@@ -20,12 +20,6 @@ const roleCarrier = {
 							structure.structureType === STRUCTURE_LAB && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 					})
 				);
-				const closestTower = creep.pos.findClosestByPath(
-					creep.room.find(FIND_STRUCTURES, {
-						filter: (structure: any) =>
-							structure.structureType === STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-					})
-				);
 				const closestTarget = creep.pos.findClosestByPath(
 					creep.room.find(FIND_STRUCTURES, {
 						filter: (structure: any) =>
@@ -43,19 +37,12 @@ const roleCarrier = {
 						creep.moveTo(closestLab, { visualizePathStyle: { stroke: "#ffffff" } });
 					}
 				}
-				// else if (closestTower) {
-				// 	// 如果 EXT 和 Spawn 都已经填满，则填充 tower
-				// 	if (closestTower) {
-				// 		if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-				// 			creep.moveTo(closestTower, { visualizePathStyle: { stroke: "#ffffff" } });
-				// 		}
-				// 	}
-				// }
 			} else {
 				const sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) =>
 						(structure.structureType === STRUCTURE_STORAGE ||
 							structure.structureType === STRUCTURE_LINK ||
+							structure.structureType === STRUCTURE_CONTAINER ||
 							structure.structureType === STRUCTURE_TERMINAL) &&
 						structure.store.energy > 100
 				});
@@ -73,5 +60,3 @@ const roleCarrier = {
 		}
 	}
 };
-
-export default roleCarrier;

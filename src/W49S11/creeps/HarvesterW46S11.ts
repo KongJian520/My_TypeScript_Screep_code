@@ -1,6 +1,6 @@
 import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
 
-export const HarvesterW46S12 = {
+export const HarvesterW49S11 = {
 	run(creep: Creep) {
 		if (creep.store.getFreeCapacity() == 0) {
 			creep.say("H 开始干活");
@@ -10,7 +10,7 @@ export const HarvesterW46S12 = {
 			creep.memory.working = false;
 		}
 		if (!creep.memory.working) {
-			HarvestSource(creep, "5bbcaa8b9099fc012e631991");
+			HarvestSource(creep, "5bbcaa679099fc012e631480");
 		} else {
 			const closestTarget = creep.pos.findClosestByPath(
 				creep.room.find(FIND_STRUCTURES, {

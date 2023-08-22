@@ -44,8 +44,8 @@ export const BuilderW46S12 = {
 					this.upgradeController(creep);
 				}
 			} else {
-				// WithdrawEnergyFromContainer(creep, "64e1bfd97aac6f642206ba76");
-				HarvestSource(creep, "5bbcaa8b9099fc012e631991");
+				WithdrawEnergyFromContainer(creep, "64e35ec18251010ee01a5e14");
+				// HarvestSource(creep, "5bbcaa8b9099fc012e631991");
 			}
 		}
 	}

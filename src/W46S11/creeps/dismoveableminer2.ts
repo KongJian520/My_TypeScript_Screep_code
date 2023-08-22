@@ -22,15 +22,13 @@ export const Dismoveableminer2W46S11 = {
 				creep.memory.working = false;
 			}
 		} else if (!creep.memory.working) {
-			// if (tower.store.getUsedCapacity(RESOURCE_ENERGY) <= 800) {
-			// 	creep.say("Tower");
-			// 	creep.transfer(tower, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
-			// } else if (tower.store.getUsedCapacity(RESOURCE_ENERGY) > 10) {
 			if (link.hits !== link.hitsMax) {
 				creep.repair(link);
 			} else {
-				creep.say("Link");
-				creep.transfer(link, RESOURCE_ENERGY);
+				// creep.say("Link");
+				if (creep.transfer(link, RESOURCE_ENERGY) == ERR_FULL) {
+					creep.upgradeController(creep.room.controller!);
+				}
 			}
 		}
 	}

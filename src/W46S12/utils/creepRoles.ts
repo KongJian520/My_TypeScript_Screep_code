@@ -33,12 +33,12 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "Dismoveableminer2W46S12",
 		bodyParts: [
-			[WORK, 10],
+			[WORK, 2],
 			[CARRY, 2],
-			[MOVE, 4]
+			[MOVE, 2]
 		],
-		expectedCount: 1,
-		priority: 1
+		expectedCount: 2,
+		priority: 2
 	},
 	// {
 	// 	roleName: "Transfer2W46S12",
@@ -55,7 +55,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 4],
 			[MOVE, 2]
 		],
-		expectedCount: 2,
+		expectedCount: 1,
 		priority: 5
 	},
 	// {
@@ -70,9 +70,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "BuilderW46S12",
 		bodyParts: [
-			[WORK, 5],
-			[CARRY, 4],
-			[MOVE, 4]
+			[WORK, 3],
+			[CARRY, 2],
+			[MOVE, 2]
 		],
 		expectedCount: 1,
 		priority: 50

@@ -28,7 +28,7 @@ export const BuilderW49S11 = {
 			});
 		} else if (creep.room.name === targetRoom) {
 			if (!creep.memory.working) {
-				WithdrawEnergyFromContainer(creep, "64e18494ac377c123bae7203");
+				WithdrawEnergyFromContainer(creep, "64e3a735be752fbcae3d0ceb");
 			} else {
 				const targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
 				if (targets.length !== 0) {

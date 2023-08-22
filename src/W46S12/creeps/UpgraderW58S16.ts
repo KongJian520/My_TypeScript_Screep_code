@@ -9,7 +9,7 @@ export const UpgraderW46S12 = {
 		if (!this.working(creep)) {
 			// this.acquireStoreEnergy(creep);
 			// HarvestSource(creep, "5bbcaa8b9099fc012e631991");
-			WithdrawEnergyFromContainer(creep, "64e35ec18251010ee01a5e14");
+			WithdrawEnergyFromContainer(creep, "64e42a229e0a0e497634a16c");
 		} else {
 			this.upgradeController(creep);
 		}

@@ -9,7 +9,7 @@ export const UpgraderW49S11 = {
 
 		if (!this.working(creep)) {
 			// HarvestSource(creep, "5bbcaa8b9099fc012e63198c");
-			WithdrawEnergyFromContainer(creep, "64e15632c1476ec785e2ac9f");
+			WithdrawEnergyFromContainer(creep, "64e35ec18251010ee01a5e14");
 		} else {
 			this.upgradeController(creep);
 		}

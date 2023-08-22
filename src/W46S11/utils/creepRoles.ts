@@ -25,7 +25,7 @@ export const roleDefinitions: RoleDefinition[] = [
 		bodyParts: [
 			[WORK, 10],
 			[CARRY, 2],
-			[MOVE, 4]
+			[MOVE, 3]
 		],
 		expectedCount: 1,
 		priority: 2
@@ -38,7 +38,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 4]
 		],
 		expectedCount: 1,
-		priority: 2
+		priority: 4
 	},
 	{
 		roleName: "CarrierW46S11",
@@ -47,7 +47,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[MOVE, 2]
 		],
 		expectedCount: 4,
-		priority: 3
+		priority: 2
 	},
 	{
 		roleName: "Transfer3W46S11",

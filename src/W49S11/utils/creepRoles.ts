@@ -9,39 +9,29 @@ export interface RoleDefinition {
 
 export const roleDefinitions: RoleDefinition[] = [
 	{
-		roleName: "HarvesterW49S11",
+		roleName: "CarrierW49S11",
 		bodyParts: [
-			[WORK, 2],
-			[CARRY, 1],
-			[MOVE, 1]
+			[CARRY, 4],
+			[MOVE, 2]
 		],
 		expectedCount: 1,
 		priority: 1
 	},
 	{
-		roleName: "CarrierW49S11",
+		roleName: "TransferW49S11",
 		bodyParts: [
-			[CARRY, 5],
-			[MOVE, 5]
+			[CARRY, 4],
+			[MOVE, 2]
 		],
 		expectedCount: 1,
 		priority: 1
 	},
-	// {
-	// 	roleName: "TransferW49S11",
-	// 	bodyParts: [
-	// 		[CARRY, 4],
-	// 		[MOVE, 2]
-	// 	],
-	// 	expectedCount: 1,
-	// 	priority: 1
-	// },
 	{
 		roleName: "BuilderW49S11",
 		bodyParts: [
-			[WORK, 3],
-			[CARRY, 2],
-			[MOVE, 2]
+			[WORK, 4],
+			[CARRY, 4],
+			[MOVE, 4]
 		],
 		expectedCount: 3,
 		priority: 50

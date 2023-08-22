@@ -23,9 +23,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "DismveableminerW46S12",
 		bodyParts: [
-			[WORK, 4],
+			[WORK, 5],
 			[CARRY, 1],
-			[MOVE, 1]
+			[MOVE, 2]
 		],
 		expectedCount: 1,
 		priority: 1
@@ -33,8 +33,8 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "Dismoveableminer2W46S12",
 		bodyParts: [
-			[WORK, 2],
-			[CARRY, 2],
+			[WORK, 5],
+			[CARRY, 1],
 			[MOVE, 2]
 		],
 		expectedCount: 2,

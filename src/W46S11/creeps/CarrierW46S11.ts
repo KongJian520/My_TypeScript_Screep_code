@@ -41,7 +41,7 @@ export const CarrierW46S11 = {
 				const sources = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure: any) =>
 						(structure.structureType === STRUCTURE_STORAGE ||
-							structure.structureType === STRUCTURE_LINK ||
+							(structure.structureType === STRUCTURE_LINK && structure.cooldown == 0) ||
 							structure.structureType === STRUCTURE_CONTAINER ||
 							structure.structureType === STRUCTURE_TERMINAL) &&
 						structure.store.energy > 100

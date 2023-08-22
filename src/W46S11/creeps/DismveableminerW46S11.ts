@@ -1,7 +1,7 @@
 export const DismveableminerW46S11 = {
 	run: function (creep: Creep) {
 		const sources = Game.getObjectById("5bbcaa8b9099fc012e63198d") as Source;
-		const link = Game.getObjectById<StructureContainer>("64e0954ba2e7eef395fb2f55")!;
+		const link = Game.getObjectById<StructureContainer>("64e4bc92c0f1ea1d6f1c8f05")!;
 		const tower = Game.getObjectById<StructureTower>("64e09a9fba4a4057bc4ce216")!;
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;

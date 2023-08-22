@@ -10,7 +10,7 @@ export const HarvesterW46S12 = {
 			creep.memory.working = false;
 		}
 		if (!creep.memory.working) {
-			HarvestSource(creep, "5bbcaa8b9099fc012e631991");
+			HarvestSource(creep, "5bbcaa8b9099fc012e63198f");
 		} else {
 			const closestTarget = creep.pos.findClosestByPath(
 				creep.room.find(FIND_STRUCTURES, {

@@ -1,5 +1,4 @@
 import { WithdrawEnergyFromContainer } from "../../GlobalUtil/utils/WithdrawEnergyFromContainer";
-import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
 
 export const BuilderW49S11 = {
 	upgradeController: function (creep: Creep): void {
@@ -29,8 +28,7 @@ export const BuilderW49S11 = {
 			});
 		} else if (creep.room.name === targetRoom) {
 			if (!creep.memory.working) {
-				// WithdrawEnergyFromContainer(creep, "64e18494ac377c123bae7203");
-				HarvestSource(creep, "5bbcaa8b9099fc012e631991");
+				WithdrawEnergyFromContainer(creep, "64e18494ac377c123bae7203");
 			} else {
 				const targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
 				if (targets.length !== 0) {

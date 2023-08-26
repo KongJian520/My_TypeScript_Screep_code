@@ -1,5 +1,5 @@
 import { HarvestSource } from "../../utils/HarvestSource";
-import { StoreSource } from "../../utils/StoreSource";
+import { StoreSource } from "../../utils/transferToStore";
 
 export const RBRemoteHarveser = (creep: Creep, store: string, targetRoom: string) => {
 	if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {

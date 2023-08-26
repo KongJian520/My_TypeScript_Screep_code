@@ -1,8 +1,6 @@
 /// <reference types="@screepscn/types" />+
 
-import W46S11 from "W46S11";
-import W46S12 from "W46S12";
-import { W49S11 } from "./W49S11";
+import { W56S8 } from "W56S8";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
 // Game.spawns['Spawn1'].spawnCreep([CLAIM, MOVE,MOVE, MOVE, MOVE], "claim"+Game.time,{ memory: { role: 'ClaimW46S12', room: '', working: false } })
@@ -21,6 +19,13 @@ declare global {
 		working: boolean;
 		SourceId?: string;
 	}
+
+	// interface FlagMemory {
+	// 	role: string;
+	// 	room: string;
+	// 	working: boolean;
+	// 	SourceId?: string;
+	// }
 
 	namespace NodeJS {
 		interface Global {
@@ -50,34 +55,13 @@ export const loop = () => {
 	// cancelZeroAmountOwnOrders();
 	for (let RoomName in Game.rooms)
 		switch (RoomName) {
-			case "W46S11":
+			case "W56S8":
 				try {
-					W46S11.work(Game.rooms[RoomName]);
-				} catch (error) {
-					if (error instanceof Error) {
-						console.log(`${RoomName}，异常抛出：${error}`);
-						console.log(error.stack);
-					}
-				}
-				break;
-			case "W46S12":
-				try {
-					W46S12.work(Game.rooms[RoomName]);
-				} catch (error) {
-					if (error instanceof Error) {
-						console.log(`${RoomName}，异常抛出：${error}`);
-						console.log(error.stack);
-					}
-				}
-
-				break;
-			case "W49S11":
-				try {
-					W49S11.work(Game.rooms[RoomName]);
+					W56S8.work(Game.rooms[RoomName]);
 				} catch (error) {
 					// 显示错误的位置
 					if (error instanceof Error) {
-						console.log(`W57S9，异常抛出：${error}`);
+						console.log(`${RoomName}，异常抛出：${error}`);
 						console.log(error.stack);
 					}
 				}

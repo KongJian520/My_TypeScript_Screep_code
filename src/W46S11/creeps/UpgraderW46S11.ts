@@ -1,5 +1,5 @@
 import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
-import { WithdrawEnergyFromContainer } from "../../GlobalUtil/utils/WithdrawEnergyFromContainer";
+import { WithdrawFromContainer } from "../../GlobalUtil/utils/WithdrawFromContainer";
 
 export const UpgraderW46S11 = {
 	run: function (creep: Creep) {
@@ -10,7 +10,7 @@ export const UpgraderW46S11 = {
 		if (!this.working(creep)) {
 			// this.acquireStoreEnergy(creep);
 			// HarvestSource(creep, "5bbcaa8b9099fc012e63198c");
-			WithdrawEnergyFromContainer(creep, "64e04c079548e7bfd521e3ea");
+			WithdrawFromContainer(creep, "64e04c079548e7bfd521e3ea");
 		} else {
 			this.upgradeController(creep);
 		}

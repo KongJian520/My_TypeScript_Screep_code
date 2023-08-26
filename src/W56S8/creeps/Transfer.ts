@@ -1,7 +1,9 @@
 import { WithdrawFromContainer } from "../../GlobalUtil/utils/WithdrawFromContainer";
 import { transferToStore } from "../../GlobalUtil/utils/transferToStore";
+import { noMoveRepairStructure } from "../../GlobalUtil/utils/NoMoveRepairStructure";
+import { noMoveBuildByPath } from "../../GlobalUtil/utils/BuildByPath";
 
-export const Transfer3W46S11 = {
+export const Transfer = {
 	run: function (creep: Creep) {
 		if (creep.memory.working && creep.store.getUsedCapacity() == 0) {
 			creep.memory.working = false;
@@ -12,9 +14,11 @@ export const Transfer3W46S11 = {
 			creep.say("T 🚚S");
 		}
 		if (!creep.memory.working) {
-			WithdrawFromContainer(creep, "64e0954ba2e7eef395fb2f55");
-		} else if (creep.memory.working) {
-			transferToStore(creep, "64e1527a054f113997c1aa2a");
+			WithdrawFromContainer(creep, "64e6c1ec0d7e745879bf1dd2", RESOURCE_ENERGY);
+		} else {
+			transferToStore(creep, "64e870f7d3acba1ba87f72ac");
+			noMoveRepairStructure(creep);
+			noMoveBuildByPath(creep);
 		}
 	}
 };

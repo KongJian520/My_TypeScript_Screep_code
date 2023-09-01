@@ -1,11 +1,10 @@
 import { PickUpDrop } from "../../GlobalUtil/utils/PickUpDrop";
 import { noMoveRepairStructure } from "../../GlobalUtil/utils/NoMoveRepairStructure";
 
-export const RemoteScavenger = {
+export const Scavenger = {
 	run: function (creep: Creep) {
 		const homeRoom = creep.memory.room;
-		const targetRoom = "W55S8";
-		const storage = Game.rooms[homeRoom].storage!;
+		const storage = creep.room.storage!;
 		if (!creep.memory.working && creep.store.getFreeCapacity() === 0) {
 			creep.memory.working = true;
 			creep.say("回");
@@ -34,8 +33,8 @@ export const RemoteScavenger = {
 				}
 			}
 		} else {
-			if (creep.room.name !== targetRoom) {
-				creep.moveTo(new RoomPosition(10, 30, targetRoom), {
+			if (creep.room.name !== homeRoom) {
+				creep.moveTo(new RoomPosition(10, 30, homeRoom), {
 					visualizePathStyle: { stroke: "#ffaa00" },
 					reusePath: 6
 				});
@@ -44,12 +43,8 @@ export const RemoteScavenger = {
 					filter: (structure: Ruin) => structure.store.getUsedCapacity() > 0
 				});
 				if (Ruins) {
-					creep.say(`Ruin`);
-					creep.moveTo(Ruins, {
-						visualizePathStyle: { stroke: "#ffffff" },
-						reusePath: 6
-					});
-					for (let ResType in Ruins.store) {
+					creep.moveTo(Ruins);
+					for (let ResType in Ruins) {
 						creep.withdraw(Ruins, ResType as ResourceConstant);
 					}
 				} else if (PickUpDrop(creep) == -100) {

@@ -1,7 +1,7 @@
-export const terminal = {
+const terminalW58S16 = {
 	send: function (terminal: StructureTerminal) {
 		console.log(`------------------------${terminal.room.name}-Terminal---------------------------`);
-		const goods = RESOURCE_LEMERGIUM;
+		const goods = RESOURCE_HYDROGEN;
 		createEnergyBuyOrder(5000, 4.5);
 		// createResourceSellOrder();
 
@@ -63,23 +63,15 @@ export const terminal = {
 
 		//创建能量购买订单
 		function createEnergyBuyOrder(orderAmount: number, maxPrice: number) {
-			let orderbuylist = _.filter(Game.market.orders, {
-				type: ORDER_SELL,
-				resourceType: RESOURCE_ENERGY
+			const dealResult = Game.market.createOrder({
+				type: ORDER_BUY,
+				resourceType: RESOURCE_ENERGY,
+				price: maxPrice,
+				totalAmount: orderAmount,
+				roomName: terminal.room.name
 			});
-			if (orderbuylist.length == 0) {
-				const dealResult = Game.market.createOrder({
-					type: ORDER_BUY,
-					resourceType: RESOURCE_ENERGY,
-					price: maxPrice,
-					totalAmount: orderAmount,
-					roomName: terminal.room.name
-				});
-				console.log("创建能量购买订单结果：");
-				handleDealResult(dealResult);
-			} else {
-				console.log("订单已存在，Skip");
-			}
+			console.log("创建能量购买订单结果：");
+			handleDealResult(dealResult);
 		}
 
 		//创建资源出售订单
@@ -123,3 +115,5 @@ export const terminal = {
 		}
 	}
 };
+
+export default terminalW58S16;

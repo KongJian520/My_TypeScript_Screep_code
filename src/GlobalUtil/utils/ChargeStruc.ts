@@ -1,3 +1,5 @@
+import { collect } from "lodash";
+
 export const ChargeStructure = (creep: Creep) => {
 	// 填充 EXT 和 Spawn
 	const closestTarget = creep.pos.findClosestByPath(
@@ -10,7 +12,7 @@ export const ChargeStructure = (creep: Creep) => {
 	const closestTower = creep.pos.findClosestByPath(
 		creep.room.find(FIND_STRUCTURES, {
 			filter: (structure: any) =>
-				structure.structureType === STRUCTURE_LAB && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+				structure.structureType === STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 		})
 	);
 	const closestLab = creep.pos.findClosestByPath(
@@ -57,15 +59,10 @@ export const noMoveChargeStructure = (creep: Creep) => {
 	const closestTower = creep.pos.findClosestByPath(
 		creep.room.find(FIND_STRUCTURES, {
 			filter: (structure: any) =>
-				structure.structureType === STRUCTURE_LAB && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+				structure.structureType === STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
 		})
 	);
-	const closestLab = creep.pos.findClosestByPath(
-		creep.room.find(FIND_STRUCTURES, {
-			filter: (structure: any) =>
-				structure.structureType === STRUCTURE_LAB && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-		})
-	);
+
 	if (closestTarget) {
 		creep.say("Spawn");
 		if (creep.transfer(closestTarget, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
@@ -76,9 +73,26 @@ export const noMoveChargeStructure = (creep: Creep) => {
 		if (creep.transfer(closestTower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
 		}
 	}
-	if (closestLab) {
-		creep.say("lab");
-		if (creep.transfer(closestLab, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-		}
-	}
+};
+export const judgeNeedToCharge = (creep: Creep) => {
+	const closestTarget = creep.pos.findClosestByPath(
+		creep.room.find(FIND_STRUCTURES, {
+			filter: (structure: any) =>
+				(structure.structureType === STRUCTURE_EXTENSION || structure.structureType === STRUCTURE_SPAWN) &&
+				structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+		})
+	);
+	const closestTower = creep.pos.findClosestByPath(
+		creep.room.find(FIND_STRUCTURES, {
+			filter: (structure: any) =>
+				structure.structureType === STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+		})
+	);
+	const closestLab = creep.pos.findClosestByPath(
+		creep.room.find(FIND_STRUCTURES, {
+			filter: (structure: any) =>
+				structure.structureType === STRUCTURE_LAB && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+		})
+	);
+	return !(closestTarget == null && closestTower == null && closestLab == null);
 };

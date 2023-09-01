@@ -1,8 +1,8 @@
-export const Dismoveableminer2 = {
+export const Dismoveableminer = {
 	run: function (creep: Creep) {
-		const sources = Game.getObjectById<Source>("5bbcaa009099fc012e630924")!;
-		creep.moveTo(32, 7);
-		const link = Game.getObjectById<StructureLink>("64ee4e4d80d819c8939205ae")!;
+		const sources = Game.getObjectById<Source>("5bbcaa0c9099fc012e630b55")!;
+		creep.moveTo(8, 22);
+		const link = Game.getObjectById<StructureLink>("64ef4e39ed8f4ccf96ef1716")!;
 		// const tower = Game.getObjectById<StructureTower>("64dced3773b2a9971ec2edde")!;
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -14,7 +14,7 @@ export const Dismoveableminer2 = {
 		}
 		if (creep.memory.working) {
 			if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(33, 7, {
+				creep.moveTo(sources, {
 					visualizePathStyle: { stroke: "#ffaa00" },
 					reusePath: 6
 				});
@@ -26,9 +26,8 @@ export const Dismoveableminer2 = {
 				creep.repair(link);
 			} else {
 				creep.say("Link");
-				creep.transfer(link, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
+				creep.transfer(link, RESOURCE_ENERGY);
 			}
-			// }
 		}
 	}
 };

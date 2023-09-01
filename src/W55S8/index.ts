@@ -1,49 +1,49 @@
 import tower from "./utils/tower";
 import link from "./utils/link";
 import autoSpawn from "./utils/autoSpawn";
+
+import { Upgrader } from "./creeps/Upgrader";
 import { Harvester } from "./creeps/Harvester";
 import { Builder } from "./creeps/Builder";
+import { Guard } from "./creeps/Guard";
 import { Dismoveableminer } from "./creeps/Dismveableminer";
+import { Transfer } from "./creeps/Transfer";
 import { Carrier } from "./creeps/Carrier";
 import { Dismoveableminer2 } from "./creeps/Dismveableminer2";
-import { Upgrader } from "./creeps/Upgrader";
-import { Transfer } from "./creeps/Transfer";
-import { Transfer2 } from "./creeps/Transfer2";
-import { SelfHealer } from "./creeps/SelfHealer";
-import { ChaiQian } from "./creeps/ChaiQian";
-import { Thief } from "./creeps/Thief";
-import { Scavenger } from "./creeps/Scavenger";
-import { RemoteScavenger } from "./creeps/RemoteScavenger";
-import { Claim } from "./creeps/Claim";
-import { Guard } from "./creeps/Guard";
-import { RemoteBuilder1 } from "./creeps/RemoteBuilder1";
-import { terminal } from "./utils/term";
+
 // import term from "./utils/term";
 
-export const W56S8 = {
+export const W55S8 = {
 	work: function (ThisRoom: Room) {
 		const roleToFunction: {
 			[roleName: string]: {
 				run(creep: Creep): void;
 			};
 		} = {
-			HarvesterW56S8: Harvester,
-			BuilderW56S8: Builder,
-			DismoveableminerW56S8: Dismoveableminer,
-			CarrierW56S8: Carrier,
-			UpgraderW56S8: Upgrader,
-			Dismoveableminer2W56S8: Dismoveableminer2,
-			Transfer2W56S8: Transfer2,
-			TransferW56S8: Transfer,
-			SelfHealerW56S8: SelfHealer,
-			ChaiQianW56S8: ChaiQian,
-			ThiefW56S8: Thief,
-			ScavengerW58S6: Scavenger,
-			RemoteScavengerW58S6: RemoteScavenger,
-			ClaimW56S8: Claim,
-			GuardW56S7: Guard,
-			RemoteBuilder1W56S7: RemoteBuilder1
+			UpgraderW55S8: Upgrader,
+			HarvesterW55S8: Harvester,
+			BuilderW55S8: Builder,
+			GuardW55S8: Guard,
+			DismoveableminerW55S8: Dismoveableminer,
+			Dismoveableminer2W55S8: Dismoveableminer2,
+			TransferW55S8: Transfer,
+			CarrierW55S8: Carrier
 		};
+		if (ThisRoom.controller) {
+			new RoomVisual(ThisRoom.name).text(
+				`${ThisRoom.controller.progress}/${ThisRoom.controller.progressTotal} (${(
+					(ThisRoom.controller.progress / ThisRoom.controller.progressTotal) *
+					100
+				).toFixed(2)}% Lv:${ThisRoom.controller.level}) `,
+				ThisRoom.controller.pos.x,
+				ThisRoom.controller.pos.y - 1,
+				{
+					color: "yellow",
+					align: "center",
+					opacity: 0.5
+				}
+			);
+		}
 
 		function logRoomInfo() {
 			console.log(`----------------${ThisRoom.name}-------------------`);
@@ -89,7 +89,6 @@ export const W56S8 = {
 				}
 			}
 			link.run();
-			terminal.send(ThisRoom.terminal!);
 		}
 		for (const Spawns of ThisRoom.find(FIND_MY_SPAWNS)) {
 			if (Spawns.spawning) {

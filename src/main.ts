@@ -1,5 +1,6 @@
 /// <reference types="@screepscn/types" />+
 
+import { W55S8 } from "W55S8";
 import { W56S8 } from "W56S8";
 
 // Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, MOVE], "test1",{ memory: { role: 'dismoveableminer', room: '', working: false } })
@@ -38,20 +39,16 @@ console.log("=========================================");
 console.log("code is Updated!...,The Game tickis .." + Game.time);
 console.log("=========================================");
 
-// Game.market.deal('64c35b138afb1c39b4c12983', 2000, 'W46S11')
+// Game.market.deal('64c813840b755a87a6a3b510', 257)
 
 export const loop = () => {
-	if (Game.cpu.bucket === 10000) {
-		cancelZeroAmountOwnOrders();
-		Game.cpu.generatePixel();
-		// Game.market.deal("64c813840b755a87a6a3b510", 1);
-	}
 	if (Game.time % 2 === 0) {
 		console.log("\r");
 		console.log("\r");
 		console.log("\r");
 		console.log("========" + "Game.time = " + Game.time + "==" + "cpu.bucket=" + Game.cpu.bucket + "========");
 	}
+	getPixels();
 	// cancelZeroAmountOwnOrders();
 	for (let RoomName in Game.rooms)
 		switch (RoomName) {
@@ -66,12 +63,22 @@ export const loop = () => {
 					}
 				}
 				break;
+			case "W55S8":
+				try {
+					W55S8.work(Game.rooms[RoomName]);
+				} catch (error) {
+					// 显示错误的位置
+					if (error instanceof Error) {
+						console.log(`${RoomName}，异常抛出：${error}`);
+						console.log(error.stack);
+					}
+				}
+				break;
 		}
 };
 
 function cancelZeroAmountOwnOrders(): void {
 	const myOrders = Game.market.orders;
-
 	for (const orderId in myOrders) {
 		const order = myOrders[orderId];
 		if (order.amount === 0) {
@@ -82,5 +89,13 @@ function cancelZeroAmountOwnOrders(): void {
 				console.log(`Failed to cancel own order ${orderId}. Result: ${result}`);
 			}
 		}
+	}
+}
+
+function getPixels() {
+	if (Game.cpu.bucket === 10000) {
+		cancelZeroAmountOwnOrders();
+		Game.cpu.generatePixel();
+		// Game.market.deal("64c813840b755a87a6a3b510", 1);
 	}
 }

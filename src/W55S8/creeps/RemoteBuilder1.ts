@@ -1,8 +1,10 @@
 import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
+import { BuildByPath } from "../../GlobalUtil/utils/BuildByPath";
+import { noMoveRepairStructure } from "../../GlobalUtil/utils/NoMoveRepairStructure";
 
-const RemoteBuilderW58S17 = {
+export const RemoteBuilder1 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W58S17";
+		const targetRoom = "W56S7";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");
@@ -18,30 +20,11 @@ const RemoteBuilderW58S17 = {
 				reusePath: 10
 			});
 		} else if (creep.room.name === targetRoom) {
+			noMoveRepairStructure(creep);
 			if (creep.memory.working) {
 				const targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
 				if (targets.length !== 0) {
-					if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-						creep.moveTo(targets[0], {
-							visualizePathStyle: { stroke: "#ffffff" },
-							reusePath: 10
-						});
-					}
-				} else {
-					const targets = creep.room.find(FIND_STRUCTURES, {
-						filter: (structure: any) => {
-							return structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax;
-						}
-					});
-					targets.sort((a: any, b: any) => a.hits / a.hitsMax - b.hits / b.hitsMax);
-					if (targets.length > 0) {
-						if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
-							creep.moveTo(targets[0], {
-								visualizePathStyle: { stroke: "#f00fff" },
-								reusePath: 10
-							});
-						}
-					}
+					BuildByPath(creep);
 				}
 			} else {
 				HarvestSource(creep, "5bbcaa009099fc012e630921");
@@ -49,4 +32,3 @@ const RemoteBuilderW58S17 = {
 		}
 	}
 };
-export default RemoteBuilderW58S17;

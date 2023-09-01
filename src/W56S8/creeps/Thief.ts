@@ -1,8 +1,3 @@
-import { WithdrawFromContainer } from "../../GlobalUtil/utils/WithdrawFromContainer";
-import { transferToStore } from "../../GlobalUtil/utils/transferToStore";
-import { noMoveChargeStructure } from "../../GlobalUtil/utils/ChargeStruc";
-import { noMoveBuildByPath } from "../../GlobalUtil/utils/BuildByPath";
-
 export const Thief = {
 	run: function (creep: Creep) {
 		const targetFlag = Game.flags.ThiefTarget;
@@ -18,25 +13,33 @@ export const Thief = {
 		}
 		if (creep.memory.working) {
 			if (creep.ticksToLive !== undefined) {
-				if (creep.ticksToLive < 150) creep.suicide();
+				if (creep.ticksToLive < 200) creep.suicide();
 			}
 			if (creep.room.name !== targetroom) {
 				creep.moveTo(new RoomPosition(20, 20, targetroom));
 			} else {
-				const found = targetFlag.pos.findInRange(FIND_STRUCTURES, 2, {
-					filter: structure => {
-						return (
-							(structure.structureType == STRUCTURE_STORAGE || structure.structureType == STRUCTURE_TERMINAL) &&
-							structure.store.getUsedCapacity(RESOURCE_ENERGY) !== 0
-						);
+				const dropedres = creep.pos.findClosestByRange(creep.room.find(FIND_DROPPED_RESOURCES));
+				let targetroomstorage = Game.rooms[targetroom].storage!;
+				if (targetroomstorage) {
+					creep.moveTo(targetroomstorage);
+					for (const resourceType in targetroomstorage.store) {
+						creep.withdraw(targetroomstorage, resourceType as ResourceConstant);
 					}
-				});
-				WithdrawFromContainer(creep, found[0].id, RESOURCE_ENERGY);
+				} else if (dropedres) {
+					creep.moveTo(dropedres);
+					creep.pickup(dropedres);
+				}
 			}
 		} else {
-			noMoveBuildByPath(creep);
-			noMoveChargeStructure(creep);
-			transferToStore(creep, "64e870f7d3acba1ba87f72ac");
+			if (creep.room.name !== creep.memory.room) {
+				creep.moveTo(new RoomPosition(20, 20, creep.memory.room));
+			} else {
+				let homeStorage = Game.rooms[creep.memory.room].storage!;
+				creep.moveTo(homeStorage);
+				for (const resourceType in creep.store) {
+					creep.transfer(homeStorage, resourceType as ResourceConstant);
+				}
+			}
 		}
 	}
 };

@@ -1,10 +1,8 @@
-import { BuildByPath } from "../../GlobalUtil/utils/BuildByPath";
-
 export const Dismoveableminer = {
 	run: function (creep: Creep) {
 		const sources = Game.getObjectById<Source>("5bbcaa009099fc012e630926")!;
 		creep.moveTo(sources);
-		const link = Game.getObjectById<StructureLink>("64e6c1ec0d7e745879bf1dd2")!;
+		const link = Game.getObjectById<StructureLink>("64ea42faf187424606ac1bc5")!;
 		// const tower = Game.getObjectById<StructureTower>("64dced3773b2a9971ec2edde")!;
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -29,10 +27,7 @@ export const Dismoveableminer = {
 			} else {
 				creep.say("Link");
 				creep.transfer(link, RESOURCE_ENERGY);
-				BuildByPath(creep);
 			}
-
-			// }
 		}
 	}
 };

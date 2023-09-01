@@ -15,3 +15,12 @@ export const WithdrawFromContainer = (creep: Creep, ContainerId: string, resourc
 		creep.say("WFC⏳❌");
 	}
 };
+export const noMoveWithdrawFromContainer = (creep: Creep, ContainerId: string, resourceType: ResourceConstant) => {
+	//从所给ID拿资源,如果能量为0则creep.memory.working = true
+	let Container = Game.getObjectById<StructureContainer>(ContainerId)!;
+	if (Container.store.energy !== 0) {
+		let result = creep.withdraw(Container, resourceType);
+		creep.say(`${result}`);
+		if (result == OK) creep.cancelOrder(MOVE);
+	}
+};

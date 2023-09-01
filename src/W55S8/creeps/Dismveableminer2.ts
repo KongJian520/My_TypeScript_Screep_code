@@ -1,8 +1,10 @@
+import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
+import { noMoveBuildByPath } from "../../GlobalUtil/utils/BuildByPath";
+
 export const Dismoveableminer2 = {
 	run: function (creep: Creep) {
-		const sources = Game.getObjectById<Source>("5bbcaa009099fc012e630924")!;
-		creep.moveTo(32, 7);
-		const link = Game.getObjectById<StructureLink>("64ee4e4d80d819c8939205ae")!;
+		creep.moveTo(8, 11);
+		const link = Game.getObjectById<StructureLink>("64ef4fadd727235d7b6d0978")!;
 		// const tower = Game.getObjectById<StructureTower>("64dced3773b2a9971ec2edde")!;
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;
@@ -10,25 +12,18 @@ export const Dismoveableminer2 = {
 		}
 		if (creep.memory.working && creep.store.getFreeCapacity() == 0) {
 			creep.memory.working = false;
-			// creep.say('放');
 		}
 		if (creep.memory.working) {
-			if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(33, 7, {
-					visualizePathStyle: { stroke: "#ffaa00" },
-					reusePath: 6
-				});
-			} else if (sources.energy == 0) {
-				creep.memory.working = false;
-			}
+			HarvestSource(creep, "5bbcaa0c9099fc012e630b54");
 		} else if (!creep.memory.working) {
 			if (link.hits !== link.hitsMax) {
 				creep.repair(link);
 			} else {
 				creep.say("Link");
-				creep.transfer(link, RESOURCE_ENERGY, creep.store[RESOURCE_ENERGY]);
+				creep.transfer(link, RESOURCE_ENERGY);
 			}
-			// }
+
+			noMoveBuildByPath(creep);
 		}
 	}
 };

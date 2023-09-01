@@ -1,13 +1,11 @@
 import { HarvestSource } from "../../GlobalUtil/utils/HarvestSource";
-import { ChargeStructure } from "../../GlobalUtil/utils/ChargeStruc";
-import { BuildByPath } from "../../GlobalUtil/utils/BuildByPath";
+import { ChargeStructure, judgeNeedToCharge } from "../../GlobalUtil/utils/ChargeStruc";
 import { transferToStore } from "../../GlobalUtil/utils/transferToStore";
-import { Transfer2 } from "./Transfer2";
 import { Carrier } from "./Carrier";
 
 export const Harvester = {
 	run(creep: Creep) {
-		if (_.filter(Game.creeps, creep => creep.memory.role == "Dismoveableminer2W56S8").length == 0) {
+		if (_.filter(Game.creeps, creep => creep.memory.role == "Dismoveableminer2W55S8").length == 0) {
 			if (creep.store.getFreeCapacity() == 0) {
 				creep.say("H 开始干活");
 				creep.memory.working = true;
@@ -21,15 +19,12 @@ export const Harvester = {
 			});
 
 			if (!creep.memory.working) {
-				HarvestSource(creep, "5bbcaa009099fc012e630924");
+				HarvestSource(creep, "5bbcaa0c9099fc012e630b54");
 			} else {
-				if (creep.room.energyAvailable !== creep.room.energyCapacityAvailable) {
+				if (judgeNeedToCharge(creep)) {
 					ChargeStructure(creep);
 				} else {
-					if (tower) {
-						transferToStore(creep, tower.id);
-					}
-					BuildByPath(creep);
+					transferToStore(creep, "64eff1a9a0c2db6dbdebe518");
 				}
 			}
 		} else {

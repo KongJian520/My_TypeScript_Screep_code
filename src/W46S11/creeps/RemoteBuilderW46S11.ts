@@ -1,6 +1,6 @@
 export const RemoteBuilderW46S11 = {
 	run: function (creep: Creep) {
-		const targetRoom = "W49S11";
+		const targetRoom = "W56S7";
 		if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = false;
 			creep.say("RBU 🔄 ");

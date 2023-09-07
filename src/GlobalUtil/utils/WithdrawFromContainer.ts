@@ -3,7 +3,7 @@ export const WithdrawFromContainer = (creep: Creep, ContainerId: string, resourc
 	let Container = Game.getObjectById<StructureContainer>(ContainerId)!;
 	creep.moveTo(Container, {
 		visualizePathStyle: { stroke: "#ffaa00" },
-		reusePath: 50
+		reusePath: 10
 	});
 	if (Container.store.energy !== 0) {
 		let result = creep.withdraw(Container, resourceType);

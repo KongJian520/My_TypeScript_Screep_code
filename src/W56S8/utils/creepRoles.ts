@@ -32,9 +32,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "HarvesterW56S8",
 		bodyParts: [
-			[WORK, 3],
-			[CARRY, 1],
-			[MOVE, 1]
+			[WORK, 2],
+			[CARRY, 4],
+			[MOVE, 5]
 		],
 		expectedCount: 2,
 		priority: 4
@@ -42,10 +42,10 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "CarrierW56S8",
 		bodyParts: [
-			[CARRY, 8],
-			[MOVE, 6]
+			[CARRY, 3],
+			[MOVE, 3]
 		],
-		expectedCount: 1,
+		expectedCount: 3,
 		priority: 4
 	},
 	{
@@ -61,9 +61,8 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "TransferW56S8",
 		bodyParts: [
-			[CARRY, 10],
-			[MOVE, 10],
-			[WORK, 1]
+			[CARRY, 25],
+			[MOVE, 25]
 		],
 		expectedCount: 1,
 		priority: 6
@@ -82,9 +81,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "UpgraderW56S8",
 		bodyParts: [
-			[WORK, 15],
-			[CARRY, 4],
-			[MOVE, 4]
+			[WORK, 30],
+			[CARRY, 10],
+			[MOVE, 10]
 		],
 		expectedCount: 1,
 		priority: 50
@@ -93,22 +92,41 @@ export const roleDefinitions: RoleDefinition[] = [
 		roleName: "BuilderW56S8",
 		bodyParts: [
 			[WORK, 10],
-			[CARRY, 5],
+			[CARRY, 10],
 			[MOVE, 10]
 		],
-		expectedCount: 1,
+		expectedCount: 3,
 		priority: 60
 	},
 
+	// {
+	// 	roleName: "GuardW55S8",
+	// 	bodyParts: [
+	// 		[MOVE, 5],
+	// 		[ATTACK, 5],
+	// 		[MOVE, 2],
+	// 		[HEAL, 2]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 200
+	// },
 	{
-		roleName: "GuardW55S8",
+		roleName: "ClaimW57S8",
 		bodyParts: [
-			[MOVE, 5],
-			[ATTACK, 5],
-			[MOVE, 2],
-			[HEAL, 2]
+			[CLAIM, 2],
+			[MOVE, 2]
 		],
 		expectedCount: 1,
-		priority: 200
+		priority: 300
+	},
+	{
+		roleName: "ThiefW56S8",
+		bodyParts: [
+			[CARRY, 20],
+			[MOVE, 21],
+			[WORK, 1]
+		],
+		expectedCount: 1,
+		priority: 400
 	}
 ];

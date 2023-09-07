@@ -30,6 +30,8 @@ export const Transfer = {
 				});
 				if (CID.length !== 0) {
 					WithdrawFromContainer(creep, CID[0].id, RESOURCE_ENERGY);
+				} else {
+					creep.memory.working = true;
 				}
 			}
 		} else {

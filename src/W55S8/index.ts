@@ -10,6 +10,7 @@ import { Dismoveableminer } from "./creeps/Dismveableminer";
 import { Transfer } from "./creeps/Transfer";
 import { Carrier } from "./creeps/Carrier";
 import { Dismoveableminer2 } from "./creeps/Dismveableminer2";
+import { Claim } from "./creeps/Claim";
 
 // import term from "./utils/term";
 
@@ -24,6 +25,7 @@ export const W55S8 = {
 			HarvesterW55S8: Harvester,
 			BuilderW55S8: Builder,
 			GuardW55S8: Guard,
+			ClaimW57S9: Claim,
 			DismoveableminerW55S8: Dismoveableminer,
 			Dismoveableminer2W55S8: Dismoveableminer2,
 			TransferW55S8: Transfer,

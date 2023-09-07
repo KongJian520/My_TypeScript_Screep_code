@@ -1,9 +1,9 @@
 const link = {
 	run: function () {
-		const sourceLink1 = Game.getObjectById("64ea42faf187424606ac1bc5") as StructureLink;
+		const sourceLink1 = Game.getObjectById("64f1ddb4dda06b79709dd430") as StructureLink;
 		const sourceLink2 = Game.getObjectById("64ee4e4d80d819c8939205ae") as StructureLink;
 		const sourceLink3 = Game.getObjectById("64dcea84f805462420214079") as StructureLink;
-		const targetLink = Game.getObjectById("64ea9c1a6d28a3d895716c86") as StructureLink;
+		const targetLink = Game.getObjectById("64f20e28c50fca113562da20") as StructureLink;
 		// 检查link是否存在并且有足够的能量
 		if (sourceLink1 && targetLink && sourceLink1.store[RESOURCE_ENERGY] !== 0 && sourceLink1.cooldown == 0) {
 			// 尝试从源link传输能量到目标link

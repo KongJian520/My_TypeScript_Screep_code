@@ -40,7 +40,7 @@ export const W56S8 = {
 			ThiefW56S8: Thief,
 			ScavengerW58S6: Scavenger,
 			RemoteScavengerW58S6: RemoteScavenger,
-			ClaimW56S8: Claim,
+			ClaimW57S8: Claim,
 			GuardW56S7: Guard,
 			RemoteBuilder1W56S7: RemoteBuilder1
 		};

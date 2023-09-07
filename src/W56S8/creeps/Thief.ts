@@ -1,7 +1,9 @@
+import { noMoveChargeStructure } from "../../GlobalUtil/utils/ChargeStruc";
+
 export const Thief = {
 	run: function (creep: Creep) {
 		const targetFlag = Game.flags.ThiefTarget;
-		const targetroom = "W54S8";
+		const targetroom = "W55S8";
 
 		if (!creep.memory.working && creep.store.getUsedCapacity() == 0) {
 			creep.memory.working = true;
@@ -39,6 +41,7 @@ export const Thief = {
 				for (const resourceType in creep.store) {
 					creep.transfer(homeStorage, resourceType as ResourceConstant);
 				}
+				noMoveChargeStructure(creep);
 			}
 		}
 	}

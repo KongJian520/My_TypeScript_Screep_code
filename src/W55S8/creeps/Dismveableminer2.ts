@@ -4,7 +4,7 @@ import { noMoveBuildByPath } from "../../GlobalUtil/utils/BuildByPath";
 export const Dismoveableminer2 = {
 	run: function (creep: Creep) {
 		creep.moveTo(8, 11);
-		const link = Game.getObjectById<StructureLink>("64ef4fadd727235d7b6d0978")!;
+		const link = Game.getObjectById<StructureLink>("64f1ddb4dda06b79709dd430")!;
 		// const tower = Game.getObjectById<StructureTower>("64dced3773b2a9971ec2edde")!;
 		if (!creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
 			creep.memory.working = true;

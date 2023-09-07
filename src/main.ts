@@ -39,7 +39,7 @@ console.log("=========================================");
 console.log("code is Updated!...,The Game tickis .." + Game.time);
 console.log("=========================================");
 
-// Game.market.deal('64c813840b755a87a6a3b510', 257)
+// Game.market.deal('64efa0d9b81de0413a3afebb', 257)
 
 export const loop = () => {
 	if (Game.time % 2 === 0) {

@@ -1,22 +1,14 @@
-import { HarvestSource } from "../../utils/HarvestSource";
-import { StoreSource } from "../../utils/transferToStore";
-
-export const RBRemoteHarveser = (creep: Creep, store: string, targetRoom: string) => {
-	if (creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
-		creep.memory.working = false;
-		creep.say("🔄");
-	}
-	if (!creep.memory.working && creep.store.getFreeCapacity() == 0) {
-		creep.memory.working = true;
-		creep.say("升级中");
-	}
-	if (creep.memory.working) {
-		if (creep.memory.SourceId) {
-			HarvestSource(creep, creep.memory.SourceId);
-		} else if (creep.memory.SourceId == undefined || Game.getObjectById<Source>(creep.memory.SourceId)!.energy == 0) {
-			creep.memory.SourceId = creep.room.find(FIND_SOURCES_ACTIVE)[0].id;
+export const RemoteHarvester = {
+	run: function (creep: Creep, targetRoom: Room, SourceID: string) {
+		if (creep.room.name !== targetRoom.name) {
+			creep.moveTo(new RoomPosition(25, 25, targetRoom.name), { visualizePathStyle: { stroke: "#ffaa00" } });
+		} else {
+			const source = Game.getObjectById<Source>(SourceID);
+			if (source) {
+				if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(source, { visualizePathStyle: { stroke: "#ffaa00" } });
+				}
+			}
 		}
-	} else {
-		StoreSource(creep, store);
 	}
 };

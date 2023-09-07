@@ -67,7 +67,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 5],
 			[WORK, 5]
 		],
-		expectedCount: 3,
+		expectedCount: 1,
 		priority: 200
 	},
 	{
@@ -77,7 +77,16 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 5],
 			[WORK, 5]
 		],
-		expectedCount: 3,
+		expectedCount: 1,
+		priority: 300
+	},
+	{
+		roleName: "ClaimW57S9",
+		bodyParts: [
+			[CLAIM, 2],
+			[MOVE, 4]
+		],
+		expectedCount: 1,
 		priority: 300
 	}
 ];

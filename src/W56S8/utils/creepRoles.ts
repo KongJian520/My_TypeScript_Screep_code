@@ -1,3 +1,5 @@
+import { RemoteTransfer1 } from "../creeps/RemoteTransfer1";
+
 export type BodyPartConstantTuple = [BodyPartConstant, number];
 
 export interface RoleDefinition {
@@ -42,10 +44,11 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "CarrierW56S8",
 		bodyParts: [
-			[CARRY, 3],
-			[MOVE, 3]
+			[CARRY, 15],
+			[MOVE, 15],
+			[WORK, 1]
 		],
-		expectedCount: 3,
+		expectedCount: 1,
 		priority: 4
 	},
 	{
@@ -81,7 +84,7 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "UpgraderW56S8",
 		bodyParts: [
-			[WORK, 30],
+			[WORK, 10],
 			[CARRY, 10],
 			[MOVE, 10]
 		],
@@ -95,7 +98,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 10],
 			[MOVE, 10]
 		],
-		expectedCount: 3,
+		expectedCount: 1,
 		priority: 60
 	},
 
@@ -119,6 +122,26 @@ export const roleDefinitions: RoleDefinition[] = [
 		expectedCount: 1,
 		priority: 300
 	},
+	// {
+	// 	roleName: "RemoteBuilder1W57S8",
+	// 	bodyParts: [
+	// 		[WORK, 10],
+	// 		[CARRY, 5],
+	// 		[MOVE, 10]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 301
+	// },
+	// {
+	// 	roleName: "RemoteTransfer1W56S8",
+	// 	bodyParts: [
+	// 		[CARRY, 15],
+	// 		[MOVE, 15],
+	// 		[WORK, 1]
+	// 	],
+	// 	expectedCount: 1,
+	// 	priority: 301
+	// },
 	{
 		roleName: "ThiefW56S8",
 		bodyParts: [
@@ -128,5 +151,14 @@ export const roleDefinitions: RoleDefinition[] = [
 		],
 		expectedCount: 1,
 		priority: 400
+	},
+	{
+		roleName: "ClaimW57S9",
+		bodyParts: [
+			[CLAIM, 2],
+			[MOVE, 4]
+		],
+		expectedCount: 1,
+		priority: 300
 	}
 ];

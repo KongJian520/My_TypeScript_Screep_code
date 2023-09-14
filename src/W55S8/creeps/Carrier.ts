@@ -14,7 +14,16 @@ export const Carrier = {
 		if (creep.memory.working) {
 			ChargeStructure(creep);
 		} else {
-			WithdrawFromContainer(creep, "64eff1a9a0c2db6dbdebe518", RESOURCE_ENERGY);
+			const structure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+				filter: (s: any) =>
+					(s.structureType === STRUCTURE_CONTAINER ||
+						s.structureType === STRUCTURE_STORAGE ||
+						s.structureType === STRUCTURE_LINK) &&
+					s.store.getUsedCapacity(RESOURCE_ENERGY) > 0
+			});
+			if (structure) {
+				WithdrawFromContainer(creep, structure.id, RESOURCE_ENERGY);
+			}
 			// noMoveWithdrawFromContainer(creep, "64ea9c1a6d28a3d895716c86", RESOURCE_ENERGY);
 		}
 	}

@@ -18,6 +18,7 @@ import { Claim } from "./creeps/Claim";
 import { Guard } from "./creeps/Guard";
 import { RemoteBuilder1 } from "./creeps/RemoteBuilder1";
 import { terminal } from "./utils/term";
+import { RemoteTransfer1 } from "./creeps/RemoteTransfer1";
 // import term from "./utils/term";
 
 export const W56S8 = {
@@ -42,7 +43,8 @@ export const W56S8 = {
 			RemoteScavengerW58S6: RemoteScavenger,
 			ClaimW57S8: Claim,
 			GuardW56S7: Guard,
-			RemoteBuilder1W56S7: RemoteBuilder1
+			RemoteBuilder1W57S8: RemoteBuilder1,
+			RemoteTransfer1W56S8: RemoteTransfer1
 		};
 
 		function logRoomInfo() {

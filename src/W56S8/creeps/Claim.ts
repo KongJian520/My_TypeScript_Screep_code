@@ -4,7 +4,9 @@ export const Claim = {
 		if (creep.room.name !== targetRoom) {
 			creep.say("moving");
 			creep.moveTo(new RoomPosition(10, 10, targetRoom), { visualizePathStyle: { stroke: "#ffffff" } });
-		} else if (creep.room.name === targetRoom) {
+		}
+		if (creep.room.name === targetRoom) {
+			creep.moveTo(creep.room.controller);
 			if (creep.room.controller && !creep.room.controller.my) {
 				// creep.claimController(creep.room.controller);
 				creep.signController(creep.room.controller, "I'm new in here.");

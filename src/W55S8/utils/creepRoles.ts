@@ -13,9 +13,9 @@ export const roleDefinitions: RoleDefinition[] = [
 	{
 		roleName: "HarvesterW55S8",
 		bodyParts: [
-			[WORK, 2],
-			[CARRY, 1],
-			[MOVE, 1]
+			[WORK, 1],
+			[CARRY, 2],
+			[MOVE, 2]
 		],
 		expectedCount: 1,
 		priority: 1
@@ -29,6 +29,15 @@ export const roleDefinitions: RoleDefinition[] = [
 		],
 		expectedCount: 1,
 		priority: 2
+	},
+	{
+		roleName: "CarrierW55S8",
+		bodyParts: [
+			[MOVE, 3],
+			[CARRY, 3]
+		],
+		expectedCount: 1,
+		priority: 3
 	},
 	{
 		roleName: "TransferW55S8",
@@ -47,7 +56,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 9],
 			[WORK, 1]
 		],
-		expectedCount: 1,
+		expectedCount: 2,
 		priority: 5
 	},
 	{
@@ -77,16 +86,7 @@ export const roleDefinitions: RoleDefinition[] = [
 			[CARRY, 5],
 			[WORK, 5]
 		],
-		expectedCount: 1,
-		priority: 300
-	},
-	{
-		roleName: "ClaimW57S9",
-		bodyParts: [
-			[CLAIM, 2],
-			[MOVE, 4]
-		],
-		expectedCount: 1,
+		expectedCount: 3,
 		priority: 300
 	}
 ];
